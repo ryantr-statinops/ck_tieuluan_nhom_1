@@ -1,0 +1,20 @@
+## LaTeX Office and temporary files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fls
+*.idx
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.log
+*.pdf
+
+## OS files
+.DS_Store
+Thumbs.db

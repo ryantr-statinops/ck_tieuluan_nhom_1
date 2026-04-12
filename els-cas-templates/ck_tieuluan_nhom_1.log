@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  12 APR 2026 17:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  12 APR 2026 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,48 +721,48 @@ Package: thm-restate 2023/05/04 v0.76
 Package: thm-amsthm 2023/05/04 v0.76
 \thmt@style@headstyle=\toks41
 ))
-LaTeX Font Info:    Trying to load font information for T1+stix on input line 6
-9.
+LaTeX Font Info:    Trying to load font information for T1+stix on input line 7
+4.
  (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
 (ck_tieuluan_nhom_1.aux)
 \openout1 = `ck_tieuluan_nhom_1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 69.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 74.
 LaTeX Font Info:    Trying to load font information for LS1+stix on input line 
-69.
+74.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 74.
 LaTeX Font Info:    Trying to load font information for LS2+stix on input line 
-69.
+74.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    ... okay on input line 74.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -789,9 +789,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Command `\dddot' is already robust on input line 69.
-LaTeX Info: Command `\ddddot' is already robust on input line 69.
-Package hyperref Info: Link coloring ON on input line 69.
+LaTeX Info: Command `\dddot' is already robust on input line 74.
+LaTeX Info: Command `\ddddot' is already robust on input line 74.
+Package hyperref Info: Link coloring ON on input line 74.
  (ck_tieuluan_nhom_1.out) (ck_tieuluan_nhom_1.out)
 \@outlinefile=\write3
 \openout3 = `ck_tieuluan_nhom_1.out'.
@@ -837,62 +837,62 @@ Package hyperref Info: Link coloring ON on input line 69.
 <figs/elsevier_tree_logo_bw.png, id=3, 246.6816pt x 246.6816pt>
 File: figs/elsevier_tree_logo_bw.png Graphic file (type png)
 <use figs/elsevier_tree_logo_bw.png>
-Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 126
+Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 131
 .
 (pdftex.def)             Requested size: 79.6678pt x 79.66618pt.
 LaTeX Font Info:    Trying to load font information for LS1+stixscr on input li
-ne 126.
+ne 131.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixex on input lin
-e 126.
+e 131.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126
+LaTeX Font Info:    Trying to load font information for U+msa on input line 131
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126
+LaTeX Font Info:    Trying to load font information for U+msb on input line 131
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input l
-ine 126.
+ine 131.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixbb on input lin
-e 126.
+e 131.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixcal on input li
-ne 126.
+ne 131.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixsf on input lin
-e 126.
+e 131.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixtt on input lin
-e 126.
+e 131.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
@@ -901,67 +901,68 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 <figs/imacs_globe_logo_blue.png, id=6, 246.6816pt x 246.6816pt>
 File: figs/imacs_globe_logo_blue.png Graphic file (type png)
 <use figs/imacs_globe_logo_blue.png>
-Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 126
+Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 131
 .
 (pdftex.def)             Requested size: 71.13188pt x 71.1293pt.
 <figs/crossmark_check_for_updates_logo.png, id=7, 246.6816pt x 246.6816pt>
 File: figs/crossmark_check_for_updates_logo.png Graphic file (type png)
 <use figs/crossmark_check_for_updates_logo.png>
 Package pdftex.def Info: figs/crossmark_check_for_updates_logo.png  used on inp
-ut line 126.
+ut line 131.
 (pdftex.def)             Requested size: 51.21504pt x 51.2137pt.
 
-Overfull \hbox (113.81102pt too wide) detected at line 126
+Overfull \hbox (113.81102pt too wide) detected at line 131
 []
  []
 
 (ck_tieuluan_nhom_1.abs)
 
-Package hyperref Warning: Ignoring empty anchor on input line 126.
+Package hyperref Warning: Ignoring empty anchor on input line 131.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 126.
+Package hyperref Warning: Ignoring empty anchor on input line 131.
 
 LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
-126.
+131.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 126.
+Package hyperref Warning: Ignoring empty anchor on input line 131.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 126.
+Package hyperref Warning: Ignoring empty anchor on input line 131.
 
 <thumbnails/cas-url.jpeg, id=9, 225.84375pt x 225.84375pt>
 File: thumbnails/cas-url.jpeg Graphic file (type jpg)
 <use thumbnails/cas-url.jpeg>
-Package pdftex.def Info: thumbnails/cas-url.jpeg  used on input line 126.
+Package pdftex.def Info: thumbnails/cas-url.jpeg  used on input line 131.
 (pdftex.def)             Requested size: 7.99838pt x 8.0pt.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-26.
+31.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 126.
+Package hyperref Warning: Ignoring empty anchor on input line 131.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 126.
+Package hyperref Warning: Ignoring empty anchor on input line 131.
 
-[1
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 144.
+(ck_tieuluan_nhom_1.bbl [1
 
 {C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Admi
 n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}{C:/Users/Admi
 n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1.enc} <./figs/else
 vier_tree_logo_bw.png> <./figs/imacs_globe_logo_blue.png> <./figs/crossmark_che
-ck_for_updates_logo.png> <./thumbnails/cas-url.jpeg>] (ck_tieuluan_nhom_1.bbl)
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
-69.
- (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
+ck_for_updates_logo.png> <./thumbnails/cas-url.jpeg>]
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 3
+48.
+(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-[2] (ck_tieuluan_nhom_1.aux)
+[2]) [3] (ck_tieuluan_nhom_1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -970,29 +971,24 @@ Package rerunfilecheck Info: File `ck_tieuluan_nhom_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17699 strings out of 474486
- 275536 string characters out of 5743754
- 1953542 words of memory out of 5000000
- 39653 multiletter control sequences out of 15000+600000
- 657838 words of font info for 157 fonts, out of 8000000 for 9000
+ 17953 strings out of 474486
+ 279636 string characters out of 5743754
+ 1959542 words of memory out of 5000000
+ 39849 multiletter control sequences out of 15000+600000
+ 678336 words of font info for 199 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,93p,561b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,9n,93p,561b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss
 0900.pk> <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt0800.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 stix/STIXGeneral-Bold.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/stix/STIXGeneral-Italic.pfb><C:/Users/Admin/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/Admin/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathbb.pfb><C:/Users/Admin/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.pfb><C:/Users
-/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathex.pfb><C
-:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathit
-.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix
--mathrm.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/st
-ix/stix-mathscr.pfb>
-Output written on ck_tieuluan_nhom_1.pdf (2 pages, 1650101 bytes).
+Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathit.pfb><C:/Users/Admin/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathrm.pfb>
+Output written on ck_tieuluan_nhom_1.pdf (3 pages, 1634276 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
+ 197 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

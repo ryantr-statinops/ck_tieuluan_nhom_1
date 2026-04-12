@@ -18,6 +18,11 @@
 
 \graphicspath{{figs/}}
 
+% Adjust Section Font Size (Shrink by 1-2 sizes)
+\makeatletter
+\def\sectionfont{\rmfamily\fontsize{10.5pt}{12pt}\bfseries}
+\makeatother
+
 % Define Colors for the Professional Header
 \definecolor{elsorange}{HTML}{E78100}
 \definecolor{sdblue}{HTML}{007398}
@@ -127,43 +132,36 @@ Available online 20 November 2023\\
 \thispagestyle{empty} % Hide page number on the first page
 
 \section{Introduction}
-The NSPNP equations describe the dynamics of electrically charged fluids, the motions of ionized particles or molecules and their interactions with electric fields and the surrounding fluid, which are widely used in colloidal science, biophysics, semiconductors, micro- and nanofluidics, and electrochemistry \cite{Markowich1990,Kirby2010,Ramos2011,Gubbiotti2022}. The NSPNP equations are given as follows:
-\begin{equation}
-\label{eq:1.1}
-\begin{cases} 
-u_t - \Delta u + (u \cdot \nabla) u + \nabla p = -(c_1 - c_2) \nabla \psi, & \text{in } \Omega \times (0, T], \\
-\text{div} u = 0, & \text{in } \Omega \times (0, T], \\
-c_{1t} - \Delta c_1 - \text{div}(c_1 \nabla \psi) + (u \cdot \nabla) c_1 = 0, & \text{in } \Omega \times (0, T], \\
-c_{2t} - \Delta c_2 + \text{div}(c_2 \nabla \psi) + (u \cdot \nabla) c_2 = 0, & \text{in } \Omega \times (0, T], \\
--\Delta \psi = c_1 - c_2, & \text{in } \Omega \times (0, T], \\
-u = 0, \frac{\partial c_1}{\partial n} = \frac{\partial c_2}{\partial n} = \frac{\partial \psi}{\partial n} = 0, & \text{on } \partial\Omega \times (0, T], \\
-c_1(x, 0) = c_{10}(x), c_2(x, 0) = c_{20}(x), u(x, 0) = u_0(x),
-\end{cases}
-\end{equation}
-where $\Omega \in \mathbb{R}^d, d = 2, 3$ is a bounded domain with a Lipschitz continuous boundary $\partial\Omega$, $n$ is the outward unit-normal vector to $\partial\Omega$, $c_1$ and $c_2$ are the concentrations of positive and negative charges, $u$ and $p$ are the velocity and pressure of the fluid, and $\psi$ is the quasi-electrostatic potential. 
-
-Numerous numerical methods have been developed for the PNP and NSPNP equations. It is crucial to preserve some important physical properties at the discrete level, such as the mass conservation, concentration positivity and energy stability \cite{Flavell2014,He2019,Liu2021}.
+% TODO: Insert Introduction content here
 
 \section{Preliminary}
-We introduce the following function spaces:
-\begin{equation}
-\label{eq:2.1}
-\begin{cases}
-X = H^1(\Omega), \quad X_0 = \{ \eta \in H^1(\Omega) : \int_\Omega \eta \, dx = 0 \}, \\
-V = (H_0^1(\Omega))^d, \quad Q = L_0^2(\Omega) = \{ q \in L^2(\Omega) : \int_\Omega q \, dx = 0 \}.
-\end{cases}
-\end{equation}
+% TODO: Insert Preliminary content here
 
-The trilinear forms $b_1(\cdot; \cdot, \cdot)$ on $V \times V \times V$ and $b_2(\cdot; \cdot, \cdot)$ on $V \times X \times X$ are defined by:
-\begin{equation}
-b_1(u; v, w) = \frac{1}{2} ((u \cdot \nabla)v, w) - \frac{1}{2} ((u \cdot \nabla)w, v), \quad \forall u, v, w \in V,
-\end{equation}
-\begin{equation}
-b_2(u; c, \eta) = \frac{1}{2} (u \cdot \nabla c, \eta) - \frac{1}{2} (u \cdot \nabla \eta, c), \quad \forall u \in V, c, \eta \in X.
-\end{equation}
+\section{The linearized backward Euler scheme}
+% TODO: Insert the linearized backward Euler scheme content here
+
+\section{The error estimates}
+\subsection{The $l^\infty(L^2)$-norm error estimates}
+% TODO: Insert subsection 4.1 content here
+
+\subsection{The $l^\infty(H^1)$-norm error estimate}
+% TODO: Insert subsection 4.2 content here
+
+\subsection{Improved error estimate for the $l^\infty(L^2)$-norm}
+% TODO: Insert subsection 4.3 content here
+
+\section{Two physical properties}
+% TODO: Insert Two physical properties content here
+
+\section{Numerical implementation}
+% TODO: Insert Numerical implementation content here
+
+\section{Conclusion and future work}
+% TODO: Insert Conclusion and future work content here
 
 % Loading bibliography style and database
 \bibliographystyle{cas-model2-names}
+\nocite{*} % Show all entries in the .bib file
 \bibliography{cas-refs}
 
 \end{document}

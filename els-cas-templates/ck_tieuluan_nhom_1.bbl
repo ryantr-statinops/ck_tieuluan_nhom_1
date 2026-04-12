@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{60}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -12,6 +12,107 @@
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
 %Type = Article
+\bibitem[{Bothe et~al.(2014)Bothe, Fischer and Saal}]{Bothe2014}
+\bibinfo{author}{Bothe, D.}, \bibinfo{author}{Fischer, A.},
+  \bibinfo{author}{Saal, J.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Global well-posedness and stability of electrokinetic
+  flows}.
+\newblock \bibinfo{journal}{SIAM J. Math. Anal.} \bibinfo{volume}{46},
+  \bibinfo{pages}{1263--1316}.
+%Type = Article
+\bibitem[{Bousquet et~al.(2018)Bousquet, Hu, Metti et~al.}]{Bousquet2018}
+\bibinfo{author}{Bousquet, A.}, \bibinfo{author}{Hu, X.},
+  \bibinfo{author}{Metti, M.S.}, et~al., \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Newton solvers for drift-diffusion and electrokinetic
+  equations}.
+\newblock \bibinfo{journal}{SIAM J. Sci. Comput.} \bibinfo{volume}{40},
+  \bibinfo{pages}{B982--B1006}.
+%Type = Article
+\bibitem[{Chen et~al.(2019)Chen, Feng, Liu et~al.}]{Chen22019}
+\bibinfo{author}{Chen, W.}, \bibinfo{author}{Feng, W.}, \bibinfo{author}{Liu,
+  Y.}, et~al., \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{A second order energy stable scheme for the
+  {Cahn-Hilliard-Hele-Shaw} equations}.
+\newblock \bibinfo{journal}{Discrete Contin. Dyn. B} \bibinfo{volume}{24},
+  \bibinfo{pages}{149--182}.
+%Type = Article
+\bibitem[{Chen et~al.(2016)Chen, Liu, Wang et~al.}]{Chen2016}
+\bibinfo{author}{Chen, W.}, \bibinfo{author}{Liu, Y.}, \bibinfo{author}{Wang,
+  C.}, et~al., \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Convergence analysis of a fully discrete finite
+  difference scheme for the {Cahn-Hilliard-Hele-Shaw} equation}.
+\newblock \bibinfo{journal}{Math. Comput.} \bibinfo{volume}{85},
+  \bibinfo{pages}{2231--2257}.
+%Type = Article
+\bibitem[{Constantin and Ignatova(2019)}]{Constantin2019}
+\bibinfo{author}{Constantin, P.}, \bibinfo{author}{Ignatova, M.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{On the {Nernst-Planck-Navier-Stokes} system}.
+\newblock \bibinfo{journal}{Arch. Ration. Mech. Anal.} \bibinfo{volume}{232},
+  \bibinfo{pages}{1379--1428}.
+%Type = Article
+\bibitem[{Constantin et~al.(2021)Constantin, Ignatova and Lee}]{Constantin2021}
+\bibinfo{author}{Constantin, P.}, \bibinfo{author}{Ignatova, M.},
+  \bibinfo{author}{Lee, F.N.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{Nernst-Planck-Navier-Stokes} systems far from
+  equilibrium}.
+\newblock \bibinfo{journal}{Arch. Ration. Mech. Anal.} \bibinfo{volume}{240},
+  \bibinfo{pages}{1147--1168}.
+%Type = Article
+\bibitem[{Dehghan and Gharibi(2022)}]{Dehghan2022}
+\bibinfo{author}{Dehghan, M.}, \bibinfo{author}{Gharibi, Z.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{An analysis of weak {Galerkin} finite element method
+  for a steady state {Boussinesq} problem}.
+\newblock \bibinfo{journal}{J. Comput. Appl. Math.} \bibinfo{volume}{406},
+  \bibinfo{pages}{114029}.
+%Type = Article
+\bibitem[{Dehghan et~al.(2023)Dehghan, Gharibi and
+  Ruiz-Baier}]{DehghanGharibi2023}
+\bibinfo{author}{Dehghan, M.}, \bibinfo{author}{Gharibi, Z.},
+  \bibinfo{author}{Ruiz-Baier, R.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Optimal error estimates of coupled and
+  divergence-free virtual element methods for the
+  {Poisson-Nernst-Planck/Navier-Stokes} equations and applications in
+  electrochemical systems}.
+\newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{94},
+  \bibinfo{pages}{72}.
+%Type = Article
+\bibitem[{Dehghan et~al.(2022)Dehghan, Hooshyarfarzin and
+  Abbaszadeh}]{Dehghan22022}
+\bibinfo{author}{Dehghan, M.}, \bibinfo{author}{Hooshyarfarzin, B.},
+  \bibinfo{author}{Abbaszadeh, M.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Numerical simulation based on a combination of finite
+  element method and proper orthogonal decomposition to prevent the groundwater
+  contamination}.
+\newblock \bibinfo{journal}{Eng. Comput.} \bibinfo{volume}{38},
+  \bibinfo{pages}{3445--3461}.
+%Type = Article
+\bibitem[{Diegel et~al.(2017)Diegel, Wang, Wang et~al.}]{Diegel2017}
+\bibinfo{author}{Diegel, A.}, \bibinfo{author}{Wang, C.},
+  \bibinfo{author}{Wang, X.}, et~al., \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Convergence analysis and error estimates for a second
+  order accurate finite element method for the {Cahn-Hilliard-Navier-Stokes}
+  system}.
+\newblock \bibinfo{journal}{Numer. Math.} \bibinfo{volume}{137},
+  \bibinfo{pages}{495--534}.
+%Type = Article
+\bibitem[{Ding et~al.(2020)Ding, Wang and Zhou}]{Ding2020}
+\bibinfo{author}{Ding, J.}, \bibinfo{author}{Wang, Z.}, \bibinfo{author}{Zhou,
+  S.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Structure-preserving and efficient numerical methods
+  for ion transport}.
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{418},
+  \bibinfo{pages}{109597}.
+%Type = Article
+\bibitem[{Fischer and Saal(2017)}]{Fischer2017}
+\bibinfo{author}{Fischer, A.}, \bibinfo{author}{Saal, J.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Global weak solutions in three space dimensions for
+  electrokinetic flow processes}.
+\newblock \bibinfo{journal}{J. Evol. Equ.} \bibinfo{volume}{17},
+  \bibinfo{pages}{309--333}.
+%Type = Article
 \bibitem[{Flavell et~al.(2014)Flavell, Machen, Eisenberg et~al.}]{Flavell2014}
 \bibinfo{author}{Flavell, A.}, \bibinfo{author}{Machen, M.},
   \bibinfo{author}{Eisenberg, B.}, et~al., \bibinfo{year}{2014}.
@@ -19,6 +120,54 @@
   {Poisson-Nernst-Planck} equations}.
 \newblock \bibinfo{journal}{J. Comput. Electron.} \bibinfo{volume}{13},
   \bibinfo{pages}{235--249}.
+%Type = Article
+\bibitem[{Fu and Xu(2022)}]{Fu2022}
+\bibinfo{author}{Fu, G.}, \bibinfo{author}{Xu, Z.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{High-order space-time finite element methods for the
+  {Poisson-Nernst-Planck} equations: positivity and unconditional energy
+  stability}.
+\newblock \bibinfo{journal}{Comput. Methods Appl. Mech. Eng.}
+  \bibinfo{volume}{395}, \bibinfo{pages}{115031}.
+%Type = Article
+\bibitem[{Gao and He(2017)}]{Gao2017}
+\bibinfo{author}{Gao, H.}, \bibinfo{author}{He, D.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Linearized conservative finite element methods for
+  the {Nernst-Planck-Poisson} equations}.
+\newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{72},
+  \bibinfo{pages}{1269--1289}.
+%Type = Article
+\bibitem[{Gao and Sun(2018)}]{Gao22018}
+\bibinfo{author}{Gao, H.}, \bibinfo{author}{Sun, P.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{A linearized local conservative mixed finite element
+  method for {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{77},
+  \bibinfo{pages}{793--817}.
+%Type = Article
+\bibitem[{Gharibi and Dehghan(2021)}]{Gharibi22021}
+\bibinfo{author}{Gharibi, Z.}, \bibinfo{author}{Dehghan, M.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Convergence analysis of weak {Galerkin} flux-based
+  mixed finite element method for solving singularly perturbed
+  convection-diffusion-reaction problem}.
+\newblock \bibinfo{journal}{Appl. Numer. Math.} \bibinfo{volume}{163},
+  \bibinfo{pages}{303--316}.
+%Type = Article
+\bibitem[{Gharibi et~al.(2021)Gharibi, Dehghan and Abbaszadeh}]{Gharibi2021}
+\bibinfo{author}{Gharibi, Z.}, \bibinfo{author}{Dehghan, M.},
+  \bibinfo{author}{Abbaszadeh, M.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Numerical analysis of locally conservative weak
+  {Galerkin} dual-mixed finite element method for the time-dependent
+  {Poisson-Nernst-Planck} system}.
+\newblock \bibinfo{journal}{Comput. Math. Appl.} \bibinfo{volume}{92},
+  \bibinfo{pages}{88--108}.
+%Type = Article
+\bibitem[{Gong et~al.(2021)Gong, Wang and Zhang}]{Gong2021}
+\bibinfo{author}{Gong, H.}, \bibinfo{author}{Wang, C.}, \bibinfo{author}{Zhang,
+  X.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Partial regularity of suitable weak solutions of the
+  {Navier-Stokes-Planck-Nernst-Poisson} equation}.
+\newblock \bibinfo{journal}{SIAM J. Math. Anal.} \bibinfo{volume}{53},
+  \bibinfo{pages}{3306--3337}.
 %Type = Article
 \bibitem[{Gubbiotti et~al.(2022)Gubbiotti, Baldelli, Muccio
   et~al.}]{Gubbiotti2022}
@@ -29,6 +178,14 @@
 \newblock \bibinfo{journal}{Adv. Phys. X} \bibinfo{volume}{7},
   \bibinfo{pages}{2036638}.
 %Type = Article
+\bibitem[{Hao et~al.(2022)Hao, Ma and Xu}]{Hao2022}
+\bibinfo{author}{Hao, T.}, \bibinfo{author}{Ma, M.}, \bibinfo{author}{Xu, X.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Adaptive finite element approximation for
+  steady-state {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{Adv. Comput. Math.} \bibinfo{volume}{48},
+  \bibinfo{pages}{1--27}.
+%Type = Article
 \bibitem[{He et~al.(2019)He, Pan and Yue}]{He2019}
 \bibinfo{author}{He, D.}, \bibinfo{author}{Pan, K.}, \bibinfo{author}{Yue, X.},
   \bibinfo{year}{2019}.
@@ -36,6 +193,67 @@
   difference scheme for the {Poisson-Nernst-Planck} system}.
 \newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{81},
   \bibinfo{pages}{436--458}.
+%Type = Article
+\bibitem[{He and Sun(2017)}]{He22017}
+\bibinfo{author}{He, M.}, \bibinfo{author}{Sun, P.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Error analysis of mixed finite element method for
+  {Poisson-Nernst-Planck} system}.
+\newblock \bibinfo{journal}{Numer. Methods Partial Differ. Equ.}
+  \bibinfo{volume}{33}, \bibinfo{pages}{1924--1948}.
+%Type = Article
+\bibitem[{He and Sun(2018)}]{He32018}
+\bibinfo{author}{He, M.}, \bibinfo{author}{Sun, P.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Mixed finite element analysis for the
+  {Poisson-Nernst-Planck/Stokes} coupling}.
+\newblock \bibinfo{journal}{J. Comput. Appl. Math.} \bibinfo{volume}{341},
+  \bibinfo{pages}{61--79}.
+%Type = Article
+\bibitem[{He and Sun(2021)}]{He42021}
+\bibinfo{author}{He, M.}, \bibinfo{author}{Sun, P.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Mixed finite element method for modified
+  {Poisson-Nernst-Planck/Navier-Stokes} equations}.
+\newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{87},
+  \bibinfo{pages}{1--33}.
+%Type = Article
+\bibitem[{Heywood and Rannacher(1982)}]{Heywood1982}
+\bibinfo{author}{Heywood, J.G.}, \bibinfo{author}{Rannacher, R.},
+  \bibinfo{year}{1982}.
+\newblock \bibinfo{title}{Finite element approximation of the nonstationary
+  {Navier-Stokes} problem. {I}. {Regularity} of solutions and second-order
+  error estimates for spatial discretization}.
+\newblock \bibinfo{journal}{SIAM J. Numer. Anal.} \bibinfo{volume}{19},
+  \bibinfo{pages}{275--311}.
+%Type = Article
+\bibitem[{Heywood and Rannacher(1990)}]{Heywood1990}
+\bibinfo{author}{Heywood, J.G.}, \bibinfo{author}{Rannacher, R.},
+  \bibinfo{year}{1990}.
+\newblock \bibinfo{title}{Finite-element approximation of the nonstationary
+  {Navier-Stokes} problem. {Part IV}: {Error} analysis for second-order time
+  discretization}.
+\newblock \bibinfo{journal}{SIAM J. Numer. Anal.} \bibinfo{volume}{27},
+  \bibinfo{pages}{353--384}.
+%Type = Article
+\bibitem[{Huang and Shen(2021)}]{Huang2021}
+\bibinfo{author}{Huang, F.}, \bibinfo{author}{Shen, J.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Bound/positivity preserving and energy stable scalar
+  auxiliary variable schemes for dissipative systems: applications to
+  {Keller-Segel} and {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{SIAM J. Sci. Comput.} \bibinfo{volume}{43},
+  \bibinfo{pages}{A1832--A1857}.
+%Type = Article
+\bibitem[{Jerome and Sacco(2009)}]{Jerome2009}
+\bibinfo{author}{Jerome, J.W.}, \bibinfo{author}{Sacco, R.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Global weak solutions for an incompressible charged
+  fluid with multi-scale couplings: initial-boundary-value problem}.
+\newblock \bibinfo{journal}{Nonlinear Anal.} \bibinfo{volume}{71},
+  \bibinfo{pages}{e2487--e2497}.
+%Type = Book
+\bibitem[{John(2016)}]{John2016}
+\bibinfo{author}{John, V.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Finite Element Methods for Incompressible Flow
+  Problems}.
+\newblock \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{Berlin}.
 %Type = Book
 \bibitem[{Kirby(2010)}]{Kirby2010}
 \bibinfo{author}{Kirby, B.J.}, \bibinfo{year}{2010}.
@@ -44,6 +262,59 @@
 \newblock \bibinfo{publisher}{Cambridge University Press},
   \bibinfo{address}{New York}.
 %Type = Article
+\bibitem[{Li and Ying(2022)}]{Li2022}
+\bibinfo{author}{Li, J.}, \bibinfo{author}{Ying, J.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{A stabilized finite volume element method for solving
+  {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{Int. J. Numer. Methods Biomed. Eng.}
+  \bibinfo{volume}{38}, \bibinfo{pages}{e3543}.
+%Type = Article
+\bibitem[{Li et~al.(2023a)Li, Xiao and Li}]{Li2023}
+\bibinfo{author}{Li, M.}, \bibinfo{author}{Xiao, L.}, \bibinfo{author}{Li, Z.},
+  \bibinfo{year}{2023}a.
+\newblock \bibinfo{title}{The supercloseness property of the {Stoke} projection
+  for the transient {Navier-Stokes} equations and global superconvergence
+  analysis}.
+\newblock \bibinfo{journal}{J. Appl. Math. Comput.} \bibinfo{volume}{69},
+  \bibinfo{pages}{2041--2057}.
+%Type = Article
+\bibitem[{Li et~al.(2021)Li, Li and Shi}]{Li22021}
+\bibinfo{author}{Li, Z.}, \bibinfo{author}{Li, M.}, \bibinfo{author}{Shi, D.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Unconditional convergence and superconvergence
+  analysis for the transient {Stokes} equations with damping}.
+\newblock \bibinfo{journal}{Appl. Math. Comput.} \bibinfo{volume}{389},
+  \bibinfo{pages}{125572}.
+%Type = Article
+\bibitem[{Li et~al.(2023b)Li, Xiao, Li et~al.}]{Li22023}
+\bibinfo{author}{Li, Z.}, \bibinfo{author}{Xiao, L.}, \bibinfo{author}{Li, M.},
+  et~al., \bibinfo{year}{2023}b.
+\newblock \bibinfo{title}{Error estimates for the finite element method of the
+  chemotaxis-{Navier-Stokes} equations}.
+\newblock \bibinfo{journal}{J. Appl. Math. Comput.} \bibinfo{volume}{69},
+  \bibinfo{pages}{1--27}.
+%Type = Book
+\bibitem[{Lin and Lin(2006)}]{Lin2006}
+\bibinfo{author}{Lin, Q.}, \bibinfo{author}{Lin, J.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Finite Element Methods: Accuracy and Improvement}.
+\newblock \bibinfo{publisher}{Science Press}, \bibinfo{address}{Beijing}.
+%Type = Article
+\bibitem[{Liu et~al.(2021)Liu, Wang, Wise et~al.}]{Liu22021}
+\bibinfo{author}{Liu, C.}, \bibinfo{author}{Wang, C.}, \bibinfo{author}{Wise,
+  S.}, et~al., \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{A positivity-preserving, energy stable and convergent
+  numerical scheme for the {Poisson-Nernst-Planck} system}.
+\newblock \bibinfo{journal}{Math. Comput.} \bibinfo{volume}{90},
+  \bibinfo{pages}{2071--2106}.
+%Type = Article
+\bibitem[{Liu et~al.(2022)Liu, Wang, Wise et~al.}]{Liu32022}
+\bibinfo{author}{Liu, C.}, \bibinfo{author}{Wang, C.}, \bibinfo{author}{Wise,
+  S.M.}, et~al., \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{An iteration solver for the {Poisson-Nernst-Planck}
+  system and its convergence analysis}.
+\newblock \bibinfo{journal}{J. Comput. Appl. Math.} \bibinfo{volume}{406},
+  \bibinfo{pages}{114017}.
+%Type = Article
 \bibitem[{Liu and Maimaitiyiming(2021)}]{Liu2021}
 \bibinfo{author}{Liu, H.}, \bibinfo{author}{Maimaitiyiming, W.},
   \bibinfo{year}{2021}.
@@ -51,6 +322,21 @@
   multi-d {Poisson-Nernst-Planck} systems}.
 \newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{87},
   \bibinfo{pages}{1--36}.
+%Type = Article
+\bibitem[{Liu and Xu(2017)}]{Liu2017}
+\bibinfo{author}{Liu, X.}, \bibinfo{author}{Xu, C.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Efficient time-stepping/spectral methods for the
+  {Navier-Stokes-Nernst-Planck-Poisson} equations}.
+\newblock \bibinfo{journal}{Commun. Comput. Phys.} \bibinfo{volume}{21},
+  \bibinfo{pages}{1408--1428}.
+%Type = Article
+\bibitem[{Liu et~al.(2017)Liu, Chen, Wang et~al.}]{Liu42017}
+\bibinfo{author}{Liu, Y.}, \bibinfo{author}{Chen, W.}, \bibinfo{author}{Wang,
+  C.}, et~al., \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Error analysis of a mixed finite element method for a
+  {Cahn-Hilliard-Hele-Shaw} system}.
+\newblock \bibinfo{journal}{Numer. Math.} \bibinfo{volume}{135},
+  \bibinfo{pages}{679--709}.
 %Type = Book
 \bibitem[{Markowich et~al.(1990)Markowich, Ringhofer and
   Schmeiser}]{Markowich1990}
@@ -58,11 +344,140 @@
   \bibinfo{author}{Schmeiser, C.}, \bibinfo{year}{1990}.
 \newblock \bibinfo{title}{Semiconductor Equations}.
 \newblock \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{New York}.
+%Type = Article
+\bibitem[{Metti et~al.(2016)Metti, Xu and Liu}]{Metti2016}
+\bibinfo{author}{Metti, M.S.}, \bibinfo{author}{Xu, J.}, \bibinfo{author}{Liu,
+  C.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Energetically stable discretizations for charge
+  transport and electrokinetic models}.
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{306},
+  \bibinfo{pages}{1--18}.
+%Type = Article
+\bibitem[{Prohl and Schmuck(2009)}]{Prohl2009}
+\bibinfo{author}{Prohl, A.}, \bibinfo{author}{Schmuck, M.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Convergent discretizations for the
+  {Nernst-Planck-Poisson} system}.
+\newblock \bibinfo{journal}{Numer. Math.} \bibinfo{volume}{111},
+  \bibinfo{pages}{591--630}.
+%Type = Article
+\bibitem[{Prohl and Schmuck(2010)}]{Prohl2010}
+\bibinfo{author}{Prohl, A.}, \bibinfo{author}{Schmuck, M.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Convergent finite element discretizations of the
+  {Navier-Stokes-Nernst-Planck-Poisson} system}.
+\newblock \bibinfo{journal}{ESAIM: Math. Model. Numer. Anal.}
+  \bibinfo{volume}{44}, \bibinfo{pages}{531--571}.
 %Type = Book
 \bibitem[{Ramos(2011)}]{Ramos2011}
 \bibinfo{author}{Ramos, A.}, \bibinfo{year}{2011}.
 \newblock \bibinfo{title}{Electrokinetics and Electrohydrodynamics in
   Microsystems}.
 \newblock \bibinfo{publisher}{Springer}, \bibinfo{address}{New York}.
+%Type = Article
+\bibitem[{Schmuck(2009)}]{Schmuck2009}
+\bibinfo{author}{Schmuck, M.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Analysis of the {Navier-Stokes-Nernst-Planck-Poisson}
+  system}.
+\newblock \bibinfo{journal}{Math. Models Methods Appl. Sci.}
+  \bibinfo{volume}{19}, \bibinfo{pages}{993--1014}.
+%Type = Article
+\bibitem[{Shen and Xu(2021)}]{Shen2021}
+\bibinfo{author}{Shen, J.}, \bibinfo{author}{Xu, J.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Unconditionally positivity preserving and energy
+  dissipative schemes for {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{Numer. Math.} \bibinfo{volume}{148},
+  \bibinfo{pages}{671--697}.
+%Type = Article
+\bibitem[{Shen et~al.(2020)Shen, Shu, Yang et~al.}]{Shen22020}
+\bibinfo{author}{Shen, R.}, \bibinfo{author}{Shu, S.}, \bibinfo{author}{Yang,
+  Y.}, et~al., \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{A decoupling two-grid method for the time-dependent
+  {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{Numer. Algorithms} \bibinfo{volume}{83},
+  \bibinfo{pages}{1613--1651}.
+%Type = Article
+\bibitem[{Shi and Yang(2019)}]{Shi2019}
+\bibinfo{author}{Shi, D.}, \bibinfo{author}{Yang, H.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Superconvergence analysis of finite element method
+  for {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{Numer. Methods Partial Differ. Equ.}
+  \bibinfo{volume}{35}, \bibinfo{pages}{1206--1223}.
+%Type = Article
+\bibitem[{Shi and Lu(2021)}]{Shi22021}
+\bibinfo{author}{Shi, X.}, \bibinfo{author}{Lu, L.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Nonconforming finite element method for coupled
+  {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{Numer. Methods Partial Differ. Equ.}
+  \bibinfo{volume}{37}, \bibinfo{pages}{2714--2729}.
+%Type = Article
+\bibitem[{Su and Tang(2022)}]{Su2022}
+\bibinfo{author}{Su, S.}, \bibinfo{author}{Tang, H.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{A positivity-preserving and free energy dissipative
+  hybrid scheme for the {Poisson-Nernst-Planck} equations on polygonal and
+  polyhedral meshes}.
+\newblock \bibinfo{journal}{Comput. Math. Appl.} \bibinfo{volume}{108},
+  \bibinfo{pages}{33--48}.
+%Type = Article
+\bibitem[{Sun et~al.(2016)Sun, Sun, Zheng et~al.}]{Sun2016}
+\bibinfo{author}{Sun, Y.}, \bibinfo{author}{Sun, P.}, \bibinfo{author}{Zheng,
+  B.}, et~al., \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Error analysis of finite element method for
+  {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{J. Comput. Appl. Math.} \bibinfo{volume}{301},
+  \bibinfo{pages}{28--43}.
+%Type = Article
+\bibitem[{Wang et~al.(2017)Wang, Bao, Pan et~al.}]{Wang22017}
+\bibinfo{author}{Wang, C.}, \bibinfo{author}{Bao, J.}, \bibinfo{author}{Pan,
+  W.}, et~al., \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Modeling electrokinetics in ionic liquids}.
+\newblock \bibinfo{journal}{Electrophoresis} , \bibinfo{pages}{1--13}.
+%Type = Article
+\bibitem[{Wang et~al.(2021)Wang, Li, Zhang et~al.}]{Wang2021}
+\bibinfo{author}{Wang, Q.}, \bibinfo{author}{Li, H.}, \bibinfo{author}{Zhang,
+  L.}, et~al., \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{A stabilized finite element method for the
+  {Poisson-Nernst-Planck} equations in three-dimensional ion channel
+  simulations}.
+\newblock \bibinfo{journal}{Appl. Math. Lett.} \bibinfo{volume}{111},
+  \bibinfo{pages}{106652}.
+%Type = Article
+\bibitem[{Xie and Lu(2020)}]{Xie2020}
+\bibinfo{author}{Xie, D.}, \bibinfo{author}{Lu, B.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{An effective finite element iterative solver for a
+  {Poisson-Nernst-Planck} ion channel model with periodic boundary conditions}.
+\newblock \bibinfo{journal}{SIAM J. Sci. Comput.} \bibinfo{volume}{42},
+  \bibinfo{pages}{B1490--B1516}.
+%Type = Article
+\bibitem[{Yang et~al.(2022a)Yang, Liu and Shu}]{Yang22022}
+\bibinfo{author}{Yang, Y.}, \bibinfo{author}{Liu, Y.}, \bibinfo{author}{Shu,
+  S.}, \bibinfo{year}{2022}a.
+\newblock \bibinfo{title}{Error analysis of virtual element methods for the
+  time-dependent {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2207.07231} .
+%Type = Article
+\bibitem[{Yang et~al.(2022b)Yang, Shen, Fang et~al.}]{Yang2022}
+\bibinfo{author}{Yang, Y.}, \bibinfo{author}{Shen, R.}, \bibinfo{author}{Fang,
+  M.}, et~al., \bibinfo{year}{2022}b.
+\newblock \bibinfo{title}{Local averaging type a posteriori error estimates for
+  the nonlinear steady-state {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{J. Comput. Appl. Math.} \bibinfo{volume}{404},
+  \bibinfo{pages}{113874}.
+%Type = Article
+\bibitem[{Ying et~al.(2021)Ying, Fan, Li et~al.}]{Ying2021}
+\bibinfo{author}{Ying, J.}, \bibinfo{author}{Fan, R.}, \bibinfo{author}{Li,
+  J.}, et~al., \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{A new block preconditioner and improved finite
+  element solver of {Poisson-Nernst-Planck} equation}.
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{430},
+  \bibinfo{pages}{110098}.
+%Type = Article
+\bibitem[{Zhu et~al.(2022)Zhu, Yang, Ji et~al.}]{Zhu2022}
+\bibinfo{author}{Zhu, W.}, \bibinfo{author}{Yang, Y.}, \bibinfo{author}{Ji,
+  G.}, et~al., \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Residual type a posteriori error estimates for the
+  time-dependent {Poisson-Nernst-Planck} equations}.
+\newblock \bibinfo{journal}{J. Sci. Comput.} \bibinfo{volume}{90},
+  \bibinfo{pages}{1--35}.
 
 \end{thebibliography}
