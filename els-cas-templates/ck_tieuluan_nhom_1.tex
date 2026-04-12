@@ -132,7 +132,32 @@ Available online 20 November 2023\\
 \thispagestyle{empty} % Hide page number on the first page
 
 \section{Introduction}
-% TODO: Insert Introduction content here
+The NSPNP equations describe the dynamics of electrically charged fluids, the motions of ionized particles or molecules and their interactions with electric fields and the surrounding fluid, which are widely used in colloidal science, biophysics, semiconductors, micro- and nanofluidics, and electrochemistry \cite{Markowich1990,Kirby2010,Ramos2011,Gubbiotti2022}. The NSPNP equations are given as follows
+
+\begin{equation}
+\left\{
+\begin{array}{l}
+u_t - \Delta u + (u \cdot \nabla)u + \nabla p = -(c_1 - c_2)\nabla\psi, \ \text{in } \Omega \times (0,T], \\[4pt]
+\text{div}\, u = 0, \ \text{in } \Omega \times (0,T], \\[4pt]
+c_{1t} - \Delta c_1 - \text{div}\,(c_1\nabla\psi) + (u \cdot \nabla)c_1 = 0, \ \text{in } \Omega \times (0,T], \\[4pt]
+c_{2t} - \Delta c_2 + \text{div}\,(c_2\nabla\psi) + (u \cdot \nabla)c_2 = 0, \ \text{in } \Omega \times (0,T], \\[4pt]
+-\Delta\psi = c_1 - c_2, \ \text{in } \Omega \times (0,T], \\[4pt]
+u = 0, \ \dfrac{\partial c_1}{\partial n} = \dfrac{\partial c_2}{\partial n} = \dfrac{\partial \psi}{\partial n} = 0, \ \text{on } \partial\Omega \times (0,T], \\[4pt]
+c_1(x,0) = c_{10}(x),\ c_2(x,0) = c_{20}(x),\ u(x,0) = u_0(x),
+\end{array}
+\right.
+\label{eq:1.1}
+\end{equation}
+
+where $\Omega \in \mathcal{R}^d$, $d = 2, 3$ is a bounded domain with a Lipschitz continuous boundary $\partial\Omega$, $n$ is the outward unit-normal vector to $\partial\Omega$, $c_1$ and $c_2$ are the concentrations of positive and negative charges, $u$ and $p$ are the velocity and pressure of the fluid, and $\psi$ is the quasi-electrostatic potential. For the qualitative analysis of the solutions, such as the existence, uniqueness, stability and asymptotic behavior, we refer to \cite{Schmuck2009,Jerome2009,Fischer2017,Bothe2014,Constantin2021,Constantin2019,Gong2021}.
+
+Many numerical methods have been developed for the PNP and NSPNP equations. It is crucial to preserve some important physical properties at the discrete level, such as the mass conservation, concentration positivity and energy stability, and the related work can be referred to \cite{Flavell2014,He2019,Liu2021,Liu22021,Ding2020,Metti2016,Fu2022,Prohl2009,Prohl2010,Su2022,Liu2017,Shen2021,Huang2021,Gharibi2021,Dehghan2022,Gharibi22021}. In addition, some numerical techniques and implementation strategies were proposed to improve the performance efficiency, such as the adaptive finite element methods \cite{Hao2022,Yang2022,Zhu2022}, the two grid methods \cite{Shen22020}, the stabilized techniques \cite{Wang2021,Li2022}, the proper orthogonal decomposition method \cite{Dehghan22022}, and some improved iteration techniques \cite{Ying2021,Xie2020,Liu32022,Bousquet2018}.
+
+There are some studies about the error estimates of the finite element method for the PNP and NSPNP equations. Sun and He analyzed an implicit Crank-Nicolson finite element scheme for the PNP equations in \cite{Sun2016}, and obtained the optimal error estimates in $l^\infty(H^1)$ norm for all variables, however, the convergence order of $l^\infty(L^2)$ norm was suboptimal. They also proposed the mixed finite element method for the PNP equations \cite{He22017}, and obtained optimal error estimates for $l^\infty(H^1)$ and $l^\infty(L^2)$ norms, and later they discussed the PNP-Stokes equations and modified NSPNP equations \cite{He32018,He42021}. Shi and Yang et al. investigated the conforming and nonconforming finite element methods on rectangular meshes \cite{Shi2019,Shi22021}, and obtained the superconvergence results by integral identities techniques. Yang et al. researched the virtual element method on general polygonal meshes \cite{Yang22022}, and derived the error estimates in $l^\infty(H^1)$ and $l^\infty(L^2)$ norms. However, due to the use of inverse inequality and mathematical inductive argument, a mesh restriction is needed in the above references \cite{Sun2016,He22017,He32018,He42021,Shi2019,Shi22021,Yang22022}. Gao and He \cite{Gao2017,Gao22018} presented linearized conservative finite element and mixed finite element methods for the PNP equations, and established unconditionally optimal error estimates for all variables in $l^2(H^1)$ and $l^\infty(L^2)$ norms, but they do not derive the error estimates in $l^\infty(H^1)$ norm. For the convergence analysis and error estimates of some other gradient flow model coupled with fluid motion, such as the Cahn-Hilliard-Hele-Shaw equations and the Cahn-Hilliard-Navier-Stokes system, one can refer to \cite{Chen2016,Chen22019,Liu42017,Diegel2017}.
+
+In this paper, we focus on the error estimates of the linearized backward Euler finite element scheme for the NSPNP equations, and use low order conforming finite element pairs. Firstly, under an inductive hypothesis, we derive the existence and uniqueness of solutions, and the unconditional error estimates of all variables in $l^\infty(L^2)$ norms. Then, we obtain the $l^\infty(H^1)$ and $l^2(H^2)$ norm stability of the finite element solutions. Next, based on the stability, we deduce the unconditional error estimates in $l^\infty(H^1)$ norm. Moreover, the global mass conservation and the energy stability are also derived for the proposed numerical scheme. Finally, several numerical examples are implemented to verify the theoretical analysis. Compared with the results in \cite{Sun2016,He22017,He32018,He42021,Shi2019,Shi22021,Yang22022}, we remove the mesh restriction.
+
+Throughout the article, the notations of the standard Sobolev spaces are used. The generic positive constant $C$ with or without subscript is independent of the mesh size $h$ and the time step $\tau$.
 
 \section{Preliminary}
 % TODO: Insert Preliminary content here
