@@ -1,4 +1,7 @@
-\documentclass[a4paper,fleqn]{cas-dc}
+\documentclass[a4paper,fleqn]{cas-sc}
+
+% Set geometry after class to avoid option clash
+\geometry{paperwidth=210mm,paperheight=297mm,vmargin={20mm,20mm},hmargin={25mm,25mm},headsep=12pt,footskip=12pt}
 
 % Specific to Elsevier CAS template
 \usepackage[numbers]{natbib}
@@ -22,13 +25,13 @@
 
 % Custom Header Command (Professional Version with Crossmark)
 \newcommand{\makeelsheader}{%
-  \begin{minipage}[t][8cm][t]{\textwidth}
+  \begin{minipage}[t][8cm][t]{\linewidth}
     \centering{\footnotesize \color{sdblue} Appl. Numer. Math. 197 (2024) 186–209}\par
     \vspace{5pt}
-    \noindent\rule{\textwidth}{0.5pt}\par
+    \noindent\rule{\linewidth}{0.5pt}\par
     \vspace{10pt}
     \noindent
-    \begin{minipage}[c]{0.20\textwidth}
+    \begin{minipage}[c]{0.20\linewidth}
       \includegraphics[width=2.8cm]{elsevier_tree_logo_bw}\par
       \vspace{2pt}
       {\color{elsorange}\textbf{\Large ELSEVIER}}
@@ -37,7 +40,7 @@
     \begingroup
     \setlength{\fboxsep}{10pt}%
     \colorbox{headergray}{%
-      \begin{minipage}[c]{0.45\textwidth}
+      \begin{minipage}[c]{0.45\linewidth}
         \centering
         \footnotesize Contents lists available at \href{https://www.sciencedirect.com/}{\color{sdblue}ScienceDirect} \\[8pt]
         {\Large\textbf{Applied Numerical Mathematics}} \\[8pt]
@@ -46,12 +49,12 @@
     }%
     \endgroup
     \hfill
-    \begin{minipage}[c]{0.18\textwidth}
+    \begin{minipage}[c]{0.18\linewidth}
       \raggedleft
       \includegraphics[width=2.5cm]{imacs_globe_logo_blue}
     \end{minipage}\par
     \vspace{10pt}
-    \noindent\rule{\textwidth}{0.5pt}\par
+    \noindent\rule{\linewidth}{0.5pt}\par
     \vspace{20pt}
     \hfill
     \begin{minipage}[t]{2.5cm}
@@ -73,20 +76,19 @@
 \shortauthors{M. Li and Z. Li}
 
 % Title with injected header (Robust stacking to prevent overlap)
-% Title with injected header (Cleanup: Remove blank lines to prevent illegal \par)
 \title [mode = title]{\texorpdfstring{%
 \vspace{-4.5cm}\protect\makeelsheader\vspace{2.5cm}\\
 Error estimates for the finite element method of the Navier-Stokes-Poisson-Nernst-Planck equations \tnotemark[1]%
 }{Error estimates for the FEM of the NSPNP equations}}
 
 % Funding information (Star footnote)
-\tnotetext[1]{This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).}
+\tnotetext[1]{\scriptsize This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).}
 
 % Author information with designations
 \author[1]{Minghao Li}[orcid=0000-0000-0000-0000]
 \cormark[1]
 \fnmark[1]
-\ead{lyminghao@126.com}
+\ead[url]{lyminghao@126.com}
 
 \author[2]{Zhenzhen Li}
 
@@ -102,13 +104,13 @@ Error estimates for the finite element method of the Navier-Stokes-Poisson-Nerns
             country={China}}
 
 % Corresponding author and footnotes
-\cortext[1]{Corresponding author}
-\fntext[1]{Email address: lyminghao@126.com (M. Li).}
+\cortext[1]{Corresponding author.}
+\fntext[1]{\scriptsize \textit{E-mail address:} \href{mailto:lyminghao@126.com}{\color{sdblue}lyminghao@126.com} (M. Li).}
 
 % DOI, History and Copyright Metadata
-\nonumnote{\footnotesize
-\href{https://doi.org/10.1016/j.apnum.2023.11.012}{https://doi.org/10.1016/j.apnum.2023.11.012}\\[4pt]
-Received 14 February 2023; Received in revised form 27 August 2023; Accepted 16 November 2023\\
+\nonumnote{\scriptsize
+\href{https://doi.org/10.1016/j.apnum.2023.11.012}{\color{sdblue}https://doi.org/10.1016/j.apnum.2023.11.012}\\[4pt]
+Received 14 February 2023; Received in revised form 27 August 2023; Accepted 16 November 2023\\[4pt]
 Available online 20 November 2023\\
 0168-9274/© 2023 IMACS. Published by Elsevier B.V. All rights reserved.}
 
@@ -122,9 +124,46 @@ Available online 20 November 2023\\
 
 % Typeset the Frontmatter
 \maketitle
+\thispagestyle{empty} % Hide page number on the first page
+
+\section{Introduction}
+The NSPNP equations describe the dynamics of electrically charged fluids, the motions of ionized particles or molecules and their interactions with electric fields and the surrounding fluid, which are widely used in colloidal science, biophysics, semiconductors, micro- and nanofluidics, and electrochemistry \cite{Markowich1990,Kirby2010,Ramos2011,Gubbiotti2022}. The NSPNP equations are given as follows:
+\begin{equation}
+\label{eq:1.1}
+\begin{cases} 
+u_t - \Delta u + (u \cdot \nabla) u + \nabla p = -(c_1 - c_2) \nabla \psi, & \text{in } \Omega \times (0, T], \\
+\text{div} u = 0, & \text{in } \Omega \times (0, T], \\
+c_{1t} - \Delta c_1 - \text{div}(c_1 \nabla \psi) + (u \cdot \nabla) c_1 = 0, & \text{in } \Omega \times (0, T], \\
+c_{2t} - \Delta c_2 + \text{div}(c_2 \nabla \psi) + (u \cdot \nabla) c_2 = 0, & \text{in } \Omega \times (0, T], \\
+-\Delta \psi = c_1 - c_2, & \text{in } \Omega \times (0, T], \\
+u = 0, \frac{\partial c_1}{\partial n} = \frac{\partial c_2}{\partial n} = \frac{\partial \psi}{\partial n} = 0, & \text{on } \partial\Omega \times (0, T], \\
+c_1(x, 0) = c_{10}(x), c_2(x, 0) = c_{20}(x), u(x, 0) = u_0(x),
+\end{cases}
+\end{equation}
+where $\Omega \in \mathbb{R}^d, d = 2, 3$ is a bounded domain with a Lipschitz continuous boundary $\partial\Omega$, $n$ is the outward unit-normal vector to $\partial\Omega$, $c_1$ and $c_2$ are the concentrations of positive and negative charges, $u$ and $p$ are the velocity and pressure of the fluid, and $\psi$ is the quasi-electrostatic potential. 
+
+Numerous numerical methods have been developed for the PNP and NSPNP equations. It is crucial to preserve some important physical properties at the discrete level, such as the mass conservation, concentration positivity and energy stability \cite{Flavell2014,He2019,Liu2021}.
+
+\section{Preliminary}
+We introduce the following function spaces:
+\begin{equation}
+\label{eq:2.1}
+\begin{cases}
+X = H^1(\Omega), \quad X_0 = \{ \eta \in H^1(\Omega) : \int_\Omega \eta \, dx = 0 \}, \\
+V = (H_0^1(\Omega))^d, \quad Q = L_0^2(\Omega) = \{ q \in L^2(\Omega) : \int_\Omega q \, dx = 0 \}.
+\end{cases}
+\end{equation}
+
+The trilinear forms $b_1(\cdot; \cdot, \cdot)$ on $V \times V \times V$ and $b_2(\cdot; \cdot, \cdot)$ on $V \times X \times X$ are defined by:
+\begin{equation}
+b_1(u; v, w) = \frac{1}{2} ((u \cdot \nabla)v, w) - \frac{1}{2} ((u \cdot \nabla)w, v), \quad \forall u, v, w \in V,
+\end{equation}
+\begin{equation}
+b_2(u; c, \eta) = \frac{1}{2} (u \cdot \nabla c, \eta) - \frac{1}{2} (u \cdot \nabla \eta, c), \quad \forall u \in V, c, \eta \in X.
+\end{equation}
 
 % Loading bibliography style and database
-%\bibliographystyle{cas-model2-names}
-%\bibliography{cas-refs}
+\bibliographystyle{cas-model2-names}
+\bibliography{cas-refs}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  12 APR 2026 16:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  12 APR 2026 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,8 +6,8 @@ entering extended mode
 (ck_tieuluan_nhom_1.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
-(cas-dc.cls
-Document Class: cas-dc 2024/05/04, 2.4: Formatting class for CAS double column 
+(cas-sc.cls
+Document Class: cas-sc 2024/05/04, 2.4: Formatting class for CAS single column 
 articles
 \c@blind=\count187
 \@bls=\dimen140
@@ -157,44 +157,40 @@ Package: xparse 2023-10-10 L3 Experimental document command parser
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count275
 )
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/preprint\balance.sty
-Package: balance 1999/02/23 4.3 (PWD)
-\oldvsize=\dimen153
-)
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen154
-\lightrulewidth=\dimen155
-\cmidrulewidth=\dimen156
-\belowrulesep=\dimen157
-\belowbottomsep=\dimen158
-\aboverulesep=\dimen159
-\abovetopsep=\dimen160
-\cmidrulesep=\dimen161
-\cmidrulekern=\dimen162
-\defaultaddspace=\dimen163
+\heavyrulewidth=\dimen153
+\lightrulewidth=\dimen154
+\cmidrulewidth=\dimen155
+\belowrulesep=\dimen156
+\belowbottomsep=\dimen157
+\aboverulesep=\dimen158
+\abovetopsep=\dimen159
+\cmidrulesep=\dimen160
+\cmidrulekern=\dimen161
+\defaultaddspace=\dimen162
 \@cmidla=\count276
 \@cmidlb=\count277
-\@aboverulesep=\dimen164
-\@belowrulesep=\dimen165
+\@aboverulesep=\dimen163
+\@belowrulesep=\dimen164
 \@thisruleclass=\count278
 \@lastruleclass=\count279
-\@thisrulewidth=\dimen166
+\@thisrulewidth=\dimen165
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen167
+\col@sep=\dimen166
 \ar@mcellbox=\box54
-\extrarowheight=\dimen168
+\extrarowheight=\dimen167
 \NC@list=\toks23
 \extratabsurround=\skip54
 \backup@length=\skip55
 \ar@cellbox=\box55
 )
-\rotheadsize=\dimen169
+\rotheadsize=\dimen168
 \c@nlinenum=\count280
 \TeXr@lab=\toks24
 )
@@ -203,7 +199,7 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip56
 \multirow@cntb=\count281
 \multirow@dima=\skip57
-\bigstrutjot=\dimen170
+\bigstrutjot=\dimen169
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
 Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
@@ -244,8 +240,8 @@ Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
 02-14.sty
 Package: footmisc 2024/12/24 v6.0g a miscellany of footnote facilities
 \FN@temptoken=\toks26
-\footnotemargin=\dimen171
-\@outputbox@depth=\dimen172
+\footnotemargin=\dimen170
+\@outputbox@depth=\dimen171
 Package footmisc Info: Declaring symbol style bringhurst on input line 699.
 Package footmisc Info: Declaring symbol style chicago on input line 707.
 Package footmisc Info: Declaring symbol style wiley on input line 716.
@@ -336,7 +332,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count287
 )
-\@linkdim=\dimen173
+\@linkdim=\dimen172
 \Hy@linkcounter=\count288
 \Hy@pagecounter=\count289
  (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
@@ -367,7 +363,7 @@ Package hyperref Info: Bookmarks ON on input line 4448.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4786.
-\XeTeXLinkMargin=\dimen174
+\XeTeXLinkMargin=\dimen173
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -378,8 +374,8 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
 \Fld@menulength=\count292
-\Field@Width=\dimen175
-\Fld@charsize=\dimen176
+\Field@Width=\dimen174
+\Fld@charsize=\dimen175
 Package hyperref Info: Hyper figures OFF on input line 6065.
 Package hyperref Info: Link nesting OFF on input line 6070.
 Package hyperref Info: Hyper index ON on input line 6073.
@@ -421,8 +417,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip59
 ) (cas-common.sty
-\l_stm_title_before_dim=\dimen177
-\l_stm_title_after_dim=\dimen178
+\l_stm_title_before_dim=\dimen176
+\l_stm_title_after_dim=\dimen177
 \g_ead_int=\count298
 \g_uad_int=\count299
 \@eadauthor=\toks27
@@ -432,19 +428,19 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \g_stm_au_int=\count303
 \g_stm_aau_int=\count304
 \l_autype_int=\count305
-\l_stm_augroup_before_dim=\dimen179
-\l_stm_augroup_after_dim=\dimen180
-\l_stm_augroup_lskip_tl=\dimen181
-\l_stm_augroup_rskip_tl=\dimen182
+\l_stm_augroup_before_dim=\dimen178
+\l_stm_augroup_after_dim=\dimen179
+\l_stm_augroup_lskip_tl=\dimen180
+\l_stm_augroup_rskip_tl=\dimen181
 \g_stm_aff_int=\count306
 \g_stm_aff_ext_int=\count307
 \g_stm_aff_int_int=\count308
 \g_stm_fn_aff_ext_int=\count309
 \g_stm_fn_aff_int_int=\count310
-\l_stm_aff_before_dim=\dimen183
-\l_stm_aff_after_dim=\dimen184
-\l_stm_aff_lskip_dim=\dimen185
-\l_stm_aff_rskip_dim=\dimen186
+\l_stm_aff_before_dim=\dimen182
+\l_stm_aff_after_dim=\dimen183
+\l_stm_aff_lskip_dim=\dimen184
+\l_stm_aff_rskip_dim=\dimen185
 \g_stm_augr_int=\count311
 \g_stm_aaugr_int=\count312
 
@@ -474,15 +470,15 @@ Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
 \c@aff=\count322
 \g_stm_notes_box=\box60
 \g_stm_front_box=\box61
-\paraindent=\dimen187
-\subparaindent=\dimen188
-\FullWidth=\dimen189
-\l_tbl_width_dim=\dimen190
+\paraindent=\dimen186
+\subparaindent=\dimen187
+\FullWidth=\dimen188
+\l_tbl_width_dim=\dimen189
 \l_tbl_abovecap_skip=\skip60
 \l_tbl_belowcap_skip=\skip61
 \l_tbl_abovetbl_skip=\skip62
 \l_tbl_belowtbl_skip=\skip63
-\l_fig_width_dim=\dimen191
+\l_fig_width_dim=\dimen190
 \cascaptionbox=\box62
 \l_fig_abovecap_skip=\skip64
 \l_fig_belowcap_skip=\skip65
@@ -490,25 +486,25 @@ Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
 \l_fig_belowfig_skip=\skip67
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
-\wrapoverhang=\dimen192
-\WF@size=\dimen193
+\wrapoverhang=\dimen191
+\WF@size=\dimen192
 \c@WF@wrappedlines=\count323
 \WF@box=\box63
 \WF@everypar=\toks30
 Package: wrapfig 2003/01/31  v 3.6
 )
-\l_wrap_figwidth_dim=\dimen194
-\l_wrap_fighspace_dim=\dimen195
-\l_wrap_figvspace_dim=\dimen196
-\l_wrap_fighcorr_dim=\dimen197
-\l_wrap_figvcorr_dim=\dimen198
-\l_above_bio_dim=\dimen199
+\l_wrap_figwidth_dim=\dimen193
+\l_wrap_fighspace_dim=\dimen194
+\l_wrap_figvspace_dim=\dimen195
+\l_wrap_fighcorr_dim=\dimen196
+\l_wrap_figvcorr_dim=\dimen197
+\l_above_bio_dim=\dimen198
 \l_wrap_figlcorr_int=\count324
 \l_wrap_figlines_int=\count325
 \l_bio_text_box=\box64
 \c@ca_biography_ctr=\count326
 \l_ca_temp_inta=\count327
-\leftMargin=\dimen256
+\leftMargin=\dimen199
 \@enLab=\toks31
 \@sep=\skip68
 \@@sep=\skip69
@@ -623,41 +619,24 @@ LaTeX Info: Redefining \cdots on input line 1522.
 LaTeX Font Info:    Redeclaring math symbol \mathsterling on input line 1978.
 LaTeX Info: Redefining \not on input line 2144.
 )
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\inconsolata
-.sty
-Package: inconsolata 2019/05/17 v1.12
- `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks32
-\XKV@tempa@toks=\toks33
-)
-\XKV@depth=\count328
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-\zifour@ocount=\count329
-)
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count330
-\Gm@cntv=\count331
-\c@Gm@tempcnt=\count332
-\Gm@bindingoffset=\dimen257
-\Gm@wd@mp=\dimen258
-\Gm@odd@mp=\dimen259
-\Gm@even@mp=\dimen260
-\Gm@layoutwidth=\dimen261
-\Gm@layoutheight=\dimen262
-\Gm@layouthoffset=\dimen263
-\Gm@layoutvoffset=\dimen264
-\Gm@dimlist=\toks34
+\Gm@cnth=\count328
+\Gm@cntv=\count329
+\c@Gm@tempcnt=\count330
+\Gm@bindingoffset=\dimen256
+\Gm@wd@mp=\dimen257
+\Gm@odd@mp=\dimen258
+\Gm@even@mp=\dimen259
+\Gm@layoutwidth=\dimen260
+\Gm@layoutheight=\dimen261
+\Gm@layouthoffset=\dimen262
+\Gm@layoutvoffset=\dimen263
+\Gm@dimlist=\toks32
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
 ) (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
@@ -665,19 +644,19 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip70
 \bibsep=\skip71
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count333
+\c@NAT@ctr=\count331
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count334
-\calc@Bcount=\count335
-\calc@Adimen=\dimen265
-\calc@Bdimen=\dimen266
+\calc@Acount=\count332
+\calc@Bcount=\count333
+\calc@Adimen=\dimen264
+\calc@Bdimen=\dimen265
 \calc@Askip=\skip72
 \calc@Bskip=\skip73
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count336
+\calc@Ccount=\count334
 \calc@Cskip=\skip74
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
@@ -685,41 +664,41 @@ Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count337
-\l_MT_multwidth_dim=\dimen267
+\g_MT_multlinerow_int=\count335
+\l_MT_multwidth_dim=\dimen266
 \origjot=\skip75
-\l_MT_shortvdotswithinadjustabove_dim=\dimen268
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen269
-\l_MT_above_intertext_sep=\dimen270
-\l_MT_below_intertext_sep=\dimen271
-\l_MT_above_shortintertext_sep=\dimen272
-\l_MT_below_shortintertext_sep=\dimen273
+\l_MT_shortvdotswithinadjustabove_dim=\dimen267
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen268
+\l_MT_above_intertext_sep=\dimen269
+\l_MT_below_intertext_sep=\dimen270
+\l_MT_above_shortintertext_sep=\dimen271
+\l_MT_below_shortintertext_sep=\dimen272
 \xmathstrut@box=\box65
-\xmathstrut@dim=\dimen274
+\xmathstrut@dim=\dimen273
 ) (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks35
-\thm@bodyfont=\toks36
-\thm@headfont=\toks37
-\thm@notefont=\toks38
-\thm@headpunct=\toks39
+\thm@style=\toks33
+\thm@bodyfont=\toks34
+\thm@headfont=\toks35
+\thm@notefont=\toks36
+\thm@headpunct=\toks37
 \thm@preskip=\skip76
 \thm@postskip=\skip77
 \thm@headsep=\skip78
-\dth@everypar=\toks40
+\dth@everypar=\toks38
 LaTeX Info: Redefining \qed on input line 273.
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/thmtools\thmtools.sty
 Package: thmtools 2023/05/04 v0.76
-\thmt@toks=\toks41
-\c@thmt@dummyctr=\count338
+\thmt@toks=\toks39
+\c@thmt@dummyctr=\count336
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/thmtools\thm-patch.sty
 Package: thm-patch 2023/05/04 v0.76
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/thmtools\parseargs.sty
 Package: parseargs 2023/05/04 v0.76
-\@parsespec=\toks42
+\@parsespec=\toks40
 )) (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/thmtools\thm-kv.sty
 Package: thm-kv 2023/05/04 v0.76
 Package thm-kv Info: Theorem names will be uppercased on input line 42.
@@ -740,65 +719,65 @@ Package: thm-restate 2023/05/04 v0.76
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/thmtools\thm-amsthm.sty
 Package: thm-amsthm 2023/05/04 v0.76
-\thmt@style@headstyle=\toks43
+\thmt@style@headstyle=\toks41
 ))
 LaTeX Font Info:    Trying to load font information for T1+stix on input line 6
-6.
+9.
  (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
 (ck_tieuluan_nhom_1.aux)
 \openout1 = `ck_tieuluan_nhom_1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 69.
 LaTeX Font Info:    Trying to load font information for LS1+stix on input line 
-66.
+69.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 69.
 LaTeX Font Info:    Trying to load font information for LS2+stix on input line 
-66.
+69.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    ... okay on input line 69.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count339
-\scratchdimen=\dimen275
+\scratchcounter=\count337
+\scratchdimen=\dimen274
 \scratchbox=\box66
-\nofMPsegments=\count340
-\nofMParguments=\count341
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count342
-\MPscratchDim=\dimen276
-\MPnumerator=\count343
-\makeMPintoPDFobject=\count344
-\everyMPtoPDFconversion=\toks45
+\nofMPsegments=\count338
+\nofMParguments=\count339
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count340
+\MPscratchDim=\dimen275
+\MPnumerator=\count341
+\makeMPintoPDFobject=\count342
+\everyMPtoPDFconversion=\toks43
 )
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -810,18 +789,14 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Command `\dddot' is already robust on input line 66.
-LaTeX Info: Command `\ddddot' is already robust on input line 66.
-Package hyperref Info: Link coloring ON on input line 66.
+LaTeX Info: Command `\dddot' is already robust on input line 69.
+LaTeX Info: Command `\ddddot' is already robust on input line 69.
+Package hyperref Info: Link coloring ON on input line 69.
  (ck_tieuluan_nhom_1.out) (ck_tieuluan_nhom_1.out)
 \@outlinefile=\write3
 \openout3 = `ck_tieuluan_nhom_1.out'.
 
 
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
-tim
-)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -830,22 +805,22 @@ tim
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(51.4995pt, 494.50888pt, 51.4995pt)
-* v-part:(T,H,B)=(55.48286pt, 689.4103pt, 51.784pt)
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
-* \paperheight=796.67715pt
-* \textwidth=494.50888pt
-* \textheight=689.4103pt
-* \oddsidemargin=-20.7705pt
-* \evensidemargin=-20.7705pt
-* \topmargin=-40.78712pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=731.23584pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-39.36449pt
 * \headheight=12.0pt
 * \headsep=12.0pt
 * \topskip=10.0pt
 * \footskip=12.0pt
 * \marginparwidth=57.0pt
 * \marginparsep=11.0pt
-* \columnsep=18.0pt
+* \columnsep=10.0pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
@@ -862,62 +837,62 @@ tim
 <figs/elsevier_tree_logo_bw.png, id=3, 246.6816pt x 246.6816pt>
 File: figs/elsevier_tree_logo_bw.png Graphic file (type png)
 <use figs/elsevier_tree_logo_bw.png>
-Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 124
+Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 126
 .
 (pdftex.def)             Requested size: 79.6678pt x 79.66618pt.
 LaTeX Font Info:    Trying to load font information for LS1+stixscr on input li
-ne 124.
+ne 126.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixex on input lin
-e 124.
+e 126.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 124
+LaTeX Font Info:    Trying to load font information for U+msa on input line 126
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 124
+LaTeX Font Info:    Trying to load font information for U+msb on input line 126
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input l
-ine 124.
+ine 126.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixbb on input lin
-e 124.
+e 126.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixcal on input li
-ne 124.
+ne 126.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixsf on input lin
-e 124.
+e 126.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixtt on input lin
-e 124.
+e 126.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
@@ -926,79 +901,67 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 <figs/imacs_globe_logo_blue.png, id=6, 246.6816pt x 246.6816pt>
 File: figs/imacs_globe_logo_blue.png Graphic file (type png)
 <use figs/imacs_globe_logo_blue.png>
-Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 124
+Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 126
 .
 (pdftex.def)             Requested size: 71.13188pt x 71.1293pt.
 <figs/crossmark_check_for_updates_logo.png, id=7, 246.6816pt x 246.6816pt>
 File: figs/crossmark_check_for_updates_logo.png Graphic file (type png)
 <use figs/crossmark_check_for_updates_logo.png>
 Package pdftex.def Info: figs/crossmark_check_for_updates_logo.png  used on inp
-ut line 124.
+ut line 126.
 (pdftex.def)             Requested size: 51.21504pt x 51.2137pt.
 
-Overfull \hbox (123.62721pt too wide) detected at line 124
+Overfull \hbox (113.81102pt too wide) detected at line 126
 []
  []
 
 (ck_tieuluan_nhom_1.abs)
 
-Package hyperref Warning: Ignoring empty anchor on input line 124.
+Package hyperref Warning: Ignoring empty anchor on input line 126.
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 124--124
-\T1/stix/m/n/8 and the In-no-va-tive Funds Plan of Henan Uni-ver-sity of Tech-n
-ol-ogy
- []
-
-
-Package hyperref Warning: Ignoring empty anchor on input line 124.
+Package hyperref Warning: Ignoring empty anchor on input line 126.
 
 LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
-124.
+126.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 124.
+Package hyperref Warning: Ignoring empty anchor on input line 126.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 124.
+Package hyperref Warning: Ignoring empty anchor on input line 126.
 
-<thumbnails/cas-email.jpeg, id=9, 225.84375pt x 225.84375pt>
-File: thumbnails/cas-email.jpeg Graphic file (type jpg)
-<use thumbnails/cas-email.jpeg>
-Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 124.
+<thumbnails/cas-url.jpeg, id=9, 225.84375pt x 225.84375pt>
+File: thumbnails/cas-url.jpeg Graphic file (type jpg)
+<use thumbnails/cas-url.jpeg>
+Package pdftex.def Info: thumbnails/cas-url.jpeg  used on input line 126.
 (pdftex.def)             Requested size: 7.99838pt x 8.0pt.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 12
-4.
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
-File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+26.
+(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 6.80005pt on input line 124.
+
+Package hyperref Warning: Ignoring empty anchor on input line 126.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 124.
+Package hyperref Warning: Ignoring empty anchor on input line 126.
 
+[1
 
-Package hyperref Warning: Ignoring empty anchor on input line 124.
-
+{C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Admi
+n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}{C:/Users/Admi
+n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1.enc} <./figs/else
+vier_tree_logo_bw.png> <./figs/imacs_globe_logo_blue.png> <./figs/crossmark_che
+ck_for_updates_logo.png> <./thumbnails/cas-url.jpeg>] (ck_tieuluan_nhom_1.bbl)
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
-30.
-(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
+69.
+ (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-[1{C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Ad
-min/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.enc}
-
-
-{C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1.enc
-}{C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t
-1-0.enc}
-
- <./figs/elsevier_tree_logo_bw.png> <./figs/imacs_globe_logo_blue.png> <./figs/
-crossmark_check_for_updates_logo.png> <./thumbnails/cas-email.jpeg>]
-(ck_tieuluan_nhom_1.aux)
+[2] (ck_tieuluan_nhom_1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1007,25 +970,29 @@ Package rerunfilecheck Info: File `ck_tieuluan_nhom_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17976 strings out of 474486
- 280642 string characters out of 5743754
- 1943542 words of memory out of 5000000
- 39926 multiletter control sequences out of 15000+600000
- 639183 words of font info for 138 fonts, out of 8000000 for 9000
+ 17699 strings out of 474486
+ 275536 string characters out of 5743754
+ 1953542 words of memory out of 5000000
+ 39653 multiletter control sequences out of 15000+600000
+ 657838 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,10n,93p,561b,507s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,93p,561b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss
-0900.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/incons
-olata/Inconsolata-zi4r.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/Admin/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/stix/STIXGeneral-Italic.pfb><C:/Users/Admin/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/A
-dmin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathit.pfb><C:/
-Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathrm.p
-fb>
-Output written on ck_tieuluan_nhom_1.pdf (1 page, 1604632 bytes).
+0900.pk> <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ectt0800.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+stix/STIXGeneral-Bold.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/stix/STIXGeneral-Italic.pfb><C:/Users/Admin/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/Admin/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathbb.pfb><C:/Users/Admin/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.pfb><C:/Users
+/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathex.pfb><C
+:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathit
+.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix
+-mathrm.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/st
+ix/stix-mathscr.pfb>
+Output written on ck_tieuluan_nhom_1.pdf (2 pages, 1650101 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 2 named destinations out of 1000 (max. 500000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 17 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
