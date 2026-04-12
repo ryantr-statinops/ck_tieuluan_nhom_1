@@ -5,6 +5,9 @@
 
 % Specific to Elsevier CAS template
 \usepackage[numbers]{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[vietnamese,english]{babel}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -72,6 +75,75 @@
 % Header is now injected via the title command to avoid recursion and preserve layout
 
 \begin{document}
+\selectlanguage{vietnamese}
+
+% --- TRANG 1: TRANG BÌA ---
+\begin{titlepage}
+    \centering
+    \textbf{\Large TRƯỜNG ĐẠI HỌC TÔN ĐỨC THẮNG} \\
+    \textbf{\Large KHOA TOÁN – THỐNG KÊ} \\
+    
+    \vfill
+    % Bạn hãy thay 'logo_tdtu' bằng tên file ảnh logo của bạn
+    % \includegraphics[width=5cm]{logo_tdtu} 
+    \fbox{\begin{minipage}{5cm} \centering \vspace{2cm} [Chèn Logo TDTU tại đây] \vspace{2cm} \end{minipage}} \\
+    
+    \vfill
+    \textbf{\huge TIỂU LUẬN CUỐI KỲ} \\
+    \vspace{1cm}
+    \textbf{\Large Năm học: 2024 -- 2025 \quad Học kỳ: 2} \\
+    
+    \vfill
+    \begin{flushleft}
+        \textbf{Môn học:} Soạn thảo tài liệu khoa học bằng \LaTeX \\
+        \textbf{Mã môn học:} ... \\
+        \textbf{Nhóm thực hiện:} Nhóm 1 \\
+        \textbf{Mã đề:} ... \\
+        \textbf{Giảng viên giảng dạy:} ...
+    \end{flushleft}
+    
+    \vfill
+    \textit{TP. HCM, ngày ... tháng ... năm 2024}
+\end{titlepage}
+
+% --- TRANG 2: LỜI CAM KẾT & BẢNG PHÂN CÔNG ---
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \textbf{\Large LỜI CAM KẾT}
+\end{center}
+\vspace{1cm}
+
+\begin{itemize}
+    \item[--] Tiểu luận này được nhóm 1 biên soạn lại bằng phần mềm \LaTeX{} với mục đích hoàn thành môn học thực hành Soạn thảo tài liệu khoa học bằng \LaTeX, ngoài ra không còn mục đích nào khác.
+    \item[--] Tiểu luận này được biên soạn lại bằng \LaTeX{} dựa trên tài liệu sau:
+    \begin{itemize}
+        \item[+] Tiêu đề: Error estimates for the finite element method of the Navier-Stokes-Poisson-Nernst-Planck equations
+        \item[+] Tác giả: Minghao Li, Zhenzhen Li
+    \end{itemize}
+\end{itemize}
+
+\vfill
+\begin{center}
+    \textbf{\Large BẢNG PHÂN CÔNG CÔNG VIỆC}
+\end{center}
+\vspace{0.5cm}
+\begin{center}
+    \begin{tabular}{|c|l|l|c|}
+        \hline
+        \textbf{STT} & \textbf{Họ và tên} & \textbf{Nội dung phân công} & \textbf{Mức độ hoàn thành} \\ \hline
+        1 & ... & ... & ... \\ \hline
+        2 & ... & ... & ... \\ \hline
+        3 & ... & ... & ... \\ \hline
+        4 & ... & ... & ... \\ \hline
+    \end{tabular}
+\end{center}
+\vfill
+
+% --- TRANG 3 TRỞ ĐI: NỘI DUNG BÁO CÁO KHOA HỌC ---
+\newpage
+\selectlanguage{english}
+\setcounter{page}{1} % Reset số trang nếu bạn muốn trang 3 bắt đầu là trang 1 sau bìa
 \let\WriteBookmarks\relax
 \def\floatpagepagefraction{1}
 \def\textpagefraction{.001}
