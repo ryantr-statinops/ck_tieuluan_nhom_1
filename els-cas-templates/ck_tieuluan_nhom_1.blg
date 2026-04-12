@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ck_tieuluan_nhom_1.aux
+Reallocating 'name_of_file' (item size: 1) to 17 items.
+The style file: cas-model2-names.bst
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+Database file #1: cas-refs.bib
+Warning--I didn't find a database entry for "Li2021"
+Reallocating 'singl_function' (item size: 4) to 100 items.
+You've used 52 entries,
+            2990 wiz_defined-function locations,
+            1078 strings with 14838 characters,
+and the built_in function-call counts, 34963 in all, are:
+= -- 2740
+> -- 1256
+< -- 26
++ -- 511
+- -- 432
+* -- 3833
+:= -- 5053
+add.period$ -- 156
+call.type$ -- 52
+change.case$ -- 387
+chr.to.int$ -- 51
+cite$ -- 52
+duplicate$ -- 2613
+empty$ -- 2631
+format.name$ -- 632
+if$ -- 6486
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 505
+newline$ -- 275
+num.names$ -- 208
+pop$ -- 882
+preamble$ -- 1
+purify$ -- 336
+quote$ -- 0
+skip$ -- 695
+stack$ -- 0
+substring$ -- 1831
+swap$ -- 1864
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 465
+warning$ -- 0
+while$ -- 248
+width$ -- 0
+write$ -- 739
+(There was 1 warning)

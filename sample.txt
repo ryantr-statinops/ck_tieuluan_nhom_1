@@ -1,0 +1,2362 @@
+                                                           Appl. Numer. Math. 197 (2024) 186–209
+
+
+                                                         Contents lists available at ScienceDirect
+
+
+                                              Applied Numerical Mathematics
+                                                 journal homepage: www.elsevier.com/locate/apnum
+
+
+
+
+Error estimates for the ﬁnite element method of the
+Navier-Stokes-Poisson-Nernst-Planck equations ✩
+Minghao Li a,∗ , Zhenzhen Li b
+a College of Science, Henan University of Technology, Zhengzhou, 450001, China
+b College of Mathematics and Information Science, Zhengzhou University of Light Industry, Zhengzhou, 450002, China
+
+
+
+
+A R T I C L E             I N F O                        A B S T R A C T
+
+Keywords:                                                In this paper, we consider the linearized backward Euler ﬁnite element scheme for the Navier-
+NSPNP equations                                          Stokes-Poisson-Nernst-Planck (NSPNP) equations. We aim to derive the unconditional error
+Unconditional stability                                  estimates of all variables in 𝑙∞ (𝐿2 ) and 𝑙∞ (𝐻 1 ) norms. Compared with some previous results,
+Unconditional error estimates
+                                                         we remove the mesh restriction. In addition, we derive two important physical properties for
+                                                         the proposed numerical scheme. Finally, three numerical examples are implemented to verify the
+                                                         theoretical analysis.
+
+
+
+
+1. Introduction
+
+
+    The NSPNP equations describe the dynamics of electrically charged ﬂuids, the motions of ionized particles or molecules and their
+interactions with electric ﬁelds and the surrounding ﬂuid, which are widely used in colloidal science, biophysics, semiconductors,
+micro- and nanoﬂuidics, and electrochemistry [1–4]. The NSPNP equations are given as follows
+
+        ⎧ 𝑢𝑡 − Δ𝑢 + (𝑢 ⋅ ∇)𝑢 + ∇𝑝 = −(𝑐1 − 𝑐2 )∇𝜓, in Ω × (0, 𝑇 ],
+        ⎪
+        ⎪ div𝑢 = 0, in Ω × (0, 𝑇 ],
+        ⎪                    (        )
+        ⎪ 𝑐1𝑡 − Δ𝑐1 − div 𝑐1 ∇𝜓 + (𝑢 ⋅ ∇)𝑐1 = 0, in Ω × (0, 𝑇 ],
+        ⎪                    (        )
+        ⎨ 𝑐2𝑡 − Δ𝑐2 + div 𝑐2 ∇𝜓 + (𝑢 ⋅ ∇)𝑐2 = 0, in Ω × (0, 𝑇 ],                                                                                   (1.1)
+        ⎪
+        ⎪ −Δ𝜓 = 𝑐1 − 𝑐2 , in Ω × (0, 𝑇 ],
+        ⎪         𝜕𝑐1    𝜕𝑐2     𝜕𝜓
+        ⎪ 𝑢 = 0, 𝜕𝑛 = 𝜕𝑛 = 𝜕𝑛 = 0, on 𝜕Ω × (0, 𝑇 ],
+        ⎪
+        ⎩ 𝑐1 (𝑥, 0) = 𝑐10 (𝑥), 𝑐2 (𝑥, 0) = 𝑐20 (𝑥), 𝑢(𝑥, 0) = 𝑢0 (𝑥),
+where Ω ∈ 𝑑 , 𝑑 = 2, 3 is a bounded domain with a Lipschitz continuous boundary 𝜕Ω, 𝑛 is the outward unit-normal vector to 𝜕Ω,
+𝑐1 and 𝑐2 are the concentrations of positive and negative charges, 𝑢 and 𝑝 are the velocity and pressure of the ﬂuid, and 𝜓 is the
+
+
+ ✩ This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan
+
+Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).
+ * Corresponding author.
+    E-mail address: lyminghao@126.com (M. Li).
+
+https://doi.org/10.1016/j.apnum.2023.11.012
+Received 14 February 2023; Received in revised form 27 August 2023; Accepted 16 November 2023
+Available online 20 November 2023
+0168-9274/© 2023 IMACS. Published by Elsevier B.V. All rights reserved.
+M. Li and Z. Li                                                                               Applied Numerical Mathematics 197 (2024) 186–209
+
+
+quasi-electrostatic potential. For the qualitative analysis of the solutions, such as the existence, uniqueness, stability and asymptotic
+behavior, we refer to [5–11].
+    Many numerical methods have been developed for the PNP and NSPNP equations. It is crucial to preserve some important physical
+properties at the discrete level, such as the mass conservation, concentration positivity and energy stability, and the related work
+can be referred to [12–27]. In addition, some numerical techniques and implementation strategies were proposed to improve the
+performance eﬃciency, such as the adaptive ﬁnite element methods [28–30], the two grid methods [31], the stabilized techniques
+[32,33], the proper orthogonal decomposition method [34], and some improved iteration techniques [35–38].
+    There are some studies about the error estimates of the ﬁnite element method for the PNP and NSPNP equations. Sun and He
+analyzed an implicit Crank-Nicolson ﬁnite element scheme for the PNP equations in [39], and obtained the optimal error estimates
+in 𝑙∞ (𝐻 1 ) norm for all variables, however, the convergence order of 𝑙∞ (𝐿2 ) norm was suboptimal. They also proposed the mixed
+ﬁnite element method for the PNP equations [40], and obtained optimal error estimates for 𝑙∞ (𝐻 1 ) and 𝑙∞ (𝐿2 ) norms, and later
+they discussed the PNP-Stokes equations and modiﬁed NSPNP equations [41,42]. Shi and Yang et al. investigated the conforming
+and nonconforming ﬁnite element methods on rectangular meshes [43,44], and obtained the superconvergence results by integral
+identities techniques. Yang et al. researched the virtual element method on general polygonal meshes [45], and derived the error
+estimates in 𝑙∞ (𝐻 1 ) and 𝑙∞ (𝐿2 ) norms. However, due to the use of inverse inequality and mathematical inductive argument, a
+mesh restriction is needed in the above references [39–45]. Gao and He [46,47] presented linearized conservative ﬁnite element
+and mixed ﬁnite element methods for the PNP equations, and established unconditionally optimal error estimates for all variables
+in 𝑙2 (𝐻 1 ) and 𝑙∞ (𝐿2 ) norms, but they do not derive the error estimates in 𝑙∞ (𝐻 1 ) norm. For the convergence analysis and error
+estimates of some other gradient ﬂow model coupled with ﬂuid motion, such as the Cahn-Hilliard-Hele-Shaw equations and the
+Cahn-Hilliard-Navier-Stokes system, one can refer to [48–51].
+    In this paper, we focus on the error estimates of the linearized backward Euler ﬁnite element scheme for the NSPNP equations,
+and use low order conforming ﬁnite element pairs. Firstly, under an inductive hypothesis, we derive the existence and uniqueness
+of solutions, and the unconditional error estimates of all variables in 𝑙∞ (𝐿2 ) norms. Then, we obtain the 𝑙∞ (𝐻 1 ) and 𝑙2 (𝐻 2 ) norm
+stability of the ﬁnite element solutions. Next, based on the stability, we deduce the unconditional error estimates in 𝑙∞ (𝐻 1 ) norm.
+Moreover, the global mass conservation and the energy stability are also derived for the proposed numerical scheme. Finally, several
+numerical examples are implemented to verify the theoretical analysis. Compared with the results in [39–45], we remove the mesh
+restriction.
+    Throughout the article, the notations of the standard Sobolev spaces are used. The generic positive constant 𝐶 with or without
+subscript is independent of the mesh size ℎ and the time step 𝜏 .
+
+
+2. Preliminary
+
+
+    We introduce the following function spaces
+
+                           ⎧                     ⎫
+                           ⎪                     ⎪
+        𝑋 = 𝐻 1 (Ω), 𝑋 0 = ⎨𝜂 ∈ 𝐻 1 (Ω) ∶ 𝜂d𝑥 = 0⎬ ,
+                           ⎪             ∫       ⎪
+                           ⎩             Ω       ⎭
+
+                                           ⎧                         ⎫
+                                       ⎪                             ⎪
+        𝑉 = (𝐻01 (Ω))𝑑 , 𝑄 = 𝐿20 (Ω) = ⎨𝑞 ∈ 𝐿2 (Ω) ∶          𝑞d𝑥 = 0⎬ .                                                                (2.1)
+                                           ⎪         ∫               ⎪
+                                           ⎩              Ω          ⎭
+    The trilinear forms 𝑏1 (⋅; ⋅,) on 𝑉 × 𝑉 × 𝑉 and 𝑏2 (⋅; ⋅,) on 𝑉 × 𝑋 × 𝑋 are deﬁned by
+
+                      1               1
+        𝑏1 (𝑢; 𝑣, 𝑤) = ((𝑢 ⋅ ∇)𝑣, 𝑤) − ((𝑢 ⋅ ∇)𝑤, 𝑣), ∀𝑢, 𝑣, 𝑤 ∈ 𝑉 ,                                                                    (2.2)
+                      2               2
+                          1              1
+         𝑏2 (𝑢; 𝑐, 𝜂) =     (𝑢 ⋅ ∇𝑐, 𝜂) − (𝑢 ⋅ ∇𝜂, 𝑐) , ∀𝑢 ∈ 𝑉 , 𝑐, 𝜂 ∈ 𝑋.                                                              (2.3)
+                          2              2
+    We recall the following Parecaré-Friedriches inequalities
+
+         ‖𝑣‖1 ≤ 𝐶‖∇𝑣‖0 , ∀𝑣 ∈ 𝑉 ,                                                                                                       (2.4)
+
+                 ⎛        |    |⎞
+                          |    |
+                          |    |
+        ‖𝜑‖1 ≤ 𝐶 ⎜‖∇𝜑‖0 + | 𝜑d𝑥|⎟ , ∀𝜑 ∈ 𝑋,                                                                                             (2.5)
+                 ⎜        |∫   |⎟
+                 ⎝        |Ω   |⎠
+                          |    |
+and the embedding inequalities
+
+        ‖𝜑‖0,6 ≤ 𝐶‖𝜑‖1 , ∀𝜑 ∈ 𝑋.                                                                                                        (2.6)
+
+                                                                             187
+M. Li and Z. Li                                                                                      Applied Numerical Mathematics 197 (2024) 186–209
+
+
+    Next, integrating the third equation of (1.1), and using Green formula, we can derive
+
+             ⎛        ⎞    𝜕𝑐1
+          d ⎜                           𝜕𝜓
+                𝑐1 d 𝑥⎟ −      d 𝑠 − 𝑐1    d 𝑠 + 𝑢 ⋅ 𝑛𝑐1 d 𝑠 = 0,                                                                              (2.7)
+          d𝑡 ⎜∫       ⎟ ∫ 𝜕𝑛        ∫   𝜕𝑛      ∫
+             ⎝Ω       ⎠ 𝜕Ω          𝜕Ω          𝜕Ω
+
+then in view of the boundary conditions, we get
+
+             ⎛        ⎞
+          d ⎜
+                𝑐1 d 𝑥⎟ = 0,                                                                                                                   (2.8)
+          d𝑡 ⎜∫       ⎟
+             ⎝Ω       ⎠
+which implies
+
+              𝑐1 d 𝑥 =       𝑐10 d 𝑥.                                                                                                          (2.9)
+          ∫              ∫
+          Ω              Ω
+
+Manipulate the fourth and ﬁfth equations of (1.1) in the same way, and we obtain
+
+              𝑐2 d𝑥 =        𝑐20 d𝑥,       𝑐1 d𝑥 =       𝑐2 d𝑥.                                                                               (2.10)
+          ∫              ∫             ∫             ∫
+          Ω              Ω             Ω             Ω
+    Set
+                    1            1
+          𝑚0 =           𝑐 d𝑥 =       𝑐 d𝑥.                                                                                                   (2.11)
+                   |Ω| ∫ 10     |Ω| ∫ 20
+                       Ω                     Ω
+                                                                                                        (              )
+Take 𝑐̃1 = 𝑐1 − 𝑚0 , 𝑐̃2 = 𝑐2 − 𝑚0 , then we obtain the variational form of the equations (1.1): ﬁnd 𝑢, 𝑝, 𝑐̃1 , 𝑐̃2 , 𝜓 ∈ 𝑉 × 𝑄 × 𝑋 0 × 𝑋 0 × 𝑋 0
+such that
+            (      )                                         (                )
+          ⎧ 𝑢𝑡 , 𝑣 + (∇𝑢, ∇𝑣) + 𝑏1 (𝑢; 𝑢, 𝑣) − (div𝑣, 𝑝) = − (𝑐̃1 − 𝑐̃2 )∇𝜓, 𝑣 , ∀𝑣 ∈ 𝑉 ,
+          ⎪
+          ⎪ (div𝑢, 𝑞) = 0, ∀𝑞 ∈ 𝑄,
+          ⎪(         ) (          ) (                      )      (        )
+          ⎨ 𝑐̃1𝑡 , 𝜂1 + ∇𝑐̃1 , ∇𝜂1 + (𝑐̃1 + 𝑚0 )∇𝜓, ∇𝜂1 + 𝑏2 𝑢; 𝑐̃1 , 𝜂1 = 0, ∀𝜂1 ∈ 𝑋,                                                        (2.12)
+          ⎪ (        )  (         )   (                    )      (        )
+          ⎪ 𝑐̃2𝑡 , 𝜂2 + ∇𝑐̃2 , ∇𝜂2 − (𝑐̃2 + 𝑚0 )∇𝜓, ∇𝜂2 + 𝑏2 𝑢; 𝑐̃2 , 𝜂2 = 0, ∀𝜂2 ∈ 𝑋,
+          ⎪               (         )
+          ⎩ (∇𝜓, ∇𝜑) = 𝑐̃1 − 𝑐̃2 , 𝜑 , ∀𝜑 ∈ 𝑋.
+   Let ℎ be a regular and quasi-uniform triangular or tetrahedral partition of Ω. We consider low order conforming ﬁnite element
+spaces 𝑉ℎ × 𝑄ℎ × 𝑋ℎ0 × 𝑋ℎ0 × 𝑋ℎ0 ⊂ 𝑉 × 𝑄 × 𝑋 0 × 𝑋 0 × 𝑋 0 , which satisfy the following approximation properties: for 𝑢, 𝑐̃1 , 𝑐̃2 , 𝜓 ∈
+𝐻 2 (Ω), 𝑝 ∈ 𝐻 1 (Ω), there exist 𝑣ℎ , 𝑞ℎ , 𝜒1ℎ , 𝜒2ℎ , 𝜑ℎ ∈ 𝑉ℎ × 𝑄ℎ × 𝑋ℎ0 × 𝑋ℎ0 × 𝑋ℎ0 , such that
+
+          ‖𝑐̃ − 𝜒 ‖ + ℎ‖∇(𝑐̃ − 𝜒 )‖ ≤ 𝐶ℎ2 ‖𝑐̃ ‖ , 𝑖 = 1, 2,                                                                                   (2.13)
+          ‖ 𝑖    𝑖ℎ ‖0  ‖ 𝑖      𝑖ℎ ‖0       𝑖 2
+
+          ‖𝜓 − 𝜑 ‖ + ℎ‖∇(𝜓 − 𝜑 )‖ ≤ 𝐶ℎ2 ‖𝜓‖ ,                                                                                                 (2.14)
+          ‖      ℎ ‖0   ‖        ℎ ‖0          2
+                       (                        )         (     )
+          ‖𝑢 − 𝑣 ‖ + ℎ ‖∇(𝑢 − 𝑣 )‖ + ‖𝑝 − 𝑞 ‖ ≤ 𝐶ℎ2 ‖𝑢‖ + ‖𝑝‖ ,                                                                               (2.15)
+          ‖     ℎ ‖0     ‖      ℎ ‖0   ‖   ℎ ‖0             2 1
+
+and the inf-sup condition [52]
+                   (div𝑣ℎ , 𝑞ℎ )
+           sup                   ≥ 𝐶‖   ‖
+                                    ‖𝑞ℎ ‖0 , ∀𝑞ℎ ∈ 𝑄ℎ .                                                                                       (2.16)
+                    ‖∇𝑣 ‖
+          𝑣ℎ ∈𝑉ℎ    ‖ ℎ ‖0
+    We deﬁne the Ritz projection 𝑅ℎ ∶ 𝑋 0 → 𝑋ℎ0 and the Stokes projection 𝑆ℎ ∶ 𝑉 × 𝑄 → 𝑉ℎ × 𝑄ℎ by
+          (                )
+           ∇(𝑅ℎ 𝜂 − 𝜂), ∇𝜒ℎ = 0, ∀𝜒ℎ ∈ 𝑋ℎ0 ,                                                                                                  (2.17)
+and
+          {
+              (∇𝑆ℎ 𝑢, ∇𝑣ℎ ) − (div𝑣ℎ , 𝑆ℎ 𝑝) = (∇𝑢, ∇𝑣ℎ ) − (div𝑣ℎ , 𝑝), ∀𝑣ℎ ∈ 𝑉ℎ ,
+                                                                                                                                              (2.18)
+              (div𝑆ℎ 𝑢, 𝑞ℎ ) = 0, ∀𝑞ℎ ∈ 𝑄ℎ .
+Then, from the standard ﬁnite element theory [52,57], we have
+
+          ‖𝜂 − 𝑅 𝜂 ‖ + ℎ‖∇(𝜂 − 𝑅 𝜂)‖ ≤ 𝐶ℎ2 ‖𝜂‖ ,                                                                                              (2.19)
+          ‖     ℎ ‖0    ‖       ℎ ‖0          2
+                        (                         )   (           )
+          ‖𝑢 − 𝑆 𝑢‖ + ℎ ‖∇(𝑢 − 𝑆 𝑢)‖ + ‖𝑝 − 𝑆 𝑝‖ ≤ 𝐶ℎ2 ‖𝑢‖ + ‖𝑝‖ ,                                                                            (2.20)
+          ‖     ℎ ‖0      ‖      ℎ ‖0  ‖     ℎ ‖0         2     1
+
+          ‖𝑢𝑡 − 𝑆ℎ 𝑢𝑡 ‖0 ≤ 𝐶ℎ2 (‖𝑢𝑡 ‖2 + ‖𝑝𝑡 ‖1 ).                                                                                            (2.21)
+
+                                                                           188
+M. Li and Z. Li                                                                                                        Applied Numerical Mathematics 197 (2024) 186–209
+
+
+    The discrete operator Δℎ ∶ 𝑋ℎ0 → 𝑋ℎ0 is given as follows
+        (             ) (         )
+            Δℎ 𝜂ℎ , 𝜒ℎ = ∇𝜂ℎ , ∇𝜒ℎ , ∀𝜒ℎ ∈ 𝑋ℎ0 .                                                                                                                (2.22)
+
+The subspace 𝑉ℎdiv of 𝑉ℎ is introduced as
+               {                                     }
+        𝑉ℎdiv = 𝑣ℎ ∈ 𝑉ℎ , (div𝑣ℎ , 𝑞ℎ ) = 0, ∀𝑞ℎ ∈ 𝑄ℎ .                                                                                                         (2.23)
+
+And, the discrete Stokes operator 𝐴ℎ ∶ 𝑉ℎdiv → 𝑉ℎdiv is deﬁned by
+        (             ) (         )
+            𝐴ℎ 𝑢ℎ , 𝑣ℎ = ∇𝑢ℎ , ∇𝑣ℎ , ∀𝑣ℎ ∈ 𝑉ℎdiv .                                                                                                              (2.24)
+    Then, we have the following Lemmas 1-4, which can be found in [50,51,53,54], or proven similarly.
+
+
+Lemma 1. For 𝜒ℎ ∈ 𝑋ℎ0 , there holds
+
+        ‖𝜒 ‖       ‖    ‖        ‖      ‖
+        ‖ ℎ ‖0,∞ + ‖∇𝜒ℎ ‖0,6 ≤ 𝐶 ‖Δℎ 𝜒ℎ ‖0 .                                                                                                                    (2.25)
+
+
+Lemma 2. For 𝑢ℎ , 𝑣ℎ , 𝑤ℎ ∈ 𝑉ℎdiv , there hold
+
+        𝑏1 (𝑢ℎ ; 𝑣ℎ , 𝑤ℎ ) ≤𝐶 ‖    ‖ ‖     ‖ ‖     ‖
+                              ‖∇𝑢ℎ ‖0 ‖∇𝑣ℎ ‖0 ‖∇𝑤ℎ ‖0 ,                                                                                                         (2.26)
+
+        𝑏1 (𝑢ℎ ; 𝑣ℎ , 𝑤ℎ ) ≤𝐶 ‖   ‖ ‖     ‖1∕2 ‖    ‖1∕2 ‖  ‖
+                              ‖𝑢ℎ ‖0 ‖∇𝑣ℎ ‖0 ‖𝐴ℎ 𝑣ℎ ‖0 ‖∇𝑤ℎ ‖0 ,                                                                                                (2.27)
+
+        𝑏1 (𝑢ℎ ; 𝑣ℎ , 𝑤ℎ ) ≤𝐶 ‖     ‖ ‖     ‖ ‖       ‖ ‖ ‖
+                                             1∕2       1∕2
+                              ‖∇𝑢ℎ ‖0 ‖∇𝑣ℎ ‖0 ‖𝐴ℎ 𝑣ℎ ‖0 ‖𝑤ℎ ‖0 ,                                                                                                (2.28)
+
+        𝑏1 (𝑢ℎ ; 𝑣ℎ , 𝑤ℎ ) ≤𝐶 ‖    ‖1∕2 ‖    ‖1∕2 ‖  ‖ ‖ ‖
+                              ‖∇𝑢ℎ ‖0 ‖𝐴ℎ 𝑢ℎ ‖0 ‖∇𝑣ℎ ‖0 ‖𝑤ℎ ‖0 ,                                                                                                (2.29)
+
+        𝑏1 (𝑢ℎ ; 𝑣ℎ , 𝑤ℎ ) ≤𝐶 ‖   ‖ ‖     ‖1∕2 ‖    ‖ ‖ ‖
+                              ‖𝑢ℎ ‖0 ‖∇𝑢ℎ ‖0 ‖𝐴ℎ 𝑣ℎ ‖0 ‖𝑤ℎ ‖0 .                                                                                                 (2.30)
+
+
+Lemma 3. For 𝑢ℎ ∈ 𝑉ℎdiv , 𝜑ℎ , 𝜒ℎ ∈ 𝑋ℎ0 , there hold
+
+        𝑏2 (𝑢ℎ ; 𝜑ℎ , 𝜒ℎ ) ≤ 𝐶 ‖    ‖ ‖     ‖ ‖     ‖
+                               ‖∇𝑢ℎ ‖0 ‖∇𝜒ℎ ‖0 ‖∇𝜑ℎ ‖0 ,                                                                                                        (2.31)
+
+        𝑏2 (𝑢ℎ ; 𝜑ℎ , 𝜒ℎ ) ≤ 𝐶 ‖   ‖ ‖      ‖1∕2 ‖      ‖1∕2 ‖  ‖
+                               ‖𝑢ℎ ‖0 ‖∇𝜑ℎ ‖0 ‖Δℎ 𝜑ℎ ‖0 ‖∇𝜒ℎ ‖0 ,                                                                                               (2.32)
+
+        𝑏2 (𝑢ℎ ; 𝜑ℎ , 𝜒ℎ ) ≤ 𝐶 ‖     ‖1∕2 ‖      ‖1∕2 ‖     ‖ ‖ ‖
+                               ‖∇𝑢ℎ ‖0 ‖𝐴ℎ 𝑢ℎ ‖0 ‖∇𝜑ℎ ‖0 ‖𝜒ℎ ‖0 ,                                                                                               (2.33)
+
+        𝑏2 (𝑢ℎ ; 𝜑ℎ , 𝜒ℎ ) ≤ 𝐶 ‖     ‖ ‖      ‖ ‖         ‖ ‖ ‖
+                                               1∕2         1∕2
+                               ‖∇𝑢ℎ ‖0 ‖∇𝜑ℎ ‖0 ‖Δℎ 𝜑ℎ ‖0 ‖𝜒ℎ ‖0 .                                                                                               (2.34)
+
+
+Lemma 4. For 𝜂ℎ , 𝜑ℎ , 𝜒ℎ ∈ 𝑋ℎ0 , there holds
+        (               )
+            𝜂ℎ ∇𝜑ℎ , ∇𝜒ℎ ≤ 𝐶 ‖    ‖1∕2 ‖    ‖1∕2 ‖    ‖ ‖ ‖
+                             ‖∇𝜂ℎ ‖0 ‖Δℎ 𝜂ℎ ‖0 ‖Δℎ 𝜑ℎ ‖0 ‖𝜒ℎ ‖0 .                                                                                               (2.35)
+
+
+    Finally, assume that the solutions and initial values of the equations (1.1) satisfy the following regularity
+
+        ‖𝑢 ‖2 + ‖𝑐 ‖2 + ‖𝑐 ‖2 + ‖𝑐 ‖2 ∞ 2 + ‖𝑐 ‖2 ∞ 2 + ‖𝜓‖2
+        ‖ 0 ‖2 ‖ 10 ‖2 ‖ 20 ‖2 ‖ 1 ‖𝐿 (𝐻 ) ‖ 2 ‖𝐿 (𝐻 )     𝐿∞ (𝐻 3 )
+
+                   + ‖𝑢‖2𝐿∞ (𝐻 2 ) + ‖𝑝‖2𝐿∞ (𝐻 1 ) + ‖    ‖2           ‖ ‖2              ‖ ‖2
+                                                     ‖𝑐1𝑡 ‖𝐿2 (𝐻 2 ) + ‖𝑐1𝑡𝑡 ‖𝐿2 (𝐿2 ) + ‖𝑐2𝑡 ‖𝐿2 (𝐻 2 )
+                   +‖     ‖2          ‖ ‖2             ‖ ‖2             ‖ ‖2
+                    ‖𝑐2𝑡𝑡 ‖𝐿2 (𝐿2 ) + ‖𝑢𝑡 ‖𝐿2 (𝐻 2 ) + ‖𝑢𝑡𝑡 ‖𝐿2 (𝐿2 ) + ‖𝑝𝑡 ‖𝐿2 (𝐻 1 ) ≤ 𝐶0 .                                                                   (2.36)
+
+3. The linearized backward Euler scheme
+
+    Let {𝑡𝑗 ∶ 𝑡𝑗 = 𝑗𝜏, 0 ≤ 𝑗 ≤ 𝐽 } be a uniform partition of the time interval [0, 𝑇 ] with a time step 𝜏 = 𝑇 ∕𝐽 . Denote 𝑓 𝑗 = 𝑓 (⋅, 𝑡𝑗 ), and
+                                    {    }𝐽
+for a sequence of function 𝑓 𝑗             𝑗=0
+                                                 , we deﬁne
+
+                        𝑓 𝑗+1 − 𝑓 𝑗
+        𝐷𝜏 𝑓 𝑗+1 =                  .                                                                                                                            (3.1)
+                             𝜏
+                                                                              ( as follows
+    With above notations, the linearized backward Euler scheme of (2.12) is given                                                        )
+               (               )    (                         )                                            𝑗+1   𝑗+1   𝑗+1   𝑗+1   𝑗+1
+              0 , 𝑐̃0 , 𝑢0 = 𝑅 𝑐̃ , 𝑅 𝑐̃ , 𝑆 𝑢 , for 𝑗 = 0, 1, ⋯ , 𝐽 −1, and ﬁnd 𝑢
+Step 1. Set 𝑐̃1ℎ    2ℎ ℎ      ℎ 10   ℎ 20 ℎ 0                                     ℎ
+                                                                                    , 𝑝ℎ , 𝑐̃1ℎ , 𝑐̃2ℎ , 𝜓ℎ                                  ∈ 𝑉ℎ ×𝑄ℎ ×𝑋ℎ0 ×𝑋ℎ0 ×𝑋ℎ0 ,
+such that
+
+                                                                                    189
+M. Li and Z. Li                                                                                      Applied Numerical Mathematics 197 (2024) 186–209
+
+        ⎧(      𝑗+1
+                          ) (
+                                  𝑗+1
+                                             )        (
+                                                         𝑗 𝑗+1
+                                                                  ) (
+                                                                             𝑗+1
+                                                                                 )
+        ⎪ 𝐷𝜏 𝑢ℎ , 𝑣ℎ + ∇𝑢ℎ , ∇𝑣ℎ + 𝑏1 𝑢ℎ ; 𝑢ℎ , 𝑣ℎ − div𝑣ℎ , 𝑝ℎ
+        ⎪                         (                          )
+                                      𝑗       𝑗
+        ⎪                     = − (𝑐̃1ℎ   − 𝑐̃2ℎ )∇𝜓ℎ𝑗+1 , 𝑣ℎ , ∀𝑣ℎ ∈ 𝑉ℎ ,
+        ⎪(                )
+        ⎪ div𝑢𝑗+1 , 𝑞 = 0, ∀𝑞 ∈ 𝑄 ,
+        ⎪(      ℎ       ℎ          ℎ      ℎ
+                           ) (                  ) (                        )
+        ⎪      𝑗+1                 𝑗+1                   𝑗          𝑗+1
+        ⎪ 𝐷  𝑐̃
+            𝜏 1ℎ    , 𝜂 1ℎ   +  ∇𝑐̃1ℎ
+                                       , ∇𝜂 1ℎ + (𝑐̃1ℎ + 𝑚0 )∇𝜓ℎ , ∇𝜂1ℎ
+        ⎨                             (                 )                                                                                      (3.2)
+        ⎪
+                                              𝑗+1
+                                 +𝑏2 𝑢𝑗ℎ ; 𝑐̃1ℎ   , 𝜂1ℎ = 0, ∀𝜂1ℎ ∈ 𝑋ℎ ,
+        ⎪(                 ) (                  ) (                        )
+        ⎪ 𝐷𝜏 𝑐̃𝑗+1 , 𝜂2ℎ + ∇𝑐̃𝑗+1 , ∇𝜂2ℎ − (𝑐̃𝑗 + 𝑚0 )∇𝜓 𝑗+1 , ∇𝜂2ℎ
+        ⎪      2ℎ                  2ℎ                   2ℎ          ℎ
+                                      (                 )
+        ⎪                                     𝑗+1
+                                 +𝑏2 𝑢𝑗ℎ ; 𝑐̃2ℎ   , 𝜂2ℎ = 0, ∀𝜂2ℎ ∈ 𝑋ℎ ,
+        ⎪(                  ) (                     )
+        ⎪     𝑗+1                 𝑗+1      𝑗+1
+        ⎪ ∇𝜓ℎ , ∇𝜑ℎ = 𝑐̃1ℎ − 𝑐̃2ℎ , 𝜑ℎ , ∀𝜑ℎ ∈ 𝑋ℎ .
+        ⎩
+Step 2. Set
+         𝑗+1     𝑗+1         𝑗+1     𝑗+1
+        𝑐1ℎ  = 𝑐̃1ℎ  + 𝑚0 , 𝑐2ℎ  = 𝑐̃2ℎ  + 𝑚0 .                                                                                                (3.3)
+    To derive the well-posedness and unconditional error estimates of the scheme (3.2), we need the following inductive hypothesis
+        ‖ 𝑗 ‖     ‖ 𝑗 ‖
+        ‖𝑐̃1ℎ ‖ + ‖𝑐̃2ℎ ‖ ≤ 𝐶1 .                                                                                                               (3.4)
+        ‖ ‖0,3 ‖ ‖0,3
+    In the end of this section, we prove the existence and uniqueness of the scheme (3.2).
+
+Theorem 1. If the time step 𝜏 is small enough, the scheme (3.2) has a unique solution.
+
+Proof.
+(      Since the) scheme (3.2) is an algebraic linear system, we only need to prove the uniqueness. Suppose that there exist
+   𝑗+1 𝑗+1          𝑗+1
+ 𝑐̃1ℎ,𝑖 , 𝑐̃2ℎ,𝑖 , 𝜓ℎ,𝑖 ∈ 𝑋ℎ0 × 𝑋ℎ0 × 𝑋ℎ0 , 𝑖 = 1, 2 satisfying the last three equations of (3.2), then we have
+          (                         ) (                          )
+        ⎧ 𝐷 (𝑐̃𝑗+1 − 𝑐̃𝑗+1 ), 𝜂              𝑗+1     𝑗+1
+            𝜏 1ℎ,1                1ℎ + ∇(𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ), ∇𝜂1ℎ
+        ⎪       (
+                         1ℎ,2
+                                                      )       (                        )
+        ⎪    + (𝑐̃1ℎ𝑗
+                      + 𝑚0 )∇(𝜓ℎ,1  𝑗+1    𝑗+1
+                                        − 𝜓ℎ,2 ), ∇𝜂1ℎ + 𝑏2 𝑢𝑗ℎ ; 𝑐̃1ℎ,1
+                                                                    𝑗+1      𝑗+1
+                                                                         − 𝑐̃1ℎ,2 , 𝜂1ℎ = 0,
+        ⎪
+        ⎪(      𝑗+1      𝑗+1
+                                    ) (
+                                             𝑗+1     𝑗+1
+                                                                 )
+        ⎨ 𝐷𝜏 (𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ), 𝜂2ℎ + ∇(𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ), ∇𝜂2ℎ                                                                               (3.5)
+        ⎪       (                                     )       (                        )
+                    𝑗               𝑗+1    𝑗+1
+        ⎪    − (𝑐̃2ℎ  + 𝑚0 )∇(𝜓ℎ,1      − 𝜓ℎ,2 ), ∇𝜂2ℎ + 𝑏2 𝑢𝑗ℎ ; 𝑐̃2ℎ,1
+                                                                    𝑗+1      𝑗+1
+                                                                         − 𝑐̃2ℎ,2 , 𝜂2ℎ = 0,
+        ⎪(                            ) (                                       )
+        ⎪ ∇(𝜓 𝑗+1 − 𝜓 𝑗+1 ), ∇𝜑 = (𝑐̃𝑗+1 − 𝑐̃𝑗+1 ) − (𝑐̃𝑗+1 − 𝑐̃𝑗+1 ), 𝜑 .
+        ⎩      ℎ,1       ℎ,2        ℎ       1ℎ,1    1ℎ,2      2ℎ,1   2ℎ,2     ℎ
+
+                  𝑗+1     𝑗+1                     𝑗+1      𝑗+1
+Taking 𝜑ℎ = 𝜓ℎ,1 − 𝜓ℎ,2 and 𝜑ℎ = Δℎ (𝜓ℎ,1 − 𝜓ℎ,2 ) in the third equation of (3.5), respectively, we obtain
+                               (                                          )
+        ‖    𝑗+1    𝑗+1 ‖        ‖ 𝑗+1       𝑗+1 ‖    ‖ 𝑗+1       𝑗+1 ‖
+        ‖∇(𝜓ℎ,1 − 𝜓ℎ,2 )‖ ≤ 𝐶 ‖𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ‖ + ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖ ,                                                                        (3.6)
+        ‖                ‖0      ‖               ‖0 ‖                  ‖0
+        ‖     𝑗+1    𝑗+1 ‖    ‖ 𝑗+1       𝑗+1 ‖    ‖ 𝑗+1       𝑗+1 ‖
+        ‖Δℎ (𝜓ℎ,1 − 𝜓ℎ,2 )‖ ≤ ‖𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ‖ + ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖ .                                                                        (3.7)
+        ‖                 ‖0 ‖                 ‖0 ‖                 ‖0
+                𝑗+1      𝑗+1
+Setting 𝜂1ℎ = 𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 in the ﬁrst equation of (3.5), and use (2.25), (3.4), (3.7), we arrive at
+
+          ‖ 𝑗+1       𝑗+1 ‖2     ‖    𝑗+1      𝑗+1 ‖2
+          ‖𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ‖ + 𝜏 ‖∇(𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 )‖
+          ‖                ‖0    ‖                   ‖0
+               (                                                    )
+                   𝑗             𝑗+1      𝑗+1        𝑗+1      𝑗+1
+        ≤ − 𝜏 (𝑐̃1ℎ   + 𝑚0 )∇(𝜓ℎ,1   − 𝜓ℎ,2   ), ∇(𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 )
+           ‖ 𝑗        ‖ ‖       𝑗+1    𝑗+1 ‖ ‖         𝑗+1     𝑗+1 ‖
+        ≤𝜏 ‖𝑐̃1ℎ + 𝑚0 ‖ ‖∇(𝜓ℎ,1     − 𝜓ℎ,2 )‖ ‖∇(𝑐̃1ℎ,1    − 𝑐̃1ℎ,2 )‖
+           ‖          ‖0,3 ‖                ‖0,6 ‖                   ‖0
+                 (                                      )
+                   ‖ 𝑗+1     𝑗+1 ‖2  ‖ 𝑗+1      𝑗+1 ‖2      𝜏‖        𝑗+1     𝑗+1 ‖2
+        ≤𝐶𝐶1 𝜏 ‖𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ‖ + ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖ + ‖∇(𝑐̃1ℎ,1
+              2
+                                                                          − 𝑐̃1ℎ,2 )‖ ,                                                        (3.8)
+                   ‖             ‖0 ‖                ‖0     2  ‖                    ‖0
+which implies
+         ‖ 𝑗+1       𝑗+1 ‖2     𝜏‖     𝑗+1      𝑗+1 ‖2
+         ‖𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ‖ + ‖∇(𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 )‖
+         ‖                ‖0 2 ‖                     ‖0
+                 (                                          )
+                   ‖ 𝑗+1       𝑗+1 ‖ 2  ‖ 𝑗+1       𝑗+1 ‖2
+        ≤𝐶𝐶12 𝜏 ‖𝑐̃1ℎ,1    − 𝑐̃1ℎ,2 ‖ + ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖ .                                                                                   (3.9)
+                   ‖                ‖0 ‖                 ‖0
+Similarly, we get
+
+                                                                           190
+M. Li and Z. Li                                                                                                Applied Numerical Mathematics 197 (2024) 186–209
+
+         ‖ 𝑗+1       𝑗+1 ‖2   𝜏‖    𝑗+1     𝑗+1 ‖2
+         ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖ + ‖∇(𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 )‖
+         ‖                ‖0 2 ‖                  ‖0
+                 (                                      )
+                   ‖ 𝑗+1     𝑗+1 ‖2  ‖ 𝑗+1      𝑗+1 ‖2
+        ≤𝐶𝐶1 𝜏 ‖𝑐̃1ℎ,1 − 𝑐̃1ℎ,2 ‖ + ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖ .
+             2
+                                                                                                                                                        (3.10)
+                   ‖             ‖0 ‖                ‖0
+Sum the above estimates (3.9) and (3.10) up, and it results in
+                        (                                           )
+           (           ) ‖ 𝑗+1         𝑗+1 ‖2    ‖ 𝑗+1       𝑗+1 ‖2
+            1 − 𝐶𝐶12 𝜏 ‖𝑐̃1ℎ,1     − 𝑐̃1ℎ,2 ‖ + ‖𝑐̃2ℎ,1 − 𝑐̃2ℎ,2 ‖
+                           ‖                ‖0 ‖                 ‖0
+            (                                                  )
+          𝜏 ‖      𝑗+1      𝑗+1 ‖  2    ‖     𝑗+1     𝑗+1 ‖  2
+        +     ‖∇(𝑐̃     − 𝑐̃1ℎ,2 )‖ + ‖∇(𝑐̃2ℎ,1   − 𝑐̃2ℎ,2 )‖ ≤ 0.                                                                                      (3.11)
+          2 ‖ 1ℎ,1                ‖0 ‖                      ‖0
+                          1
+Setting 𝜏 < 𝜏1 ∶=             in (3.11) yields
+                        2𝐶𝐶12
+
+          𝑗+1      𝑗+1 𝑗+1           𝑗+1
+        𝑐̃1ℎ,1 = 𝑐̃1ℎ,2 , 𝑐̃2ℎ,1 = 𝑐̃2ℎ,2 ,                                                                                                             (3.12)
+which together with (3.6) leads to
+         𝑗+1    𝑗+1
+        𝜓ℎ,1 = 𝜓ℎ,2 .                                                                                                                                   (3.13)
+
+                        ( equations
+    Finally, the ﬁrst two         ) of (3.2) represent the linearized backward Euler scheme of the Navier-Stokes equations, which
+                                  𝑗+1    𝑗+1
+have unique solutions 𝑢ℎ , 𝑝ℎ                  . The proof is completed.
+
+
+4. The error estimates
+
+    In this section, we will derive the unconditional error estimates of all the variables. Let
+
+        𝑒𝑗+1
+         𝑢   = 𝑢𝑗+1
+                ℎ
+                    − 𝑆ℎ 𝑢𝑗+1 , 𝑒𝑗+1
+                                 𝑝   = 𝑝𝑗+1
+                                        ℎ
+                                            − 𝑆ℎ 𝑝𝑗+1 ,
+        𝑒𝑗+1
+         𝑐̃
+                 𝑗+1
+             = 𝑐̃1ℎ  − 𝑅ℎ 𝑐̃1𝑗+1 , 𝑒𝑗+1
+                                    𝑐̃
+                                            𝑗+1
+                                        = 𝑐̃2ℎ  − 𝑅ℎ 𝑐̃2𝑗+1 , 𝑒𝑗+1  𝑗+1
+                                                               𝜓 = 𝜓ℎ   − 𝑅ℎ 𝜓 𝑗+1 ,                                                                     (4.1)
+           1                             2
+
+and subtract (3.2) from (2.12) with 𝑡 = 𝑡𝑗+1 , then we obtain the error equations
+         (                   ) (                          ) (                )
+          𝑢𝑗+1
+           𝑡   − 𝐷𝜏 𝑢𝑗+1 , 𝑣ℎ + 𝐷𝜏 (𝑢𝑗+1 − 𝑆ℎ 𝑢𝑗+1 ), 𝑣ℎ − 𝐷𝜏 𝑒𝑗+1   𝑢 , 𝑣ℎ
+               (             )
+             − ∇𝑒𝑗+1
+                  𝑢 , ∇𝑣ℎ + 𝑏1 (𝑢
+                                  𝑗+1
+                                      − 𝑢𝑗 ; 𝑢𝑗+1 , 𝑣ℎ ) + 𝑏1 (𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ; 𝑢𝑗+1 , 𝑣ℎ )
+               + 𝑏1 (𝑆ℎ 𝑢𝑗 ; 𝑢𝑗+1 − 𝑆ℎ 𝑢𝑗+1 , 𝑣ℎ ) − 𝑏1 (𝑒𝑗𝑢 ; 𝑆ℎ 𝑢𝑗+1 , 𝑣ℎ ) − 𝑏1 (𝑢𝑗ℎ ; 𝑒𝑗+1
+                                                                                           𝑢 , 𝑣ℎ )
+                 (               ) (                                      )
+                    𝑗+1                𝑗+1      𝑗+1      𝑗       𝑗+1
+               + 𝑒𝑝 , div𝑣ℎ + 𝑐̃1 ∇𝜓                − 𝑐̃1ℎ ∇𝜓ℎ , 𝑣ℎ
+                 (                                 )
+                                    𝑗
+               − 𝑐̃2𝑗+1 ∇𝜓 𝑗+1 − 𝑐̃2ℎ  ∇𝜓ℎ𝑗+1 , 𝑣ℎ = 0, ∀𝑣ℎ ∈ 𝑉ℎ ,                                                                                       (4.2)
+         (              )
+          div𝑒𝑗+1
+                𝑢 , 𝑞ℎ = 0, ∀𝑞ℎ ∈ 𝑄ℎ ,                                                                                                                   (4.3)
+         (                        ) (                                   ) (                    )
+             𝑗+1
+           𝑐̃1𝑡 − 𝐷𝜏 𝑐̃1𝑗+1 , 𝜂1ℎ + 𝐷𝜏 𝑐̃1𝑗+1 − 𝐷𝜏 𝑅ℎ 𝑐̃1𝑗+1 , 𝜂1ℎ − 𝐷𝜏 𝑒𝑗+1        𝑐̃1 , 𝜂1ℎ
+                 (                )        (                ) (                                  )
+               − ∇𝑒𝑗+1                         𝑗+1
+                      𝑐̃1 , ∇𝜂1ℎ − 𝑚0 ∇𝑒𝜓 , ∇𝜂1ℎ + (𝑐̃1
+                                                                     𝑗+1
+                                                                          − 𝑐̃1𝑗 )∇𝜓 𝑗+1 , ∇𝜂1ℎ
+                 (                              ) (                          )
+               + (𝑐̃1𝑗 − 𝑅ℎ 𝑐̃1𝑗 )∇𝜓 𝑗+1 , ∇𝜂1ℎ − 𝑒𝑗𝑐̃ ∇𝜓 𝑗+1 , ∇𝜂1ℎ
+                                                          1
+                 (                                  ) (                           )
+                    𝑗                                          𝑗
+               + 𝑐̃1ℎ  ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝜂1ℎ − 𝑐̃1ℎ         ∇𝑒𝑗+1
+                                                                    𝜓 , ∇𝜂1ℎ
+
+               + 𝑏2 (𝑢𝑗+1 − 𝑢𝑗 ; 𝑐̃1𝑗+1 , 𝜂1ℎ ) + 𝑏2 (𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ; 𝑐̃1𝑗+1 , 𝜂1ℎ ) − 𝑏2 (𝑒𝑗𝑢 ; 𝑐̃1𝑗+1 , 𝜂1ℎ )
+              + 𝑏2 (𝑢𝑗ℎ ; 𝑐̃1𝑗+1 − 𝑅ℎ 𝑐̃1𝑗+1 , 𝜂1ℎ ) − 𝑏2 (𝑢𝑗ℎ ; 𝑒𝑗+1
+                                                                  𝑐̃1 , 𝜂1ℎ ) = 0, ∀𝜂1ℎ ∈ 𝑋ℎ ,                                                           (4.4)
+         (                         ) (                                      ) (                    )
+            𝑗+1          𝑗+1                     𝑗+1
+          𝑐̃2𝑡 − 𝐷𝜏 𝑐̃2 , 𝜂2ℎ + 𝐷𝜏 𝑐̃2 − 𝐷𝜏 𝑅ℎ 𝑐̃2𝑗+1 , 𝜂2ℎ − 𝐷𝜏 𝑒𝑗+1                    𝑐̃2 , 𝜂2ℎ
+                (                  )         (                  ) (                                  )
+              − ∇𝑒𝑗+1                              𝑗+1
+                      𝑐̃2 , ∇𝜂2ℎ + 𝑚0 ∇𝑒𝜓 , ∇𝜂2ℎ − (𝑐̃2
+                                                                          𝑗+1
+                                                                               − 𝑐̃2𝑗 )∇𝜓 𝑗+1 , ∇𝜂2ℎ
+                (                                   ) (                         )
+              − (𝑐̃2𝑗 − 𝑅ℎ 𝑐̃2𝑗 )∇𝜓 𝑗+1 , ∇𝜂2ℎ + 𝑒𝑗𝑐̃ ∇𝜓 𝑗+1 , ∇𝜂2ℎ
+                                                              2
+                (                                       ) (                            )
+                   𝑗                                                𝑗
+              − 𝑐̃2ℎ   ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝜂2ℎ + 𝑐̃2ℎ              ∇𝑒𝑗+1
+                                                                         𝜓 , ∇𝜂2ℎ
+
+               + 𝑏2 (𝑢𝑗+1 − 𝑢𝑗 ; 𝑐̃2𝑗+1 , 𝜂2ℎ ) + 𝑏2 (𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ; 𝑐̃2𝑗+1 , 𝜂2ℎ ) − 𝑏2 (𝑒𝑗𝑢 ; 𝑐̃2𝑗+1 , 𝜂2ℎ )
+               + 𝑏2 (𝑢𝑗ℎ ; 𝑐̃2𝑗+1 − 𝑅ℎ 𝑐̃2𝑗+1 , 𝜂2ℎ ) − 𝑏2 (𝑢𝑗ℎ ; 𝑒𝑗+1
+                                                                   𝑐̃ , 𝜂2ℎ ) = 0, ∀𝜂2ℎ ∈ 𝑋ℎ ,                                                           (4.5)
+                                                                   2
+
+
+                                                                                         191
+M. Li and Z. Li                                                                                                                     Applied Numerical Mathematics 197 (2024) 186–209
+         (         )      (                     ) (                        )
+                            𝑗+1
+          ∇𝑒𝑗+1
+            𝜓 , ∇𝜑ℎ = − 𝑐̃1     − 𝑅ℎ 𝑐̃1𝑗+1 , 𝜑ℎ + 𝑐̃2𝑗+1 − 𝑅ℎ 𝑐̃2𝑗+1 , 𝜑ℎ
+              (              )
+            + 𝑒𝑗+1
+                𝑐̃ − 𝑒𝑗+1
+                      𝑐̃ , 𝜑ℎ , ∀𝜑ℎ ∈ 𝑋ℎ .                                                                                                                                    (4.6)
+                           1              2
+
+
+
+4.1. The 𝑙∞ (𝐿2 )-norm error estimates
+
+    Now, we derive the 𝑙∞ (𝐿2 )-norm error estimates of all variables, which are shown in following Lemmas 5-7 and Theorem 2.
+
+                                          (               )             (                                     )
+                                                                             𝑗+1    𝑗+1   𝑗+1
+Lemma 5. Assume that 𝑐̃1 , 𝑐̃2 , 𝜓, 𝑢, 𝑝 and 𝑐̃1ℎ , 𝑐̃2ℎ , 𝜓ℎ                                   , 𝑢𝑗+1
+                                                                                                   ℎ
+                                                                                                       , 𝑝𝑗+1
+                                                                                                          ℎ
+                                                                                                                are solutions of (2.12) and (3.2), respectively, and the regularity
+of solutions (2.36) holds, then we have
+                                        (                 )
+        ‖ 𝑗+1 ‖  ‖        ‖               ‖ 𝑗+1 ‖ ‖ 𝑗+1 ‖
+        ‖∇𝑒𝜓 ‖ + ‖Δℎ 𝑒𝑗+1 ‖ ≤ 𝐶𝐶0 ℎ2 + 𝐶 ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ .                                                                                                                    (4.7)
+        ‖     ‖0 ‖    𝜓   ‖0              ‖ 1 ‖0 ‖ 2 ‖0
+
+                                      𝑗+1                         𝑗+1
+Proof. Taking 𝜑ℎ = 𝑒𝜓                         and 𝜑ℎ = Δℎ 𝑒𝜓             in (4.6), respectively, we get
+                      (                                        )
+         ‖ 𝑗+1 ‖2      ‖ 𝑗+1        𝑗+1 ‖    ‖ 𝑗+1      𝑗+1 ‖    ‖   ‖
+         ‖∇𝑒𝜓 ‖ ≤ 𝐶 ‖𝑐̃1 − 𝑅ℎ 𝑐̃1 ‖ + ‖𝑐̃2 − 𝑅ℎ 𝑐̃2 ‖ ‖∇𝑒𝑗+1         ‖
+         ‖      ‖0     ‖                ‖0 ‖                ‖0 ‖ 𝜓 ‖0
+                                (                    )
+                                  ‖      ‖   ‖ 𝑗+1 ‖ ‖        ‖
+                            + 𝐶 ‖𝑒𝑗+1    ‖ + ‖𝑒 ‖ ‖∇𝑒𝑗+1 ‖ ,                                                                                                                  (4.8)
+                                  ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0 ‖ 𝜓 ‖0
+                     (                                        )
+         ‖        ‖2  ‖ 𝑗+1        𝑗+1 ‖    ‖ 𝑗+1      𝑗+1 ‖    ‖    ‖
+         ‖Δℎ 𝑒𝑗+1 ‖ ≤ ‖𝑐̃1 − 𝑅ℎ 𝑐̃1 ‖ + ‖𝑐̃2 − 𝑅ℎ 𝑐̃2 ‖ ‖Δℎ 𝑒𝑗+1   𝜓 ‖
+         ‖    𝜓   ‖0  ‖                ‖0 ‖                ‖0 ‖      ‖0
+                              (                    )
+                               ‖ 𝑗+1 ‖     ‖ 𝑗+1 ‖ ‖     𝑗+1 ‖
+                            + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ ‖Δℎ 𝑒𝜓 ‖ ,                                                                                                                      (4.9)
+                               ‖ 1 ‖0 ‖ 2 ‖0 ‖               ‖0
+which implies the desired result (4.7).
+
+
+Lemma 6. Under the conditions of Lemma 5, we have
+                              −1 (
+                             𝐽∑                      )
+         ‖ 𝐽 ‖2 ‖ 𝐽 ‖2             ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2       (         )(        )
+         ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + 𝜏       ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑐̃ ‖ ≤ 𝐶𝐶02 𝐶02 + 𝐶12 𝜏 2 + ℎ2
+         ‖ 1 ‖0 ‖ 2 ‖0             ‖ 1 ‖0 ‖ 2 ‖0
+                                               𝑗=0
+                                                −1 (                            )
+                                   (         ) 𝐽∑    ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2
+                                + 𝐶 𝐶02 + 𝐶12 𝜏      ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑢 ‖ .                                                                                               (4.10)
+                                                     ‖ 1 ‖0 ‖ 2 ‖0 ‖         ‖0
+                                                          𝑗=0
+
+
+                                      𝑗+1
+Proof. Setting 𝜂1ℎ = 𝑒𝑐̃                      in (4.4) leads to
+                                          1
+                  (                                    )
+          1 ‖ 𝑗+1 ‖2 ‖ 𝑗+1            𝑗 ‖2     ‖ 𝑗 ‖2       ‖ 𝑗+1 ‖2
+              ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ − 𝑒𝑐̃ ‖ − ‖𝑒𝑐̃ ‖ + ‖∇𝑒𝑐̃ ‖
+         2𝜏 ‖ 1 ‖0 ‖ 1                 1 ‖0    ‖ 1 ‖0       ‖ 1 ‖0
+         (                        ) (                                    )         (                  )
+            𝑗+1        𝑗+1 𝑗+1
+        = 𝑐̃1𝑡 − 𝐷𝜏 𝑐̃1 , 𝑒𝑐̃                 𝑗+1
+                                    + 𝐷𝜏 𝑐̃1 − 𝐷𝜏 𝑅ℎ 𝑐̃1𝑗+1 , 𝑒𝑗+1   𝑐̃1    − 𝑚0 ∇𝑒𝑗+1   𝜓 , ∇𝑒𝑐̃1
+                                                                                                  𝑗+1
+                                1
+            (                               ) (                                    )
+         + (𝑐̃1𝑗+1 − 𝑐̃1𝑗 )∇𝜓 𝑗+1 , ∇𝑒𝑗+1
+                                      𝑐̃1     + (𝑐̃1𝑗 − 𝑅ℎ 𝑐̃1𝑗 )∇𝜓 𝑗+1 , ∇𝑒𝑗+1
+                                                                              𝑐̃1
+            (                     ) (                                        ) (                          )
+         − 𝑒𝑗𝑐̃ ∇𝜓 𝑗+1 , ∇𝑒𝑗+1
+                             𝑐̃     +   𝑐̃𝑗
+                                          1ℎ
+                                             ∇(𝜓 𝑗+1
+                                                      − 𝑅ℎ 𝜓   𝑗+1
+                                                                   ), ∇𝑒 𝑗+1
+                                                                         𝑐̃      −   ̃
+                                                                                     𝑐 𝑗
+                                                                                       1ℎ
+                                                                                          ∇𝑒 𝑗+1
+                                                                                             𝜓   , ∇𝑒 𝑗+1
+                                                                                                      𝑐̃
+                      1                       1                                                  1                       1
+
+           + 𝑏2 (𝑢        𝑗+1
+                                − 𝑢 ; 𝑐̃1𝑗+1 , 𝑒𝑗+1
+                                      𝑗                      𝑗      𝑗 𝑗+1 𝑗+1              𝑗 𝑗+1 𝑗+1
+                                                𝑐̃1 ) + 𝑏2 (𝑢 − 𝑆ℎ 𝑢 ; 𝑐̃1 , 𝑒𝑐̃1 ) − 𝑏2 (𝑒𝑢 ; 𝑐̃1 , 𝑒𝑐̃1 )
+
+                                                                   ∑
+                                                                   12
+           + 𝑏2 (𝑢𝑗ℎ ; 𝑐̃1𝑗+1 − 𝑅ℎ 𝑐̃1𝑗+1 , 𝑒𝑗+1
+                                             𝑐̃ ) ∶=                         𝐸𝑖 .                                                                                            (4.11)
+                                                      1
+                                                                       𝑖=1
+
+Now, we bound the above terms. From Taylor formula, Lemma 5 and (2.19), it is not hard to check that
+                                  𝑡𝑗+1                             𝑡𝑗+1
+        ∑
+        3
+                                   ‖𝑐̃ ‖2 d𝑡 + 𝐶ℎ
+                                                              4
+               |𝐸 | ≤𝐶𝜏                             ‖𝑐̃ ‖2 d𝑡 + 𝐶𝐶 2 ℎ4
+               | 𝑖|              ∫ ‖ 1𝑡𝑡 ‖0     𝜏 ∫ ‖ 1𝑡 ‖2       0
+         𝑖=1                     𝑡𝑗                               𝑡𝑗
+                                  (                                )
+                                          ‖ 𝑗+1 ‖2   ‖ 𝑗+1 ‖2                 1 ‖ 𝑗+1 ‖2
+                           + 𝐶 ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖                           +      ‖∇𝑒 ‖ ,                                                                                      (4.12)
+                               ‖ 1 ‖0 ‖ 2 ‖0                                  7 ‖ 𝑐̃1 ‖0
+and
+
+                                                                                                      192
+M. Li and Z. Li                                                                                             Applied Numerical Mathematics 197 (2024) 186–209
+
+        ∑
+        6            (                                       )
+               |𝐸 | ≤ ‖  𝑗+1   𝑗‖    ‖ 𝑗         𝑗‖    ‖ 𝑗 ‖ ‖        ‖ ‖ 𝑗+1 ‖
+                      ‖𝑐̃1 − 𝑐̃1 ‖ + ‖𝑐̃1 − 𝑅ℎ 𝑐̃1 ‖ + ‖𝑒𝑐̃ ‖ ‖∇𝜓 𝑗+1 ‖ ‖∇𝑒𝑐̃ ‖
+               | 𝑖|   ‖          ‖0 ‖              ‖0 ‖ 1 ‖0 ‖        ‖0,∞ ‖ 1 ‖0
+         𝑖=4
+
+                               ⎛     𝑡𝑗+1                           ⎞
+                            ⎜           ‖𝑐̃ ‖2 d𝑡 + 𝐶 2 ℎ4 + ‖ 𝑗 ‖2 ⎟  1 ‖ 𝑗+1 ‖2
+                     ≤ 𝐶𝐶02 ⎜𝜏          ‖ 1𝑡 ‖0              ‖𝑒𝑐̃ ‖ ⎟ + ‖∇𝑒𝑐̃ ‖ .                                                                    (4.13)
+                                                             ‖ 1 ‖0      ‖ 1 ‖0
+                            ⎜ ∫
+                                                     0
+                                                                    ⎟ 7
+                            ⎝ 𝑡𝑗                                    ⎠
+By use of the inductive hypothesis (3.4), Lemma 1 and Lemma 5, we obtain
+
+        |𝐸 | ≤ ‖    ‖ ‖                    ‖ ‖
+                𝑐̃𝑗 ‖ ‖∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 )‖ ‖∇𝑒𝑗+1
+                                                      ‖
+        | 7| ‖ ‖ 1ℎ ‖0,3 ‖
+                                                      ‖
+                                           ‖0,6 ‖ 𝑐̃1 ‖0
+                             1 ‖ 𝑗+1 ‖2
+                               ‖∇𝑒 ‖ ,
+                  ≤ 𝐶𝐶02 𝐶12 ℎ2 +                                                                                                                    (4.14)
+                             7 ‖ 𝑐1 ‖0
+        |𝐸 | ≤ ‖    ‖ ‖        ‖ ‖
+                𝑐̃𝑗 ‖ ‖∇𝑒𝑗+1 ‖ ‖∇𝑒𝑗+1 ‖
+                                           ‖
+        | 8| ‖ ‖ 1ℎ ‖0,3 ‖ 𝜓 ‖0,6 ‖ 𝑐̃1 ‖0
+                                 (                   )
+                                   ‖     ‖2 ‖ 𝑗+1 ‖2    1‖      ‖2
+             ≤ 𝐶𝐶02 𝐶12 ℎ4 + 𝐶𝐶12 ‖𝑒𝑗+1  ‖   + ‖ 𝑒 ‖   + ‖∇𝑒𝑗+1 ‖ .                                                                                  (4.15)
+                                   ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0    7 ‖ 𝑐̃1 ‖0
+According to Lemma 3, we infer
+
+        ∑
+        11             (                                        )
+               |𝐸 | ≤ 𝐶 ‖           ‖
+                         ‖𝑢𝑗+1 − 𝑢𝑗 ‖ + ‖ 𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ‖    ‖ 𝑗 ‖ ‖𝑐̃𝑗+1 ‖ ‖ 𝑗+1 ‖
+               | 𝑖|      ‖          ‖0 ‖             ‖0 + ‖𝑒𝑢 ‖0 ‖     ‖ ‖∇𝑒 ‖
+                                                                  ‖ 1 ‖2 ‖ 𝑐̃1 ‖0
+         𝑖=9
+
+                            ⎛ 𝑡𝑗+1                            ⎞
+                            ⎜     ‖𝑢 ‖2 d𝑡 + 𝐶 2 ℎ4 + ‖𝑒𝑗 ‖2 ⎟⎟ + 1 ‖  𝑗+1 ‖2
+                     ≤ 𝐶𝐶02 ⎜𝜏    ‖ 𝑡 ‖0              ‖ 𝑢 ‖0        ‖∇𝑒𝑐̃ ‖ ,                                                                        (4.16)
+                               ∫              0                   7 ‖ 1 ‖0
+                            ⎜ 𝑡                               ⎟
+                            ⎝ 𝑗                               ⎠
+and
+
+        |𝐸 | ≤ ||𝑏 (𝑒𝑗 ; 𝑐̃𝑗+1 − 𝑅 𝑐̃𝑗+1 , 𝑒𝑗+1 )|| + ||𝑏 (𝑆 𝑢𝑗 ; 𝑐̃𝑗+1 − 𝑅 𝑐̃𝑗+1 , 𝑒𝑗+1 )||
+        | 12 | | 2 𝑢 1              ℎ 1     𝑐̃1 | | 2 ℎ             1      ℎ 1       𝑐̃1 |
+                     𝑗‖ ‖                  𝑗+1 ‖ ‖       𝑗+1 ‖             𝑗‖ ‖          ‖ ‖ 𝑗+1      𝑗+1 ‖
+                                𝑗+1
+              ≤ ‖∇𝑒𝑢 ‖0 ‖∇(𝑐̃1 − 𝑅ℎ 𝑐̃1 )‖ ‖∇𝑒𝑐̃ ‖ + ‖𝐴ℎ 𝑆ℎ 𝑢 ‖0 ‖∇𝑒𝑗+1
+                ‖                                                  ‖                     ‖ ‖𝑐̃ − 𝑅ℎ 𝑐̃1 ‖
+                          ‖                     ‖0 ‖ 1 ‖0                      ‖ 𝑐̃1 ‖0 ‖ 1               ‖0
+                    2 ‖ 𝑗 ‖2                 1 ‖ 𝑗+1 ‖2
+              ≤ 𝐶𝐶0 ‖𝑒𝑢 ‖0 + 𝐶𝐶0 ℎ + ‖∇𝑒𝑐̃ ‖ .
+                                     4 4
+                                                                                                                                                     (4.17)
+                                             7 ‖ 1 ‖0
+Inserting (4.12)-(4.17) into (4.11), and summing up from 𝑗 = 0 to 𝑗 = 𝐽 − 1, we get
+                        𝐽 −1
+                    ∑ ‖ 𝑗+1 ‖2
+         ‖ 𝐽 ‖2                     (         )(        )
+         ‖𝑒𝑐̃ ‖ + 𝜏   ‖∇𝑒𝑐̃ ‖ ≤ 𝐶𝐶02 𝐶02 + 𝐶12 𝜏 2 + ℎ2
+         ‖ 1 ‖0       ‖ 1 ‖0
+                        𝑗=0
+                                     −1 (                            )
+                        (         ) 𝐽∑    ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2
+                     + 𝐶 𝐶02 + 𝐶12 𝜏      ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑢 ‖ .                                                                                  (4.18)
+                                          ‖ 1 ‖0 ‖ 2 ‖0 ‖         ‖0
+                                            𝑗=0
+                                                        𝑗+1
+Subsequently, the similar estimates for 𝑒𝑐̃                   can also be obtained, which together with (4.18) lead to (4.10).
+                                                        2
+
+
+Lemma 7. Under the conditions of Lemma 5, we have
+
+                   ∑‖  𝐽 −1
+         ‖ 𝐽 ‖2            ‖2      (         )
+         ‖𝑒𝑢 ‖ + 𝜏  ‖∇𝑒𝑗+1 ‖ ≤ 𝐶𝐶02 𝐶02 + 𝐶12 (𝜏 2 + ℎ4 )
+         ‖ ‖0       ‖ 𝑢 ‖0
+                        𝑗=0
+                                          −1 (                            )
+                             (         ) 𝐽∑    ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2
+                          + 𝐶 𝐶02 + 𝐶12 𝜏      ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑢 ‖ .                                                                             (4.19)
+                                               ‖ 1 ‖0 ‖ 2 ‖0 ‖         ‖0
+                                                  𝑗=0
+
+
+                               𝑗+1
+Proof. Choose 𝑣ℎ = 𝑒𝑢                ∈ 𝑉ℎdiv in (4.2), and note that
+
+        𝑏1 (𝑢𝑗ℎ ; 𝑒𝑗+1  𝑗+1        𝑗+1     𝑗+1
+                   𝑢 , 𝑒𝑢 ) = 0, (𝑒𝑝 , div𝑒𝑢 ) = 0,                                                                                                  (4.20)
+then we arrive at
+               (                               )
+          1     ‖ 𝑗+1 ‖2 ‖ 𝑗+1    ‖2               ‖       ‖2        𝑗+1
+                ‖𝑒𝑢 ‖ + ‖𝑒𝑢 − 𝑒𝑗𝑢 ‖ − ‖ 𝑒 𝑗 ‖2
+                                                 + ‖∇𝑒𝑗+1  ‖ = (𝑢𝑡 − 𝐷𝜏 𝑢𝑗+1 , 𝑒𝑗+1
+                                                                                𝑢 )
+         2𝜏     ‖     ‖0 ‖        ‖0 ‖ 𝑢 ‖0        ‖ 𝑢 ‖0
+                      ( 𝑗+1       )
+                + (𝐷𝜏 𝑢 − 𝑆ℎ 𝑢𝑗+1 , 𝑒𝑗+1
+                                     𝑢 ) + 𝑏1 (𝑢
+                                                  𝑗+1
+                                                      − 𝑢𝑗 ; 𝑢𝑗+1 , 𝑒𝑗+1
+                                                                     𝑢 )
+
+                + 𝑏1 (𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ; 𝑢𝑗+1 , 𝑒𝑗+1           𝑗 𝑗+1
+                                           𝑢 ) + 𝑏1 (𝑆ℎ 𝑢 ; 𝑢  − 𝑆ℎ 𝑢𝑗+1 , 𝑒𝑗+1
+                                                                            𝑢 )
+
+                                                                                  193
+M. Li and Z. Li                                                                     Applied Numerical Mathematics 197 (2024) 186–209
+                                              (                               )
+                                             𝑗+1          𝑗
+              − 𝑏1 (𝑒𝑗𝑢 ; 𝑆ℎ 𝑢𝑗+1 , 𝑒𝑗+1
+                                     𝑢 ) + 𝑐̃1 ∇𝜓
+                                                  𝑗+1
+                                                      − 𝑐̃1ℎ ∇𝜓ℎ𝑗+1 , 𝑒𝑗+1
+                                                                       𝑢
+
+               (                                   )    ∑
+                                                        8
+                                  𝑗
+              − 𝑐̃2𝑗+1 ∇𝜓 𝑗+1 − 𝑐̃2ℎ ∇𝜓ℎ𝑗+1 , 𝑒𝑗+1
+                                               𝑢     ∶=   𝐺𝑖 .                                                               (4.21)
+                                                            𝑖=1
+
+By use of Taylor formula and Poincaré inequality, it is easy to check that
+                        𝑡𝑗+1
+
+        |𝐺 | ≤𝐶𝜏   ‖𝑢 ‖2 d𝑡 + 1 ‖      ‖2
+                                ‖∇𝑒𝑗+1 ‖ .                                                                                   (4.22)
+        | 1|     ∫ ‖ 𝑡𝑡 ‖0    8 ‖ 𝑢 ‖0
+                       𝑡𝑗
+
+Note that
+           ‖ ( 𝑗+1        )‖2
+           ‖𝐷𝜏 𝑢 − 𝑆ℎ 𝑢𝑗+1 ‖
+           ‖               ‖0
+           (                ) (        )       ‖ 𝑡𝑗+1               ‖2
+         ‖ 𝑢𝑗+1 − 𝑆ℎ 𝑢𝑗+1 − 𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ‖2 ‖    ‖     (         )
+                                                                    ‖
+                                                                    ‖
+         ‖                               ‖       1
+        =‖                               ‖ =‖  ‖       𝑢 − 𝑆 𝑢
+                                                            ℎ 𝑡 ‖d𝑡 ‖
+         ‖                 𝜏             ‖       𝜏 ∫
+         ‖                               ‖0 ‖  ‖ 𝑡𝑗
+                                                                    ‖
+                                                                    ‖
+                                               ‖                    ‖0
+         ‖              1                  1 ‖2
+         ‖ ⎛ 𝑡𝑗+1     ⎞ 2 ⎛ 𝑡𝑗+1          ⎞2 ‖
+         ‖                                   ‖
+         ‖1 ⎜         ⎟   ⎜     (   )     ⎟ ‖
+        ≤‖                                   ‖
+                                     2
+         ‖ 𝜏 ⎜ ∫ 1 dt ⎟ ⎜ ∫ 𝑢 − 𝑆ℎ 𝑢 𝑡 dt ⎟ ‖
+                  2
+         ‖ ⎜          ⎟ ⎜𝑡                ⎟ ‖
+         ‖ ⎝ 𝑡𝑗       ⎠ ⎝𝑗                ⎠ ‖
+         ‖                                   ‖
+         ‖                                   ‖0
+              𝑡𝑗+1
+          1   ‖(        ) ‖2
+        ≤     ‖ 𝑢 − 𝑆ℎ 𝑢 𝑡 ‖ d𝑡,                                                                                             (4.23)
+          𝜏 ∫ ‖            ‖0
+              𝑡𝑗
+
+then using (2.21), we ﬁnd
+                             𝑡𝑗+1
+
+        |𝐺 | ≤ 𝐶ℎ                         1‖      ‖2
+                  4
+        | 2|        (‖𝑢𝑡 ‖2 + ‖𝑝𝑡 ‖1 )d𝑡 + ‖∇𝑒𝑗+1 ‖ .                                                                        (4.24)
+                𝜏 ∫                       8 ‖ 𝑢 ‖0
+                            𝑡𝑗
+
+Due to Lemma 2 and Taylor formula, we deduce
+                       (                               )
+        |𝐺 | + |𝐺 | ≤ 𝐶 ‖           ‖
+                         ‖𝑢𝑗+1 − 𝑢𝑗 ‖ + ‖𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ‖
+                                                         ‖ 𝑗+1 ‖ ‖ 𝑗+1 ‖
+                                                         ‖𝑢 ‖ ‖∇𝑒𝑢 ‖
+        | 3| | 4|        ‖          ‖0  ‖           ‖0   ‖     ‖2 ‖    ‖0
+                                     𝑡𝑗+1
+
+                            ≤ 𝐶𝐶02 𝜏      ‖𝑢 ‖2 d𝑡 + 𝐶𝐶 4 ℎ4 + 1 ‖      ‖2
+                                                                 ‖∇𝑒𝑗+1 ‖ ,                                                  (4.25)
+                                     ∫    ‖ 𝑡 ‖0       0       8 ‖ 𝑢 ‖0
+                                     𝑡𝑗
+
+and
+
+        |𝐺 | ≤ 𝐶 ‖𝐴 𝑆 𝑢𝑗 ‖ ‖      ‖ ‖               ‖
+                            ∇𝑒𝑗+1 ‖ ‖𝑢𝑗+1 − 𝑆ℎ 𝑢𝑗+1 ‖
+        | 5|     ‖ ℎ ℎ ‖0 ‖‖ 𝑢 ‖0 ‖                 ‖0
+                          1 ‖ 𝑗+1 ‖2
+                            ‖∇𝑒 ‖ ,
+                  ≤ 𝐶𝐶04 ℎ4 +                                                                                                (4.26)
+                          8 ‖ 𝑢 ‖0
+        |𝐺 | ≤ 𝐶 ‖𝑒𝑗 ‖ ‖          ‖ ‖
+                         𝐴 𝑆 𝑢𝑗+1 ‖ ‖∇𝑒𝑗+1
+                                           ‖
+        | 6|     ‖ 𝑢 ‖0 ‖
+                        ‖ ℎ ℎ     ‖0 ‖ 𝑢 ‖0
+                                           ‖
+                              1 ‖ 𝑗+1 ‖2
+             ≤ 𝐶𝐶02 ‖  𝑗 ‖2
+                     ‖𝑒𝑢 ‖0 + 8 ‖∇𝑒 ‖ .                                                                                      (4.27)
+                                ‖ 𝑢 ‖0
+Next, 𝐺7 can be split as
+            (                              ) (                                )
+        𝐺7 = (𝑐̃1𝑗+1 − 𝑐̃1𝑗 )∇𝜓 𝑗+1 , 𝑒𝑗+1
+                                       𝑢    + 𝑐̃1𝑗 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), 𝑒𝑗+1
+                                                                          𝑢
+              (                                 ) (                        )
+            + (𝑐̃1𝑗 − 𝑅ℎ 𝑐̃1𝑗 )∇𝑅ℎ 𝜓 𝑗+1 , 𝑒𝑗+1
+                                             𝑢     − 𝑒𝑗𝑐̃ ∇𝑅ℎ 𝜓 𝑗+1 , 𝑒𝑗+1
+                                                                       𝑢
+                                                             1
+
+                    (                )    ∑
+                                          5
+                       𝑗
+                   − 𝑐̃1ℎ ∇𝑒𝑗+1  𝑗+1
+                            𝜓 , 𝑒𝑢     ∶=   𝐺7𝑖 .                                                                            (4.28)
+                                               𝑖=1
+
+It is not hard to ﬁnd that
+
+           |𝐺71 | + |𝐺73 | + |𝐺74 | + |𝐺75 |
+           |    | |      | |      | |      |
+
+                                                                              194
+M. Li and Z. Li                                                                                    Applied Numerical Mathematics 197 (2024) 186–209
+
+         ‖              ‖ ‖       ‖ ‖      ‖    ‖ 𝑗       𝑗‖ ‖          ‖ ‖      ‖
+        ≤‖𝑐̃1𝑗+1 − 𝑐̃1𝑗 ‖ ‖∇𝜓 𝑗+1 ‖ ‖𝑒𝑗+1  ‖ + ‖𝑐 − 𝑅ℎ 𝑐̃1 ‖ ‖∇𝑅ℎ 𝜓 𝑗+1 ‖ ‖𝑒𝑗+1  ‖
+         ‖              ‖0 ‖      ‖0,3 ‖ 𝑢 ‖0,6 ‖ 1        ‖0 ‖         ‖0,3 ‖ 𝑢 ‖0,6
+             ‖ ‖ ‖               ‖ ‖       ‖    ‖ 𝑗 ‖ ‖         ‖ ‖  ‖
+         + ‖𝑒𝑗𝑐̃ ‖ ‖∇𝑅ℎ 𝜓 𝑗+1 ‖ ‖𝑒𝑗+1      ‖ + ‖𝑐̃ ‖ ‖∇𝑒𝑗+1 ‖ ‖𝑒𝑗+1 ‖
+             ‖ 1 ‖0 ‖            ‖0,3 ‖ 𝑢 ‖0,6 ‖ 1ℎ ‖0,3 ‖ 𝜓 ‖0 ‖ 𝑢 ‖0,6
+                     𝑡𝑗+1
+
+        ≤𝐶𝐶02 𝜏          ‖𝑐̃1𝑡 ‖2 d𝑡 + 𝐶𝐶 2 (𝐶 2 + 𝐶 2 )ℎ4 + 𝐶𝐶 2 ‖ 𝑒𝑗 ‖
+                                                                        ‖2
+                ∫        ‖ ‖0            0    0     1          0‖ ‖ 𝑐̃1 ‖0
+                𝑡𝑗
+                 (                   )
+                   ‖     ‖2 ‖ 𝑗+1 ‖2     1 ‖ 𝑗+1 ‖2
+           + 𝐶𝐶12 ‖𝑒𝑗+1  ‖ + ‖ 𝑒  ‖    +    ‖∇𝑒 ‖ .                                                                                         (4.29)
+                   ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0     16 ‖ 𝑢 ‖0
+Using Green formula, we obtain
+                |(                             ) (                             )|
+        |𝐺 | = | 𝜓 𝑗+1 − 𝑅 𝜓 𝑗+1 , ∇𝑐̃𝑗 ⋅ 𝑒𝑗+1 + 𝜓 𝑗+1 − 𝑅 𝜓 𝑗+1 , 𝑐̃𝑗 div𝑒𝑗+1 |
+        | 72 | |           ℎ               𝑢                   ℎ           𝑢     |
+                |                     1                               1
+                                                                                 |
+                                   (                                            )
+                ‖ 𝑗+1        𝑗+1 ‖   ‖     𝑗 ‖    ‖ 𝑗+1 ‖    ‖  𝑗 ‖ ‖    𝑗+1 ‖
+              ≤ ‖𝜓    − 𝑅ℎ 𝜓 ‖ ‖∇𝑐̃1 ‖ ‖𝑒𝑢 ‖ + ‖𝑐̃1 ‖ ‖div𝑒𝑢 ‖
+                ‖                ‖0 ‖        ‖0,3 ‖     ‖0,6 ‖ ‖0,∞ ‖        ‖0
+                          1 ‖ 𝑗+1 ‖2
+              ≤ 𝐶𝐶0 ℎ +
+                   4 4
+                             ‖∇𝑒 ‖ .                                                                                                        (4.30)
+                         16 ‖ 𝑢 ‖0
+Combining (4.29) and (4.30), we have
+                            𝑡𝑗+1
+
+        |𝐺 | ≤𝐶𝐶 2 𝜏 ‖𝑐̃ ‖2 d𝑡 + 𝐶𝐶 2 (𝐶 2 + 𝐶 2 )ℎ4 + 𝐶𝐶 2 ‖𝑒𝑗 ‖
+                                                                  ‖2
+        | 7|    0 ∫ ‖ 1𝑡 ‖0        0    0     1          0‖ ‖ 𝑐̃1 ‖0
+                            𝑡𝑗
+                         (                   )
+                           ‖     ‖2 ‖ 𝑗+1 ‖2    1‖      ‖2
+                   + 𝐶𝐶12 ‖𝑒𝑗+1  ‖ + ‖𝑒   ‖    + ‖∇𝑒𝑗+1 ‖ .                                                                                 (4.31)
+                           ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0    8 ‖ 𝑢   ‖0
+In a similar way, 𝐺8 can be estimated as
+                            𝑡𝑗+1
+
+        |𝐺8 | ≤𝐶𝐶 2 𝜏 ‖𝑐̃ ‖2 𝑑𝑡 + 𝐶𝐶 2 (𝐶 2 + 𝐶 2 )ℎ4 + 𝐶𝐶 2 ‖𝑒𝑗 ‖
+                                                                   ‖2
+        | |      0 ∫ ‖ 2𝑡 ‖0        0    0     1          0‖ ‖ 𝑐̃2 ‖0
+                            𝑡𝑗
+                         (                   )
+                           ‖     ‖2 ‖ 𝑗+1 ‖2    1‖      ‖2
+                   + 𝐶𝐶12 ‖𝑒𝑗+1  ‖ + ‖𝑒   ‖    + ‖∇𝑒𝑗+1 ‖ .                                                                                 (4.32)
+                           ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0    8 ‖ 𝑢 ‖0
+Therefore, inserting the above estimates (4.22), (4.24)-(4.28), (4.31), (4.32) into (4.21), we get
+              (                        )
+          1       ‖ 𝑗+1 ‖2 ‖ 𝑗 ‖2              1 ‖ 𝑗+1 ‖2    (         )
+                  ‖𝑒𝑢 ‖ − ‖𝑒𝑢 ‖0           +     ‖∇𝑒 ‖ ≤ 𝐶𝐶02 𝐶02 + 𝐶12 ℎ4
+         2𝜏       ‖     ‖0                     8 ‖ 𝑢 ‖0
+                     𝑡𝑗+1                                 𝑡𝑗+1
+                         (               )            (                                       )
+           𝐶ℎ4            ‖𝑢𝑡 ‖2 + ‖𝑝𝑡 ‖2 d𝑡 + 𝐶𝐶 2 𝜏  ‖𝑢𝑡𝑡 ‖2 + ‖𝑢𝑡 ‖2 + ‖𝑐̃1𝑡 ‖2 + ‖𝑐̃2𝑡 ‖2 d𝑡
+         +                ‖ ‖2 ‖ ‖1                    ‖    ‖    ‖   ‖    ‖     ‖    ‖     ‖
+            𝜏 ∫                                  0 ∫          0        0          0         0
+                    𝑡𝑗                                   𝑡𝑗
+                                        (                                     )
+                                   (   ) ‖ 𝑗 ‖2 ‖ 𝑗 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2
+         + 𝐶𝐶02 ‖ 𝑒 𝑗 ‖2
+                ‖ 𝑢 ‖0   + 𝐶 𝐶 2
+                                 + 𝐶 2
+                                          ‖𝑒    ‖ + ‖ 𝑒  ‖ + ‖ 𝑒  ‖ + ‖ 𝑒  ‖    .                                                           (4.33)
+                               0     1    ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0 ‖ 𝑐̃1 ‖0 ‖ 𝑐̃2 ‖0
+Finally, summing (4.33) up from 𝑗 = 0 to 𝐽 − 1, we arrive at (4.19).
+
+Theorem 2. Under the conditions of Lemma 5, if 𝜏 is small enough, we have
+         ‖ 𝐽 ‖2 ‖ 𝐽 ‖2 ‖ 𝐽 ‖2
+         ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑢 ‖
+         ‖ 1 ‖0 ‖ 2 ‖0 ‖ ‖0
+                       −1 (
+                      𝐽∑                                )
+                            ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2      (        )
+                 +𝜏         ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑢 ‖ ≤ 𝐶22 𝜏 2 + ℎ2 ,                                                                     (4.34)
+                            ‖ 1 ‖0 ‖ 2 ‖0 ‖          ‖0
+                            𝑗=0
+      ‖ 𝐽‖       ‖     ‖
+      ‖∇𝑒𝜓 ‖ + ‖Δℎ 𝑒𝐽𝜓 ‖ ≤ 𝐶2 (𝜏 + ℎ) ,                                                                                                     (4.35)
+      ‖     ‖0 ‖       ‖0
+                (         )   (           )
+where 𝐶22 = 𝐶𝐶02 𝐶02 + 𝐶12 𝑒𝑥𝑝 𝐶𝐶02 + 𝐶𝐶12 .
+
+Proof. Using Lemma 6 and Lemma 7, we get
+                                        −1 (
+                                       𝐽∑                                )
+           ‖ 𝐽 ‖2 ‖ 𝐽 ‖2 ‖ 𝐽 ‖2              ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2
+           ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑢 ‖ + 𝜏       ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑢 ‖
+           ‖ 1 ‖0 ‖ 2 ‖0 ‖ ‖0                ‖ 1 ‖0 ‖ 2 ‖0 ‖          ‖0
+                                                  𝑗=0
+
+                                                                             195
+M. Li and Z. Li                                                                                Applied Numerical Mathematics 197 (2024) 186–209
+
+                                                    −1 (                            )
+             (         )               (         ) 𝐽∑    ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2
+        ≤𝐶𝐶02 𝐶02 + 𝐶12 (𝜏 2 + ℎ2 ) + 𝐶 𝐶02 + 𝐶12 𝜏      ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑒𝑢 ‖ .                                                      (4.36)
+                                                         ‖ 1 ‖0 ‖ 2 ‖0 ‖         ‖0
+                                                      𝑗=0
+                                             1
+By Gronwall lemma, take 𝜏 < 𝜏2 ∶=        (         ) , and we deduce (4.34). Then using Lemma 5, we obtain (4.35).
+                                        𝐶 𝐶02 +𝐶12
+    The error estimates in Lemmas 5-7 and Theorem 2 were derived under the inductive hypothesis (3.4). Now, we check it.
+    When 𝑗 = 0, we deduce
+        ‖ 0 ‖     ‖ 0 ‖
+        ‖𝑐̃1ℎ ‖ + ‖𝑐̃2ℎ ‖ = ‖𝑅 𝑐̃ ‖ + ‖𝑅 𝑐̃ ‖ < 1 + 𝐶0 ∶= 𝐶1 .                                                                          (4.37)
+        ‖ ‖0,3 ‖ ‖0,3 ‖ ℎ 10 ‖0,3 ‖ ℎ 20 ‖0,3
+Assume that
+        ‖ 𝑚‖      ‖ 𝑚‖
+        ‖𝑐̃1ℎ ‖ + ‖𝑐̃2ℎ ‖ ≤ 𝐶1 ,                                                                                                        (4.38)
+        ‖ ‖0,3 ‖ ‖0,3
+is true for 𝑚 ≤ 𝑗 . Next, we derive (3.4) for 𝑚 = 𝑗 + 1. To this aim, we consider two cases. If 𝜏 < ℎ, we have from the inverse inequality
+and Theorem 2 that
+                                (                 )
+        ‖ 𝑗+1 ‖  ‖ 𝑗+1 ‖         ‖ 𝑗+1 ‖  ‖ 𝑗+1 ‖
+        ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ ≤ 𝐶ℎ−𝑑∕6 ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ ≤ 𝐶𝐶2 ℎ1∕2 .                                                                           (4.39)
+        ‖ 1 ‖0,3 ‖ 2 ‖0,3        ‖ 1 ‖0 ‖ 2 ‖0
+If ℎ < 𝜏 , by Theorem 2, we deduce
+                           (                  )
+        ‖ 𝑗+1 ‖  ‖ 𝑗+1 ‖    ‖ 𝑗+1 ‖   ‖ 𝑗+1 ‖
+        ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ ≤ 𝐶 ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑐̃ ‖ ≤ 𝐶𝐶2 𝜏 1∕2 .                                                                             (4.40)
+        ‖ 1 ‖0,3 ‖ 2 ‖0,3   ‖ 1 ‖0 ‖ 2 ‖0
+                               1                   1
+In any case, if 𝜏 < 𝜏3 ∶=           and ℎ < ℎ1 ∶= 2 2 , we conclude that
+                            𝐶 2 𝐶22              𝐶 𝐶2
+
+        ‖ 𝑗+1 ‖  ‖ 𝑗+1 ‖
+        ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ < 1.                                                                                                            (4.41)
+        ‖ 1 ‖0,3 ‖ 2 ‖0,3
+Thus, we have
+        ‖ 𝑗+1 ‖    ‖ 𝑗+1 ‖     ‖ 𝑗+1 ‖    ‖ 𝑗+1 ‖ ‖ 𝑗+1 ‖    ‖  𝑗+1 ‖
+        ‖𝑐̃1ℎ ‖ + ‖𝑐̃2ℎ ‖ ≤ ‖𝑒𝑐̃ ‖ + ‖𝑒𝑐̃ ‖ + ‖𝑅ℎ 𝑐̃1 ‖ + ‖𝑅ℎ 𝑐̃2 ‖
+        ‖     ‖0,3 ‖     ‖0,3 ‖ 1 ‖0,3 ‖ 2 ‖0,3 ‖       ‖0,3 ‖      ‖0,3
+                             ≤ 1 + 𝐶0 = 𝐶1 .                                                                                            (4.42)
+The check of the inductive hypothesis (3.4) is completed.
+
+                                                                                       ‖ 𝑗+1 ‖        ‖ 𝑗+1 ‖
+Remark 1. In the using of the mathematical inductive method, it is crucial to bound ‖𝑐̃1ℎ ‖       and ‖𝑐̃2ℎ ‖ to an appointed constant,
+                                                                                       ‖     ‖0,3     ‖     ‖0,3
+otherwise the error bounds in Lemmas 5-7 and Theorem 2 may become larger and larger.
+
+Remark 2. Theorem 2 shows that the error estimates of the 𝑙∞ (𝐿2 ) norm are suboptimal, which is caused by the fact that the
+estimate of the term 𝐸7 in Lemma 6 can not achieve optimal.
+
+    Finally, we derive the unconditional stability of solutions.
+
+Lemma 8. Under the conditions of Lemma 5, if 𝜏 and ℎ are small enough, we have
+        ‖ 𝑗+1 ‖        ‖     𝑗+1 ‖
+        ‖∇𝜓ℎ ‖ + ‖Δℎ 𝜓ℎ ‖ ≤ 𝐶3 ,                                                                                                        (4.43)
+        ‖        ‖0 ‖            ‖0
+        ‖ 𝑗+1 ‖       ‖ 𝑗+1 ‖       ‖ 𝑗+1 ‖
+        ‖∇𝑐̃1ℎ ‖ + ‖∇𝑐̃2ℎ ‖ + ‖∇𝑢ℎ ‖ ≤ 𝐶3 ,                                                                                             (4.44)
+        ‖       ‖0 ‖          ‖0 ‖          ‖0
+           −1 (
+          𝐽∑                                           )
+                ‖     𝑗+1 ‖2   ‖     𝑗+1 ‖2   ‖ 𝑗+1 ‖2
+        𝜏       ‖Δℎ 𝑐̃1ℎ ‖ + ‖Δℎ 𝑐̃2ℎ ‖ + ‖𝐴ℎ 𝑢ℎ ‖ ≤ 𝐶42 ,                                                                              (4.45)
+                ‖         ‖0 ‖           ‖0 ‖       ‖0
+            𝑗=0
+
+where 𝐶3 = 𝐶𝐶2 + 2𝐶0 , 𝐶42 = 𝐶𝐶36 + 𝐶𝐶02 .
+
+Proof. First of all, from the deﬁnition of the Ritz projection (2.17), we have
+        (                  ) (            )
+            ∇𝑅ℎ 𝜓 𝑗+1 , ∇𝜒ℎ = ∇𝜓 𝑗+1 , ∇𝜒ℎ , ∀𝜒ℎ ∈ 𝑋ℎ0 .                                                                                (4.46)
+
+Taking 𝜒ℎ = 𝑅ℎ 𝜓 𝑗+1 and 𝜒ℎ = Δℎ 𝑅ℎ 𝜓 𝑗+1 in (4.46), respectively, and using (2.22), we infer
+         ‖          ‖2 (                  ) ‖        ‖ ‖          ‖
+         ‖∇𝑅ℎ 𝜓 𝑗+1 ‖ = ∇𝜓 𝑗+1 , ∇𝑅ℎ 𝜓 𝑗+1 ≤ ‖∇𝜓 𝑗+1 ‖ ‖∇𝑅ℎ 𝜓 𝑗+1 ‖ ,                                                                   (4.47)
+         ‖          ‖0                       ‖       ‖0 ‖         ‖0
+        ‖       𝑗+1 ‖
+                      2 (     𝑗+1           𝑗+1
+                                                ) ( 𝑗+1               )
+        ‖Δℎ 𝑅ℎ 𝜓 ‖ = ∇𝑅ℎ 𝜓 , ∇Δℎ 𝑅ℎ 𝜓            = ∇𝜓 , ∇Δℎ 𝑅ℎ 𝜓 𝑗+1
+        ‖           ‖0
+                                                                    196
+M. Li and Z. Li                                                                               Applied Numerical Mathematics 197 (2024) 186–209
+
+                              (                    ) ‖        ‖ ‖            ‖
+                           = − Δ𝜓 𝑗+1 , Δℎ 𝑅ℎ 𝜓 𝑗+1 ≤ ‖Δ𝜓 𝑗+1 ‖ ‖Δℎ 𝑅ℎ 𝜓 𝑗+1 ‖ ,                                                       (4.48)
+                                                      ‖       ‖0 ‖           ‖0
+which implies
+        ‖          ‖   ‖       ‖ ‖              ‖   ‖       ‖
+        ‖∇𝑅ℎ 𝜓 𝑗+1 ‖ ≤ ‖∇𝜓 𝑗+1 ‖ , ‖Δℎ 𝑅ℎ 𝜓 𝑗+1 ‖ ≤ ‖Δ𝜓 𝑗+1 ‖ .                                                                        (4.49)
+        ‖          ‖0 ‖        ‖0 ‖             ‖0 ‖        ‖0
+Then using (4.35) in Theorem 2, we deduce
+        ‖ 𝑗+1 ‖  ‖    𝑗+1 ‖  ‖      ‖    ‖        ‖ ‖         ‖   ‖            ‖
+        ‖∇𝜓ℎ ‖ + ‖Δℎ 𝜓ℎ ‖ =‖∇𝑒𝑗+1   ‖ + ‖Δ 𝑒𝑗+1 ‖ + ‖∇𝑅 𝜓 𝑗+1 ‖ + ‖Δℎ 𝑅ℎ 𝜓 𝑗+1 ‖
+        ‖     ‖0 ‖        ‖0 ‖ 𝜓 ‖0 ‖ ℎ 𝜓 ‖0 ‖ ℎ              ‖0 ‖             ‖0
+                                           ‖ 𝑗+1 ‖
+                            ≤𝐶2 (𝜏 + ℎ) + 2‖𝜓 ‖ ≤ 𝐶𝐶2 + 2𝐶0 ∶= 𝐶3 .                                                                    (4.50)
+                                           ‖     ‖2
+    Next, if 𝜏 < ℎ, from the inverse inequality and the 𝑙∞ (𝐿2 ) norm estimate in (4.34), we infer
+        ‖ 𝑗+1 ‖        ‖ 𝑗+1 ‖
+        ‖∇𝑒𝑐̃ ‖ ≤ 𝐶ℎ−1 ‖𝑒𝑐̃ ‖ ≤ 𝐶𝐶2 ℎ−1 (𝜏 + ℎ) ≤ 𝐶𝐶2 .                                                                                (4.51)
+        ‖ 1 ‖0         ‖ 1 ‖0
+If ℎ < 𝜏 , by use of the 𝑙2 (𝐻 1 ) norm estimate in (4.34), we deduce
+        ‖ 𝑗+1 ‖
+        ‖∇𝑒𝑐̃ ‖ ≤ 𝐶2 𝜏 −1∕2 (𝜏 + ℎ) ≤ 𝐶𝐶2 𝜏 1∕2 .                                                                                      (4.52)
+        ‖ 1 ‖0
+In any case, we obtain
+        ‖ 𝑗+1 ‖    ‖ 𝑗+1 ‖   ‖      𝑗+1 ‖
+        ‖∇𝑐̃1ℎ ‖ ≤ ‖∇𝑒𝑐̃ ‖ + ‖∇𝑅ℎ 𝑐̃1 ‖ ≤ 𝐶𝐶2 + 𝐶0 ∶= 𝐶3 .                                                                             (4.53)
+        ‖      ‖0 ‖ 1 ‖0 ‖              ‖0
+                                                                 𝑗+1       𝑗+1
+Similarly, we can derive the bounds of 𝑙∞ (𝐻 1 ) norm for 𝑐̃2ℎ and 𝑢ℎ , which implies (4.44).
+                                𝑗+1
+    Finally, taking 𝜂1ℎ = 2Δℎ 𝑐̃1ℎ 𝜏 in the third equation of (3.2), and using (2.22), (2.28), (2.35), we have
+                                    (            )‖2
+         ‖ 𝑗+1 ‖2 ‖ 𝑗 ‖2 ‖            𝑗+1     𝑗   ‖ + 2𝜏 ‖       𝑗+1 ‖2
+         ‖∇𝑐̃1ℎ ‖ − ‖∇𝑐̃1ℎ ‖ + ‖‖ ∇ 𝑐̃1ℎ  − 𝑐̃1ℎ  ‖        ‖Δℎ 𝑐̃1ℎ ‖
+         ‖       ‖0 ‖      ‖0 ‖                   ‖0       ‖         ‖0
+           (                     )        (                     )       (                )
+              𝑗    𝑗+1       𝑗+1
+        ≤2𝜏 𝑐̃1ℎ ∇𝜓ℎ , ∇Δℎ 𝑐̃1ℎ + 2𝜏𝑚0 ∇𝜓ℎ , ∇Δℎ 𝑐̃1ℎ + 2𝜏𝑏2 𝑢𝑗ℎ ; 𝑐̃1ℎ
+                                                 𝑗+1        𝑗+1           𝑗+1        𝑗+1
+                                                                              , Δℎ 𝑐̃1ℎ
+            (                             )
+              ‖ 𝑗 ‖1∕2 ‖      𝑗 ‖1∕2        ‖      𝑗+1 ‖ ‖      𝑗+1 ‖
+        ≤𝐶𝜏 ‖∇𝑐̃1ℎ  ‖ ‖Δℎ 𝑐̃1ℎ ‖ + 𝑚0 ‖Δℎ 𝜓ℎ ‖ ‖Δℎ 𝑐̃1ℎ ‖
+              ‖     ‖0 ‖        ‖0          ‖          ‖0 ‖         ‖0
+            ‖     ‖ ‖ 𝑗+1 ‖1∕2 ‖      𝑗+1 ‖3∕2
+       + 𝐶𝜏 ‖∇𝑢𝑗ℎ ‖ ‖∇𝑐̃1ℎ    ‖ ‖Δℎ 𝑐̃1ℎ ‖
+            ‖     ‖0 ‖        ‖0 ‖        ‖0
+                ‖      𝑗+1 ‖2
+     ≤𝐶𝐶3 𝜏 + 𝜏 ‖Δℎ 𝑐̃1ℎ ‖ .
+          6
+                                                                                                                                       (4.54)
+                ‖          ‖0
+Summing (4.54) up from 𝑗 = 0 to 𝐽 − 1, we get
+            𝐽∑
+             −1
+                  ‖     𝑗+1 ‖2          ‖ 0 ‖2
+        𝜏         ‖Δℎ 𝑐̃1ℎ ‖ ≤ 𝐶𝐶36 + 𝐶 ‖∇𝑐̃1ℎ ‖ ≤ 𝐶𝐶36 + 𝐶𝐶02 ∶= 𝐶42 .                                                                (4.55)
+                  ‖         ‖0          ‖      ‖0
+            𝑗=0
+
+In an analogous procedure, we can derive the rest part of (4.45). The proof is completed.
+
+4.2. The 𝑙∞ (𝐻 1 )-norm error estimate
+
+    In this section, we derive the 𝑙∞ (𝐻 1 )-norm error estimates of all the variables, which are shown in following Theorems 3-5.
+
+Theorem 3. Under the conditions of Lemma 5, we have
+            𝐽∑
+             −1
+                  ‖        ‖2 ‖ 𝐽 ‖2      (        )
+        𝜏         ‖𝐷𝜏 𝑒𝑗+1
+                       𝑢 ‖   + ‖∇𝑒 ‖ ≤ 𝐶52 𝜏 2 + ℎ2 ,                                                                                  (4.56)
+                  ‖        ‖0 ‖ 𝑢 ‖0
+            𝑗=0
+                   (         )            (             )
+where 𝐶52 = 𝐶 𝐶02 + 𝐶12 𝐶22 𝑒𝑥𝑝 𝐶𝐶02 + 𝐶𝐶42 .
+
+                                 𝑗+1
+Proof. Putting 𝑣ℎ = 𝐷𝜏 𝑒𝑢              in (4.2) results in
+                             (                   ) (                              )
+         ‖        ‖2    1 ‖ 𝑗+1 ‖2 ‖ 𝑗 ‖2                 𝑗+1
+         ‖𝐷𝜏 𝑒𝑗+1 ‖  +    ‖∇𝑒      ‖  −  ‖ ∇𝑒 𝑢 0 ≤ 𝑢𝑡
+                                               ‖              − 𝐷𝜏 𝑢𝑗+1 , 𝐷𝜏 𝑒𝑗+1
+         ‖    𝑢 ‖0     2𝜏 ‖ 𝑢 ‖0                                                𝑢
+               (                             )
+             + 𝐷𝜏 (𝑢𝑗+1 − 𝑆ℎ 𝑢𝑗+1 ), 𝐷𝜏 𝑒𝑗+1
+                                         𝑢     + 𝑏1 (𝑢𝑗+1 − 𝑢𝑗 ; 𝑢𝑗+1 , 𝐷𝜏 𝑒𝑗+1
+                                                                            𝑢 )
+
+              + 𝑏1 (𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ; 𝑢𝑗+1 , 𝐷𝜏 𝑒𝑗+1           𝑗 𝑗+1
+                                            𝑢 ) + 𝑏1 (𝑆ℎ 𝑢 ; 𝑢  − 𝑆ℎ 𝑢𝑗+1 , 𝐷𝜏 𝑒𝑗+1
+                                                                                𝑢 )
+
+                                                                        197
+M. Li and Z. Li                                                                                       Applied Numerical Mathematics 197 (2024) 186–209
+                                                                          (                                )
+                                                   𝑗 𝑗+1                𝑗+1          𝑗
+              − 𝑏1 (𝑒𝑗𝑢 ; 𝑆ℎ 𝑢𝑗+1 , 𝐷𝜏 𝑒𝑗+1                     𝑗+1
+                                        𝑢 ) − 𝑏1 (𝑢ℎ ; 𝑒𝑢 , 𝐷𝜏 𝑒𝑢 ) + 𝑐̃1 ∇𝜓
+                                                                             𝑗+1
+                                                                                 − 𝑐̃1ℎ ∇𝜓ℎ𝑗+1 , 𝐷𝜏 𝑒𝑗+1
+                                                                                                     𝑢
+
+               (                                      ) ∑9
+                                  𝑗
+              − 𝑐̃2𝑗+1 ∇𝜓 𝑗+1 − 𝑐̃2ℎ ∇𝜓ℎ𝑗+1 , 𝐷𝜏 𝑒𝑗+1
+                                                  𝑢    =   𝐿𝑖 .                                                                                (4.57)
+                                                                 𝑖=1
+
+Now, we estimate the above nine terms. It is not diﬃcult to see that
+                                 𝑡𝑗+1                    𝑡𝑗+1
+                                                              (              )
+                          ‖𝑢 ‖2 d𝑡 + 𝐶ℎ
+                                                     4
+        |𝐿 | + |𝐿 | ≤𝐶𝜏                                        ‖𝑢 ‖2 + ‖𝑝 ‖2 d𝑡
+        | 1| | 2|       ∫ ‖ 𝑡𝑡 ‖0     𝜏 ∫                      ‖ 𝑡 ‖2 ‖ 𝑡 ‖1
+                                𝑡𝑗                       𝑡𝑗
+
+                           1‖        ‖2
+                          + ‖𝐷𝜏 𝑒𝑗+1
+                                 𝑢 ‖    .                                                                                                      (4.58)
+                           8‖        ‖0
+In view of Lemma 2, we infer
+                         (                                    )
+        |𝐿3 | + |𝐿4 | ≤ 𝐶 ‖             ‖
+                          ‖∇(𝑢𝑗+1 − 𝑢𝑗 )‖ + ‖ ∇(𝑢𝑗 − 𝑆ℎ 𝑢𝑗 )‖
+                                                                ‖ 𝑗+1 ‖ ‖
+                                                                  𝑢 ‖ ‖𝐷𝜏 𝑒𝑗+1
+                                                                               ‖
+        | | | |           ‖             ‖0 ‖                ‖0 ‖‖     ‖2 ‖ 𝑢 ‖ ‖0
+                                        𝑡𝑗+1
+
+                                           ‖∇𝑢 ‖2 d𝑡 + 𝐶𝐶 4 ℎ2 + 1 ‖       ‖  2
+                        ≤ 𝐶𝐶02 𝜏           ‖ 𝑡 ‖0                  ‖𝐷 𝑒𝑗+1 ‖ ,                                                                 (4.59)
+                                 ∫                       0       8 ‖ 𝜏 𝑢 ‖0
+                                 𝑡𝑗
+
+and
+
+        |𝐿 | ≤ ‖𝐴 𝑆 𝑢𝑗 ‖ ‖                  ‖ ‖
+                          ∇(𝑢𝑗+1 − 𝑆ℎ 𝑢𝑗+1 )‖ ‖𝐷𝜏 𝑒𝑗+1
+                                                       ‖
+        | 5 | ‖ ℎ ℎ ‖0 ‖ ‖                  ‖0 ‖   𝑢 ‖ ‖0
+                            1‖           ‖2
+                  ≤ 𝐶𝐶04 ℎ2 + ‖𝐷 𝑒𝑗+1 ‖ ,                                                                                                      (4.60)
+                            8 ‖ 𝜏 𝑢 ‖0
+       |𝐿 | ≤ ‖∇𝑒𝑗 ‖ ‖                 ‖ ‖
+                          𝐴 𝑆 𝑢𝑗+1 ‖ ‖𝐷𝜏 𝑒𝑗+1
+                                                        ‖
+       | 6 | ‖ 𝑢 ‖0 ‖   ‖ ℎ ℎ          ‖0 ‖      𝑢 ‖    ‖0
+                    2‖    𝑗 ‖2   1‖          𝑗+1 ‖
+                                                   2
+            ≤ 𝐶𝐶0 ‖∇𝑒𝑢 ‖0 + ‖𝐷𝜏 𝑒𝑢 ‖ ,                                                                                                         (4.61)
+                                 8‖              ‖0
+       |𝐿 | = ||𝑏 (𝑢𝑗 ; 𝑒𝑗+1 − 𝑒𝑗 , 𝐷 𝑒𝑗+1 ) + 𝑏 (𝑢𝑗 ; 𝑒𝑗 , 𝐷 𝑒𝑗+1 )||
+       | 7| | 1 ℎ 𝑢              𝑢     𝜏 𝑢            1 ℎ 𝑢       𝜏 𝑢  |
+                     ‖       𝑗‖ ‖     𝑗‖ ‖         𝑗+1 ‖
+            ≤ 0 + 𝐶 ‖𝐴ℎ 𝑢ℎ ‖ ‖∇𝑒𝑢 ‖0 ‖𝐷𝜏 𝑒𝑢 ‖
+                     ‖        ‖0            ‖            ‖0
+                  ‖     𝑗 ‖2 ‖    𝑗 ‖2      1‖         𝑗+1 ‖
+                                                            2
+            ≤ 𝐶 ‖𝐴ℎ 𝑢ℎ ‖ ‖∇𝑒𝑢 ‖0 + ‖𝐷𝜏 𝑒𝑢 ‖ .                                                                                                  (4.62)
+                  ‖       ‖0                8 ‖            ‖0
+
+The term 𝐿8 can be split as
+            (                                   ) (                                      )
+       𝐿8 = (𝑐̃1𝑗+1 − 𝑐̃1𝑗 )∇𝜓 𝑗+1 , 𝐷𝜏 𝑒𝑗+1𝑢      + 𝑐̃1𝑗 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), 𝐷𝜏 𝑒𝑗+1
+                                                                                     𝑢
+                (                                         ) (                          )
+            + (𝑐̃1𝑗 − 𝑅ℎ 𝑐̃1𝑗 )∇𝑅ℎ 𝜓 𝑗+1 , 𝐷𝜏 𝑒𝑗+1   𝑢      − 𝑒𝑗𝑐̃ ∇𝑅ℎ 𝜓 𝑗+1 , 𝐷𝜏 𝑒𝑗+1
+                                                                                   𝑢
+                                                                  1
+                (                      )
+                   𝑗     𝑗+1       𝑗+1
+            − 𝑐̃1ℎ ∇𝑒𝜓 , 𝐷𝜏 𝑒𝑢            .                                                                                                    (4.63)
+
+Then we deduce
+            ‖              ‖ ‖       ‖ ‖        ‖   ‖ ‖ ‖                       ‖ ‖        ‖
+        𝐿8 ≤‖𝑐̃1𝑗+1 − 𝑐̃1𝑗 ‖ ‖∇𝜓 𝑗+1 ‖ ‖𝐷𝜏 𝑒𝑗+1
+                                              𝑢 ‖ + ‖𝑐̃𝑗 ‖ ‖∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 )‖ ‖𝐷𝜏 𝑒𝑗+1
+                                                                                       𝑢 ‖
+            ‖              ‖0 ‖      ‖0,∞ ‖     ‖0 ‖ 1 ‖0,∞ ‖                   ‖0 ‖       ‖0
+                (                           )
+                  ‖ 𝑗           𝑗‖  ‖ 𝑗 ‖ ‖       𝑗+1 ‖    ‖  𝑗+1 ‖  ‖ 𝑗 ‖ ‖ 𝑗+1 ‖ ‖            ‖
+            + ‖𝑐1 − 𝑅ℎ 𝑐̃1 ‖ + ‖𝑒𝑐̃ ‖ ‖∇𝑅ℎ 𝜓 ‖ ‖𝐷𝜏 𝑒𝑢 ‖ + ‖𝑐̃1ℎ ‖ ‖∇𝑒𝜓 ‖ ‖𝐷𝜏 𝑒𝑗+1             𝑢 ‖
+                  ‖              ‖0 ‖ 1 ‖0 ‖          ‖0,∞ ‖      ‖0 ‖ ‖0,3 ‖        ‖0,6 ‖     ‖0
+                        𝑡𝑗+1
+                                         (         ) (          )
+             ≤𝐶𝐶02 𝜏        ‖𝑐̃ ‖2 d𝑡 + 𝐶 𝐶 2 + 𝐶 2 𝐶 2 𝜏 2 + ℎ2 + 1 ‖       ‖2
+                                                                     ‖𝐷 𝑒𝑗+1 ‖ .                                                               (4.64)
+                     ∫      ‖ 1𝑡 ‖0        0     1   2             8 ‖ 𝜏 𝑢 ‖0
+                     𝑡𝑗
+
+Similarly, we get
+                         𝑡𝑗+1
+                                              (         ) (          )
+        𝐿9 ≤ 𝐶𝐶02 𝜏            ‖𝑐̃2𝑡 ‖2 d𝑡 + 𝐶 𝐶 2 + 𝐶 2 𝐶 2 𝜏 2 + ℎ2 + 1 ‖
+                                                                          ‖𝐷𝜏 𝑒𝑗+1
+                                                                                   ‖2
+                                                                                   ‖ .                                                         (4.65)
+                    ∫          ‖ ‖0             0     1   2             8 ‖    𝑢   ‖0
+                    𝑡𝑗
+
+Inserting the above estimates (4.58)-(4.65) into (4.57), and then summing up from 𝑗 = 0 to 𝐽 − 1, we have
+            𝐽∑
+             −1
+                  ‖        ‖2 ‖ 𝐽 ‖2   (         ) (           )
+        𝜏         ‖𝐷𝜏 𝑒𝑗+1
+                       𝑢 ‖   + ‖∇𝑒 ‖ ≤𝐶 𝐶02 + 𝐶12 𝐶22 𝜏 2 + ℎ2
+                  ‖        ‖0 ‖ 𝑢 ‖0
+            𝑗=0
+
+                                                                                  198
+M. Li and Z. Li                                                                                           Applied Numerical Mathematics 197 (2024) 186–209
+
+                                                           −1 (
+                                                          𝐽∑                       )
+                                                                        ‖       ‖2
+                                                                  𝐶02 + ‖𝐴ℎ 𝑢𝑗ℎ ‖ ‖  ∇𝑒𝑗 ‖ .
+                                                                                          2
+                                                   + 𝐶𝜏                                                                                            (4.66)
+                                                                        ‖       ‖0 ‖ 𝑢 ‖0
+                                                          𝑗=0
+
+Finally, by Gronwall lemma and (4.45), we conclude (4.56).
+
+Theorem 4. Under the conditions of Lemma 5, we have
+                               −1 (
+                              𝐽∑                            )
+        ‖ 𝐽 ‖2 ‖ 𝐽 ‖2               ‖    𝑗+1 ‖2 ‖    𝑗+1 ‖2    (        )
+        ‖∇𝑒𝑐̃ ‖ + ‖∇𝑒𝑐̃ ‖ + 𝜏       ‖𝐷𝜏 𝑒𝑐̃ ‖ + ‖𝐷𝜏 𝑒𝑐̃ ‖ ≤ 𝐶62 𝜏 2 + ℎ2 ,                                                                         (4.67)
+        ‖ 1 ‖0 ‖ 2 ‖0               ‖      1 ‖0 ‖      2 ‖0
+                                           𝑗=0
+                   (                       )       (                 )
+where 𝐶62 = 𝐶 𝐶22 𝐶42 + 𝐶02 𝐶52 𝑒𝑥𝑝 𝐶𝐶02 + 𝐶𝐶42 .
+
+                           𝑗+1
+Proof. Set 𝜂1ℎ = 𝐷𝜏 𝑒𝑐̃           in (4.4), and we obtain
+                            1
+                                (                        ) (                               )
+         ‖     𝑗+1 ‖2      1 ‖ 𝑗+1 ‖2 ‖ 𝑗 ‖2                      𝑗+1         𝑗+1      𝑗+1
+         ‖𝐷𝜏 𝑒𝑐̃ ‖ +           ‖∇𝑒𝑐̃ ‖ − ‖∇𝑒𝑐̃ ‖ = 𝑐̃1𝑡 − 𝐷𝜏 𝑐̃1 , 𝐷𝜏 𝑒𝑐̃
+         ‖       1  ‖0 2𝜏 ‖          1  ‖0 ‖        1 ‖0                                1
+           (                                     )       (                     )
+                   𝑗+1            𝑗+1       𝑗+1                           𝑗+1
+         + 𝐷𝜏 𝑐̃1 − 𝐷𝜏 𝑅ℎ 𝑐̃1 , 𝐷𝜏 𝑒𝑐̃             − 𝑚0 ∇𝑒𝑗+1𝜓 , ∇𝐷𝜏 𝑒𝑐̃1
+                                              1
+           (                                    ) (                                    )
+         + (𝑐̃1𝑗+1 − 𝑐̃1𝑗 )∇𝜓 𝑗+1 , ∇𝐷𝜏 𝑒𝑗+1
+                                          𝑐̃1     + (𝑐̃1𝑗 − 𝑅ℎ 𝑐̃1𝑗 )∇𝜓 𝑗+1 , ∇𝐷𝜏 𝑒𝑗+1
+                                                                                   𝑐̃1
+           (                         ) (                                           )
+         − 𝑒𝑗𝑐̃ ∇𝜓 𝑗+1 , ∇𝐷𝜏 𝑒𝑗+1̃
+                                 𝑐     + 𝑐̃1ℎ 𝑗
+                                                 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝐷𝜏 𝑒𝑗+1 ̃
+                                                                                𝑐
+                1                 1                                              1
+           (                        )
+              𝑗      𝑗+1        𝑗+1             𝑗+1    𝑗 𝑗+1          𝑗+1
+         − 𝑐̃1ℎ ∇𝑒𝜓 , ∇𝐷𝜏 𝑒𝑐̃          + 𝑏2 (𝑢 − 𝑢 ; 𝑐̃1 , 𝐷𝜏 𝑒𝑐̃ )
+                                       1                                             1
+
+         + 𝑏2 (𝑢𝑗 − 𝑆ℎ 𝑢𝑗 ; 𝑐̃1𝑗+1 , 𝐷𝜏 𝑒𝑗+1         𝑗 𝑗+1         𝑗+1
+                                         𝑐̃ ) − 𝑏2 (𝑒𝑢 ; 𝑐̃1 , 𝐷𝜏 𝑒𝑐̃ )
+                                               1                                 1
+
+                                                                                             ∑
+                                                                                             13
+         + 𝑏2 (𝑢𝑗ℎ ; 𝑐̃1𝑗+1 − 𝑅ℎ 𝑐̃1𝑗+1 , 𝐷𝜏 𝑒𝑗+1         𝑗 𝑗+1         𝑗+1
+                                              𝑐̃ ) − 𝑏2 (𝑢ℎ ; 𝑒𝑐̃ , 𝐷𝜏 𝑒𝑐̃ ) ∶=                    𝑀𝑖 .                                            (4.68)
+                                                   1                     1               1
+                                                                                             𝑖=1
+
+It is not hard to ﬁnd that
+                                  𝑡𝑗+1                          𝑡𝑗+1
+
+                          ‖𝑐̃ ‖2 d𝑡 + 𝐶ℎ
+                                                            4
+        |𝑀 | + |𝑀 | ≤𝐶𝜏                    ‖𝑐̃ ‖2 d𝑡
+        | 1| | 2|       ∫ ‖ 1𝑡𝑡 ‖0     𝜏 ∫ ‖ 1𝑡 ‖2
+                                  𝑡𝑗                            𝑡𝑗
+
+                              1 ‖    𝑗+1 ‖2
+                            +    ‖𝐷 𝑒 ‖ ,                                                                                                          (4.69)
+                              10 ‖ 𝜏 𝑐̃1 ‖0
+and
+
+        |𝑀 | ≤ 𝐶 ‖  𝑗        𝑗‖ ‖        ‖ ‖     𝑗+1 ‖
+                 ‖𝑐̃1 − 𝑅ℎ 𝑐̃1 ‖ ‖∇𝜓 𝑗+1 ‖ ‖∇𝐷𝜏 𝑒𝑐̃ ‖
+        | 5|     ‖             ‖0 ‖      ‖0,∞ ‖    1 ‖0
+
+                                  1 ‖    𝑗+1 ‖2
+                  ≤ 𝐶𝐶04 ℎ2 +        ‖𝐷 𝑒 ‖ .                                                                                                      (4.70)
+                                  10 ‖ 𝜏 𝑐̃1 ‖0
+According to (2.22), we ﬁnd
+                                            (        ) 1 ‖
+        |𝑀3 | ≤ 𝑚0 ‖
+                   ‖Δℎ 𝑒𝑗+1
+                            ‖ ‖    𝑗+1 ‖
+                               ‖𝐷 𝑒 ‖ ≤ 𝐶𝐶22 𝜏 2 + ℎ2 +
+                                                                𝑗+1 ‖2
+                                                           ‖𝐷𝜏 𝑒𝑐̃ ‖ .
+        | |        ‖    𝜓 ‖ ‖0 ‖ 𝜏 𝑐̃1 ‖0               10 ‖      1 ‖0
+                                                                                                                                                   (4.71)
+
+By use of Green formula, we get
+               |(                                 ) (                             )|
+        |𝑀 | = | ∇(𝑐̃𝑗+1 − 𝑐̃𝑗 ) ⋅ ∇𝜓 𝑗+1 , 𝐷 𝑒𝑗+1 + (𝑐̃𝑗+1 − 𝑐̃𝑗 )Δ𝜓 𝑗+1 , 𝐷 𝑒𝑗+1 |
+        | 4| |                               𝜏 𝑐
+                                               ̃                             𝜏 𝑐
+                                                                               ̃   |
+               |     1       1                  1       1       1               1  |
+                           𝑡𝑗+1
+
+                                ‖∇𝑐̃ ‖2 d𝑡 + 1 ‖    𝑗+1 ‖                    2
+                  ≤ 𝐶𝐶02 𝜏      ‖ 1𝑡 ‖0         ‖𝐷 𝑒 ‖ ,                                                                                           (4.72)
+                           ∫                 10 ‖ 𝜏 𝑐̃1 ‖0
+                           𝑡𝑗
+
+and
+               |(                       ) (                 )|
+        |𝑀 | = | ∇𝑒𝑗 ⋅ ∇𝜓 𝑗+1 , 𝐷 𝑒𝑗+1 + 𝑒𝑗 Δ𝜓 𝑗+1 , 𝐷 𝑒𝑗+1 |
+        | 6| |     𝑐̃1           𝜏  𝑐̃1        𝑐̃1    𝜏 𝑐̃1  |
+               |                                             |
+                  2‖   𝑗 ‖2     1 ‖      𝑗+1 ‖2
+             ≤ 𝐶𝐶0 ‖∇𝑒𝑐̃ ‖ +       ‖𝐷 𝑒 ‖ .                                                                                                        (4.73)
+                   ‖ 1 ‖0 10 ‖ 𝜏 𝑐̃1 ‖0
+Thank to Lemma 4, we infer
+
+                                                                                             199
+M. Li and Z. Li                                                                                    Applied Numerical Mathematics 197 (2024) 186–209
+
+        | 𝑀8 | ≤ 𝐶 ‖     𝑗 ‖ ‖
+                   ‖Δℎ 𝑐̃1ℎ ‖ ‖Δℎ 𝑒𝑗+1
+                                       ‖ ‖    𝑗+1 ‖
+                                          ‖𝐷 𝑒 ‖
+        | |        ‖        ‖0 ‖    𝜓 ‖‖0 ‖ 𝜏 𝑐̃1 ‖0
+                     (           )‖    𝑗 ‖2     1 ‖   𝑗+1 ‖2
+               ≤ 𝐶𝐶22 𝜏 2 + ℎ2 ‖Δℎ 𝑐̃1ℎ   ‖ +     ‖𝐷 𝑒 ‖ .                                                                                  (4.74)
+                                  ‖       ‖0 10 ‖ 𝜏 𝑐̃1 ‖0
+In view of Lemma 3, we deduce
+
+         ∑
+         11          (                                                 )
+               |𝑀 | ≤ ‖             ‖
+                      ‖∇(𝑢𝑗+1 − 𝑢𝑗 )‖ + ‖∇(𝑢𝑗 − 𝑆ℎ 𝑢𝑗 )‖   +‖ ∇𝑒𝑗𝑢 ‖
+                                                                         ‖ 𝑗+1 ‖ ‖   𝑗+1 ‖
+                                                                         ‖𝑐̃1 ‖ ‖𝐷𝜏 𝑒𝑐̃ ‖
+               | 𝑖|   ‖             ‖0  ‖              ‖ 0  ‖      ‖ 0   ‖     ‖2 ‖    1 ‖0
+         𝑖=9
+                                                            𝑡𝑗+1
+                               (        )
+                     ≤ 𝐶𝐶02 𝐶52 𝜏 2 + ℎ2 + 𝐶𝐶02 𝜏 2          ‖∇𝑢 ‖2 d𝑡 + 1 ‖    𝑗+1 ‖2
+                                                                            ‖𝐷 𝑒 ‖ ,                                                        (4.75)
+                                                           ∫ ‖ 𝑡 ‖0      10 ‖ 𝜏 𝑐̃1 ‖0
+                                                           𝑡𝑗
+
+         ∑
+         13                              (                    )
+               |𝑀𝑖 | ≤ 𝐶 ‖    𝑗‖   ‖   𝑗+1      𝑗+1 ‖  ‖ 𝑗 ‖ ‖      𝑗+1 ‖
+                         ‖𝐴ℎ 𝑢ℎ ‖ ‖∇(𝑐̃1 − 𝑅ℎ 𝑐̃1 )‖ + ‖∇𝑒𝑐̃ ‖ ‖𝐷𝜏 𝑒𝑐̃ ‖
+               | |       ‖      ‖0 ‖                ‖0 ‖ 1 ‖0 ‖       1 ‖0
+        𝑖=12
+                            ‖       ‖2       ‖       ‖2 ‖     ‖2  1 ‖   𝑗+1 ‖2
+                     ≤ 𝐶𝐶02 ‖𝐴ℎ 𝑢𝑗ℎ ‖ ℎ2 + 𝐶 ‖𝐴ℎ 𝑢𝑗ℎ ‖ ‖∇𝑒𝑗𝑐̃ ‖ +   ‖𝐷 𝑒 ‖ .                                                                (4.76)
+                            ‖       ‖0       ‖       ‖0 ‖ 1 ‖0 10 ‖ 𝜏 𝑐̃1 ‖0
+The term 𝑀7 can be split as
+                  ((                                           )                               )
+        𝑀7 =        𝑒𝑗𝑐̃ + (𝑅ℎ 𝑐̃1𝑗 − 𝑐̃1𝑗 ) + (𝑐̃1𝑗 − 𝑐̃1𝑗+1 ) ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝐷𝜏 𝑒𝑗+1
+                                                                                           𝑐̃1
+                        1
+                    (                                              )
+                        𝑗+1     𝑗+1             𝑗+1            𝑗+1
+                  + 𝑐̃1 ∇(𝜓          − 𝑅ℎ 𝜓 ), ∇𝐷𝜏 𝑒𝑐̃               ,                                                                      (4.77)
+                                                                1
+
+and note that
+         (                                      )     (                                    )
+          𝑐̃1𝑗+1 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝐷𝜏 𝑒𝑗+1
+                                            𝑐̃1   = 𝐷𝜏 𝑐̃1𝑗+1 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝑒𝑗+1
+                                                                                      𝑐̃1
+            (                                    ) (                                 )
+         − 𝑐̃1𝑗+1 ∇𝐷𝜏 (𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝑒𝑗𝑐̃ − 𝐷𝜏 𝑐̃1𝑗+1 ∇(𝜓 𝑗 − 𝑅ℎ 𝜓 𝑗 ), ∇𝑒𝑗+1
+                                                                                  𝑐̃     ,                                                  (4.78)
+                                                       1                                   1
+
+thus, we obtain
+                (                                             )
+        | 𝑀7 | ≤ ‖  𝑗 ‖      ‖     𝑗   𝑗‖     ‖ 𝑗+1
+                 ‖𝑒𝑐̃ ‖ + ‖𝑅ℎ 𝑐̃1 − 𝑐̃1 ‖ + ‖𝑐̃1 − 𝑐̃1 ‖
+                                                        𝑗‖      ‖                    ‖ ‖     𝑗+1 ‖
+                                                                ‖∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 )‖ ‖∇𝐷𝜏 𝑒𝑐̃ ‖
+        | |      ‖ 1 ‖0,6 ‖             ‖0,6 ‖            ‖0,6 ‖                     ‖0,3 ‖    1 ‖0
+
+                  ‖ 𝑗+1 ‖ ‖          𝑗+1            𝑗+1 ‖ ‖     𝑗 ‖
+                + ‖𝑐̃1 ‖ ‖∇(𝐷𝜏 𝜓          − 𝑅ℎ 𝐷𝜏 𝜓 )‖ ‖∇𝑒𝑐̃ ‖
+                  ‖     ‖0,∞ ‖                          ‖0 ‖ 1 ‖0
+                                                                    (                               )
+                  ‖     𝑗+1 ‖                      ‖   𝑗+1 ‖          𝑗+1                       𝑗+1
+                + ‖𝐷𝜏 𝑐̃1 ‖ ‖    ‖∇(𝜓 − 𝑅ℎ 𝜓 )‖
+                                     𝑗        𝑗
+                                                ‖  ‖∇𝑒𝑐̃ ‖ + 𝐷𝜏 𝑐̃1 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝑒𝑐̃
+                  ‖         ‖0,∞                 0 ‖    1  ‖0                                    1
+
+                        ⎛                       𝑡𝑗+1             ⎞
+                        ⎜‖      ‖2                  ‖∇𝑐̃1𝑡 ‖2 d𝑡⎟⎟ + 1 ‖     𝑗+1 ‖2
+                  ≤𝐶𝐶02 ⎜‖∇𝑒𝑗𝑐̃ ‖ + 𝐶02 ℎ2 + 𝜏      ‖      ‖0           ‖𝐷𝜏 𝑒𝜂̃ ‖
+                          ‖ 1 ‖0               ∫                     10 ‖        ‖0
+                        ⎜                      𝑡𝑗                ⎟
+                        ⎝                                        ⎠
+                                  𝑡𝑗+1
+                        𝐶𝐶02 ℎ2        (                    )
+                    +                      ‖𝜓𝑡 ‖2 + ‖𝑐̃1𝑡 ‖2 d𝑡 + 𝐶 ‖  𝑗 ‖2
+                                                                    ‖∇𝑒𝑐̃ ‖
+                          𝜏       ∫        ‖ ‖2 ‖ ‖2                ‖ 1 ‖0
+                                  𝑡𝑗
+                          (                                 )
+                    + 𝐷𝜏 𝑐̃1𝑗+1 ∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝑒𝑗+1
+                                                        𝑐̃    .                                                                             (4.79)
+                                                                    1
+
+Inserting (4.69)-(4.76), (4.79) into (4.68), then summing up from 𝑗 = 0 to 𝐽 − 1, we deduce
+            𝐽∑
+             −1
+                  ‖    𝑗+1 ‖2 ‖      ‖2   (                 )(        )
+        𝜏         ‖𝐷𝜏 𝑒𝑐̃ ‖ + ‖∇𝑒𝐽𝑐̃ ‖ ≤ 𝐶 𝐶22 𝐶42 + 𝐶02 𝐶52 𝜏 2 + ℎ2
+                  ‖      1 ‖0 ‖ 1 ‖0
+            𝑗=0
+                   −1 (
+                  𝐽∑                     )         (                              )
+                               ‖       ‖2 ‖     ‖2
+         + 𝐶𝜏            𝐶02 + ‖𝐴ℎ 𝑢𝑗ℎ ‖ ‖∇𝑒𝑗𝑐̃ ‖ + 𝑐̃1𝐽 ∇(𝜓 𝐽 − 𝑅ℎ 𝜓 𝐽 ), ∇𝑒𝐽𝑐̃ .                                                          (4.80)
+                               ‖       ‖0 ‖ 1 ‖0                                1
+                  𝑗=0
+
+In addition, observing that
+        |( 𝐽                       )|
+        | 𝑐̃ ∇(𝜓 𝐽 − 𝑅 𝜓 𝐽 ), ∇𝑒𝐽 | ≤ ‖      ‖ ‖                ‖ ‖      ‖
+                                         𝑐̃𝐽 ‖ ‖∇(𝜓 𝐽 − 𝑅ℎ 𝜓 𝐽 )‖ ‖∇𝑒𝐽𝑐̃ ‖
+        | 1           ℎ         𝑐̃1 | ‖
+        |                           | ‖ 1 ‖0,∞ ‖                ‖0 ‖ 1 ‖0
+                                                 1‖      ‖2
+                                      ≤ 𝐶𝐶04 ℎ2 + ‖∇𝑒𝐽𝑐̃ ‖ ,                                                                                (4.81)
+                                                 2 ‖ 1 ‖0
+then substituting (4.81) into (4.80), and using Gronwall lemma, we have
+
+                                                                                 200
+M. Li and Z. Li                                                                              Applied Numerical Mathematics 197 (2024) 186–209
+
+            𝐽∑
+             −1
+                  ‖    𝑗+1 ‖2 ‖      ‖2   (                 )   (           )(       )
+        𝜏         ‖𝐷𝜏 𝑒𝑐̃ ‖ + ‖∇𝑒𝐽𝑐̃ ‖ ≤ 𝐶 𝐶22 𝐶42 + 𝐶02 𝐶52 exp 𝐶𝐶02 + 𝐶𝐶42 𝜏 2 + ℎ2 .                                               (4.82)
+                  ‖      1 ‖0 ‖ 1 ‖0
+            𝑗=0
+                                                 𝑗+1
+A similar estimate can be obtained for 𝑒𝑐̃             . The proof is completed.
+                                                 2
+
+
+    Finally, based on Theorems 2-4, and using the triangle inequality, we have
+
+Theorem 5. Under the conditions of Lemma 5, we have
+        ‖ 𝑗+1    𝑗+1 ‖    ‖ 𝑗+1   𝑗+1 ‖   ‖         𝑗+1 ‖
+        ‖𝑐1 − 𝑐1ℎ ‖ + ‖𝑐2 − 𝑐2ℎ ‖ + ‖𝑢𝑗+1 − 𝑢ℎ ‖
+        ‖            ‖0 ‖             ‖0 ‖              ‖0
+                           ‖                 ‖
+                         + ‖∇(𝜓 𝑗+1 − 𝜓ℎ𝑗+1 )‖ ≤ 𝐶2 (𝜏 + ℎ) ,                                                                         (4.83)
+                           ‖                 ‖0
+        ‖    𝑗+1    𝑗+1 ‖
+        ‖∇(𝑢 − 𝑢ℎ )‖ ≤ 𝐶5 (𝜏 + ℎ) ,                                                                                                   (4.84)
+        ‖               ‖0
+        ‖    𝑗+1    𝑗+1 ‖    ‖   𝑗+1    𝑗+1 ‖
+        ‖∇(𝑐1 − 𝑐1ℎ )‖ + ‖∇(𝑐2 − 𝑐2ℎ )‖ ≤ 𝐶6 (𝜏 + ℎ) .                                                                                (4.85)
+        ‖               ‖0 ‖                 ‖0
+
+4.3. Improved error estimate for the 𝑙∞ (𝐿2 )-norm
+
+   In this section, let Ω be a rectangular domain with the boundary 𝜕Ω parallel to 𝑥1 -axis or 𝑥2 -axis. ℎ is a family of axis-parallel
+rectangular meshes of Ω, and 𝐾 is a rectangular element. We use the bilinear element to solve 𝑐1 , 𝑐2 , 𝜓 , and 𝑄1 -𝑄0 element for 𝑢
+and 𝑝 [52].
+   Then, we have the following improved estimate.
+
+Lemma 9. For all 𝜓 ∈ 𝐻 3 (Ω), 𝜑ℎ ∈ 𝑋ℎ0 , there holds
+        (                   )
+            ∇(𝜓 − 𝑅ℎ 𝜓), ∇𝜑ℎ ≤ 𝐶ℎ2 ‖𝜓‖3 ‖    ‖
+                                        ‖∇𝜑ℎ ‖0 .                                                                                     (4.86)
+
+
+Proof. Let 𝐼ℎ be the interpolation operator on 𝑋ℎ0 , then we obtain from [55] that
+        (                   )
+            ∇(𝜓 − 𝐼ℎ 𝜓), ∇𝜑ℎ ≤ 𝐶ℎ2 ‖𝜓‖3 ‖    ‖
+                                        ‖∇𝜑ℎ ‖0 .                                                                                     (4.87)
+By use of (2.17), we have
+        (                      ) (                )
+            ∇(𝑅ℎ 𝜓 − 𝐼ℎ 𝜓), ∇𝜑ℎ = ∇(𝜓 − 𝐼ℎ 𝜓), ∇𝜑ℎ , ∀𝜑ℎ ∈ 𝑋ℎ .                                                                       (4.88)
+Taking 𝜑ℎ = 𝑅ℎ 𝜓 − 𝐼ℎ 𝜓 in (4.88) and using (4.87), we infer
+
+        ‖∇(𝑅 𝜓 − 𝐼 𝜓)‖ ≤ 𝐶ℎ2 ‖𝜓‖ .                                                                                                    (4.89)
+        ‖   ℎ     ℎ  ‖0         3
+
+As a result, from (4.87) and (4.89), we deduce
+        (                   ) (                ) (                    )
+            ∇(𝜓 − 𝑅ℎ 𝜓), ∇𝜑ℎ = ∇(𝜓 − 𝐼ℎ 𝜓), ∇𝜑ℎ + ∇(𝐼ℎ 𝜓 − 𝑅ℎ 𝜓), ∇𝜑ℎ
+                                     ≤ 𝐶ℎ2 ‖𝜓‖3 ‖    ‖
+                                                ‖∇𝜑ℎ ‖0 .                                                                             (4.90)
+The proof is completed.
+
+    Based on Lemma 9, we can improve the estimate of 𝐸7 in Lemma 6. In fact, 𝐸7 can be split as
+            (                                                                           )
+        𝐸7 = (𝑒𝑗𝑐̃ + (𝑅ℎ 𝑐̃1𝑗 − 𝑐̃1𝑗 ) + (𝑐̃1𝑗 − 𝑃0𝐾 𝑐̃1𝑗 ))∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 ), ∇𝑒𝑗+1
+                                                                                    ̃
+                                                                                    𝑐
+                  1                                                                  1
+              ∑           (                                      )
+                     𝐾 𝑗           𝑗+1       ̃    𝑗+1        𝑗+1
+            +       𝑃0 𝑐̃1 ∇(𝜓          − 𝑅ℎ 𝜓 ), ∇𝑒𝑐̃            ,                                                                   (4.91)
+                                                            1
+                      𝐾
+                  𝑗
+where 𝑃0𝐾 𝑐̃1 =
+                       1
+                         ∫ 𝑐̃𝑗 d𝑥.
+                      |𝐾| 𝐾 1
+    Then, using Lemma 9, we infer
+
+        |𝐸 | ≤ 𝐶 ‖ 𝑗 ‖ ‖                     ‖ ‖ 𝑗+1 ‖       ‖      ‖ ‖ 𝑗 ‖ ‖ 𝑗+1 ‖
+                 ‖𝑒𝑐̃ ‖ ‖∇(𝜓 𝑗+1 − 𝑅ℎ 𝜓 𝑗+1 )‖ ‖∇𝑒𝑐̃ ‖ + 𝐶ℎ2 ‖𝜓 𝑗+1 ‖ ‖𝑐̃1 ‖ ‖∇𝑒𝑐̃ ‖
+        | 7|     ‖ 1 ‖0,3 ‖                  ‖0,6 ‖ 1 ‖0     ‖      ‖3 ‖ ‖2 ‖ 1 ‖0
+                                   ‖ ‖2 1 ‖         ‖2
+                  ≤ 𝐶𝐶04 ℎ4 + 𝐶𝐶02 ‖𝑒𝑗𝑐̃ ‖ + ‖∇𝑒𝑗+1 ‖ .                                                                               (4.92)
+                                   ‖ 1 ‖0 7 ‖ 𝑐̃1 ‖0
+    Consequently, we can improve the result of Theorem 2 as follows.
+
+                                                                              201
+M. Li and Z. Li                                                                                                      Applied Numerical Mathematics 197 (2024) 186–209
+
+
+Theorem 6. Under the conditions of Lemma 5, we have
+        ‖ 𝑗+1  𝑗+1 ‖  ‖ 𝑗+1  𝑗+1 ‖  ‖        𝑗+1 ‖   (      )
+        ‖𝑐1 − 𝑐1ℎ ‖ + ‖𝑐2 − 𝑐2ℎ ‖ + ‖𝑢𝑗+1 − 𝑢ℎ ‖ ≤ 𝐶2 𝜏 + ℎ2 .                                                                                                (4.93)
+        ‖          ‖0 ‖          ‖0 ‖            ‖0
+
+Remark 3. Although only the ﬁrst order spatial accuracy is reported in Theorem 5, a higher order ﬁnite element can also be
+applied, and higher order error estimates can be obtained under the condition of a higher regularity of solutions. In addition, on
+rectangular meshes, there has been some existing numerical work about the super-convergence analysis of the PNP equations and
+the Navier-Stokes equations [43,58]. In a similar way, we can obtain the super-convergence results for the NSPNP equations, and
+the convergence order of the 𝑙∞ (𝐻 1 )-norm can be improved to (𝜏 + ℎ2 ).
+
+5. Two physical properties
+
+    In this section, we aim to derive some important physical properties for the proposed scheme.
+                                                    (                )
+                                                        𝑗+1    𝑗+1
+Theorem 7. The ﬁnite element solutions 𝑐1ℎ , 𝑐2ℎ                         satisfy global mass conservation, that is
+
+               𝑗+1               𝑗+1
+              𝑐1ℎ  𝑑𝑥 =         𝑐2ℎ  𝑑𝑥 = 𝑚0 |Ω| .                                                                                                             (5.1)
+        ∫                 ∫
+        Ω                 Ω
+
+
+    The property (5.1) can be derived easily from (3.3).
+
+Theorem 8. Deﬁne a discrete energy by
+         (         )   (                 )
+                      1 ‖ 𝑗 ‖2 ‖ 𝑗 ‖2
+        𝐸 𝑢𝑗ℎ , 𝜓ℎ𝑗 =    ‖𝑢ℎ ‖ + ‖∇𝜓ℎ ‖ ,                                                                                                                      (5.2)
+                      2 ‖ ‖0 ‖        ‖0
+then if 𝜏 and ℎ are small enough, an energy stability
+         (            )   (          )
+        𝐸 𝑢𝑗+1
+           ℎ
+               , 𝜓ℎ𝑗+1 ≤ 𝐸 𝑢𝑗ℎ , 𝜓ℎ𝑗                                                                                                                           (5.3)
+
+holds for 𝑗 = 0, 1, ⋯ , 𝐽 − 1.
+
+                                            𝑗+1                 𝑗+1        𝑗+1
+Proof. Step 1. Choose 𝜑ℎ = Δℎ 𝜓ℎ                  and 𝜑ℎ = 𝑐1ℎ − 𝑐2ℎ in (3.2) respectively, and we get
+                         (                    ) (                           )
+           ‖    𝑗+1 ‖2        𝑗+1         𝑗+1         𝑗+1    𝑗+1
+           ‖Δℎ 𝜓ℎ ‖ = ∇𝜓ℎ , ∇Δℎ 𝜓ℎ              = 𝑐1ℎ     − 𝑐2ℎ  , Δℎ 𝜓ℎ𝑗+1
+           ‖        ‖0
+                         ‖ 𝑗+1    𝑗+1 ‖ ‖       𝑗+1 ‖
+                       ≤ ‖𝑐1ℎ  − 𝑐2ℎ  ‖ ‖Δℎ 𝜓ℎ ‖ ,                                                                                                             (5.4)
+                         ‖            ‖0 ‖          ‖0
+                         (                         ) (                            )
+        ‖ 𝑗+1   𝑗+1 ‖2        𝑗+1     𝑗+1      𝑗+1         𝑗+1     𝑗+1        𝑗+1
+        ‖𝑐1ℎ − 𝑐2ℎ ‖ = ∇𝜓ℎ , ∇(𝑐1ℎ − 𝑐2ℎ ) = 𝑐1ℎ − 𝑐2ℎ , Δℎ 𝜓ℎ
+        ‖           ‖0
+                         ‖ 𝑗+1    𝑗+1 ‖ ‖       𝑗+1 ‖
+                       ≤ ‖𝑐1ℎ  − 𝑐2ℎ  ‖ ‖Δℎ 𝜓ℎ ‖ ,                                                                                                             (5.5)
+                         ‖            ‖0 ‖          ‖0
+which implies
+        ‖    𝑗+1 ‖  ‖ 𝑗+1    𝑗+1 ‖
+        ‖Δℎ 𝜓ℎ ‖ = ‖𝑐1ℎ − 𝑐2ℎ ‖ ,                                                                                                                              (5.6)
+        ‖        ‖0 ‖            ‖0
+                    (                   )
+        ‖    𝑗+1 ‖2      𝑗+1    𝑗+1 𝑗+1
+        ‖Δℎ 𝜓ℎ ‖ = ∇(𝑐1ℎ − 𝑐2ℎ ), ∇𝜓ℎ     .                                                                                                                    (5.7)
+        ‖        ‖0
+                                  𝑗+1
+    Step 2. Putting 𝑣ℎ = 𝑢ℎ             in (3.2) yields
+              (                                           )                 (                      )
+          1       ‖ 𝑗+1 ‖2 ‖ 𝑗+1 𝑗 ‖2  ‖ 𝑗 ‖2                   ‖      ‖2
+                  ‖𝑢ℎ ‖ + ‖𝑢ℎ − 𝑢ℎ ‖ − ‖𝑢ℎ ‖                  + ‖∇𝑢𝑗+1         𝑗     𝑗     𝑗+1 𝑗+1
+                                                                       ‖ = − (𝑐1ℎ − 𝑐2ℎ )∇𝜓ℎ , 𝑢ℎ    .                                                         (5.8)
+         2𝜏       ‖     ‖0 ‖       ‖0 ‖ ‖0                      ‖  ℎ   ‖0
+    Step 3. From the last equation of (3.2), it is easy to ﬁnd
+        (                  ) (                     )
+                                   𝑗+1
+            ∇𝐷𝜏 𝜓ℎ𝑗+1 , ∇𝜑ℎ = 𝐷𝜏 (𝑐1ℎ     𝑗+1
+                                       − 𝑐2ℎ  ), 𝜑ℎ , ∀𝜂ℎ ∈ 𝑋ℎ .                                                                                               (5.9)
+
+                          𝑗+1                           𝑗+1
+Take 𝜂1ℎ = 𝜂2ℎ = 𝜓ℎ             in (3.2) and 𝜑ℎ = 𝜓ℎ          in (5.9), respectively, then we arrive at
+              (                                          ) (                        )
+          1    ‖ 𝑗+1 ‖2 ‖         𝑗+1      𝑗 ‖2 ‖ 𝑗 ‖2              𝑗+1     𝑗+1 𝑗+1
+               ‖∇𝜓ℎ ‖ + ‖∇(𝜓ℎ − 𝜓ℎ )‖ − ‖∇𝜓ℎ ‖ + ∇(𝑐1ℎ − 𝑐2ℎ ), ∇𝜓ℎ
+         2𝜏    ‖      ‖0 ‖                   ‖0 ‖    ‖0
+                 (                           )    (                         )
+                   𝑗     𝑗
+               + (𝑐1ℎ + 𝑐2ℎ                               𝑗+1
+                            )∇𝜓ℎ𝑗+1 , ∇𝜓ℎ𝑗+1 = −𝑏2 𝑢𝑗ℎ ; 𝑐1ℎ     𝑗+1
+                                                              − 𝑐2ℎ  , 𝜓ℎ𝑗+1 .                                                                                (5.10)
+
+
+                                                                                      202
+M. Li and Z. Li                                                                                                Applied Numerical Mathematics 197 (2024) 186–209
+
+
+    Step 4. Add (5.8) and (5.10) up, and use (5.7), then we deduce
+              (                                                                                        )
+          1  ‖ 𝑗+1 ‖2 ‖ 𝑗+1         𝑗 ‖2    ‖ 𝑗 ‖2 ‖ 𝑗+1 ‖2 ‖               𝑗+1       𝑗 ‖2    ‖ 𝑗 ‖2
+             ‖𝑢ℎ ‖ + ‖𝑢ℎ − 𝑢ℎ ‖ − ‖𝑢ℎ ‖ + ‖∇𝜓ℎ ‖ + ‖∇(𝜓ℎ − 𝜓ℎ )‖ − ‖∇𝜓ℎ ‖
+         2𝜏  ‖     ‖0 ‖               ‖0 ‖ ‖0 ‖                 ‖0 ‖                    ‖0 ‖        ‖0
+                                         ‖ √
+                                                        𝑗+1 ‖
+                                                                2
+           ‖      ‖2 ‖        𝑗+1 ‖2
+         + ‖∇𝑢𝑗+1 ‖ + ‖Δ 𝜓 ‖ + ‖ 𝑐1 + 𝑐2 ∇𝜓ℎ ‖
+                                              𝑗     𝑗
+           ‖ ℎ ‖0 ‖ ℎ ℎ ‖0 ‖             ‖
+                                                             ‖
+                                                             ‖0
+             (                                        ) (                                                  )
+                𝑗     𝑗    𝑗      𝑗       𝑗+1     𝑗+1           𝑗+1     𝑗       𝑗+1     𝑗
+         = − (𝑐1ℎ − 𝑐1 + 𝑐2ℎ − 𝑐2 )∇𝜓ℎ , ∇𝜓ℎ           + (𝑐1ℎ        − 𝑐1ℎ − (𝑐2ℎ    − 𝑐2ℎ ))∇𝜓ℎ𝑗+1 , 𝑢𝑗+1
+                                                                                                       ℎ
+           (                             )      (                                   )
+              𝑗+1    𝑗+1
+         − (𝑐1ℎ   − 𝑐2ℎ  )∇𝜓ℎ𝑗+1 , 𝑢𝑗+1
+                                     ℎ
+                                           + 𝑏2 𝑢𝑗+1
+                                                   ℎ
+                                                       − 𝑢𝑗ℎ ; 𝑐1ℎ
+                                                                 𝑗+1    𝑗+1
+                                                                     − 𝑐2ℎ  , 𝜓ℎ𝑗+1
+             (                             )    ∑
+                                                5
+         − 𝑏2 𝑢𝑗+1
+               ℎ
+                   ; 𝑐 𝑗+1
+                       1ℎ
+                           − 𝑐 𝑗+1
+                               2ℎ
+                                   , 𝜓ℎ
+                                       𝑗+1
+                                             ∶=   𝑅𝑖 .                                                                                                  (5.11)
+                                                𝑖=1
+
+Next we estimate the above ﬁve terms. By use of Theorem 5, it is easy to check
+        ‖ 𝑗+1   𝑗 ‖    ‖ 𝑗+1   𝑗+1 ‖  ‖ 𝑗    𝑗‖    ‖ 𝑗+1  𝑗‖
+        ‖𝑐1ℎ − 𝑐1ℎ ‖ ≤ ‖𝑐1ℎ − 𝑐1 ‖ + ‖𝑐1ℎ − 𝑐1 ‖ + ‖𝑐1 − 𝑐1 ‖ ≤ 𝐶2 (𝜏 + ℎ) .                                                                            (5.12)
+        ‖          ‖0 ‖            ‖0 ‖        ‖0 ‖         ‖0
+Similarly, we obtain
+        ‖ 𝑗+1   𝑗 ‖                 ‖ ( 𝑗+1     )‖
+        ‖𝑐2ℎ − 𝑐2ℎ ‖ ≤ 𝐶2 (𝜏 + ℎ) , ‖
+                                    ‖ ∇ 𝑢ℎ − 𝑢𝑗ℎ ‖
+                                                 ‖ ≤ 𝐶5 (𝜏 + ℎ) .                                                                                       (5.13)
+        ‖          ‖0               ‖            ‖0
+Then, based on (5.6), (5.12), (5.13) and Theorem 5, we infer
+                            (                            )
+        |𝑅 | + |𝑅 | + |𝑅 | ≤ ‖   𝑗     𝑗‖   ‖ 𝑗       𝑗‖   ‖ 𝑗+1 ‖ ‖ 𝑗+1 ‖
+                              ‖𝑐1ℎ − 𝑐1 ‖ + ‖𝑐2ℎ − 𝑐2 ‖ ‖∇𝜓ℎ ‖ ‖∇𝜓ℎ ‖
+        | 1| | 2| | 4|        ‖         ‖0 ‖           ‖0 ‖          ‖0,3 ‖        ‖0,6
+                               (                                 )
+                                 ‖ 𝑗+1    𝑗 ‖     ‖ 𝑗+1     𝑗 ‖    ‖ 𝑗+1 ‖ ‖ 𝑗+1 ‖
+                            + ‖𝑐1ℎ − 𝑐1ℎ ‖ + ‖𝑐2ℎ − 𝑐2ℎ ‖ ‖∇𝜓ℎ ‖ ‖𝑢ℎ ‖
+                                 ‖          ‖0 ‖              ‖0 ‖          ‖0,3 ‖      ‖0,6
+                               ‖ ( 𝑗+1      𝑗
+                                              )‖
+                                                  ‖  𝑗+1    𝑗+1 ‖  ‖      𝑗+1 ‖
+                            +‖ ‖∇ 𝑢ℎ − 𝑢ℎ ‖ ‖
+                                               ‖ 𝑐       − 𝑐2ℎ ‖ ‖Δℎ 𝜓ℎ ‖
+                               ‖               ‖0 ‖ 1ℎ          ‖0 ‖          ‖0
+                                       ‖         ‖ 2   1‖        ‖ 2
+                           ≤𝐶5 (𝜏 + ℎ) ‖Δℎ 𝜓ℎ𝑗+1 ‖ + ‖∇𝑢𝑗+1      ‖ .                                                                                    (5.14)
+                                       ‖         ‖0 2 ‖ ℎ ‖0
+Using Green formula, Lemma 1, Theorem 5 and (5.6), we get
+                        (                                )
+                     1
+        |𝑅3 + 𝑅5 | = | div𝑢𝑗+1ℎ
+                                      𝑗+1
+                                  , (𝑐1ℎ      𝑗+1
+                                          − 𝑐2ℎ   )𝜓ℎ𝑗+1 |
+                     2
+                        (                                         )
+                     1
+                   = | div(𝑢𝑗+1ℎ
+                                                𝑗+1
+                                    − 𝑢𝑗+1 ), (𝑐1ℎ      𝑗+1
+                                                     − 𝑐2ℎ  )𝜓ℎ𝑗+1 |
+                     2
+                                ‖ 𝑗+1      𝑗+1 ‖ ‖ 𝑗+1 ‖
+                   ≤ 𝐶5 (𝜏 + ℎ) ‖𝑐1ℎ    − 𝑐2ℎ   ‖ ‖𝜓ℎ ‖
+                                ‖               ‖0 ‖     ‖0,∞
+                                ‖          ‖ 2
+                   ≤ 𝐶5 (𝜏 + ℎ) ‖Δℎ 𝜓ℎ𝑗+1 ‖ .                                                                                                           (5.15)
+                                ‖          ‖0
+Inserting (5.14) and (5.15) into (5.11) yields
+             (                       )      (                              )
+         1  ‖ 𝑗+1 ‖2 ‖ 𝑗+1 ‖2             1 ‖ 𝑗+1      𝑗 ‖2  ‖  𝑗+1  𝑗 ‖2
+            ‖𝑢ℎ ‖ + ‖∇𝜓ℎ ‖ +                   ‖𝑢ℎ − 𝑢ℎ ‖ + ‖∇(𝜓ℎ − 𝜓ℎ )‖
+         2  ‖      ‖0 ‖           ‖0      2 ‖            ‖0 ‖           ‖0
+            (                 )‖      𝑗+1 ‖2     1 ‖ 𝑗+1 ‖2
+         + 𝜏 1 − 𝐶5 (𝜏 + ℎ) ‖Δℎ 𝜓ℎ ‖ + 𝜏 ‖∇𝑢ℎ ‖
+                               ‖          ‖0 2 ‖          ‖0
+              √                         (                   )
+            ‖                𝑗+1 ‖
+                                  2
+         +𝜏‖    𝑐 𝑗
+                    + 𝑐 𝑗
+                          ∇𝜓     ‖ ≤1 ‖    ‖ 𝑢𝑗 ‖2
+                                                ‖  +
+                                                     ‖ 𝑗 ‖2
+                                                     ‖∇𝜓  ‖   .                                                                                         (5.16)
+            ‖ 1             ℎ ‖
+            ‖           2
+                                 ‖0 2 ‖ ℎ ‖0 ‖ ℎ ‖0
+If 𝜏 and ℎ are small enough, there holds (5.3).
+
+6. Numerical implementation
+
+   In this section, we present three numerical examples to verify the theoretical results. The ﬁrst two examples have smooth exact
+solutions, which are used to conﬁrm the convergence orders. The third example is to show the stability of the scheme.
+
+Example 1. The ﬁrst example refers to [46] with some modiﬁcations. Take Ω = [0, 1] ×[0, 1], and consider the example with following
+exact solutions
+
+        𝑢1 = −𝑒−𝑡 sin2 (𝜋𝑥1 ) sin(𝜋𝑥2 ) cos(𝜋𝑥2 ),                                                                                                       (6.1)
+
+        𝑢2 = 𝑒 sin(𝜋𝑥1 ) cos(𝜋𝑥1 )sin (𝜋𝑥2 ),
+                  −𝑡                     2
+                                                                                                                                                         (6.2)
+
+                                                                            203
+M. Li and Z. Li                                                                                             Applied Numerical Mathematics 197 (2024) 186–209
+
+
+                                       Table 1
+                                       The numerical results of Pair I for 𝑐1 .
+                                                      ‖ 𝑗    𝑗 ‖                  ‖   𝑗    𝑗 ‖
+                                         ℎ            ‖𝑐1 − 𝑐1ℎ ‖       order     ‖∇(𝑐1 − 𝑐1ℎ )‖    order
+                                                      ‖         ‖0                ‖            ‖0
+                                         1
+                                         4
+                                            × 14      1.71216e-02                 1.49070e-01
+                                         1
+                                         8
+                                            × 18      4.72101e-03       1.85865   7.84503e-02       0.92613
+                                          1      1
+                                             × 16     1.21555e-03       1.95749   3.98565e-02       0.97696
+                                         16
+                                          1      1
+                                             × 24     5.43558e-04       1.98492   2.66612e-02       0.99165
+                                         24
+                                          1      1
+                                             × 32     3.06444e-04       1.99213   2.00212e-02       0.99559
+                                         32
+
+
+
+
+                                       Table 2
+                                       The numerical results of Pair I for 𝑐2 .
+                                                      ‖ 𝑗    𝑗 ‖                  ‖   𝑗    𝑗 ‖
+                                                      ‖𝑐2 − 𝑐2ℎ ‖       order     ‖∇(𝑐2 − 𝑐2ℎ )‖    order
+                                                      ‖         ‖0                ‖            ‖0
+                                         1
+                                         4
+                                            × 14      4.81350e-02                 5.26501e-01
+                                         1
+                                         8
+                                            × 18      1.59385e-02       1.59457   3.02892e-01       0.79763
+                                          1      1
+                                             × 16     4.32229e-03       1.88264   1.57958e-01       0.93926
+                                         16
+                                          1      1
+                                             × 24     1.95245e-03       1.95998   1.06202e-01       0.97908
+                                         24
+                                          1      1
+                                             × 32     1.10471e-03       1.97962   7.98971e-02       0.98930
+                                         32
+
+
+
+
+                                       Table 3
+                                       The numerical results of Pair I for 𝜓 .
+                                                      ‖ 𝑗   𝑗‖                    ‖         𝑗 ‖
+                                                      ‖𝜓 − 𝜓ℎ ‖        order      ‖∇(𝜓 𝑗 − 𝜓ℎ )‖    order
+                                                      ‖       ‖0                  ‖            ‖0
+                                         1
+                                         4
+                                            × 14      2.13515e-03                 1.30796e-02
+                                         1
+                                         8
+                                            × 18      7.06763e-04      1.59504    6.67585e-03       0.97030
+                                          1      1
+                                             × 16     1.93532e-04      1.86866    3.30018e-03       1.01641
+                                         16
+                                          1      1
+                                             × 24     8.76128e-05      1.95458    2.19194e-03       1.00918
+                                         24
+                                          1      1
+                                             ×        4.96106e-05      1.97692    1.64162e-03       1.00495
+                                         32     32
+
+
+
+
+                                       Table 4
+                                       The numerical results of Pair I for 𝑢.
+                                                      ‖ 𝑗   𝑗‖                    ‖        𝑗 ‖
+                                                      ‖𝑢 − 𝑢ℎ ‖         order     ‖∇(𝑢𝑗 − 𝑢ℎ )‖     order
+                                                      ‖       ‖0                  ‖           ‖0
+                                          1
+                                          4
+                                             × 14     4.58742e-02                 4.83426e-01
+                                          1
+                                          8
+                                             × 18     1.30885e-02       1.80939   2.52312e-01       0.93809
+                                           1      1
+                                              × 16    3.31031e-03       1.98326   1.26768e-01       0.99302
+                                          16
+                                           1      1
+                                              ×       1.46916e-03       2.00350   8.44530e-02       1.00172
+                                          24     24
+                                           1      1
+                                              ×       8.25074e-04       2.00560   6.32890e-02       1.00279
+                                          32     32
+
+
+
+
+        𝑝 = sin(𝜋𝑥1 ) cos(𝜋𝑥2 ),                                                                                                                      (6.3)
+             1
+        𝑐1 = 𝑒−𝑡 (cos(𝜋𝑥1 ) cos(𝜋𝑥2 ) + 1),                                                                                                           (6.4)
+             2
+             1 −𝑡
+        𝑐2 = 𝑒 (cos(2𝜋𝑥1 ) cos(2𝜋𝑥2 ) + 1),                                                                                                           (6.5)
+             2
+               1 −𝑡                         1
+        𝜓=        𝑒 (cos(𝜋𝑥1 ) cos(𝜋𝑥2 ) − cos(2𝜋𝑥1 ) cos(2𝜋𝑥2 )).                                                                                    (6.6)
+             2𝜋 2                           4
+
+    We use two pairs of element in the computation. The ﬁrst pair employs the linear element to approximate 𝑐1 , 𝑐2 , 𝜓 , and MINI
+element for 𝑢 and 𝑝. The second pair uses the rectangular element in Section 4.3. The ﬁrst and second element pairs are denoted by
+Pair I and Pair II, respectively. The errors and convergence orders at 𝑇 = 1 are shown in Tables 1–8.
+    From Tables 1–8, we can see that the 𝑙∞ (𝐿2 ) and 𝑙∞ (𝐻 1 )-norm errors of all variables are convergent at rates of (ℎ2 ) and (ℎ)
+respectively for the two ﬁnite element pairs. It is clear that all variables achieve optimal convergence order, which accords with our
+theoretical analysis completely.
+    In addition, it seems that the errors of the approximate solutions obtained using Pair II are less than Pair I. Moreover, Pair II has
+less degree of freedom than Pair I, which means less computation time. However, Pair II is the rectangular element, and Pair I is the
+triangular element, so the later has better adaptability for the domain.
+
+                                                                           204
+M. Li and Z. Li                                                                                                 Applied Numerical Mathematics 197 (2024) 186–209
+
+
+                                          Table 5
+                                          The numerical results of Pair II for 𝑐1 .
+                                                         ‖ 𝑗    𝑗 ‖                   ‖   𝑗    𝑗 ‖
+                                            ℎ            ‖𝑐1 − 𝑐1ℎ ‖       order      ‖∇(𝑐1 − 𝑐1ℎ )‖    order
+                                                         ‖         ‖0                 ‖            ‖0
+                                            1
+                                            4
+                                               × 14      1.13112e-02                  9.22339e-02
+                                            1
+                                            8
+                                               × 18      2.84991e-03       1.98876    4.62650e-02       0.99538
+                                             1      1
+                                                × 16     7.13927e-04       1.99707    2.31534e-02       0.99870
+                                            16
+                                             1      1
+                                                × 24     3.17422e-04       1.99906    1.54383e-02       0.99958
+                                            24
+                                             1      1
+                                                × 32     1.78573e-04       1.99954    1.15794e-02       0.99979
+                                            32
+
+
+
+
+                                          Table 6
+                                          The numerical results of Pair II for 𝑐2 .
+                                                         ‖ 𝑗    𝑗 ‖                   ‖   𝑗    𝑗 ‖
+                                                         ‖𝑐2 − 𝑐2ℎ ‖       order      ‖∇(𝑐2 − 𝑐2ℎ )‖    order
+                                                         ‖         ‖0                 ‖            ‖0
+                                            1
+                                            4
+                                               × 14      2.45008e-02                  3.66530e-01
+                                            1
+                                            8
+                                               × 18      6.14041e-03       1.99642    1.84443e-01       0.99075
+                                             1      1
+                                                × 16     1.53689e-03       1.99832    9.25268e-02       0.99524
+                                            16
+                                             1      1
+                                                × 24     6.83240e-04       1.99936    6.17268e-02       0.99831
+                                            24
+                                             1      1
+                                                × 32     3.84358e-04       1.99967    4.63064e-02       0.99915
+                                            32
+
+
+
+
+                                          Table 7
+                                          The numerical results of Pair II for 𝜓 .
+                                                         ‖ 𝑗   𝑗‖                     ‖         𝑗 ‖
+                                                         ‖𝜓 − 𝜓ℎ ‖        order       ‖∇(𝜓 𝑗 − 𝜓ℎ )‖    order
+                                                         ‖       ‖0                   ‖            ‖0
+                                            1
+                                            4
+                                               × 14      6.44562e-04                  6.86706e-03
+                                            1
+                                            8
+                                               × 18      1.75746e-04      1.87483     3.35922e-03       1.03157
+                                             1      1
+                                                × 16     4.48532e-05      1.97021     1.66481e-03       1.01277
+                                            16
+                                             1      1
+                                                × 24     2.00116e-05      1.99052     1.10787e-03       1.00445
+                                            24
+                                             1      1
+                                                × 32     1.12717e-05      1.99531     8.30366e-04       1.00224
+                                            32
+
+
+
+
+                                          Table 8
+                                          The numerical results of Pair II for 𝑢.
+                                                         ‖ 𝑗   𝑗‖                     ‖        𝑗 ‖
+                                                         ‖𝑢 − 𝑢ℎ ‖         order      ‖∇(𝑢𝑗 − 𝑢ℎ )‖     order
+                                                         ‖       ‖0                   ‖           ‖0
+                                             1
+                                             4
+                                                × 14     2.52809e-02                  3.69245e-01
+                                             1
+                                             8
+                                                × 18     6.34426e-03       1.99452    1.85081e-01       0.99642
+                                              1      1
+                                                 × 16    1.58665e-03       1.99947    9.26102e-02       0.99892
+                                             16
+                                              1      1
+                                                 × 24    7.05211e-04       1.99989    6.17515e-02       0.99954
+                                             24
+                                              1      1
+                                                 × 32    3.96687e-04       1.99995    4.63169e-02       0.99976
+                                             32
+
+
+
+
+Example 2. The second numerical example is provided in three dimensional space from [46,59], which has following exact solutions
+
+        𝑢1 = −𝑒−𝑡 sin(2𝜋𝑥2 ) sin(2𝜋𝑥3 )(cos(2𝜋𝑥1 ) − 1),
+        𝑢2 = −𝑒−𝑡 sin(2𝜋𝑥1 ) sin(2𝜋𝑥3 )(cos(2𝜋𝑥2 ) − 1),
+        𝑢3 = 2𝑒−𝑡 sin(2𝜋𝑥1 ) sin(2𝜋𝑥2 )(cos(2𝜋𝑥3 ) − 1),
+        𝑝 = 𝑒−𝑡 (sin(2𝜋𝑥1 ) + sin(2𝜋𝑥2 ) + sin(2𝜋𝑥3 )),
+        𝑐1 = 3𝜋 2 𝑒−𝑡 cos(𝜋𝑥1 ) cos(𝜋𝑥2 ) cos(𝜋𝑥3 ),
+        𝑐2 = 𝜋 2 𝑡3 cos(𝜋𝑥3 ),
+        𝜓 = 𝑒−𝑡 cos(𝜋𝑥1 ) cos(𝜋𝑥2 ) cos(𝜋𝑥3 ) − 𝑡3 cos(𝜋𝑥3 ).                                                                                             (6.7)
+
+
+   In the computation, we take Ω = [0, 1]3 , and use a uniform tetrahedral partition in each direction. The errors and convergence
+orders at 𝑇 = 1 are list in Tables 9–12, which shows that all the error estimates achieve optimal convergence order, as that for the
+two dimensional case.
+
+                                                                              205
+M. Li and Z. Li                                                                                                     Applied Numerical Mathematics 197 (2024) 186–209
+
+
+
+
+Fig. 1. Snapshots of the approximate solutions (𝑐1ℎ , 𝑐2ℎ , 𝜓ℎ ) at 𝑡 = 0.002 (top row), 𝑡 = 0.02 (middle) and 𝑡 = 0.1 (bottom). (For interpretation of the colors in the
+ﬁgure(s), the reader is referred to the web version of this article.)
+
+
+
+                                            Table 9
+                                            The errors and convergence orders of Pair I for 𝑐1 .
+                                                                 ‖ 𝑗    𝑗 ‖                   ‖   𝑗    𝑗 ‖
+                                               ℎ                 ‖𝑐1 − 𝑐1ℎ ‖     order        ‖∇(𝑐1 − 𝑐1ℎ )‖     order
+                                                                 ‖         ‖0                 ‖            ‖0
+                                               1
+                                               4
+                                                  × 14 × 14      8.86014e-01                  9.53915e+00
+                                               1
+                                               8
+                                                  × 18 × 18      2.69385e-01     1.71766      5.14715e+00        0.89009
+                                                1      1     1
+                                                   × 12  × 12    1.24351e-01     1.90652      3.46474e+00        0.97618
+                                               12
+                                                1      1     1
+                                                   ×     ×       7.16936e-02     1.91430      2.63284e+00        0.95444
+                                               16     16    16
+                                                1      1     1
+                                                   × 20 × 20     4.61452e-02     1.97455      2.10730e+00        0.99781
+                                               20
+
+
+
+
+                                            Table 10
+                                            The errors and convergence orders of Pair I for 𝑐2 .
+                                                                 ‖ 𝑗    𝑗 ‖                   ‖   𝑗    𝑗 ‖
+                                                                 ‖𝑐2 − 𝑐2ℎ ‖     order        ‖∇(𝑐2 − 𝑐2ℎ )‖     order
+                                                                 ‖         ‖0                 ‖            ‖0
+                                               1
+                                               4
+                                                  × 14 × 14      3.41539e-01                  5.14710e+00
+                                               1
+                                               8
+                                                  × 18 × 18      9.37020e-02     1.86590      2.52773e+00        1.02592
+                                                1      1     1
+                                                   × 12  × 12    4.37079e-02     1.88078      1.70781e+00        0.96707
+                                               12
+                                                1      1     1
+                                                   ×     ×       2.41287e-02     2.06522      1.24973e+00        1.08550
+                                               16     16    16
+                                                1      1     1
+                                                   × 20 × 20     1.56550e-02     1.93872      1.00551e+00        0.97443
+                                               20
+
+
+
+
+                                                                                  206
+M. Li and Z. Li                                                                                                   Applied Numerical Mathematics 197 (2024) 186–209
+
+
+
+
+                  Fig. 2. Snapshots of the approximate solutions (𝑢1ℎ , 𝑢2ℎ , 𝑝ℎ ) at 𝑡 = 0.002 (top row), 𝑡 = 0.02 (middle) and 𝑡 = 0.1 (bottom).
+
+
+
+                                         Table 11
+                                         The errors and convergence orders of Pair I for 𝜓 .
+                                                              ‖ 𝑗   𝑗‖                     ‖         𝑗 ‖
+                                                              ‖𝜓 − 𝜓ℎ ‖       order        ‖∇(𝜓 𝑗 − 𝜓ℎ )‖       order
+                                                              ‖       ‖0                   ‖            ‖0
+                                           1
+                                           4
+                                              × 14 × 14       5.13316e-02                  6.03225e-01
+                                           1
+                                           8
+                                              × 18 × 18       1.40437e-02     1.86992      3.07475e-01          0.97223
+                                            1     1     1
+                                               × 12 × 12      6.46538e-03     1.91315      2.08062e-01          0.96323
+                                           12
+                                            1     1     1
+                                               × 16 × 16      3.63972e-03     1.99719      1.54403e-01          1.03681
+                                           16
+                                            1     1     1
+                                               × 20 × 20      2.34852e-03     1.96342      1.24095e-01          0.97928
+                                           20
+
+
+
+
+                                         Table 12
+                                         The errors and convergence orders of Pair I for 𝑢.
+                                                              ‖ 𝑗    𝑗‖                     ‖        𝑗 ‖
+                                                              ‖ 𝑢 − 𝑢ℎ ‖       order        ‖∇(𝑢𝑗 − 𝑢ℎ )‖      order
+                                                              ‖        ‖0                   ‖           ‖0
+                                            1
+                                            4
+                                               × 14 × 14      3.27914e-01                   3.95123e+00
+                                            1
+                                            8
+                                               × 18 × 18      1.14243e-01      1.52121      2.24376e+00        0.81638
+                                             1      1     1
+                                                × 12  × 12    5.35706e-02      1.86780      1.51920e+00        0.96178
+                                            12
+                                             1      1     1
+                                                ×     ×       3.09728e-02      1.90450      1.15613e+00        0.94933
+                                            16     16    16
+                                             1      1     1
+                                                × 20 × 20     1.99553e-02      1.97010      9.25695e-01        0.99616
+                                            20
+
+
+
+
+                                                                               207
+M. Li and Z. Li                                                                                                      Applied Numerical Mathematics 197 (2024) 186–209
+
+
+
+
+                                                   Fig. 3. Evolution of the energy (left) and global mass (right).
+
+
+Example 3. The third example is taken from [19,46,56]. Set Ω = [0, 1] × [0, 1], and the initial values are given as follows
+                  {              {                                (      )}
+                      1,(0, 1)2 ∖ (0, 0.75) × (0, 1) ∪ (0.75, 1) × 0, 11    ,
+         𝑐10 =                                                        20
+
+                  { 10 , otherwise,
+                        −6
+                                {                                (     )}
+                                                                   9
+                    1, (0, 1)2 ∖ (0, 0.75) × (0, 1) ∪ (0.75, 1) × 20 ,1 ,                                                                                      (6.8)
+         𝑐20 =
+                      10−6 , otherwise,
+         𝑢0 = 0.
+In the computations, we set the time step 𝜏 = 0.001, the mesh size ℎ = 1∕40, and use the Pair I. The simulation results at 𝑡 =
+0.002, 0.02, 0.1 are shown in Figs. 1 and 2, which match the results in [19,46,56]. Moreover, from Fig. 3, we can see that the total
+energy is decreasing, and the global mass conservation is preserving during the evolution, which conﬁrms numerically our ﬁndings
+in Theorems 7 and 8.
+
+7. Conclusion and future work
+
+   In this work, we present a linearized backward Euler ﬁnite element scheme for the NSPNP equations, and prove the existence
+and uniqueness of this scheme. Then, we obtain the unconditional error estimates of all variables in 𝑙∞ (𝐿2 ) and 𝑙∞ (𝐻 1 ) norms.
+Moreover, we give two physical properties: the global mass conservation and energy stability. However, the concentration positivity
+cannot be theoretically justiﬁed, which is also important for the numerical scheme of the NSPNP equations. In fact, for the pure PNP
+equations, there has been some existing numerical methods which keeps these physical properties. In the future, we will try to apply
+these methods to the NSPNP equations. In addition, our numerical scheme is only ﬁrst order accurate in time, and in a forthcoming
+research we plan to propose some second order accurate numerical schemes for the NSPNP equations, such as Crank-Nicolson scheme
+and BDF2 scheme. Finally, it is interesting and challenging to construct robust schemes to solve some practice problems, such as
+charging dynamics in a nanopore, electroosmotic ﬂow in a nanochannel, electroconvective ﬂow on an ion-selective surface [56,60],
+and so on.
+
+References
+
+ [1] P.A. Markowich, C.A. Ringhofer, C. Schmeiser, Semiconductor Equations, Springer-Verlag, New York, 1990.
+ [2] B.J. Kirby, Micro- and Nanoscale Fluid Mechanics: Transport in Microﬂuidic Devices, Cambridge University Press, New York, 2010.
+ [3] A. Ramos, Electrokinetics and Electrohydrodynamics in Microsystems, Springer, New York, 2011.
+ [4] A. Gubbiotti, M. Baldelli, G. Di Muccio, et al., Electroosmosis in nanopores: computational methods and technological applications, Adv. Phys. X 7 (1) (2022)
+     2036638.
+ [5] M. Schmuck, Analysis of the Navier-Stokes-Nernst-Planck-Poisson system, Math. Models Methods Appl. Sci. 19 (06) (2009) 993–1014.
+ [6] J.W. Jerome, R. Sacco, Global weak solutions for an incompressible charged ﬂuid with multi-scale couplings: initial-boundary-value problem, Nonlinear Anal.
+     71 (12) (2009) e2487–e2497.
+ [7] A. Fischer, J. Saal, Global weak solutions in three space dimensions for electrokinetic ﬂow processes, J. Evol. Equ. 17 (1) (2017) 309–333.
+ [8] D. Bothe, A. Fischer, J. Saal, Global well-posedness and stability of electrokinetic ﬂows, SIAM J. Math. Anal. 46 (2) (2014) 1263–1316.
+ [9] P. Constantin, M. Ignatova, F.N. Lee, Nernst-Planck-Navier-Stokes systems far from equilibrium, Arch. Ration. Mech. Anal. 240 (2) (2021) 1147–1168.
+[10] P. Constantin, M. Ignatova, On the Nernst-Planck-Navier-Stokes system, Arch. Ration. Mech. Anal. 232 (3) (2019) 1379–1428.
+[11] H. Gong, C. Wang, X. Zhang, Partial regularity of suitable weak solutions of the Navier-Stokes-Planck-Nernst-Poisson equation, SIAM J. Math. Anal. 53 (3)
+     (2021) 3306–3337.
+[12] A. Flavell, M. Machen, B. Eisenberg, et al., A conservative ﬁnite diﬀerence scheme for Poisson-Nernst-Planck equations, J. Comput. Electron. 13 (1) (2014)
+     235–249.
+[13] D. He, K. Pan, X. Yue, A positivity preserving and free energy dissipative diﬀerence scheme for the Poisson-Nernst-Planck system, J. Sci. Comput. 81 (1) (2019)
+     436–458.
+
+
+                                                                                208
+M. Li and Z. Li                                                                                                    Applied Numerical Mathematics 197 (2024) 186–209
+
+
+[14] H. Liu, W. Maimaitiyiming, Eﬃcient, positive, and energy stable schemes for multi-D Poisson-Nernst-Planck systems, J. Sci. Comput. 87 (3) (2021) 1–36.
+[15] C. Liu, C. Wang, S. Wise, et al., A positivity-preserving, energy stable and convergent numerical scheme for the Poisson-Nernst-Planck system, Math. Comput.
+     90 (331) (2021) 2071–2106.
+[16] J. Ding, Z. Wang, S. Zhou, Structure-preserving and eﬃcient numerical methods for ion transport, J. Comput. Phys. 418 (2020) 109597.
+[17] M.S. Metti, J. Xu, C. Liu, Energetically stable discretizations for charge transport and electrokinetic models, J. Comput. Phys. 306 (2016) 1–18.
+[18] G. Fu, Z. Xu, High-order space-time ﬁnite element methods for the Poisson-Nernst-Planck equations: positivity and unconditional energy stability, Comput.
+     Methods Appl. Mech. Eng. 395 (2022) 115031.
+[19] A. Prohl, M. Schmuck, Convergent discretizations for the Nernst-Planck-Poisson system, Numer. Math. 111 (4) (2009) 591–630.
+[20] A. Prohl, M. Schmuck, Convergent ﬁnite element discretizations of the Navier-Stokes-Nernst-Planck-Poisson system, ESAIM: Math. Model. Numer. Anal. 44 (3)
+     (2010) 531–571.
+[21] S. Su, H. Tang, A positivity-preserving and free energy dissipative hybrid scheme for the Poisson-Nernst-Planck equations on polygonal and polyhedral meshes,
+     Comput. Math. Appl. 108 (2022) 33–48.
+[22] X. Liu, C. Xu, Eﬃcient time-stepping/spectral methods for the Navier-Stokes-Nernst-Planck-Poisson equations, Commun. Comput. Phys. 21 (5) (2017)
+     1408–1428.
+[23] J. Shen, J. Xu, Unconditionally positivity preserving and energy dissipative schemes for Poisson-Nernst-Planck equations, Numer. Math. 148 (3) (2021) 671–697.
+[24] F. Huang, J. Shen, Bound/positivity preserving and energy stable scalar auxiliary variable schemes for dissipative systems: applications to Keller-Segel and
+     Poisson-Nernst-Planck equations, SIAM J. Sci. Comput. 43 (3) (2021) A1832–A1857.
+[25] Z. Gharibi, M. Dehghan, M. Abbaszadeh, Numerical analysis of locally conservative weak Galerkin dual-mixed ﬁnite element method for the time-dependent
+     Poisson-Nernst-Planck system, Comput. Math. Appl. 92 (2021) 88–108.
+[26] M. Dehghan, Z. Gharibi, An analysis of weak Galerkin ﬁnite element method for a steady state Boussinesq problem, J. Comput. Appl. Math. 406 (2022) 114029.
+[27] Z. Gharibi, M. Dehghan, Convergence analysis of weak Galerkin ﬂux-based mixed ﬁnite element method for solving singularly perturbed convection-diﬀusion-
+     reaction problem, Appl. Numer. Math. 163 (2021) 303–316.
+[28] T. Hao, M. Ma, X. Xu, Adaptive ﬁnite element approximation for steady-state Poisson-Nernst-Planck equations, Adv. Comput. Math. 48 (4) (2022) 1–27.
+[29] Y. Yang, R. Shen, M. Fang, et al., Local averaging type a posteriori error estimates for the nonlinear steady-state Poisson-Nernst-Planck equations, J. Comput.
+     Appl. Math. 404 (2022) 113874.
+[30] W. Zhu, Y. Yang, G. Ji, et al., Residual type a posteriori error estimates for the time-dependent Poisson-Nernst-Planck equations, J. Sci. Comput. 90 (1) (2022)
+     1–35.
+[31] R. Shen, S. Shu, Y. Yang, et al., A decoupling two-grid method for the time-dependent Poisson-Nernst-Planck equations, Numer. Algorithms 83 (4) (2020)
+     1613–1651.
+[32] Q. Wang, H. Li, L. Zhang, et al., A stabilized ﬁnite element method for the Poisson-Nernst-Planck equations in three-dimensional ion channel simulations, Appl.
+     Math. Lett. 111 (2021) 106652.
+[33] J. Li, J. Ying, A stabilized ﬁnite volume element method for solving Poisson-Nernst-Planck equations, Int. J. Numer. Methods Biomed. Eng. 38 (1) (2022) e3543.
+[34] M. Dehghan, B. Hooshyarfarzin, M. Abbaszadeh, Numerical simulation based on a combination of ﬁnite element method and proper orthogonal decomposition
+     to prevent the groundwater contamination, Eng. Comput. 38 (2022) 3445–3461.
+[35] J. Ying, R. Fan, J. Li, et al., A new block preconditioner and improved ﬁnite element solver of Poisson-Nernst-Planck equation, J. Comput. Phys. 430 (2021)
+     110098.
+[36] D. Xie, B. Lu, An eﬀective ﬁnite element iterative solver for a Poisson-Nernst-Planck ion channel model with periodic boundary conditions, SIAM J. Sci. Comput.
+     42 (6) (2020) B1490–B1516.
+[37] C. Liu, C. Wang, S.M. Wise, et al., An iteration solver for the Poisson-Nernst-Planck system and its convergence analysis, J. Comput. Appl. Math. 406 (2022)
+     114017.
+[38] A. Bousquet, X. Hu, M.S. Metti, et al., Newton solvers for drift-diﬀusion and electrokinetic equations, SIAM J. Sci. Comput. 40 (3) (2018) B982–B1006.
+[39] Y. Sun, P. Sun, B. Zheng, et al., Error analysis of ﬁnite element method for Poisson-Nernst-Planck equations, J. Comput. Appl. Math. 301 (2016) 28–43.
+[40] M. He, P. Sun, Error analysis of mixed ﬁnite element method for Poisson-Nernst-Planck system, Numer. Methods Partial Diﬀer. Equ. 33 (6) (2017) 1924–1948.
+[41] M. He, P. Sun, Mixed ﬁnite element analysis for the Poisson-Nernst-Planck/Stokes coupling, J. Comput. Appl. Math. 341 (2018) 61–79.
+[42] M. He, P. Sun, Mixed ﬁnite element method for modiﬁed Poisson-Nernst-Planck/Navier-Stokes equations, J. Sci. Comput. 87 (3) (2021) 1–33.
+[43] D. Shi, H. Yang, Superconvergence analysis of ﬁnite element method for Poisson-Nernst-Planck equations, Numer. Methods Partial Diﬀer. Equ. 35 (3) (2019)
+     1206–1223.
+[44] X. Shi, L. Lu, Nonconforming ﬁnite element method for coupled Poisson-Nernst-Planck equations, Numer. Methods Partial Diﬀer. Equ. 37 (3) (2021) 2714–2729.
+[45] Y. Yang, Y. Liu, S. Shu, Error analysis of virtual element methods for the time-dependent Poisson-Nernst-Planck equations, arXiv:2207.07231, 2022.
+[46] H. Gao, D. He, Linearized conservative ﬁnite element methods for the Nernst-Planck-Poisson equations, J. Sci. Comput. 72 (3) (2017) 1269–1289.
+[47] H. Gao, P. Sun, A linearized local conservative mixed ﬁnite element method for Poisson-Nernst-Planck equations, J. Sci. Comput. 77 (2) (2018) 793–817.
+[48] W. Chen, Y. Liu, C. Wang, et al., Convergence analysis of a fully discrete ﬁnite diﬀerence scheme for the Cahn-Hilliard-Hele-Shaw equation, Math. Comput.
+     85 (301) (2016) 2231–2257.
+[49] W. Chen, W. Feng, Y. Liu, et al., A second order energy stable scheme for the Cahn-Hilliard-Hele-Shaw equations, Discrete Contin. Dyn. B 24 (1) (2019) 149–182.
+[50] Y. Liu, W. Chen, C. Wang, et al., Error analysis of a mixed ﬁnite element method for a Cahn-Hilliard-Hele-Shaw system, Numer. Math. 135 (2017) 679–709.
+[51] A. Diegel, C. Wang, X. Wang, et al., Convergence analysis and error estimates for a second order accurate ﬁnite element method for the Cahn-Hilliard-Navier-
+     Stokes system, Numer. Math. 137 (2017) 495–534.
+[52] V. John, Finite Element Methods for Incompressible Flow Problems, Springer-Verlag, Berlin, 2016.
+[53] J.G. Heywood, R. Rannacher, Finite element approximation of the nonstationary Navier-Stokes problem. I. Regularity of solutions and second-order error
+     estimates for spatial discretization, SIAM J. Numer. Anal. 19 (2) (1982) 275–311.
+[54] J.G. Heywood, R. Rannacher, Finite-element approximation of the nonstationary Navier-Stokes problem. Part IV: Error analysis for second-order time discretiza-
+     tion, SIAM J. Numer. Anal. 27 (2) (1990) 353–384.
+[55] Q. Lin, J. Lin, Finite Element Methods: Accuracy and Improvement, Science Press, Beijing, 2006.
+[56] M. Dehghan, Z. Gharibi, R. Ruiz-Baier, Optimal error estimates of coupled and divergence-free virtual element methods for the Poisson-Nernst-Planck/Navier-
+     Stokes equations and applications in electrochemical systems, J. Sci. Comput. 94 (2023) 72.
+[57] Z. Li, M. Li, D. Shi, Unconditional convergence and superconvergence analysis for the transient Stokes equations with damping, Appl. Math. Comput. 389 (15)
+     (2021) 125572.
+[58] M. Li, L. Xiao, Z. Li, The supercloseness property of the Stoke projection for the transient Navier-Stokes equations and global superconvergence analysis, J. Appl.
+     Math. Comput. 69 (2023) 2041–2057.
+[59] Z. Li, L. Xiao, M. Li, et al., Error estimates for the ﬁnite element method of the chemotaxis-Navier-Stokes equations, J. Appl. Math. Comput. 69 (2023) 1–27.
+[60] C. Wang, J. Bao, W. Pan, et al., Modeling electrokinetics in ionic liquids, Electrophoresis (2017) 1–13.
+
+
+
+
+                                                                                 209
+

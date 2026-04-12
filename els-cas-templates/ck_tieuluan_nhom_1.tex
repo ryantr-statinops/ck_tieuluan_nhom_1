@@ -1,0 +1,130 @@
+\documentclass[a4paper,fleqn]{cas-dc}
+
+% Specific to Elsevier CAS template
+\usepackage[numbers]{natbib}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{calc}
+
+% Mathematics and symbols
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{nameref}
+
+\graphicspath{{figs/}}
+
+% Define Colors for the Professional Header
+\definecolor{elsorange}{HTML}{E78100}
+\definecolor{sdblue}{HTML}{007398}
+\definecolor{headergray}{HTML}{E6E6E6}
+
+% Custom Header Command (Professional Version with Crossmark)
+\newcommand{\makeelsheader}{%
+  \begin{minipage}[t][8cm][t]{\textwidth}
+    \centering{\footnotesize \color{sdblue} Appl. Numer. Math. 197 (2024) 186–209}\par
+    \vspace{5pt}
+    \noindent\rule{\textwidth}{0.5pt}\par
+    \vspace{10pt}
+    \noindent
+    \begin{minipage}[c]{0.20\textwidth}
+      \includegraphics[width=2.8cm]{elsevier_tree_logo_bw}\par
+      \vspace{2pt}
+      {\color{elsorange}\textbf{\Large ELSEVIER}}
+    \end{minipage}%
+    \hfill
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \colorbox{headergray}{%
+      \begin{minipage}[c]{0.45\textwidth}
+        \centering
+        \footnotesize Contents lists available at \href{https://www.sciencedirect.com/}{\color{sdblue}ScienceDirect} \\[8pt]
+        {\Large\textbf{Applied Numerical Mathematics}} \\[8pt]
+        \footnotesize journal homepage: \href{http://www.elsevier.com/locate/apnum}{{\color{sdblue}www.elsevier.com/locate/apnum}}
+      \end{minipage}%
+    }%
+    \endgroup
+    \hfill
+    \begin{minipage}[c]{0.18\textwidth}
+      \raggedleft
+      \includegraphics[width=2.5cm]{imacs_globe_logo_blue}
+    \end{minipage}\par
+    \vspace{10pt}
+    \noindent\rule{\textwidth}{0.5pt}\par
+    \vspace{20pt}
+    \hfill
+    \begin{minipage}[t]{2.5cm}
+        \raggedleft
+        \includegraphics[width=1.8cm]{crossmark_check_for_updates_logo}
+    \end{minipage}\par
+  \end{minipage}
+}
+
+% Header is now injected via the title command to avoid recursion and preserve layout
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+% Frontmatter Data
+\shorttitle{Error estimates for the FEM of the NSPNP equations}
+\shortauthors{M. Li and Z. Li}
+
+% Title with injected header (Robust stacking to prevent overlap)
+% Title with injected header (Cleanup: Remove blank lines to prevent illegal \par)
+\title [mode = title]{\texorpdfstring{%
+\vspace{-4.5cm}\protect\makeelsheader\vspace{2.5cm}\\
+Error estimates for the finite element method of the Navier-Stokes-Poisson-Nernst-Planck equations \tnotemark[1]%
+}{Error estimates for the FEM of the NSPNP equations}}
+
+% Funding information (Star footnote)
+\tnotetext[1]{This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).}
+
+% Author information with designations
+\author[1]{Minghao Li}[orcid=0000-0000-0000-0000]
+\cormark[1]
+\fnmark[1]
+\ead{lyminghao@126.com}
+
+\author[2]{Zhenzhen Li}
+
+% Affiliations
+\affiliation[1]{organization={College of Science, Henan University of Technology},
+            addressline={Zhengzhou}, 
+            postcode={450001}, 
+            country={China}}
+
+\affiliation[2]{organization={College of Mathematics and Information Science, Zhengzhou University of Light Industry},
+            addressline={Zhengzhou}, 
+            postcode={450002}, 
+            country={China}}
+
+% Corresponding author and footnotes
+\cortext[1]{Corresponding author}
+\fntext[1]{Email address: lyminghao@126.com (M. Li).}
+
+% DOI, History and Copyright Metadata
+\nonumnote{\footnotesize
+\href{https://doi.org/10.1016/j.apnum.2023.11.012}{https://doi.org/10.1016/j.apnum.2023.11.012}\\[4pt]
+Received 14 February 2023; Received in revised form 27 August 2023; Accepted 16 November 2023\\
+Available online 20 November 2023\\
+0168-9274/© 2023 IMACS. Published by Elsevier B.V. All rights reserved.}
+
+\begin{abstract}
+	In this paper, we consider the linearized backward Euler ﬁnite element scheme for the Navier-Stokes-Poisson-Nernst-Planck (NSPNP) equations. We aim to derive the unconditional error estimates of all variables in $l^\infty(L^2)$ and $l^\infty(H^1)$ norms. Compared with some previous results, we remove the mesh restriction. In addition, we derive two important physical properties for the proposed numerical scheme. Finally, three numerical examples are implemented to verify the theoretical analysis.
+\end{abstract}
+
+\begin{keywords}
+	NSPNP equations \sep Unconditional stability \sep Unconditional error estimates
+\end{keywords}
+
+% Typeset the Frontmatter
+\maketitle
+
+% Loading bibliography style and database
+%\bibliographystyle{cas-model2-names}
+%\bibliography{cas-refs}
+
+\end{document}
