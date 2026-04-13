@@ -19,6 +19,12 @@
 \usepackage{thmtools}
 \usepackage{nameref}
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
 \graphicspath{{figs/}}
 
 % Adjust Section Font Size (Shrink by 1-2 sizes)
@@ -2573,7 +2579,7 @@ research we plan to propose some second-order accurate numerical schemes for the
 equations, such as the Crank--Nicolson scheme and the BDF2 scheme. Finally, it is
 interesting and challenging to construct robust schemes to solve some practical problems,
 such as charging dynamics in a nanopore, electroosmotic flow in a nanochannel, and
-electroconvective flow on an ion-selective surface \cite{Wang2017}, and so on.
+electroconvective flow on an ion-selective surface \cite{Wang22017}, and so on.
 
 
 % Loading bibliography style and database
