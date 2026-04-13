@@ -1,0 +1,703 @@
+% ============================================================
+%  SECTIONS 5, 6 & 7  --  NSPNP Error-Estimates Paper
+%  Li & Li, Appl. Numer. Math. 197 (2024) 186-209
+% ============================================================
+
+% ----------------------------------------------------------
+\section{Two physical properties}
+\label{sec:physical}
+% ----------------------------------------------------------
+
+In this section, we aim to derive some important physical properties for the proposed scheme.
+
+\begin{theorem}[Global mass conservation]
+\label{thm:mass}
+The finite element solutions $\bigl(c_{1h}^{j+1},\, c_{2h}^{j+1}\bigr)$ satisfy global mass
+conservation, that is,
+\begin{equation}
+  \int_{\Omega} c_{1h}^{j+1}\,\mathrm{d}x
+  \;=\;
+  \int_{\Omega} c_{2h}^{j+1}\,\mathrm{d}x
+  \;=\;
+  m_{0}\,|\Omega|.
+  \label{eq:mass-cons}
+\end{equation}
+\end{theorem}
+
+The property \eqref{eq:mass-cons} can be derived easily from \eqref{eq:step2}.
+
+\begin{theorem}[Energy stability]
+\label{thm:energy}
+Define a discrete energy by
+\begin{equation}
+  E\!\left(u_{h}^{j},\,\psi_{h}^{j}\right)
+  \;=\;
+  \frac{1}{2}\left(
+    \left\|u_{h}^{j}\right\|_{0}^{2}
+    +
+    \left\|\nabla\psi_{h}^{j}\right\|_{0}^{2}
+  \right).
+  \label{eq:energy-def}
+\end{equation}
+Then, if $\tau$ and $h$ are small enough, an energy stability
+\begin{equation}
+  E\!\left(u_{h}^{j+1},\,\psi_{h}^{j+1}\right)
+  \;\leq\;
+  E\!\left(u_{h}^{j},\,\psi_{h}^{j}\right)
+  \label{eq:energy-stab}
+\end{equation}
+holds for $j = 0, 1, \ldots, J-1$.
+\end{theorem}
+
+\begin{proof}
+\textit{Step 1.}
+Choose $\varphi_{h} = \Delta_{h}\psi_{h}^{j+1}$ and
+$\varphi_{h} = c_{1h}^{j+1} - c_{2h}^{j+1}$ in \eqref{eq:scheme} respectively, and we get
+\begin{align}
+  \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
+  &= \left(\nabla\psi_{h}^{j+1},\, \nabla\Delta_{h}\psi_{h}^{j+1}\right)
+   = \left(c_{1h}^{j+1} - c_{2h}^{j+1},\, \Delta_{h}\psi_{h}^{j+1}\right)
+   \nonumber\\
+  &\leq
+   \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}
+   \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0},
+   \label{eq:step1a}\\[4pt]
+  \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}^{2}
+  &= \left(\nabla\psi_{h}^{j+1},\, \nabla(c_{1h}^{j+1} - c_{2h}^{j+1})\right)
+   = \left(c_{1h}^{j+1} - c_{2h}^{j+1},\, \Delta_{h}\psi_{h}^{j+1}\right)
+   \nonumber\\
+  &\leq
+   \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}
+   \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0},
+   \label{eq:step1b}
+\end{align}
+which implies
+\begin{align}
+  \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}
+  &= \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0},
+  \label{eq:Deltapsi-eq}\\
+  \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
+  &= \left(\nabla(c_{1h}^{j+1} - c_{2h}^{j+1}),\,\nabla\psi_{h}^{j+1}\right).
+  \label{eq:Deltapsi-sq}
+\end{align}
+
+\textit{Step 2.}
+Putting $v_{h} = u_{h}^{j+1}$ in \eqref{eq:scheme} yields
+\begin{equation}
+  \frac{1}{2\tau}\!\left(
+    \left\|u_{h}^{j+1}\right\|_{0}^{2}
+    + \left\|u_{h}^{j+1} - u_{h}^{j}\right\|_{0}^{2}
+    - \left\|u_{h}^{j}\right\|_{0}^{2}
+  \right)
+  + \left\|\nabla u_{h}^{j+1}\right\|_{0}^{2}
+  = -\!\left((c_{1h}^{j} - c_{2h}^{j})\nabla\psi_{h}^{j+1},\, u_{h}^{j+1}\right).
+  \label{eq:step2-u}
+\end{equation}
+
+\textit{Step 3.}
+From the last equation of \eqref{eq:scheme}, it is easy to find
+\begin{equation}
+  \left(\nabla D_{\tau}\psi_{h}^{j+1},\, \nabla\varphi_{h}\right)
+  = \left(D_{\tau}(c_{1h}^{j+1} - c_{2h}^{j+1}),\, \varphi_{h}\right),
+  \quad \forall\,\varphi_{h} \in X_{h}.
+  \label{eq:step3-psi}
+\end{equation}
+Take $\eta_{1h} = \eta_{2h} = \psi_{h}^{j+1}$ in \eqref{eq:scheme} and
+$\varphi_{h} = \psi_{h}^{j+1}$ in \eqref{eq:step3-psi}, respectively; then we arrive at
+\begin{align}
+  &\frac{1}{2\tau}\!\left(
+    \left\|\nabla\psi_{h}^{j+1}\right\|_{0}^{2}
+    + \left\|\nabla(\psi_{h}^{j+1} - \psi_{h}^{j})\right\|_{0}^{2}
+    - \left\|\nabla\psi_{h}^{j}\right\|_{0}^{2}
+  \right)
+  + \left(\nabla(c_{1h}^{j+1} - c_{2h}^{j+1}),\, \nabla\psi_{h}^{j+1}\right)
+  \nonumber\\
+  &\quad
+  + \left((c_{1h}^{j} + c_{2h}^{j})\nabla\psi_{h}^{j+1},\, \nabla\psi_{h}^{j+1}\right)
+  = -b_{2}\!\left(u_{h}^{j};\, c_{1h}^{j+1} - c_{2h}^{j+1},\, \psi_{h}^{j+1}\right).
+  \label{eq:step3-sum}
+\end{align}
+
+\textit{Step 4.}
+Adding \eqref{eq:step2-u} and \eqref{eq:step3-sum} and using \eqref{eq:Deltapsi-sq}, we deduce
+\begin{align}
+  &\frac{1}{2\tau}\!\Bigl(
+    \left\|u_{h}^{j+1}\right\|_{0}^{2}
+    + \left\|u_{h}^{j+1} - u_{h}^{j}\right\|_{0}^{2}
+    - \left\|u_{h}^{j}\right\|_{0}^{2}
+    + \left\|\nabla\psi_{h}^{j+1}\right\|_{0}^{2}
+    + \left\|\nabla(\psi_{h}^{j+1} - \psi_{h}^{j})\right\|_{0}^{2}
+    - \left\|\nabla\psi_{h}^{j}\right\|_{0}^{2}
+  \Bigr)
+  \nonumber\\
+  &\quad
+  + \left\|\nabla u_{h}^{j+1}\right\|_{0}^{2}
+  + \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
+  + \left\|\sqrt{c_{1}^{j} + c_{2}^{j}}\,\nabla\psi_{h}^{j+1}\right\|_{0}^{2}
+  \nonumber\\
+  &= -\!\left((c_{1h}^{j} - c_{1}^{j} + c_{2h}^{j} - c_{2}^{j})\nabla\psi_{h}^{j+1},\,
+              \nabla\psi_{h}^{j+1}\right)
+  \nonumber\\
+  &\quad
+  + \left((c_{1h}^{j+1} - c_{1h}^{j} - (c_{2h}^{j+1} - c_{2h}^{j}))\nabla\psi_{h}^{j+1},\,
+         u_{h}^{j+1}\right)
+  \nonumber\\
+  &\quad
+  - \left((c_{1h}^{j+1} - c_{2h}^{j+1})\nabla\psi_{h}^{j+1},\, u_{h}^{j+1}\right)
+  \nonumber\\
+  &\quad
+  + b_{2}\!\left(u_{h}^{j+1} - u_{h}^{j};\, c_{1h}^{j+1} - c_{2h}^{j+1},\, \psi_{h}^{j+1}\right)
+  - b_{2}\!\left(u_{h}^{j+1};\, c_{1h}^{j+1} - c_{2h}^{j+1},\, \psi_{h}^{j+1}\right)
+  \nonumber\\
+  &=: \sum_{i=1}^{5} R_{i}.
+  \label{eq:step4-Ri}
+\end{align}
+
+Next, we estimate the above five terms. By use of Theorem~\ref{thm:L2error}, it is easy to check
+\begin{equation}
+  \left\|c_{1h}^{j+1} - c_{1h}^{j}\right\|_{0}
+  \leq
+  \left\|c_{1h}^{j+1} - c_{1}^{j+1}\right\|_{0}
+  + \left\|c_{1h}^{j} - c_{1}^{j}\right\|_{0}
+  + \left\|c_{1}^{j+1} - c_{1}^{j}\right\|_{0}
+  \leq C_{2}(\tau + h).
+  \label{eq:c1-diff}
+\end{equation}
+Similarly, we obtain
+\begin{equation}
+  \left\|c_{2h}^{j+1} - c_{2h}^{j}\right\|_{0}
+  \leq C_{2}(\tau + h),
+  \qquad
+  \left\|\nabla\!\left(u_{h}^{j+1} - u_{h}^{j}\right)\right\|_{0}
+  \leq C_{5}(\tau + h).
+  \label{eq:u-diff}
+\end{equation}
+Then, based on \eqref{eq:Deltapsi-eq}, \eqref{eq:c1-diff}, \eqref{eq:u-diff} and
+Theorem~\ref{thm:L2error}, we infer
+\begin{align}
+  |R_{1}| + |R_{2}| + |R_{4}|
+  &\leq
+  \left(\left\|c_{1h}^{j} - c_{1}^{j}\right\|_{0}
+        + \left\|c_{2h}^{j} - c_{2}^{j}\right\|_{0}\right)
+  \left\|\nabla\psi_{h}^{j+1}\right\|_{0,3}
+  \left\|\nabla\psi_{h}^{j+1}\right\|_{0,6}
+  \nonumber\\
+  &\quad
+  + \left(\left\|c_{1h}^{j+1} - c_{1h}^{j}\right\|_{0}
+          + \left\|c_{2h}^{j+1} - c_{2h}^{j}\right\|_{0}\right)
+  \left\|\nabla\psi_{h}^{j+1}\right\|_{0,3}
+  \left\|u_{h}^{j+1}\right\|_{0,6}
+  \nonumber\\
+  &\quad
+  + \left\|\nabla\!\left(u_{h}^{j+1} - u_{h}^{j}\right)\right\|_{0}
+  \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}
+  \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}
+  \nonumber\\
+  &\leq
+  C_{5}(\tau + h)\left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
+  + \frac{1}{2}\left\|\nabla u_{h}^{j+1}\right\|_{0}^{2}.
+  \label{eq:R1R2R4}
+\end{align}
+Using Green's formula, Lemma~\ref{lem:1} (equation \eqref{eq:Lem1}), Theorem~\ref{thm:L2error}
+and \eqref{eq:Deltapsi-eq}, we get
+\begin{align}
+  |R_{3} + R_{5}|
+  &= \frac{1}{2}
+     \left|\left(\mathrm{div}\,u_{h}^{j+1},\,
+                 (c_{1h}^{j+1} - c_{2h}^{j+1})\psi_{h}^{j+1}\right)\right|
+  \nonumber\\
+  &= \frac{1}{2}
+     \left|\left(\mathrm{div}(u_{h}^{j+1} - u^{j+1}),\,
+                 (c_{1h}^{j+1} - c_{2h}^{j+1})\psi_{h}^{j+1}\right)\right|
+  \nonumber\\
+  &\leq
+  C_{5}(\tau + h)
+  \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}
+  \left\|\psi_{h}^{j+1}\right\|_{0,\infty}
+  \leq
+  C_{5}(\tau + h)\left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}.
+  \label{eq:R3R5}
+\end{align}
+Inserting \eqref{eq:R1R2R4} and \eqref{eq:R3R5} into \eqref{eq:step4-Ri} yields
+\begin{align}
+  &\frac{1}{2}\!\left(
+    \left\|u_{h}^{j+1}\right\|_{0}^{2}
+    + \left\|\nabla\psi_{h}^{j+1}\right\|_{0}^{2}
+  \right)
+  + \frac{1}{2}\!\left(
+    \left\|u_{h}^{j+1} - u_{h}^{j}\right\|_{0}^{2}
+    + \left\|\nabla(\psi_{h}^{j+1} - \psi_{h}^{j})\right\|_{0}^{2}
+  \right)
+  \nonumber\\
+  &\quad
+  + \tau\!\left(1 - C_{5}(\tau + h)\right)
+    \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
+  + \frac{1}{2}\,\tau\left\|\nabla u_{h}^{j+1}\right\|_{0}^{2}
+  + \tau\left\|\sqrt{c_{1}^{j} + c_{2}^{j}}\,\nabla\psi_{h}^{j+1}\right\|_{0}^{2}
+  \nonumber\\
+  &\leq
+  \frac{1}{2}\!\left(
+    \left\|u_{h}^{j}\right\|_{0}^{2}
+    + \left\|\nabla\psi_{h}^{j}\right\|_{0}^{2}
+  \right).
+  \label{eq:energy-ineq}
+\end{align}
+If $\tau$ and $h$ are small enough, \eqref{eq:energy-stab} holds.
+\end{proof}
+
+% ----------------------------------------------------------
+\section{Numerical implementation}
+\label{sec:numerics}
+% ----------------------------------------------------------
+
+In this section, we present three numerical examples to verify the theoretical results. The
+first two examples have smooth exact solutions, which are used to confirm the convergence
+orders. The third example is to show the stability of the scheme.
+
+% ---- Example 1 --------------------------------------------
+\begin{example}
+\label{ex:1}
+The first example refers to \cite{Gao2017} with some modifications. Take
+$\Omega = [0,1]\times[0,1]$, and consider the example with following exact solutions
+\begin{align}
+  u_{1} &= -e^{-t}\sin^{2}(\pi x_{1})\sin(\pi x_{2})\cos(\pi x_{2}),
+  \label{eq:ex1-u1}\\
+  u_{2} &= \phantom{-}e^{-t}\sin(\pi x_{1})\cos(\pi x_{1})\sin^{2}(\pi x_{2}),
+  \label{eq:ex1-u2}\\
+  p     &= \sin(\pi x_{1})\cos(\pi x_{2}),
+  \label{eq:ex1-p}\\
+  c_{1} &= \frac{1}{2}\,e^{-t}\!\left(\cos(\pi x_{1})\cos(\pi x_{2}) + 1\right),
+  \label{eq:ex1-c1}\\
+  c_{2} &= \frac{1}{2}\,e^{-t}\!\left(\cos(2\pi x_{1})\cos(2\pi x_{2}) + 1\right),
+  \label{eq:ex1-c2}\\
+  \psi  &= \frac{1}{2\pi^{2}}\,e^{-t}\!\left(
+             \cos(\pi x_{1})\cos(\pi x_{2})
+             - \frac{1}{4}\cos(2\pi x_{1})\cos(2\pi x_{2})
+           \right).
+  \label{eq:ex1-psi}
+\end{align}
+We use two pairs of elements in the computation. The first pair (Pair~I) employs the linear
+element to approximate $c_{1}$, $c_{2}$, $\psi$, and the MINI element for $u$ and $p$. The
+second pair (Pair~II) uses the rectangular bilinear/$Q_{1}$-$Q_{0}$ element described in
+Section~\ref{sec:improved}. The errors and convergence orders at $T = 1$ are shown in
+Tables~\ref{tab:PairI-c1}--\ref{tab:PairII-u}.
+\end{example}
+
+% ---- Tables for Example 1, Pair I ------------------------
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~I for $c_{1}$ (Example~\ref{ex:1}).}
+\label{tab:PairI-c1}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|c_{1}^{j} - c_{1h}^{j}\|_{0}$ & order &
+$\|\nabla(c_{1}^{j} - c_{1h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $1.71216\times10^{-2}$ & ---     & $1.49070\times10^{-1}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $4.72101\times10^{-3}$ & 1.85865 & $7.84503\times10^{-2}$ & 0.92613 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $1.21555\times10^{-3}$ & 1.95749 & $3.98565\times10^{-2}$ & 0.97696 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $5.43558\times10^{-4}$ & 1.98492 & $2.66612\times10^{-2}$ & 0.99165 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $3.06444\times10^{-4}$ & 1.99213 & $2.00212\times10^{-2}$ & 0.99559 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~I for $c_{2}$ (Example~\ref{ex:1}).}
+\label{tab:PairI-c2}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|c_{2}^{j} - c_{2h}^{j}\|_{0}$ & order &
+$\|\nabla(c_{2}^{j} - c_{2h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $4.81350\times10^{-2}$ & ---     & $5.26501\times10^{-1}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $1.59385\times10^{-2}$ & 1.59457 & $3.02892\times10^{-1}$ & 0.79763 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $4.32229\times10^{-3}$ & 1.88264 & $1.57958\times10^{-1}$ & 0.93926 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $1.95245\times10^{-3}$ & 1.95998 & $1.06202\times10^{-1}$ & 0.97908 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $1.10471\times10^{-3}$ & 1.97962 & $7.98971\times10^{-2}$ & 0.98930 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~I for $\psi$ (Example~\ref{ex:1}).}
+\label{tab:PairI-psi}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|\psi^{j} - \psi_{h}^{j}\|_{0}$ & order &
+$\|\nabla(\psi^{j} - \psi_{h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $2.13515\times10^{-3}$ & ---     & $1.30796\times10^{-2}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $7.06763\times10^{-4}$ & 1.59504 & $6.67585\times10^{-3}$ & 0.97030 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $1.93532\times10^{-4}$ & 1.86866 & $3.30018\times10^{-3}$ & 1.01641 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $8.76128\times10^{-5}$ & 1.95458 & $2.19194\times10^{-3}$ & 1.00918 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $4.96106\times10^{-5}$ & 1.97692 & $1.64162\times10^{-3}$ & 1.00495 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~I for $u$ (Example~\ref{ex:1}).}
+\label{tab:PairI-u}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|u^{j} - u_{h}^{j}\|_{0}$ & order &
+$\|\nabla(u^{j} - u_{h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $4.58742\times10^{-2}$ & ---     & $4.83426\times10^{-1}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $1.30885\times10^{-2}$ & 1.80939 & $2.52312\times10^{-1}$ & 0.93809 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $3.31031\times10^{-3}$ & 1.98326 & $1.26768\times10^{-1}$ & 0.99302 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $1.46916\times10^{-3}$ & 2.00350 & $8.44530\times10^{-2}$ & 1.00172 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $8.25074\times10^{-4}$ & 2.00560 & $6.32890\times10^{-2}$ & 1.00279 \\
+\hline
+\end{tabular}
+\end{table}
+
+% ---- Tables for Example 1, Pair II -----------------------
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~II for $c_{1}$ (Example~\ref{ex:1}).}
+\label{tab:PairII-c1}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|c_{1}^{j} - c_{1h}^{j}\|_{0}$ & order &
+$\|\nabla(c_{1}^{j} - c_{1h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $1.13112\times10^{-2}$ & ---     & $9.22339\times10^{-2}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $2.84991\times10^{-3}$ & 1.98876 & $4.62650\times10^{-2}$ & 0.99538 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $7.13927\times10^{-4}$ & 1.99707 & $2.31534\times10^{-2}$ & 0.99870 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $3.17422\times10^{-4}$ & 1.99906 & $1.54383\times10^{-2}$ & 0.99958 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $1.78573\times10^{-4}$ & 1.99954 & $1.15794\times10^{-2}$ & 0.99979 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~II for $c_{2}$ (Example~\ref{ex:1}).}
+\label{tab:PairII-c2}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|c_{2}^{j} - c_{2h}^{j}\|_{0}$ & order &
+$\|\nabla(c_{2}^{j} - c_{2h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $2.45008\times10^{-2}$ & ---     & $3.66530\times10^{-1}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $6.14041\times10^{-3}$ & 1.99642 & $1.84443\times10^{-1}$ & 0.99075 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $1.53689\times10^{-3}$ & 1.99832 & $9.25268\times10^{-2}$ & 0.99524 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $6.83240\times10^{-4}$ & 1.99936 & $6.17268\times10^{-2}$ & 0.99831 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $3.84358\times10^{-4}$ & 1.99967 & $4.63064\times10^{-2}$ & 0.99915 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~II for $\psi$ (Example~\ref{ex:1}).}
+\label{tab:PairII-psi}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|\psi^{j} - \psi_{h}^{j}\|_{0}$ & order &
+$\|\nabla(\psi^{j} - \psi_{h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $6.44562\times10^{-4}$ & ---     & $6.86706\times10^{-3}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $1.75746\times10^{-4}$ & 1.87483 & $3.35922\times10^{-3}$ & 1.03157 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $4.48532\times10^{-5}$ & 1.97021 & $1.66481\times10^{-3}$ & 1.01277 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $2.00116\times10^{-5}$ & 1.99052 & $1.10787\times10^{-3}$ & 1.00445 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $1.12717\times10^{-5}$ & 1.99531 & $8.30366\times10^{-4}$ & 1.00224 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Numerical results of Pair~II for $u$ (Example~\ref{ex:1}).}
+\label{tab:PairII-u}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|u^{j} - u_{h}^{j}\|_{0}$ & order &
+$\|\nabla(u^{j} - u_{h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4} \times \tfrac{1}{4}$   & $2.52809\times10^{-2}$ & ---     & $3.69245\times10^{-1}$ & ---     \\
+$\tfrac{1}{8} \times \tfrac{1}{8}$   & $6.34426\times10^{-3}$ & 1.99452 & $1.85081\times10^{-1}$ & 0.99642 \\
+$\tfrac{1}{16}\times \tfrac{1}{16}$  & $1.58665\times10^{-3}$ & 1.99947 & $9.26102\times10^{-2}$ & 0.99892 \\
+$\tfrac{1}{24}\times \tfrac{1}{24}$  & $7.05211\times10^{-4}$ & 1.99989 & $6.17515\times10^{-2}$ & 0.99954 \\
+$\tfrac{1}{32}\times \tfrac{1}{32}$  & $3.96687\times10^{-4}$ & 1.99995 & $4.63169\times10^{-2}$ & 0.99976 \\
+\hline
+\end{tabular}
+\end{table}
+
+From Tables~\ref{tab:PairI-c1}--\ref{tab:PairII-u}, we can see that the $l^{\infty}(L^{2})$
+and $l^{\infty}(H^{1})$-norm errors of all variables are convergent at rates of
+$\mathcal{O}(h^{2})$ and $\mathcal{O}(h)$ respectively for the two finite element pairs. It
+is clear that all variables achieve optimal convergence order, which accords with our
+theoretical analysis completely.
+
+In addition, it seems that the errors of the approximate solutions obtained using Pair~II are
+less than those of Pair~I. Moreover, Pair~II has fewer degrees of freedom than Pair~I, which
+means less computation time. However, Pair~II is the rectangular element and Pair~I is the
+triangular element, so the latter has better adaptability for the computational domain.
+
+% ---- Example 2 --------------------------------------------
+\begin{example}
+\label{ex:2}
+The second numerical example is provided in three-dimensional space from \cite{Gao2017,Li22023},
+which has the following exact solutions
+\begin{align}
+  u_{1} &= -e^{-t}\sin(2\pi x_{2})\sin(2\pi x_{3})\!\left(\cos(2\pi x_{1}) - 1\right),
+  \nonumber\\
+  u_{2} &= -e^{-t}\sin(2\pi x_{1})\sin(2\pi x_{3})\!\left(\cos(2\pi x_{2}) - 1\right),
+  \nonumber\\
+  u_{3} &= \phantom{-}2e^{-t}\sin(2\pi x_{1})\sin(2\pi x_{2})\!\left(\cos(2\pi x_{3}) - 1\right),
+  \nonumber\\
+  p     &= e^{-t}\!\left(\sin(2\pi x_{1}) + \sin(2\pi x_{2}) + \sin(2\pi x_{3})\right),
+  \nonumber\\
+  c_{1} &= 3\pi^{2}e^{-t}\cos(\pi x_{1})\cos(\pi x_{2})\cos(\pi x_{3}),
+  \nonumber\\
+  c_{2} &= \pi^{2}t^{3}\cos(\pi x_{3}),
+  \nonumber\\
+  \psi  &= e^{-t}\cos(\pi x_{1})\cos(\pi x_{2})\cos(\pi x_{3}) - t^{3}\cos(\pi x_{3}).
+  \label{eq:ex2-exact}
+\end{align}
+In the computation, we take $\Omega = [0,1]^{3}$ and use a uniform tetrahedral partition in
+each direction. The errors and convergence orders at $T = 1$ are listed in
+Tables~\ref{tab:3d-c1}--\ref{tab:3d-u}, which show that all the error estimates achieve
+optimal convergence order, as in the two-dimensional case.
+\end{example}
+
+% ---- Tables for Example 2 (3D) ---------------------------
+
+\begin{table}[htbp]
+\centering
+\caption{Errors and convergence orders of Pair~I for $c_{1}$ (Example~\ref{ex:2}).}
+\label{tab:3d-c1}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|c_{1}^{j} - c_{1h}^{j}\|_{0}$ & order &
+$\|\nabla(c_{1}^{j} - c_{1h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4}  \times \tfrac{1}{4}  \times \tfrac{1}{4}$  & $8.86014\times10^{-1}$ & ---     & $9.53915\times10^{+0}$ & ---     \\
+$\tfrac{1}{8}  \times \tfrac{1}{8}  \times \tfrac{1}{8}$  & $2.69385\times10^{-1}$ & 1.71766 & $5.14715\times10^{+0}$ & 0.89009 \\
+$\tfrac{1}{12} \times \tfrac{1}{12} \times \tfrac{1}{12}$ & $1.24351\times10^{-1}$ & 1.90652 & $3.46474\times10^{+0}$ & 0.97618 \\
+$\tfrac{1}{16} \times \tfrac{1}{16} \times \tfrac{1}{16}$ & $7.16936\times10^{-2}$ & 1.91430 & $2.63284\times10^{+0}$ & 0.95444 \\
+$\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $4.61452\times10^{-2}$ & 1.97455 & $2.10730\times10^{+0}$ & 0.99781 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Errors and convergence orders of Pair~I for $c_{2}$ (Example~\ref{ex:2}).}
+\label{tab:3d-c2}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|c_{2}^{j} - c_{2h}^{j}\|_{0}$ & order &
+$\|\nabla(c_{2}^{j} - c_{2h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4}  \times \tfrac{1}{4}  \times \tfrac{1}{4}$  & $3.41539\times10^{-1}$ & ---     & $5.14710\times10^{+0}$ & ---     \\
+$\tfrac{1}{8}  \times \tfrac{1}{8}  \times \tfrac{1}{8}$  & $9.37020\times10^{-2}$ & 1.86590 & $2.52773\times10^{+0}$ & 1.02592 \\
+$\tfrac{1}{12} \times \tfrac{1}{12} \times \tfrac{1}{12}$ & $4.37079\times10^{-2}$ & 1.88078 & $1.70781\times10^{+0}$ & 0.96707 \\
+$\tfrac{1}{16} \times \tfrac{1}{16} \times \tfrac{1}{16}$ & $2.41287\times10^{-2}$ & 2.06522 & $1.24973\times10^{+0}$ & 1.08550 \\
+$\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $1.56550\times10^{-2}$ & 1.93872 & $1.00551\times10^{+0}$ & 0.97443 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Errors and convergence orders of Pair~I for $\psi$ (Example~\ref{ex:2}).}
+\label{tab:3d-psi}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|\psi^{j} - \psi_{h}^{j}\|_{0}$ & order &
+$\|\nabla(\psi^{j} - \psi_{h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4}  \times \tfrac{1}{4}  \times \tfrac{1}{4}$  & $5.13316\times10^{-2}$ & ---     & $6.03225\times10^{-1}$ & ---     \\
+$\tfrac{1}{8}  \times \tfrac{1}{8}  \times \tfrac{1}{8}$  & $1.40437\times10^{-2}$ & 1.86992 & $3.07475\times10^{-1}$ & 0.97223 \\
+$\tfrac{1}{12} \times \tfrac{1}{12} \times \tfrac{1}{12}$ & $6.46538\times10^{-3}$ & 1.91315 & $2.08062\times10^{-1}$ & 0.96323 \\
+$\tfrac{1}{16} \times \tfrac{1}{16} \times \tfrac{1}{16}$ & $3.63972\times10^{-3}$ & 1.99719 & $1.54403\times10^{-1}$ & 1.03681 \\
+$\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $2.34852\times10^{-3}$ & 1.96342 & $1.24095\times10^{-1}$ & 0.97928 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Errors and convergence orders of Pair~I for $u$ (Example~\ref{ex:2}).}
+\label{tab:3d-u}
+\begin{tabular}{ccccc}
+\hline
+$h$ &
+$\|u^{j} - u_{h}^{j}\|_{0}$ & order &
+$\|\nabla(u^{j} - u_{h}^{j})\|_{0}$ & order \\
+\hline
+$\tfrac{1}{4}  \times \tfrac{1}{4}  \times \tfrac{1}{4}$  & $3.27914\times10^{-1}$ & ---     & $3.95123\times10^{+0}$ & ---     \\
+$\tfrac{1}{8}  \times \tfrac{1}{8}  \times \tfrac{1}{8}$  & $1.14243\times10^{-1}$ & 1.52121 & $2.24376\times10^{+0}$ & 0.81638 \\
+$\tfrac{1}{12} \times \tfrac{1}{12} \times \tfrac{1}{12}$ & $5.35706\times10^{-2}$ & 1.86780 & $1.51920\times10^{+0}$ & 0.96178 \\
+$\tfrac{1}{16} \times \tfrac{1}{16} \times \tfrac{1}{16}$ & $3.09728\times10^{-2}$ & 1.90450 & $1.15613\times10^{+0}$ & 0.94933 \\
+$\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $1.99553\times10^{-2}$ & 1.97010 & $9.25695\times10^{-1}$ & 0.99616 \\
+\hline
+\end{tabular}
+\end{table}
+
+% ---- Example 3 --------------------------------------------
+\begin{example}
+\label{ex:3}
+The third example is taken from \cite{Prohl2009,Gao2017,DehghanGharibi2023}. Set
+$\Omega = [0,1]\times[0,1]$, and the initial values are given as follows
+\begin{equation}
+  c_{10} =
+  \begin{cases}
+    1, & (0,1)^{2}\setminus
+         \Bigl\{(0,0.75)\times(0,1)
+               \cup (0.75,1)\times\bigl(0,\tfrac{11}{20}\bigr)\Bigr\}, \\
+    10^{-6}, & \text{otherwise},
+  \end{cases}
+  \label{eq:ex3-c10}
+\end{equation}
+\begin{equation}
+  c_{20} =
+  \begin{cases}
+    1, & (0,1)^{2}\setminus
+         \Bigl\{(0,0.75)\times(0,1)
+               \cup (0.75,1)\times\bigl(\tfrac{9}{20},1\bigr)\Bigr\}, \\
+    10^{-6}, & \text{otherwise},
+  \end{cases}
+  \label{eq:ex3-c20}
+\end{equation}
+and $u_{0} = \mathbf{0}$.
+
+In the computations, we set the time step $\tau = 0.001$, the mesh size $h = 1/40$, and use
+Pair~I. The simulation results at $t = 0.002$, $t = 0.02$ and $t = 0.1$ are shown in
+Figs.~\ref{fig:c1c2psi} and \ref{fig:u1u2p}, which match the results in
+\cite{Prohl2009,Gao2017,DehghanGharibi2023}. Moreover, from Fig.~\ref{fig:energy-mass}, we
+can see that the total energy is decreasing and the global mass conservation is preserved
+during the evolution, which confirms numerically our findings in
+Theorems~\ref{thm:mass} and~\ref{thm:energy}.
+\end{example}
+
+% ---- Figures (placeholders) ------------------------------
+
+\begin{figure}[htbp]
+  \centering
+  % [Chèn hình Fig.~1 tại đây: snapshots of c_{1h}, c_{2h}, psi_h at t=0.002, 0.02, 0.1]
+  \fbox{\parbox{0.95\textwidth}{\centering\vspace{2cm}
+    \textit{[Figure 1: Snapshots of the approximate solutions
+    $(c_{1h},\,c_{2h},\,\psi_{h})$ at $t=0.002$ (top row),
+    $t=0.02$ (middle) and $t=0.1$ (bottom).]}\vspace{2cm}}}
+  \caption{Snapshots of the approximate solutions $(c_{1h},\,c_{2h},\,\psi_{h})$ at
+           $t = 0.002$ (top row), $t = 0.02$ (middle) and $t = 0.1$ (bottom).}
+  \label{fig:c1c2psi}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  % [Chèn hình Fig.~2 tại đây: snapshots of u_{1h}, u_{2h}, p_h at t=0.002, 0.02, 0.1]
+  \fbox{\parbox{0.95\textwidth}{\centering\vspace{2cm}
+    \textit{[Figure 2: Snapshots of the approximate solutions
+    $(u_{1h},\,u_{2h},\,p_{h})$ at $t=0.002$ (top row),
+    $t=0.02$ (middle) and $t=0.1$ (bottom).]}\vspace{2cm}}}
+  \caption{Snapshots of the approximate solutions $(u_{1h},\,u_{2h},\,p_{h})$ at
+           $t = 0.002$ (top row), $t = 0.02$ (middle) and $t = 0.1$ (bottom).}
+  \label{fig:u1u2p}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  % [Chèn hình Fig.~3 tại đây: evolution of energy (left) and global mass (right)]
+  \fbox{\parbox{0.95\textwidth}{\centering\vspace{2cm}
+    \textit{[Figure 3: Evolution of the energy (left) and global mass (right).]}\vspace{2cm}}}
+  \caption{Evolution of the energy (left) and global mass (right).}
+  \label{fig:energy-mass}
+\end{figure}
+
+% ----------------------------------------------------------
+\section{Conclusion and future work}
+\label{sec:conclusion}
+% ----------------------------------------------------------
+
+In this work, we present a linearized backward Euler finite element scheme for the NSPNP
+equations, and prove the existence and uniqueness of this scheme. We then obtain the
+unconditional error estimates of all variables in $l^{\infty}(L^{2})$ and
+$l^{\infty}(H^{1})$ norms. Moreover, we give two important physical properties: the global
+mass conservation and energy stability.
+
+However, the concentration positivity cannot be theoretically justified, which is also
+important for the numerical scheme of the NSPNP equations. In fact, for the pure PNP
+equations, there has been some existing numerical methods which keep these physical
+properties. In the future, we will try to apply these methods to the NSPNP equations. In
+addition, our numerical scheme is only first-order accurate in time, and in a forthcoming
+research we plan to propose some second-order accurate numerical schemes for the NSPNP
+equations, such as the Crank--Nicolson scheme and the BDF2 scheme. Finally, it is
+interesting and challenging to construct robust schemes to solve some practical problems,
+such as charging dynamics in a nanopore, electroosmotic flow in a nanochannel, and
+electroconvective flow on an ion-selective surface \cite{Wang2017}, and so on.
+
+% ----------------------------------------------------------
+%  BIBLIOGRAPHY ENTRIES (to be merged into the main .bib file)
+% ----------------------------------------------------------
+%
+% @article{Gao2017,
+%   author  = {Gao, H. and He, D.},
+%   title   = {Linearized conservative finite element methods for the
+%              {N}ernst--{P}lanck--{P}oisson equations},
+%   journal = {J. Sci. Comput.},
+%   volume  = {72},
+%   number  = {3},
+%   pages   = {1269--1289},
+%   year    = {2017}
+% }
+%
+% @article{Prohl2009,
+%   author  = {Prohl, A. and Schmuck, M.},
+%   title   = {Convergent discretizations for the {N}ernst--{P}lanck--{P}oisson system},
+%   journal = {Numer. Math.},
+%   volume  = {111},
+%   number  = {4},
+%   pages   = {591--630},
+%   year    = {2009}
+% }
+%
+% @article{DehghanGharibi2023,
+%   author  = {Dehghan, M. and Gharibi, Z. and Ruiz-Baier, R.},
+%   title   = {Optimal error estimates of coupled and divergence-free virtual element
+%              methods for the {P}oisson--{N}ernst--{P}lanck/{N}avier--{S}tokes equations
+%              and applications in electrochemical systems},
+%   journal = {J. Sci. Comput.},
+%   volume  = {94},
+%   pages   = {72},
+%   year    = {2023}
+% }
+%
+% @article{Li22023,
+%   author  = {Li, Z. and Xiao, L. and Li, M. and others},
+%   title   = {Error estimates for the finite element method of the
+%              chemotaxis--{N}avier--{S}tokes equations},
+%   journal = {J. Appl. Math. Comput.},
+%   volume  = {69},
+%   pages   = {1--27},
+%   year    = {2023}
+% }
+%
+% @article{Wang2017,
+%   author  = {Wang, C. and Bao, J. and Pan, W. and others},
+%   title   = {Modeling electrokinetics in ionic liquids},
+%   journal = {Electrophoresis},
+%   pages   = {1--13},
+%   year    = {2017}
+% }
