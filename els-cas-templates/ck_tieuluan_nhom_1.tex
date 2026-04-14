@@ -8,9 +8,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[vietnamese,english]{babel}
+\addto\captionsenglish{\def\abstractname{A\,B\,S\,T\,R\,A\,C\,T}}
+\addto\captionsvietnamese{\def\abstractname{A\,B\,S\,T\,R\,A\,C\,T}}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\hypersetup{allcolors=black}
 \usepackage{calc}
 
 % Mathematics and symbols
@@ -81,7 +84,42 @@
 
 % Header is now injected via the title command to avoid recursion and preserve layout
 
+% Custom page styles for running header/footer
+\makeatletter
+\def\prismrunninghead{%
+  \normalfont\footnotesize\itshape
+  M.~Li~and~Z.~Li\hfill Applied Numerical Mathematics~197~(2024)%
+}
+
+\def\prismrunningfoot{\hfill\normalfont\footnotesize\itshape\thepage\hfill}
+
+% First title page of the article body: no running head/foot
+\def\ps@pprintTitle{%
+  \def\@oddhead{}%
+  \def\@evenhead{}%
+  \def\@oddfoot{}%
+  \def\@evenfoot{}%
+}
+
+% Main running pages
+\def\ps@cas{%
+  \def\@oddhead{\prismrunninghead}%
+  \def\@evenhead{\prismrunninghead}%
+  \def\@oddfoot{\prismrunningfoot}%
+  \def\@evenfoot{\prismrunningfoot}%
+}
+
+% Safety: any 'first' style page also has no footer line/text
+\def\ps@first{%
+  \def\@oddhead{}%
+  \def\@evenhead{}%
+  \def\@oddfoot{}%
+  \def\@evenfoot{}%
+}
+\makeatother
+
 \begin{document}
+\pagestyle{cas}
 \selectlanguage{vietnamese}
 
 % --- TRANG 1: TRANG BÌA ---
@@ -105,12 +143,12 @@
         \textbf{Môn học:} Soạn thảo tài liệu khoa học bằng \LaTeX \\
         \textbf{Mã môn học:} C24 \\
         \textbf{Nhóm thực hiện:} Nhóm 1 \\
-        \textbf{Mã đề:} ... \\
-        \textbf{Giảng viên giảng dạy:} ...
+        \textbf{Mã đề:} 01 \\
+        \textbf{Giảng viên giảng dạy:} Nguyễn Hữu Cần
     \end{centering}
     
     \vfill
-    \textit{TP. HCM, ngày ... tháng ... năm 2024}
+    \textit{TP. HCM, ngày 14 tháng 4 năm 2026}
 \end{titlepage}
 
 % --- TRANG 2: LỜI CAM KẾT & BẢNG PHÂN CÔNG ---
@@ -136,15 +174,22 @@
 \end{center}
 \vspace{0.5cm}
 \begin{center}
-    \begin{tabular}{|c|l|l|c|}
+    \begin{tabular}{|c|l|c|l|c|c|}
         \hline
-        \textbf{STT} & \textbf{Họ và tên} & \textbf{Nội dung phân công} & \textbf{Mức độ hoàn thành} \\ \hline
-        1 & Trần Quốc Khang & ... & ... \\ \hline
-        2 & Phạm Trọng Hiếu & ... & ... \\ \hline
-        3 & Đặng Gia Bảo & ... & ... \\ \hline
-        4 & Nguyễn Đức Duy & ... & ... \\ \hline
-        5 & Nguyễn Hoàng Nhật & ... & ... \\ \hline
-        6 & Nguyễn Văn Kiệt & .. & .. \\ \hline
+        \textbf{STT} & \textbf{Tên thành viên} & \textbf{MSSV} & \textbf{Công việc} & \textbf{Mức độ hoàn thành} & \textbf{Ký tên} \\
+        \hline
+        1 & Trần Quốc Khang & C2400199 & Thuyết trình & 100\% & .. \\
+        \hline
+        2 & Nguyễn Văn Kiệt & C2400203 & Soạn nội dung & 100\% & .. \\
+        \hline
+        3 & Nguyễn Hoàng Nhật & C2400111 & Soạn nội dung & 100\% & .. \\
+        \hline
+        4 & Đặng Gia Bảo & C2400187 & Soạn nội dung & 100\% & .. \\
+        \hline
+        5 & Phạm Trọng Hiếu & C2400195 & Tổng hợp nội dung & 100\% & .. \\
+        \hline
+        6 & Nguyễn Đức Duy & C2400095 & Soạn nội dung mở rộng & 100\% & .. \\
+        \hline
     \end{tabular}
 \end{center}
 \vfill
@@ -152,7 +197,7 @@
 % --- TRANG 3 TRỞ ĐI: NỘI DUNG BÁO CÁO KHOA HỌC ---
 \newpage
 \selectlanguage{english}
-\setcounter{page}{1} % Reset số trang nếu bạn muốn trang 3 bắt đầu là trang 1 sau bìa
+\setcounter{page}{186} % Page 4 starts at 187; pages 1--3 remain unnumbered
 \let\WriteBookmarks\relax
 \def\floatpagepagefraction{1}
 \def\textpagefraction{.001}
@@ -164,37 +209,35 @@
 % Title with injected header (Robust stacking to prevent overlap)
 \title [mode = title]{\texorpdfstring{%
 \vspace{-4.5cm}\protect\makeelsheader\vspace{2.5cm}\\
-Error estimates for the finite element method of the Navier-Stokes-Poisson-Nernst-Planck equations \tnotemark[1]%
+Error estimates for the finite element method of the Navier-Stokes-Poisson-Nernst-Planck equations \textsuperscript{\textcolor{sdblue}{\hyperlink{funding-note}{$\star$}}}%
 }{Error estimates for the FEM of the NSPNP equations}}
 
-% Funding information (Star footnote)
-\tnotetext[1]{\scriptsize This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).}
-
 % Author information with designations
-\author[1]{Minghao Li}[orcid=0000-0000-0000-0000]
-\cormark[1]
-\fnmark[1]
-\ead[url]{lyminghao@126.com}
+\author[1]{Minghao Li\textsuperscript{\textcolor{sdblue}{\hyperlink{cor-note}{*}},\makebox[0pt][l]{\textcolor{sdblue}{\hyperlink{aff-a}{\phantom{a}}}}}}
 
-\author[2]{Zhenzhen Li}
+\author[2]{Zhenzhen Li\textsuperscript{\makebox[0pt][l]{\textcolor{sdblue}{\hyperlink{aff-b}{\phantom{b}}}}}}
 
 % Affiliations
+\hypertarget{aff-a}{}
 \affiliation[1]{organization={College of Science, Henan University of Technology},
             addressline={Zhengzhou}, 
             postcode={450001}, 
             country={China}}
 
+\hypertarget{aff-b}{}
 \affiliation[2]{organization={College of Mathematics and Information Science, Zhengzhou University of Light Industry},
             addressline={Zhengzhou}, 
             postcode={450002}, 
             country={China}}
 
 % Corresponding author and footnotes
-\cortext[1]{Corresponding author.}
-\fntext[1]{\scriptsize \textit{E-mail address:} \href{mailto:lyminghao@126.com}{\color{sdblue}lyminghao@126.com} (M. Li).}
 
 % DOI, History and Copyright Metadata
 \nonumnote{\scriptsize
+\vspace*{\fill}
+\hypertarget{funding-note}{}*\ This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).\\[2pt]
+\hypertarget{cor-note}{}*\ Corresponding author.\\[2pt]
+\hypertarget{email-note}{}1\ E-mail address: \href{mailto:lyminghao@126.com}{\color{sdblue}lyminghao@126.com} (M. Li).\\[6pt]
 \href{https://doi.org/10.1016/j.apnum.2023.11.012}{\color{sdblue}https://doi.org/10.1016/j.apnum.2023.11.012}\\[4pt]
 Received 14 February 2023; Received in revised form 27 August 2023; Accepted 16 November 2023\\[4pt]
 Available online 20 November 2023\\
