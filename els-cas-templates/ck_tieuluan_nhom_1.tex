@@ -15,6 +15,7 @@
 
 % Mathematics and symbols
 \usepackage{mathtools}
+\numberwithin{equation}{section}
 \usepackage{amsthm}
 \usepackage{thmtools}
 \usepackage{nameref}
@@ -97,16 +98,16 @@
     \vfill
     \textbf{\huge TIỂU LUẬN CUỐI KỲ} \\
     \vspace{1cm}
-    \textbf{\Large Năm học: 2024 -- 2025 \quad Học kỳ: 2} \\
+    \textbf{\Large Năm học: 2025 -- 2026 \quad Học kỳ: 2} \\
     
-    \vfill
-    \begin{flushleft}
+    \vspace{3cm}
+    \begin{centering}
         \textbf{Môn học:} Soạn thảo tài liệu khoa học bằng \LaTeX \\
-        \textbf{Mã môn học:} ... \\
+        \textbf{Mã môn học:} C24 \\
         \textbf{Nhóm thực hiện:} Nhóm 1 \\
         \textbf{Mã đề:} ... \\
         \textbf{Giảng viên giảng dạy:} ...
-    \end{flushleft}
+    \end{centering}
     
     \vfill
     \textit{TP. HCM, ngày ... tháng ... năm 2024}
@@ -129,7 +130,7 @@
     \end{itemize}
 \end{itemize}
 
-\vfill
+\vspace{5cm}
 \begin{center}
     \textbf{\Large BẢNG PHÂN CÔNG CÔNG VIỆC}
 \end{center}
@@ -138,10 +139,12 @@
     \begin{tabular}{|c|l|l|c|}
         \hline
         \textbf{STT} & \textbf{Họ và tên} & \textbf{Nội dung phân công} & \textbf{Mức độ hoàn thành} \\ \hline
-        1 & ... & ... & ... \\ \hline
-        2 & ... & ... & ... \\ \hline
-        3 & ... & ... & ... \\ \hline
-        4 & ... & ... & ... \\ \hline
+        1 & Trần Quốc Khang & ... & ... \\ \hline
+        2 & Phạm Trọng Hiếu & ... & ... \\ \hline
+        3 & Đặng Gia Bảo & ... & ... \\ \hline
+        4 & Nguyễn Đức Duy & ... & ... \\ \hline
+        5 & Nguyễn Hoàng Nhật & ... & ... \\ \hline
+        6 & Nguyễn Văn Kiệt & .. & .. \\ \hline
     \end{tabular}
 \end{center}
 \vfill
@@ -246,12 +249,12 @@ We introduce the following function spaces
 \begin{equation}
   X = H^{1}(\Omega),\quad
   X^{0} = \Bigl\{\,\eta\in H^{1}(\Omega) : \int_{\Omega}\eta\,\mathrm{d}x = 0\,\Bigr\},
-  \label{eq:X-space}
+  \label{eq:2.1}
 \end{equation}
 \begin{equation}
   V = \bigl(H^{1}_{0}(\Omega)\bigr)^{d},\quad
   Q = L^{2}_{0}(\Omega) = \Bigl\{\,q\in L^{2}(\Omega) : \int_{\Omega}q\,\mathrm{d}x = 0\,\Bigr\}.
-  \label{eq:VQ-space}
+  \label{eq:2.2}
 \end{equation}
 
 The trilinear forms $b_{1}(\cdot\,;\cdot,\cdot)$ on $V\times V\times V$ and
@@ -261,34 +264,34 @@ $b_{2}(\cdot\,;\cdot,\cdot)$ on $V\times X\times X$ are defined by
   = \tfrac{1}{2}\bigl((u\cdot\nabla)v,\,w\bigr)
   - \tfrac{1}{2}\bigl((u\cdot\nabla)w,\,v\bigr),
   \quad \forall\,u,v,w\in V,
-  \label{eq:b1}
+  \label{eq:2.3}
 \end{equation}
 \begin{equation}
   b_{2}(u;\,c,\,\eta)
   = \tfrac{1}{2}(u\cdot\nabla c,\,\eta)
   - \tfrac{1}{2}(u\cdot\nabla\eta,\,c),
   \quad \forall\,u\in V,\;c,\eta\in X.
-  \label{eq:b2}
+  \label{eq:2.4}
 \end{equation}
 
 We recall the following Poincar\'{e}--Friedrichs inequalities
 \begin{equation}
   \Vert v\Vert_{1} \le C\,\Vert\nabla v\Vert_{0},
   \quad \forall\,v\in V,
-  \label{eq:PF1}
+  \label{eq:2.5}
 \end{equation}
 \begin{equation}
   \Vert\varphi\Vert_{1}
   \le C\!\left(\Vert\nabla\varphi\Vert_{0}
     + \Bigl|\int_{\Omega}\varphi\,\mathrm{d}x\Bigr|\right),
   \quad \forall\,\varphi\in X,
-  \label{eq:PF2}
+  \label{eq:2.6}
 \end{equation}
 and the embedding inequalities
 \begin{equation}
   \Vert\varphi\Vert_{0,6} \le C\,\Vert\varphi\Vert_{1},
   \quad \forall\,\varphi\in X.
-  \label{eq:embed}
+  \label{eq:2.7}
 \end{equation}
 
 Next, integrating the third equation of \eqref{eq:NSPNP} and using the
@@ -299,18 +302,18 @@ Green formula, we can derive
   - \int_{\partial\Omega}\frac{\partial c_{1}}{\partial n}\,\mathrm{d}s
   - \int_{\partial\Omega}c_{1}\frac{\partial\psi}{\partial n}\,\mathrm{d}s
   + \int_{\partial\Omega}u\cdot n\,c_{1}\,\mathrm{d}s = 0.
-  \label{eq:c1-int1}
+  \label{eq:2.8}
 \end{equation}
 Then in view of the boundary conditions, we get
 \begin{equation}
   \frac{\mathrm{d}}{\mathrm{d}t}
   \!\left(\int_{\Omega}c_{1}\,\mathrm{d}x\right) = 0,
-  \label{eq:c1-conserve}
+  \label{eq:2.9}
 \end{equation}
 which implies
 \begin{equation}
   \int_{\Omega}c_{1}\,\mathrm{d}x = \int_{\Omega}c_{10}\,\mathrm{d}x.
-  \label{eq:c1-mass}
+  \label{eq:2.10}
 \end{equation}
 Manipulating the fourth and fifth equations of \eqref{eq:NSPNP} in the
 same way, we obtain
@@ -318,14 +321,14 @@ same way, we obtain
   \int_{\Omega}c_{2}\,\mathrm{d}x = \int_{\Omega}c_{20}\,\mathrm{d}x,
   \qquad
   \int_{\Omega}c_{1}\,\mathrm{d}x = \int_{\Omega}c_{2}\,\mathrm{d}x.
-  \label{eq:c12-mass}
+  \label{eq:2.11}
 \end{equation}
 Set
 \begin{equation}
   m_{0}
   = \frac{1}{|\Omega|}\int_{\Omega}c_{10}\,\mathrm{d}x
   = \frac{1}{|\Omega|}\int_{\Omega}c_{20}\,\mathrm{d}x.
-  \label{eq:m0}
+  \label{eq:2.12}
 \end{equation}
 
 Take $\tilde{c}_{1}=c_{1}-m_{0}$, $\tilde{c}_{2}=c_{2}-m_{0}$; then we
@@ -355,7 +358,7 @@ such that
       &&\forall\,\varphi\in X.
   \end{aligned}
   \right.
-  \label{eq:variational}
+  \label{eq:2.13}
 \end{equation}
 
 Let $\mathcal{T}_{h}$ be a regular and quasi-uniform triangular or
@@ -374,20 +377,20 @@ such that
   + h\,\Vert\nabla(\tilde{c}_{i}-\chi_{ih})\Vert_{0}
   \le Ch^{2}\Vert\tilde{c}_{i}\Vert_{2},
   \quad i=1,2,
-  \label{eq:approx-c}
+  \label{eq:2.14}
 \end{equation}
 \begin{equation}
   \Vert\psi-\varphi_{h}\Vert_{0}
   + h\,\Vert\nabla(\psi-\varphi_{h})\Vert_{0}
   \le Ch^{2}\Vert\psi\Vert_{2},
-  \label{eq:approx-psi}
+  \label{eq:2.15}
 \end{equation}
 \begin{equation}
   \Vert u-v_{h}\Vert_{0}
   + h\bigl(\Vert\nabla(u-v_{h})\Vert_{0}
          + \Vert p-q_{h}\Vert_{0}\bigr)
   \le Ch^{2}\bigl(\Vert u\Vert_{2}+\Vert p\Vert_{1}\bigr),
-  \label{eq:approx-u}
+  \label{eq:2.16}
 \end{equation}
 and the inf-sup condition \cite{John2016}
 \begin{equation}
@@ -395,7 +398,7 @@ and the inf-sup condition \cite{John2016}
   \frac{(\operatorname{div}v_{h},\,q_{h})}{\Vert\nabla v_{h}\Vert_{0}}
   \ge C\,\Vert q_{h}\Vert_{0},
   \quad \forall\,q_{h}\in Q_{h}.
-  \label{eq:infsup}
+  \label{eq:2.17}
 \end{equation}
 
 We define the Ritz projection
@@ -404,7 +407,7 @@ $S_{h}:V\times Q\to V_{h}\times Q_{h}$ by
 \begin{equation}
   \bigl(\nabla(R_{h}\eta-\eta),\,\nabla\chi_{h}\bigr) = 0,
   \quad \forall\,\chi_{h}\in X^{0}_{h},
-  \label{eq:Ritz}
+  \label{eq:2.18}
 \end{equation}
 and
 \begin{equation}
@@ -417,7 +420,7 @@ and
       &&\forall\,q_{h}\in Q_{h}.
   \end{aligned}
   \right.
-  \label{eq:Stokes-proj}
+  \label{eq:2.19}
 \end{equation}
 
 Then, from the standard finite element theory \cite{John2016,Li2021}, we have
@@ -425,19 +428,19 @@ Then, from the standard finite element theory \cite{John2016,Li2021}, we have
   \Vert\eta - R_{h}\eta\Vert_{0}
   + h\,\Vert\nabla(\eta-R_{h}\eta)\Vert_{0}
   \le Ch^{2}\Vert\eta\Vert_{2},
-  \label{eq:Ritz-est}
+  \label{eq:2.20}
 \end{equation}
 \begin{equation}
   \Vert u-S_{h}u\Vert_{0}
   + h\bigl(\Vert\nabla(u-S_{h}u)\Vert_{0}
     + \Vert p-S_{h}p\Vert_{0}\bigr)
   \le Ch^{2}\bigl(\Vert u\Vert_{2}+\Vert p\Vert_{1}\bigr),
-  \label{eq:Stokes-est}
+  \label{eq:2.21}
 \end{equation}
 \begin{equation}
   \Vert u_{t} - S_{h}u_{t}\Vert_{0}
   \le Ch^{2}\bigl(\Vert u_{t}\Vert_{2}+\Vert p_{t}\Vert_{1}\bigr).
-  \label{eq:Stokes-t-est}
+  \label{eq:2.22}
 \end{equation}
 
 The discrete operator $\Delta_{h}:X^{0}_{h}\to X^{0}_{h}$ is given as follows
@@ -445,21 +448,21 @@ The discrete operator $\Delta_{h}:X^{0}_{h}\to X^{0}_{h}$ is given as follows
   (\Delta_{h}\eta_{h},\chi_{h})
   = (\nabla\eta_{h},\nabla\chi_{h}),
   \quad \forall\,\chi_{h}\in X^{0}_{h}.
-  \label{eq:Deltah}
+  \label{eq:2.23}
 \end{equation}
 The subspace $V_{h}^{\mathrm{div}}$ of $V_{h}$ is introduced as
 \begin{equation}
   V_{h}^{\mathrm{div}}
   = \bigl\{v_{h}\in V_{h} :
     (\operatorname{div}v_{h},q_{h})=0,\;\forall\,q_{h}\in Q_{h}\bigr\}.
-  \label{eq:Vhdiv}
+  \label{eq:2.24}
 \end{equation}
 And the discrete Stokes operator $A_{h}:V_{h}^{\mathrm{div}}\to V_{h}^{\mathrm{div}}$
 is defined by
 \begin{equation}
   (A_{h}u_{h},v_{h}) = (\nabla u_{h},\nabla v_{h}),
   \quad \forall\,v_{h}\in V_{h}^{\mathrm{div}}.
-  \label{eq:Ah}
+  \label{eq:2.25}
 \end{equation}
 
 Then, we have the following Lemmas~\ref{lem:1}--\ref{lem:4}, which can be
@@ -473,7 +476,7 @@ similarly.
     \Vert\chi_{h}\Vert_{0,\infty}
     + \Vert\nabla\chi_{h}\Vert_{0,6}
     \le C\,\Vert\Delta_{h}\chi_{h}\Vert_{0}.
-    \label{eq:lem1}
+    \label{eq:2.26}
   \end{equation}
 \end{lemma}
 
@@ -485,31 +488,31 @@ similarly.
     &\le C\,\Vert\nabla u_{h}\Vert_{0}
             \Vert\nabla v_{h}\Vert_{0}
             \Vert\nabla w_{h}\Vert_{0},
-    \label{eq:b1-est1}\\
+    \label{eq:2.27}\\
     b_{1}(u_{h};v_{h},w_{h})
     &\le C\,\Vert u_{h}\Vert_{0}
             \Vert\nabla v_{h}\Vert_{0}^{1/2}
             \Vert A_{h}v_{h}\Vert_{0}^{1/2}
             \Vert\nabla w_{h}\Vert_{0},
-    \label{eq:b1-est2}\\
+    \label{eq:2.28}\\
     b_{1}(u_{h};v_{h},w_{h})
     &\le C\,\Vert\nabla u_{h}\Vert_{0}
             \Vert\nabla v_{h}\Vert_{0}^{1/2}
             \Vert A_{h}v_{h}\Vert_{0}^{1/2}
             \Vert w_{h}\Vert_{0},
-    \label{eq:b1-est3}\\
+    \label{eq:2.29}\\
     b_{1}(u_{h};v_{h},w_{h})
     &\le C\,\Vert\nabla u_{h}\Vert_{0}^{1/2}
             \Vert A_{h}u_{h}\Vert_{0}^{1/2}
             \Vert\nabla v_{h}\Vert_{0}
             \Vert w_{h}\Vert_{0},
-    \label{eq:b1-est4}\\
+    \label{eq:2.30}\\
     b_{1}(u_{h};v_{h},w_{h})
     &\le C\,\Vert u_{h}\Vert_{0}
             \Vert\nabla u_{h}\Vert_{0}^{1/2}
             \Vert A_{h}v_{h}\Vert_{0}
             \Vert w_{h}\Vert_{0}.
-    \label{eq:b1-est5}
+    \label{eq:2.31}
   \end{align}
 \end{lemma}
 
@@ -522,25 +525,25 @@ similarly.
     &\le C\,\Vert\nabla u_{h}\Vert_{0}
             \Vert\nabla\chi_{h}\Vert_{0}
             \Vert\nabla\varphi_{h}\Vert_{0},
-    \label{eq:b2-est1}\\
+    \label{eq:2.32}\\
     b_{2}(u_{h};\varphi_{h},\chi_{h})
     &\le C\,\Vert u_{h}\Vert_{0}
             \Vert\nabla\varphi_{h}\Vert_{0}^{1/2}
             \Vert\Delta_{h}\varphi_{h}\Vert_{0}^{1/2}
             \Vert\nabla\chi_{h}\Vert_{0},
-    \label{eq:b2-est2}\\
+    \label{eq:2.33}\\
     b_{2}(u_{h};\varphi_{h},\chi_{h})
     &\le C\,\Vert\nabla u_{h}\Vert_{0}^{1/2}
             \Vert A_{h}u_{h}\Vert_{0}^{1/2}
             \Vert\nabla\varphi_{h}\Vert_{0}
             \Vert\chi_{h}\Vert_{0},
-    \label{eq:b2-est3}\\
+    \label{eq:2.34}\\
     b_{2}(u_{h};\varphi_{h},\chi_{h})
     &\le C\,\Vert\nabla u_{h}\Vert_{0}
             \Vert\nabla\varphi_{h}\Vert_{0}^{1/2}
             \Vert\Delta_{h}\varphi_{h}\Vert_{0}^{1/2}
             \Vert\chi_{h}\Vert_{0}.
-    \label{eq:b2-est4}
+    \label{eq:2.35}
   \end{align}
 \end{lemma}
 
@@ -553,7 +556,7 @@ similarly.
            \Vert\Delta_{h}\eta_{h}\Vert_{0}^{1/2}
            \Vert\Delta_{h}\varphi_{h}\Vert_{0}
            \Vert\chi_{h}\Vert_{0}.
-    \label{eq:lem4}
+    \label{eq:2.36}
   \end{equation}
 \end{lemma}
 
@@ -580,7 +583,7 @@ Finally, assume that the solutions and initial values of equations
      + \Vert p_{t}\Vert_{L^{2}(H^{1})}^{2}
     \le C_{0}.
   \end{aligned}
-  \label{eq:regularity}
+  \label{eq:2.37}
 \end{equation}
 
 % ------------------------------------------------------------------
@@ -594,11 +597,11 @@ $f^{j}=f(\cdot,t_{j})$, and for a sequence of functions $\{f^{j}\}_{j=0}^{J}$
 we define
 \begin{equation}
   D_{\tau}f^{j+1} = \frac{f^{j+1}-f^{j}}{\tau}.
-  \label{eq:Dtau}
+  \label{eq:3.1}
 \end{equation}
 
 With the above notation, the linearized backward Euler scheme of
-\eqref{eq:variational} is given as follows.
+\eqref{eq:2.13} is given as follows.
 
 \medskip
 \noindent\textbf{Step~1.}
@@ -640,7 +643,7 @@ such that
      \quad \forall\,\varphi_{h}\in X_{h}.
   \end{aligned}
   \right.
-  \label{eq:scheme}
+  \label{eq:3.2}
 \end{equation}
 
 \noindent\textbf{Step~2.} Set
@@ -648,33 +651,33 @@ such that
   c^{j+1}_{1h} = \tilde{c}^{j+1}_{1h} + m_{0},
   \qquad
   c^{j+1}_{2h} = \tilde{c}^{j+1}_{2h} + m_{0}.
-  \label{eq:c-recover}
+  \label{eq:3.3}
 \end{equation}
 
 To derive the well-posedness and unconditional error estimates of scheme
-\eqref{eq:scheme}, we need the following inductive hypothesis:
+\eqref{eq:3.2}, we need the following inductive hypothesis:
 \begin{equation}
   \bigl\Vert\tilde{c}^{j}_{1h}\bigr\Vert_{0,3}
   + \bigl\Vert\tilde{c}^{j}_{2h}\bigr\Vert_{0,3}
   \le C_{1}.
-  \label{eq:inductive}
+  \label{eq:3.4}
 \end{equation}
 
 In the remainder of this section we prove the existence and uniqueness of
-scheme \eqref{eq:scheme}.
+scheme \eqref{eq:3.2}.
 
 \begin{theorem}
   \label{thm:wellposed}
-  If the time step $\tau$ is small enough, scheme \eqref{eq:scheme} has a
+  If the time step $\tau$ is small enough, scheme \eqref{eq:3.2} has a
   unique solution.
 \end{theorem}
 
 \begin{proof}
-Since scheme \eqref{eq:scheme} is an algebraic linear system, we only need
+Since scheme \eqref{eq:3.2} is an algebraic linear system, we only need
 to prove uniqueness. Suppose there exist
 $(\tilde{c}^{j+1}_{1h,i},\tilde{c}^{j+1}_{2h,i},\psi^{j+1}_{h,i})
 \in X^{0}_{h}\times X^{0}_{h}\times X^{0}_{h}$, $i=1,2$, satisfying the
-last three equations of \eqref{eq:scheme}. Then we have
+last three equations of \eqref{eq:3.2}. Then we have
 \begin{equation}
   \left\{
   \begin{aligned}
@@ -697,34 +700,34 @@ last three equations of \eqref{eq:scheme}. Then we have
        - (\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2}),\,\varphi_{h}\bigr).
   \end{aligned}
   \right.
-  \label{eq:diff-system}
+  \label{eq:3.5}
 \end{equation}
 
 Taking $\varphi_{h}=\psi^{j+1}_{h,1}-\psi^{j+1}_{h,2}$ and
 $\varphi_{h}=\Delta_{h}(\psi^{j+1}_{h,1}-\psi^{j+1}_{h,2})$ in the third
-equation of \eqref{eq:diff-system}, respectively, we obtain
+equation of \eqref{eq:3.5}, respectively, we obtain
 \begin{equation}
   \bigl\Vert\nabla(\psi^{j+1}_{h,1}-\psi^{j+1}_{h,2})\bigr\Vert_{0}
   \le C\bigl(\bigl\Vert\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2}\bigr\Vert_{0}
            + \bigl\Vert\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2}\bigr\Vert_{0}\bigr),
-  \label{eq:psi-diff1}
+  \label{eq:3.6}
 \end{equation}
 \begin{equation}
   \bigl\Vert\Delta_{h}(\psi^{j+1}_{h,1}-\psi^{j+1}_{h,2})\bigr\Vert_{0}
   \le \bigl\Vert\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2}\bigr\Vert_{0}
     + \bigl\Vert\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2}\bigr\Vert_{0}.
-  \label{eq:psi-diff2}
+  \label{eq:3.7}
 \end{equation}
 
 Setting $\eta_{1h}=\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2}$ in the
-first equation of \eqref{eq:diff-system} and using
-\eqref{eq:lem1}, \eqref{eq:inductive}, \eqref{eq:psi-diff2}, we arrive at
+first equation of \eqref{eq:3.5} and using
+\eqref{eq:2.26}, \eqref{eq:3.4}, \eqref{eq:3.7}, we arrive at
 \begin{equation}
   \bigl\Vert\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2}\bigr\Vert_{0}^{2}
   + \tfrac{\tau}{2}\bigl\Vert\nabla(\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2})\bigr\Vert_{0}^{2}
   \le CC_{1}^{2}\tau\bigl(\bigl\Vert\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2}\bigr\Vert_{0}^{2}
       + \bigl\Vert\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2}\bigr\Vert_{0}^{2}\bigr).
-  \label{eq:c1-unique}
+  \label{eq:3.8}
 \end{equation}
 
 Similarly, we get
@@ -733,10 +736,10 @@ Similarly, we get
   + \tfrac{\tau}{2}\bigl\Vert\nabla(\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2})\bigr\Vert_{0}^{2}
   \le CC_{1}^{2}\tau\bigl(\bigl\Vert\tilde{c}^{j+1}_{1h,1}-\tilde{c}^{j+1}_{1h,2}\bigr\Vert_{0}^{2}
       + \bigl\Vert\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2}\bigr\Vert_{0}^{2}\bigr).
-  \label{eq:c2-unique}
+  \label{eq:3.9}
 \end{equation}
 
-Summing \eqref{eq:c1-unique} and \eqref{eq:c2-unique} gives
+Summing \eqref{eq:3.8} and \eqref{eq:3.9} gives
 \begin{equation}
   \begin{aligned}
     &(1-CC_{1}^{2}\tau)
@@ -747,22 +750,22 @@ Summing \eqref{eq:c1-unique} and \eqref{eq:c2-unique} gives
            + \bigl\Vert\nabla(\tilde{c}^{j+1}_{2h,1}-\tilde{c}^{j+1}_{2h,2})\bigr\Vert_{0}^{2}\bigr)
      \le 0.
   \end{aligned}
-  \label{eq:c12-sum}
+  \label{eq:3.10}
 \end{equation}
 
-Setting $\tau<\tau_{1}:=\dfrac{1}{2CC_{1}^{2}}$ in \eqref{eq:c12-sum} yields
+Setting $\tau<\tau_{1}:=\dfrac{1}{2CC_{1}^{2}}$ in \eqref{eq:3.10} yields
 \begin{equation}
   \tilde{c}^{j+1}_{1h,1} = \tilde{c}^{j+1}_{1h,2},
   \qquad
   \tilde{c}^{j+1}_{2h,1} = \tilde{c}^{j+1}_{2h,2},
-  \label{eq:c-unique}
+  \label{eq:3.11}
 \end{equation}
-which together with \eqref{eq:psi-diff1} leads to
+which together with \eqref{eq:3.6} leads to
 \begin{equation}
   \psi^{j+1}_{h,1} = \psi^{j+1}_{h,2}.
-  \label{eq:psi-unique}
+  \label{eq:3.12}
 \end{equation}
-Finally, the first two equations of \eqref{eq:scheme} represent the
+Finally, the first two equations of \eqref{eq:3.2} represent the
 linearized backward Euler scheme of the Navier--Stokes equations, which has
 the unique solution $(u^{j+1}_{h},p^{j+1}_{h})$. The proof is completed.
 \end{proof}
@@ -773,7 +776,7 @@ the unique solution $(u^{j+1}_{h},p^{j+1}_{h})$. The proof is completed.
 \section{The error estimates}\label{sec:error}
 
 In this section, we will derive the unconditional error estimates of all the variables. Let
-\begin{equation}\label{eq:error-def}
+\begin{equation}\label{eq:4.1}
 \begin{aligned}
   e_{u}^{j+1}       &= u_{h}^{j+1} - S_{h}u^{j+1}, \quad
   e_{p}^{j+1}        = p_{h}^{j+1} - S_{h}p^{j+1}, \\
@@ -782,7 +785,7 @@ In this section, we will derive the unconditional error estimates of all the var
   e_{\psi}^{j+1}     = \psi_{h}^{j+1} - R_{h}\psi^{j+1},
 \end{aligned}
 \end{equation}
-and subtract \eqref{eq:scheme} from \eqref{eq:variational} with $t = t_{j+1}$, then we obtain the error equations
+and subtract \eqref{eq:3.2} from \eqref{eq:2.13} with $t = t_{j+1}$, then we obtain the error equations
 \begin{align}
   &\bigl(u_{t}^{j+1} - D_{\tau}u^{j+1},\, v_{h}\bigr)
    + \bigl(D_{\tau}(u^{j+1} - S_{h}u^{j+1}),\, v_{h}\bigr)
@@ -799,10 +802,10 @@ and subtract \eqref{eq:scheme} from \eqref{eq:variational} with $t = t_{j+1}$, t
    - \bigl(\tilde{c}_{2}^{j+1}\nabla\psi^{j+1}
              - \tilde{c}_{2h}^{j}\nabla\psi_{h}^{j+1},\, v_{h}\bigr)
    = 0, \quad \forall\, v_{h}\in V_{h},
-  \label{eq:err-u}\\[4pt]
+  \label{eq:4.2}\\[4pt]
   &\bigl(\operatorname{div} e_{u}^{j+1},\, q_{h}\bigr) = 0,
    \quad \forall\, q_{h}\in Q_{h},
-  \label{eq:err-divu}\\[4pt]
+  \label{eq:4.3}\\[4pt]
   &\bigl(\tilde{c}_{1t}^{j+1} - D_{\tau}\tilde{c}_{1}^{j+1},\, \eta_{1h}\bigr)
    + \bigl(D_{\tau}\tilde{c}_{1}^{j+1} - D_{\tau}R_{h}\tilde{c}_{1}^{j+1},\, \eta_{1h}\bigr)
    - \bigl(D_{\tau}e_{\tilde{c}_{1}}^{j+1},\, \eta_{1h}\bigr)
@@ -819,7 +822,7 @@ and subtract \eqref{eq:scheme} from \eqref{eq:variational} with $t = t_{j+1}$, t
   &\quad + b_{2}(u_{h}^{j};\, \tilde{c}_{1}^{j+1} - R_{h}\tilde{c}_{1}^{j+1},\, \eta_{1h})
    - b_{2}(u_{h}^{j};\, e_{\tilde{c}_{1}}^{j+1},\, \eta_{1h})
    = 0, \quad \forall\, \eta_{1h}\in X_{h},
-  \label{eq:err-c1}\\[4pt]
+  \label{eq:4.4}\\[4pt]
   &\bigl(\tilde{c}_{2t}^{j+1} - D_{\tau}\tilde{c}_{2}^{j+1},\, \eta_{2h}\bigr)
    + \bigl(D_{\tau}\tilde{c}_{2}^{j+1} - D_{\tau}R_{h}\tilde{c}_{2}^{j+1},\, \eta_{2h}\bigr)
    - \bigl(D_{\tau}e_{\tilde{c}_{2}}^{j+1},\, \eta_{2h}\bigr)
@@ -836,13 +839,13 @@ and subtract \eqref{eq:scheme} from \eqref{eq:variational} with $t = t_{j+1}$, t
   &\quad + b_{2}(u_{h}^{j};\, \tilde{c}_{2}^{j+1} - R_{h}\tilde{c}_{2}^{j+1},\, \eta_{2h})
    - b_{2}(u_{h}^{j};\, e_{\tilde{c}_{2}}^{j+1},\, \eta_{2h})
    = 0, \quad \forall\, \eta_{2h}\in X_{h},
-  \label{eq:err-c2}\\[4pt]
+  \label{eq:4.5}\\[4pt]
   &\bigl(\nabla e_{\psi}^{j+1},\, \nabla\varphi_{h}\bigr)
    = -\bigl(\tilde{c}_{1}^{j+1} - R_{h}\tilde{c}_{1}^{j+1},\, \varphi_{h}\bigr)
    + \bigl(\tilde{c}_{2}^{j+1} - R_{h}\tilde{c}_{2}^{j+1},\, \varphi_{h}\bigr)
    + \bigl(e_{\tilde{c}_{1}}^{j+1} - e_{\tilde{c}_{2}}^{j+1},\, \varphi_{h}\bigr),
    \quad \forall\, \varphi_{h}\in X_{h}.
-  \label{eq:err-psi}
+  \label{eq:4.6}
 \end{align}
 
 % ------------------------------------------------------------
@@ -855,9 +858,9 @@ following Lemmas~\ref{lem:epsi-l2}--\ref{lem:eu-l2} and Theorem~\ref{thm:l2}.
 \begin{lemma}\label{lem:epsi-l2}
 Assume that $(\tilde{c}_{1},\tilde{c}_{2},\psi,u,p)$ and
 $(\tilde{c}_{1h}^{j+1},\tilde{c}_{2h}^{j+1},\psi_{h}^{j+1},u_{h}^{j+1},p_{h}^{j+1})$
-are solutions of \eqref{eq:variational} and \eqref{eq:scheme}, respectively, and the regularity
-condition \eqref{eq:regularity} holds. Then we have
-\begin{equation}\label{eq:epsi-l2}
+are solutions of \eqref{eq:2.13} and \eqref{eq:3.2}, respectively, and the regularity
+condition \eqref{eq:2.37} holds. Then we have
+\begin{equation}\label{eq:4.7}
   \bigl\|\nabla e_{\psi}^{j+1}\bigr\|_{0}
   + \bigl\|\Delta_{h} e_{\psi}^{j+1}\bigr\|_{0}
   \leq CC_{0}h^{2}
@@ -868,7 +871,7 @@ condition \eqref{eq:regularity} holds. Then we have
 
 \begin{proof}
 Taking $\varphi_{h} = e_{\psi}^{j+1}$ and $\varphi_{h} = \Delta_{h}e_{\psi}^{j+1}$
-in \eqref{eq:err-psi}, respectively, we get
+in \eqref{eq:4.6}, respectively, we get
 \begin{align}
   \bigl\|\nabla e_{\psi}^{j+1}\bigr\|_{0}^{2}
   &\leq C\Bigl(\bigl\|\tilde{c}_{1}^{j+1} - R_{h}\tilde{c}_{1}^{j+1}\bigr\|_{0}
@@ -877,7 +880,7 @@ in \eqref{eq:err-psi}, respectively, we get
   &\quad + C\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
                  + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}\Bigr)
             \bigl\|\nabla e_{\psi}^{j+1}\bigr\|_{0},
-  \label{eq:grad-epsi}\\[4pt]
+  \label{eq:4.8}\\[4pt]
   \bigl\|\Delta_{h}e_{\psi}^{j+1}\bigr\|_{0}^{2}
   &\leq \Bigl(\bigl\|\tilde{c}_{1}^{j+1} - R_{h}\tilde{c}_{1}^{j+1}\bigr\|_{0}
              + \bigl\|\tilde{c}_{2}^{j+1} - R_{h}\tilde{c}_{2}^{j+1}\bigr\|_{0}\Bigr)
@@ -885,9 +888,9 @@ in \eqref{eq:err-psi}, respectively, we get
   &\quad + \Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
                 + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}\Bigr)
            \bigl\|\Delta_{h}e_{\psi}^{j+1}\bigr\|_{0},
-  \label{eq:Deltah-epsi}
+  \label{eq:4.9}
 \end{align}
-which implies the desired result \eqref{eq:epsi-l2}.
+which implies the desired result \eqref{eq:4.7}.
 \end{proof}
 
 \begin{lemma}\label{lem:ec-l2}
@@ -903,12 +906,12 @@ Under the conditions of Lemma~\ref{lem:epsi-l2}, we have
      \Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
           + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}
           + \bigl\|e_{u}^{j+1}\bigr\|_{0}^{2}\Bigr).
-  \label{eq:ec-l2}
+  \label{eq:4.10}
 \end{align}
 \end{lemma}
 
 \begin{proof}
-Setting $\eta_{1h} = e_{\tilde{c}_{1}}^{j+1}$ in \eqref{eq:err-c1} leads to
+Setting $\eta_{1h} = e_{\tilde{c}_{1}}^{j+1}$ in \eqref{eq:4.4} leads to
 \begin{align}
   &\frac{1}{2\tau}\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                        + \bigl\|e_{\tilde{c}_{1}}^{j+1} - e_{\tilde{c}_{1}}^{j}\bigr\|_{0}^{2}
@@ -932,7 +935,7 @@ Setting $\eta_{1h} = e_{\tilde{c}_{1}}^{j+1}$ in \eqref{eq:err-c1} leads to
   \nonumber\\
   &\quad + b_{2}(u_{h}^{j};\, \tilde{c}_{1}^{j+1} - R_{h}\tilde{c}_{1}^{j+1},\, e_{\tilde{c}_{1}}^{j+1})
    \;:=\; \sum_{i=1}^{12} E_{i}.
-  \label{eq:E-sum}
+  \label{eq:4.11}
 \end{align}
 Now, we bound the above terms. From the Taylor formula, Lemma~\ref{lem:epsi-l2} and \eqref{eq:Ritz-error}, it is not hard to check that
 \begin{align}
@@ -943,7 +946,7 @@ Now, we bound the above terms. From the Taylor formula, Lemma~\ref{lem:epsi-l2} 
   &\quad + C\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                  + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}\Bigr)
    + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:E123}
+  \label{eq:4.12}
 \end{align}
 and
 \begin{align}
@@ -958,9 +961,9 @@ and
     + C_{0}^{2}h^{4}
     + \bigl\|e_{\tilde{c}_{1}}^{j}\bigr\|_{0}^{2}\right)
    + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:E456}
+  \label{eq:4.13}
 \end{align}
-By use of the inductive hypothesis \eqref{eq:inductive}, Lemma~\ref{lem:Deltah-bound} and
+By use of the inductive hypothesis \eqref{eq:3.4}, Lemma~\ref{lem:Deltah-bound} and
 Lemma~\ref{lem:epsi-l2}, we obtain
 \begin{align}
   |E_{7}|
@@ -969,7 +972,7 @@ Lemma~\ref{lem:epsi-l2}, we obtain
          \bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
   \leq CC_{0}^{2}C_{1}^{2}h^{2}
        + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:E7}\\[4pt]
+  \label{eq:4.14}\\[4pt]
   |E_{8}|
   &\leq \bigl\|\tilde{c}_{1h}^{j}\bigr\|_{0,3}
          \bigl\|\nabla e_{\psi}^{j+1}\bigr\|_{0,6}
@@ -978,7 +981,7 @@ Lemma~\ref{lem:epsi-l2}, we obtain
        + CC_{1}^{2}\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                          + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}\Bigr)
        + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:E8}
+  \label{eq:4.15}
 \end{align}
 According to Lemma~\ref{lem:b2-bounds}, we infer
 \begin{align}
@@ -993,7 +996,7 @@ According to Lemma~\ref{lem:b2-bounds}, we infer
     + C_{0}^{2}h^{4}
     + \bigl\|e_{u}^{j}\bigr\|_{0}^{2}\right)
    + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:E9-11}
+  \label{eq:4.16}
 \end{align}
 and
 \begin{align}
@@ -1013,9 +1016,9 @@ and
   &\leq CC_{0}^{2}\bigl\|e_{u}^{j}\bigr\|_{0}^{2}
        + CC_{0}^{4}h^{4}
        + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:E12}
+  \label{eq:4.17}
 \end{align}
-Inserting \eqref{eq:E123}--\eqref{eq:E12} into \eqref{eq:E-sum}, and summing up from $j = 0$
+Inserting \eqref{eq:4.12}--\eqref{eq:4.17} into \eqref{eq:4.11}, and summing up from $j = 0$
 to $j = J-1$, we get
 \begin{align}
   \bigl\|e_{\tilde{c}_{1}}^{J}\bigr\|_{0}^{2}
@@ -1026,10 +1029,10 @@ to $j = J-1$, we get
     \Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
          + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}
          + \bigl\|e_{u}^{j+1}\bigr\|_{0}^{2}\Bigr).
-  \label{eq:ec1-l2-sum}
+  \label{eq:4.18}
 \end{align}
 Subsequently, the similar estimates for $e_{\tilde{c}_{2}}^{j+1}$ can also be obtained,
-which together with \eqref{eq:ec1-l2-sum} lead to \eqref{eq:ec-l2}.
+which together with \eqref{eq:4.18} lead to \eqref{eq:4.10}.
 \end{proof}
 
 \begin{lemma}\label{lem:eu-l2}
@@ -1043,13 +1046,13 @@ Under the conditions of Lemma~\ref{lem:epsi-l2}, we have
     \Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
          + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}
          + \bigl\|e_{u}^{j+1}\bigr\|_{0}^{2}\Bigr).
-  \label{eq:eu-l2}
+  \label{eq:4.19}
 \end{align}
 \end{lemma}
 
 \begin{proof}
-Choose $v_{h} = e_{u}^{j+1} \in V_{h}^{\mathrm{div}}$ in \eqref{eq:err-u}, and note that
-\begin{equation}\label{eq:b1-cancel}
+Choose $v_{h} = e_{u}^{j+1} \in V_{h}^{\mathrm{div}}$ in \eqref{eq:4.2}, and note that
+\begin{equation}\label{eq:4.20}
   b_{1}(u_{h}^{j};\, e_{u}^{j+1},\, e_{u}^{j+1}) = 0, \qquad
   \bigl(e_{p}^{j+1},\, \operatorname{div} e_{u}^{j+1}\bigr) = 0,
 \end{equation}
@@ -1073,10 +1076,10 @@ then we arrive at
    - \bigl(\tilde{c}_{2}^{j+1}\nabla\psi^{j+1}
               - \tilde{c}_{2h}^{j}\nabla\psi_{h}^{j+1},\, e_{u}^{j+1}\bigr)
    \;:=\; \sum_{i=1}^{8}G_{i}.
-  \label{eq:G-sum}
+  \label{eq:4.21}
 \end{align}
 By use of Taylor formula and Poincar\'{e} inequality, it is easy to check that
-\begin{equation}\label{eq:G1}
+\begin{equation}\label{eq:4.22}
   |G_{1}| \leq C\tau\int_{t_{j}}^{t_{j+1}}\|u_{tt}\|_{0}^{2}\,\mathrm{d}t
              + \frac{1}{8}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
 \end{equation}
@@ -1090,16 +1093,16 @@ Note that
          \left(\int_{t_{j}}^{t_{j+1}}\|(u - S_{h}u)_{t}\|_{0}^{2}\,\mathrm{d}t\right)^{\!1/2}
         \right\|_{0}^{2}
   \leq \frac{1}{\tau}\int_{t_{j}}^{t_{j+1}}\|(u - S_{h}u)_{t}\|_{0}^{2}\,\mathrm{d}t,
-  \label{eq:Dtau-Shu}
+  \label{eq:4.23}
 \end{align}
 then using \eqref{eq:Stokes-t-error}, we find
-\begin{equation}\label{eq:G2}
+\begin{equation}\label{eq:4.24}
   |G_{2}| \leq \frac{Ch^{4}}{\tau}\int_{t_{j}}^{t_{j+1}}
                \bigl(\|u_{t}\|_{2} + \|p_{t}\|_{1}\bigr)\,\mathrm{d}t
              + \frac{1}{8}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
 \end{equation}
 Due to Lemma~\ref{lem:b1-bounds} and Taylor formula, we deduce
-\begin{equation}\label{eq:G3G4}
+\begin{equation}\label{eq:4.25}
   |G_{3}| + |G_{4}|
   \leq C\Bigl(\bigl\|u^{j+1}-u^{j}\bigr\|_{0} + \bigl\|u^{j} - S_{h}u^{j}\bigr\|_{0}\Bigr)
         \bigl\|u^{j+1}\bigr\|_{2}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}
@@ -1112,12 +1115,12 @@ and
   |G_{5}| &\leq C\|A_{h}S_{h}u^{j}\|_{0}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}
                   \bigl\|u^{j+1} - S_{h}u^{j+1}\bigr\|_{0}
            \leq CC_{0}^{4}h^{4} + \frac{1}{8}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:G5}\\[4pt]
+  \label{eq:4.26}\\[4pt]
   |G_{6}| &\leq C\bigl\|e_{u}^{j}\bigr\|_{0}\|A_{h}S_{h}u^{j+1}\|_{0}
                   \bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}
            \leq CC_{0}^{2}\bigl\|e_{u}^{j}\bigr\|_{0}^{2}
               + \frac{1}{8}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:G6}
+  \label{eq:4.27}
 \end{align}
 Next, $G_{7}$ can be split as
 \begin{align}
@@ -1128,7 +1131,7 @@ Next, $G_{7}$ can be split as
   &\quad - \bigl(e_{\tilde{c}_{1}}^{j}\nabla R_{h}\psi^{j+1},\, e_{u}^{j+1}\bigr)
           - \bigl(\tilde{c}_{1h}^{j}\nabla e_{\psi}^{j+1},\, e_{u}^{j+1}\bigr)
          \;:=\; \sum_{i=1}^{5}G_{7i}.
-  \label{eq:G7-split}
+  \label{eq:4.28}
 \end{align}
 It is not hard to find that
 \begin{align}
@@ -1150,7 +1153,7 @@ It is not hard to find that
   &\quad + CC_{1}^{2}\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                            + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}\Bigr)
          + \frac{1}{16}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:G71-75}
+  \label{eq:4.29}
 \end{align}
 Using Green formula, we obtain
 \begin{align}
@@ -1164,9 +1167,9 @@ Using Green formula, we obtain
     \Bigl(\bigl\|\nabla\tilde{c}_{1}^{j}\bigr\|_{0,3}\bigl\|e_{u}^{j+1}\bigr\|_{0,6}
          + \bigl\|\tilde{c}_{1}^{j}\bigr\|_{0,\infty}\bigl\|\operatorname{div}e_{u}^{j+1}\bigr\|_{0}\Bigr)
   \leq CC_{0}^{4}h^{4} + \frac{1}{16}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:G72}
+  \label{eq:4.30}
 \end{align}
-Combining \eqref{eq:G71-75} and \eqref{eq:G72}, we have
+Combining \eqref{eq:4.29} and \eqref{eq:4.30}, we have
 \begin{align}
   |G_{7}|
   &\leq CC_{0}^{2}\tau\int_{t_{j}}^{t_{j+1}}\|\tilde{c}_{1t}\|_{0}^{2}\,\mathrm{d}t
@@ -1176,7 +1179,7 @@ Combining \eqref{eq:G71-75} and \eqref{eq:G72}, we have
   &\quad + CC_{1}^{2}\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                            + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}\Bigr)
          + \frac{1}{8}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:G7}
+  \label{eq:4.31}
 \end{align}
 In a similar way, $G_{8}$ can be estimated as
 \begin{align}
@@ -1188,10 +1191,10 @@ In a similar way, $G_{8}$ can be estimated as
   &\quad + CC_{1}^{2}\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                            + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}\Bigr)
          + \frac{1}{8}\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:G8}
+  \label{eq:4.32}
 \end{align}
-Therefore, inserting estimates \eqref{eq:G1}, \eqref{eq:G2}--\eqref{eq:G6}, \eqref{eq:G7},
-\eqref{eq:G8} into \eqref{eq:G-sum}, we get
+Therefore, inserting estimates \eqref{eq:4.22}, \eqref{eq:4.24}--\eqref{eq:4.27}, \eqref{eq:4.31},
+\eqref{eq:4.32} into \eqref{eq:4.21}, we get
 \begin{align}
   &\frac{1}{2\tau}\Bigl(\bigl\|e_{u}^{j+1}\bigr\|_{0}^{2}
                        - \bigl\|e_{u}^{j}\bigr\|_{0}^{2}\Bigr)
@@ -1209,9 +1212,9 @@ Therefore, inserting estimates \eqref{eq:G1}, \eqref{eq:G2}--\eqref{eq:G6}, \eqr
                                   + \bigl\|e_{\tilde{c}_{2}}^{j}\bigr\|_{0}^{2}
                                   + \bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
                                   + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}\Bigr).
-  \label{eq:eu-step}
+  \label{eq:4.33}
 \end{align}
-Finally, summing \eqref{eq:eu-step} up from $j = 0$ to $J-1$, we arrive at \eqref{eq:eu-l2}.
+Finally, summing \eqref{eq:4.33} up from $j = 0$ to $J-1$, we arrive at \eqref{eq:4.19}.
 \end{proof}
 
 \begin{theorem}\label{thm:l2}
@@ -1224,11 +1227,11 @@ Under the conditions of Lemma~\ref{lem:epsi-l2}, if $\tau$ is small enough, we h
                                + \bigl\|\nabla e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}
                                + \bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}\Bigr)
    \leq C_{2}^{2}\bigl(\tau^{2} + h^{2}\bigr),
-  \label{eq:l2-result}\\[4pt]
+  \label{eq:4.34}\\[4pt]
   &\bigl\|\nabla e_{\psi}^{J}\bigr\|_{0}
    + \bigl\|\Delta_{h}e_{\psi}^{J}\bigr\|_{0}
    \leq C_{2}(\tau + h),
-  \label{eq:l2-psi}
+  \label{eq:4.35}
 \end{align}
 where $C_{2}^{2} = CC_{0}^{2}(C_{0}^{2}+C_{1}^{2})\exp\!\bigl(CC_{0}^{2}+CC_{1}^{2}\bigr)$.
 \end{theorem}
@@ -1248,30 +1251,30 @@ Using Lemma~\ref{lem:ec-l2} and Lemma~\ref{lem:eu-l2}, we get
      \Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
           + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0}^{2}
           + \bigl\|e_{u}^{j+1}\bigr\|_{0}^{2}\Bigr).
-  \label{eq:combined-l2}
+  \label{eq:4.36}
 \end{align}
 By the Gronwall lemma, taking $\tau < \tau_{2} := \dfrac{1}{C(C_{0}^{2}+C_{1}^{2})}$,
-we deduce \eqref{eq:l2-result}. Then using Lemma~\ref{lem:epsi-l2}, we obtain \eqref{eq:l2-psi}.
+we deduce \eqref{eq:4.34}. Then using Lemma~\ref{lem:epsi-l2}, we obtain \eqref{eq:4.35}.
 \end{proof}
 
 The error estimates in Lemmas~\ref{lem:epsi-l2}--\ref{lem:eu-l2} and Theorem~\ref{thm:l2}
-were derived under the inductive hypothesis \eqref{eq:inductive}. Now, we check it.
+were derived under the inductive hypothesis \eqref{eq:3.4}. Now, we check it.
 
 When $j = 0$, we deduce
-\begin{equation}\label{eq:j0-check}
+\begin{equation}\label{eq:4.37}
   \bigl\|\tilde{c}_{1h}^{0}\bigr\|_{0,3}
   + \bigl\|\tilde{c}_{2h}^{0}\bigr\|_{0,3}
   = \|R_{h}\tilde{c}_{10}\|_{0,3} + \|R_{h}\tilde{c}_{20}\|_{0,3}
   < 1 + C_{0} =: C_{1}.
 \end{equation}
 Assume that
-\begin{equation}\label{eq:inductive-m}
+\begin{equation}\label{eq:4.38}
   \bigl\|\tilde{c}_{1h}^{m}\bigr\|_{0,3}
   + \bigl\|\tilde{c}_{2h}^{m}\bigr\|_{0,3} \leq C_{1}
 \end{equation}
-is true for $m \leq j$. Next, we derive \eqref{eq:inductive} for $m = j+1$. To this aim, we
+is true for $m \leq j$. Next, we derive \eqref{eq:3.4} for $m = j+1$. To this aim, we
 consider two cases. If $\tau < h$, we have from the inverse inequality and Theorem~\ref{thm:l2} that
-\begin{equation}\label{eq:case1}
+\begin{equation}\label{eq:4.39}
   \bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0,3}
   + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0,3}
   \leq Ch^{-d/6}\Bigl(\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
@@ -1279,7 +1282,7 @@ consider two cases. If $\tau < h$, we have from the inverse inequality and Theor
   \leq CC_{2}h^{1/2}.
 \end{equation}
 If $h < \tau$, by Theorem~\ref{thm:l2}, we deduce
-\begin{equation}\label{eq:case2}
+\begin{equation}\label{eq:4.40}
   \bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0,3}
   + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0,3}
   \leq C\Bigl(\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
@@ -1288,12 +1291,12 @@ If $h < \tau$, by Theorem~\ref{thm:l2}, we deduce
 \end{equation}
 In any case, if $\tau < \tau_{3} := \dfrac{1}{C^{2}C_{2}^{2}}$ and
 $h < h_{1} := \dfrac{1}{C^{2}C_{2}^{2}}$, we conclude that
-\begin{equation}\label{eq:err-small}
+\begin{equation}\label{eq:4.41}
   \bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0,3}
   + \bigl\|e_{\tilde{c}_{2}}^{j+1}\bigr\|_{0,3} < 1.
 \end{equation}
 Thus, we have
-\begin{equation}\label{eq:inductive-verified}
+\begin{equation}\label{eq:4.42}
   \bigl\|\tilde{c}_{1h}^{j+1}\bigr\|_{0,3}
   + \bigl\|\tilde{c}_{2h}^{j+1}\bigr\|_{0,3}
   \leq \bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0,3}
@@ -1302,7 +1305,7 @@ Thus, we have
      + \bigl\|R_{h}\tilde{c}_{2}^{j+1}\bigr\|_{0,3}
   \leq 1 + C_{0} = C_{1}.
 \end{equation}
-The check of the inductive hypothesis \eqref{eq:inductive} is completed.
+The check of the inductive hypothesis \eqref{eq:3.4} is completed.
 
 \begin{remark}\label{rem:inductive}
 In the using of the mathematical inductive method, it is crucial to bound
@@ -1325,48 +1328,48 @@ Under the conditions of Lemma~\ref{lem:epsi-l2}, if $\tau$ and $h$ are small eno
   \bigl\|\nabla\psi_{h}^{j+1}\bigr\|_{0}
   + \bigl\|\Delta_{h}\psi_{h}^{j+1}\bigr\|_{0}
   &\leq C_{3},
-  \label{eq:stab-psi}\\[4pt]
+  \label{eq:4.43}\\[4pt]
   \bigl\|\nabla\tilde{c}_{1h}^{j+1}\bigr\|_{0}
   + \bigl\|\nabla\tilde{c}_{2h}^{j+1}\bigr\|_{0}
   + \bigl\|\nabla u_{h}^{j+1}\bigr\|_{0}
   &\leq C_{3},
-  \label{eq:stab-H1}\\[4pt]
+  \label{eq:4.44}\\[4pt]
   \tau\sum_{j=0}^{J-1}\Bigl(\bigl\|\Delta_{h}\tilde{c}_{1h}^{j+1}\bigr\|_{0}^{2}
                             + \bigl\|\Delta_{h}\tilde{c}_{2h}^{j+1}\bigr\|_{0}^{2}
                             + \bigl\|A_{h}u_{h}^{j+1}\bigr\|_{0}^{2}\Bigr)
   &\leq C_{4}^{2},
-  \label{eq:stab-H2}
+  \label{eq:4.45}
 \end{align}
 where $C_{3} = CC_{2} + 2C_{0}$, $C_{4}^{2} = CC_{3}^{6} + CC_{0}^{2}$.
 \end{lemma}
 
 \begin{proof}
 First of all, from the definition of the Ritz projection \eqref{eq:Ritz-def}, we have
-\begin{equation}\label{eq:Ritz-prop}
+\begin{equation}\label{eq:4.46}
   \bigl(\nabla R_{h}\psi^{j+1},\, \nabla\chi_{h}\bigr)
   = \bigl(\nabla\psi^{j+1},\, \nabla\chi_{h}\bigr), \quad \forall\,\chi_{h}\in X_{h}^{0}.
 \end{equation}
 Taking $\chi_{h} = R_{h}\psi^{j+1}$ and $\chi_{h} = \Delta_{h}R_{h}\psi^{j+1}$ in
-\eqref{eq:Ritz-prop}, respectively, and using \eqref{eq:Deltah-def}, we infer
+\eqref{eq:4.46}, respectively, and using \eqref{eq:Deltah-def}, we infer
 \begin{align}
   \bigl\|\nabla R_{h}\psi^{j+1}\bigr\|_{0}^{2}
   &= \bigl(\nabla\psi^{j+1},\, \nabla R_{h}\psi^{j+1}\bigr)
    \leq \bigl\|\nabla\psi^{j+1}\bigr\|_{0}\bigl\|\nabla R_{h}\psi^{j+1}\bigr\|_{0},
-  \label{eq:Ritz-grad}\\[4pt]
+  \label{eq:4.47}\\[4pt]
   \bigl\|\Delta_{h}R_{h}\psi^{j+1}\bigr\|_{0}^{2}
   &= \bigl(\nabla R_{h}\psi^{j+1},\, \nabla\Delta_{h}R_{h}\psi^{j+1}\bigr)
    = \bigl(\nabla\psi^{j+1},\, \nabla\Delta_{h}R_{h}\psi^{j+1}\bigr)
   \nonumber\\
   &= -\bigl(\Delta\psi^{j+1},\, \Delta_{h}R_{h}\psi^{j+1}\bigr)
    \leq \bigl\|\Delta\psi^{j+1}\bigr\|_{0}\bigl\|\Delta_{h}R_{h}\psi^{j+1}\bigr\|_{0},
-  \label{eq:Ritz-Deltah}
+  \label{eq:4.48}
 \end{align}
 which implies
-\begin{equation}\label{eq:Ritz-bound}
+\begin{equation}\label{eq:4.49}
   \bigl\|\nabla R_{h}\psi^{j+1}\bigr\|_{0} \leq \bigl\|\nabla\psi^{j+1}\bigr\|_{0}, \qquad
   \bigl\|\Delta_{h}R_{h}\psi^{j+1}\bigr\|_{0} \leq \bigl\|\Delta\psi^{j+1}\bigr\|_{0}.
 \end{equation}
-Then using \eqref{eq:l2-psi} in Theorem~\ref{thm:l2}, we deduce
+Then using \eqref{eq:4.35} in Theorem~\ref{thm:l2}, we deduce
 \begin{align}
   \bigl\|\nabla\psi_{h}^{j+1}\bigr\|_{0}
   + \bigl\|\Delta_{h}\psi_{h}^{j+1}\bigr\|_{0}
@@ -1377,32 +1380,32 @@ Then using \eqref{eq:l2-psi} in Theorem~\ref{thm:l2}, we deduce
   \nonumber\\
   &\leq C_{2}(\tau+h) + 2\bigl\|\psi^{j+1}\bigr\|_{2}
    \leq CC_{2} + 2C_{0} =: C_{3}.
-  \label{eq:stab-psi-proof}
+  \label{eq:4.50}
 \end{align}
 Next, if $\tau < h$, from the inverse inequality and the $\ell^{\infty}(L^{2})$ norm estimate
-in \eqref{eq:l2-result}, we infer
-\begin{equation}\label{eq:grad-ec1-case1}
+in \eqref{eq:4.34}, we infer
+\begin{equation}\label{eq:4.51}
   \bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
   \leq Ch^{-1}\bigl\|e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
   \leq CC_{2}h^{-1}(\tau+h) \leq CC_{2}.
 \end{equation}
-If $h < \tau$, by use of the $\ell^{2}(H^{1})$ norm estimate in \eqref{eq:l2-result}, we deduce
-\begin{equation}\label{eq:grad-ec1-case2}
+If $h < \tau$, by use of the $\ell^{2}(H^{1})$ norm estimate in \eqref{eq:4.34}, we deduce
+\begin{equation}\label{eq:4.52}
   \bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
   \leq C_{2}\tau^{-1/2}(\tau+h) \leq CC_{2}\tau^{1/2}.
 \end{equation}
 In any case, we obtain
-\begin{equation}\label{eq:stab-c1}
+\begin{equation}\label{eq:4.53}
   \bigl\|\nabla\tilde{c}_{1h}^{j+1}\bigr\|_{0}
   \leq \bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
      + \bigl\|\nabla R_{h}\tilde{c}_{1}^{j+1}\bigr\|_{0}
   \leq CC_{2} + C_{0} =: C_{3}.
 \end{equation}
 Similarly, we can derive the bounds of $\ell^{\infty}(H^{1})$ norm for
-$\tilde{c}_{2h}^{j+1}$ and $u_{h}^{j+1}$, which implies \eqref{eq:stab-H1}.
+$\tilde{c}_{2h}^{j+1}$ and $u_{h}^{j+1}$, which implies \eqref{eq:4.44}.
 
 Finally, taking $\eta_{1h} = 2\Delta_{h}\tilde{c}_{1h}^{j+1}\tau$ in the third equation
-of \eqref{eq:scheme}, and using \eqref{eq:Deltah-def}, \eqref{eq:b1-b2-estimate3},
+of \eqref{eq:3.2}, and using \eqref{eq:Deltah-def}, \eqref{eq:b1-b2-estimate3},
 \eqref{eq:Lemma4-bound}, we have
 \begin{align}
   &\bigl\|\nabla\tilde{c}_{1h}^{j+1}\bigr\|_{0}^{2}
@@ -1428,15 +1431,15 @@ of \eqref{eq:scheme}, and using \eqref{eq:Deltah-def}, \eqref{eq:b1-b2-estimate3
     \bigl\|\Delta_{h}\tilde{c}_{1h}^{j+1}\bigr\|_{0}^{3/2}
   \nonumber\\
   &\leq CC_{3}^{6}\tau + \tau\bigl\|\Delta_{h}\tilde{c}_{1h}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:Deltah-c1h}
+  \label{eq:4.54}
 \end{align}
-Summing \eqref{eq:Deltah-c1h} up from $j = 0$ to $J-1$, we get
-\begin{equation}\label{eq:sum-Deltah-c1h}
+Summing \eqref{eq:4.54} up from $j = 0$ to $J-1$, we get
+\begin{equation}\label{eq:4.55}
   \tau\sum_{j=0}^{J-1}\bigl\|\Delta_{h}\tilde{c}_{1h}^{j+1}\bigr\|_{0}^{2}
   \leq CC_{3}^{6} + C\bigl\|\nabla\tilde{c}_{1h}^{0}\bigr\|_{0}^{2}
   \leq CC_{3}^{6} + CC_{0}^{2} =: C_{4}^{2}.
 \end{equation}
-In an analogous procedure, we can derive the rest part of \eqref{eq:stab-H2}. The proof is completed.
+In an analogous procedure, we can derive the rest part of \eqref{eq:4.45}. The proof is completed.
 \end{proof}
 
 % ------------------------------------------------------------
@@ -1448,7 +1451,7 @@ which are shown in following Theorems~\ref{thm:H1-u}--\ref{thm:H1-all}.
 
 \begin{theorem}\label{thm:H1-u}
 Under the conditions of Lemma~\ref{lem:epsi-l2}, we have
-\begin{equation}\label{eq:H1-u}
+\begin{equation}\label{eq:4.56}
   \tau\sum_{j=0}^{J-1}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2}
   + \bigl\|\nabla e_{u}^{J}\bigr\|_{0}^{2}
   \leq C_{5}^{2}\bigl(\tau^{2} + h^{2}\bigr),
@@ -1457,7 +1460,7 @@ where $C_{5}^{2} = C(C_{0}^{2}+C_{1}^{2})C_{2}^{2}\exp\!\bigl(CC_{0}^{2}+CC_{4}^
 \end{theorem}
 
 \begin{proof}
-Putting $v_{h} = D_{\tau}e_{u}^{j+1}$ in \eqref{eq:err-u} results in
+Putting $v_{h} = D_{\tau}e_{u}^{j+1}$ in \eqref{eq:4.2} results in
 \begin{align}
   &\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2}
    + \frac{1}{2\tau}\Bigl(\bigl\|\nabla e_{u}^{j+1}\bigr\|_{0}^{2}
@@ -1477,10 +1480,10 @@ Putting $v_{h} = D_{\tau}e_{u}^{j+1}$ in \eqref{eq:err-u} results in
    - \bigl(\tilde{c}_{2}^{j+1}\nabla\psi^{j+1}
              - \tilde{c}_{2h}^{j}\nabla\psi_{h}^{j+1},\, D_{\tau}e_{u}^{j+1}\bigr)
    \;:=\; \sum_{i=1}^{9}L_{i}.
-  \label{eq:L-sum}
+  \label{eq:4.57}
 \end{align}
 Now, we estimate the above nine terms. It is not difficult to see that
-\begin{equation}\label{eq:L1L2}
+\begin{equation}\label{eq:4.58}
   |L_{1}| + |L_{2}|
   \leq C\tau\int_{t_{j}}^{t_{j+1}}\|u_{tt}\|_{0}^{2}\,\mathrm{d}t
      + \frac{Ch^{4}}{\tau}\int_{t_{j}}^{t_{j+1}}
@@ -1497,7 +1500,7 @@ In view of Lemma~\ref{lem:b1-bounds}, we infer
   &\leq CC_{0}^{2}\tau\int_{t_{j}}^{t_{j+1}}\|\nabla u_{t}\|_{0}^{2}\,\mathrm{d}t
      + CC_{0}^{4}h^{2}
      + \frac{1}{8}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:L3L4}
+  \label{eq:4.59}
 \end{align}
 and
 \begin{align}
@@ -1506,13 +1509,13 @@ and
                 \bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}
            \leq CC_{0}^{4}h^{2}
               + \frac{1}{8}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:L5}\\[4pt]
+  \label{eq:4.60}\\[4pt]
   |L_{6}| &\leq \bigl\|\nabla e_{u}^{j}\bigr\|_{0}
                 \bigl\|A_{h}S_{h}u^{j+1}\bigr\|_{0}
                 \bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}
            \leq CC_{0}^{2}\bigl\|\nabla e_{u}^{j}\bigr\|_{0}^{2}
               + \frac{1}{8}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:L6}\\[4pt]
+  \label{eq:4.61}\\[4pt]
   |L_{7}| &= \bigl|b_{1}(u_{h}^{j};\, e_{u}^{j+1} - e_{u}^{j},\, D_{\tau}e_{u}^{j+1})
               + b_{1}(u_{h}^{j};\, e_{u}^{j},\, D_{\tau}e_{u}^{j+1})\bigr|
   \nonumber\\
@@ -1524,7 +1527,7 @@ and
           &\leq C\bigl\|A_{h}u_{h}^{j}\bigr\|_{0}^{2}
                \bigl\|\nabla e_{u}^{j}\bigr\|_{0}^{2}
              + \frac{1}{8}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:L7}
+  \label{eq:4.62}
 \end{align}
 The term $L_{8}$ can be split as
 \begin{align}
@@ -1539,7 +1542,7 @@ The term $L_{8}$ can be split as
                  D_{\tau}e_{u}^{j+1}\bigr)
           - \bigl(\tilde{c}_{1h}^{j}\nabla e_{\psi}^{j+1},\,
                  D_{\tau}e_{u}^{j+1}\bigr).
-  \label{eq:L8-split}
+  \label{eq:4.63}
 \end{align}
 Then we deduce
 \begin{align}
@@ -1562,15 +1565,15 @@ Then we deduce
   &\leq CC_{0}^{2}\tau\int_{t_{j}}^{t_{j+1}}\|\tilde{c}_{1t}\|_{0}^{2}\,\mathrm{d}t
     + C(C_{0}^{2}+C_{1}^{2})C_{2}^{2}(\tau^{2}+h^{2})
     + \frac{1}{8}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:L8}
+  \label{eq:4.64}
 \end{align}
 Similarly, we get
-\begin{equation}\label{eq:L9}
+\begin{equation}\label{eq:4.65}
   L_{9} \leq CC_{0}^{2}\tau\int_{t_{j}}^{t_{j+1}}\|\tilde{c}_{2t}\|_{0}^{2}\,\mathrm{d}t
            + C(C_{0}^{2}+C_{1}^{2})C_{2}^{2}(\tau^{2}+h^{2})
            + \frac{1}{8}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2}.
 \end{equation}
-Inserting estimates \eqref{eq:L1L2}--\eqref{eq:L9} into \eqref{eq:L-sum}, and then summing up
+Inserting estimates \eqref{eq:4.58}--\eqref{eq:4.65} into \eqref{eq:4.57}, and then summing up
 from $j = 0$ to $J-1$, we have
 \begin{align}
   \tau\sum_{j=0}^{J-1}\bigl\|D_{\tau}e_{u}^{j+1}\bigr\|_{0}^{2}
@@ -1579,14 +1582,14 @@ from $j = 0$ to $J-1$, we have
    + C\tau\sum_{j=0}^{J-1}\Bigl(C_{0}^{2}
                                  + \bigl\|A_{h}u_{h}^{j}\bigr\|_{0}^{2}\Bigr)
     \bigl\|\nabla e_{u}^{j}\bigr\|_{0}^{2}.
-  \label{eq:H1-u-pre}
+  \label{eq:4.66}
 \end{align}
-Finally, by the Gronwall lemma and \eqref{eq:stab-H2}, we conclude \eqref{eq:H1-u}.
+Finally, by the Gronwall lemma and \eqref{eq:4.45}, we conclude \eqref{eq:4.56}.
 \end{proof}
 
 \begin{theorem}\label{thm:H1-c}
 Under the conditions of Lemma~\ref{lem:epsi-l2}, we have
-\begin{equation}\label{eq:H1-c}
+\begin{equation}\label{eq:4.67}
   \bigl\|\nabla e_{\tilde{c}_{1}}^{J}\bigr\|_{0}^{2}
   + \bigl\|\nabla e_{\tilde{c}_{2}}^{J}\bigr\|_{0}^{2}
   + \tau\sum_{j=0}^{J-1}\Bigl(\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
@@ -1598,7 +1601,7 @@ where $C_{6}^{2} = C(C_{2}^{2}C_{4}^{2} + C_{0}^{2}C_{5}^{2})
 \end{theorem}
 
 \begin{proof}
-Set $\eta_{1h} = D_{\tau}e_{\tilde{c}_{1}}^{j+1}$ in \eqref{eq:err-c1}, and we obtain
+Set $\eta_{1h} = D_{\tau}e_{\tilde{c}_{1}}^{j+1}$ in \eqref{eq:4.4}, and we obtain
 \begin{align}
   &\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
    + \frac{1}{2\tau}\Bigl(\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
@@ -1631,17 +1634,17 @@ Set $\eta_{1h} = D_{\tau}e_{\tilde{c}_{1}}^{j+1}$ in \eqref{eq:err-c1}, and we o
   \nonumber\\
   &\quad - b_{2}(u_{h}^{j};\, e_{\tilde{c}_{1}}^{j+1},\, D_{\tau}e_{\tilde{c}_{1}}^{j+1})
   \;:=\; \sum_{i=1}^{13}M_{i}.
-  \label{eq:M-sum}
+  \label{eq:4.68}
 \end{align}
 It is not hard to find that
-\begin{equation}\label{eq:M1M2}
+\begin{equation}\label{eq:4.69}
   |M_{1}| + |M_{2}|
   \leq C\tau\int_{t_{j}}^{t_{j+1}}\|\tilde{c}_{1tt}\|_{0}^{2}\,\mathrm{d}t
      + \frac{Ch^{4}}{\tau}\int_{t_{j}}^{t_{j+1}}\|\tilde{c}_{1t}\|_{2}^{2}\,\mathrm{d}t
      + \frac{1}{10}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2},
 \end{equation}
 and
-\begin{equation}\label{eq:M5}
+\begin{equation}\label{eq:4.70}
   |M_{5}|
   \leq C\bigl\|\tilde{c}_{1}^{j} - R_{h}\tilde{c}_{1}^{j}\bigr\|_{0}
          \bigl\|\nabla\psi^{j+1}\bigr\|_{0,\infty}
@@ -1649,7 +1652,7 @@ and
   \leq CC_{0}^{4}h^{2} + \frac{1}{10}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
 \end{equation}
 According to \eqref{eq:Deltah-def}, we find
-\begin{equation}\label{eq:M3}
+\begin{equation}\label{eq:4.71}
   |M_{3}|
   \leq m_{0}\bigl\|\Delta_{h}e_{\psi}^{j+1}\bigr\|_{0}
              \bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}
@@ -1666,10 +1669,10 @@ By use of Green formula, we get
   \nonumber\\
   &\leq CC_{0}^{2}\tau\int_{t_{j}}^{t_{j+1}}\|\nabla\tilde{c}_{1t}\|_{0}^{2}\,\mathrm{d}t
      + \frac{1}{10}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:M4}
+  \label{eq:4.72}
 \end{align}
 and
-\begin{equation}\label{eq:M6}
+\begin{equation}\label{eq:4.73}
   |M_{6}|
   = \Bigl|\bigl(\nabla e_{\tilde{c}_{1}}^{j}\cdot\nabla\psi^{j+1},\,
                D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr)
@@ -1679,7 +1682,7 @@ and
      + \frac{1}{10}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
 \end{equation}
 Thanks to Lemma~\ref{lem:Lemma4}, we infer
-\begin{equation}\label{eq:M8}
+\begin{equation}\label{eq:4.74}
   |M_{8}|
   \leq C\bigl\|\Delta_{h}\tilde{c}_{1h}^{j}\bigr\|_{0}
          \bigl\|\Delta_{h}e_{\psi}^{j+1}\bigr\|_{0}
@@ -1699,7 +1702,7 @@ In view of Lemma~\ref{lem:b2-bounds}, we deduce
   &\leq CC_{0}^{2}C_{5}^{2}(\tau^{2}+h^{2})
      + CC_{0}^{2}\tau^{2}\int_{t_{j}}^{t_{j+1}}\|\nabla u_{t}\|_{0}^{2}\,\mathrm{d}t
      + \frac{1}{10}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2},
-  \label{eq:M9-11}\\[4pt]
+  \label{eq:4.75}\\[4pt]
   \sum_{i=12}^{13}|M_{i}|
   &\leq C\bigl\|A_{h}u_{h}^{j}\bigr\|_{0}
     \Bigl(\bigl\|\nabla(\tilde{c}_{1}^{j+1} - R_{h}\tilde{c}_{1}^{j+1})\bigr\|_{0}
@@ -1710,7 +1713,7 @@ In view of Lemma~\ref{lem:b2-bounds}, we deduce
      + C\bigl\|A_{h}u_{h}^{j}\bigr\|_{0}^{2}
        \bigl\|\nabla e_{\tilde{c}_{1}}^{j}\bigr\|_{0}^{2}
      + \frac{1}{10}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:M12-13}
+  \label{eq:4.76}
 \end{align}
 The term $M_{7}$ can be split as
 \begin{align}
@@ -1723,7 +1726,7 @@ The term $M_{7}$ can be split as
   \nonumber\\
   &\quad + \Bigl(\tilde{c}_{1}^{j+1}\nabla(\psi^{j+1} - R_{h}\psi^{j+1}),\,
                \nabla D_{\tau}e_{\tilde{c}_{1}}^{j+1}\Bigr),
-  \label{eq:M7-split}
+  \label{eq:4.77}
 \end{align}
 and note that
 \begin{align}
@@ -1737,7 +1740,7 @@ and note that
   \nonumber\\
   &\quad - \Bigl(D_{\tau}\tilde{c}_{1}^{j+1}\nabla(\psi^{j} - R_{h}\psi^{j}),\,
                \nabla e_{\tilde{c}_{1}}^{j+1}\Bigr),
-  \label{eq:M7-tech}
+  \label{eq:4.78}
 \end{align}
 thus, we obtain
 \begin{align}
@@ -1768,9 +1771,9 @@ thus, we obtain
    + C\bigl\|\nabla e_{\tilde{c}_{1}}^{j}\bigr\|_{0}^{2}
    + D_{\tau}\Bigl(\tilde{c}_{1}^{j+1}\nabla(\psi^{j+1} - R_{h}\psi^{j+1}),\,
                    \nabla e_{\tilde{c}_{1}}^{j+1}\Bigr).
-  \label{eq:M7}
+  \label{eq:4.79}
 \end{align}
-Inserting \eqref{eq:M1M2}--\eqref{eq:M7} into \eqref{eq:M-sum}, then summing up from
+Inserting \eqref{eq:4.69}--\eqref{eq:4.79} into \eqref{eq:4.68}, then summing up from
 $j = 0$ to $J-1$, we deduce
 \begin{align}
   &\tau\sum_{j=0}^{J-1}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
@@ -1782,7 +1785,7 @@ $j = 0$ to $J-1$, we deduce
     \bigl\|\nabla e_{\tilde{c}_{1}}^{j}\bigr\|_{0}^{2}
    + \Bigl(\tilde{c}_{1}^{J}\nabla(\psi^{J} - R_{h}\psi^{J}),\,
            \nabla e_{\tilde{c}_{1}}^{J}\Bigr).
-  \label{eq:H1-c1-pre}
+  \label{eq:4.80}
 \end{align}
 In addition, observing that
 \begin{align}
@@ -1792,11 +1795,11 @@ In addition, observing that
          \bigl\|\nabla(\psi^{J} - R_{h}\psi^{J})\bigr\|_{0}
          \bigl\|\nabla e_{\tilde{c}_{1}}^{J}\bigr\|_{0}
   \leq CC_{0}^{4}h^{2} + \frac{1}{2}\bigl\|\nabla e_{\tilde{c}_{1}}^{J}\bigr\|_{0}^{2},
-  \label{eq:boundary-term}
+  \label{eq:4.81}
 \end{align}
-then substituting \eqref{eq:boundary-term} into \eqref{eq:H1-c1-pre}, and using the Gronwall
+then substituting \eqref{eq:4.81} into \eqref{eq:4.80}, and using the Gronwall
 lemma, we have
-\begin{equation}\label{eq:H1-c1-final}
+\begin{equation}\label{eq:4.82}
   \tau\sum_{j=0}^{J-1}\bigl\|D_{\tau}e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}
   + \bigl\|\nabla e_{\tilde{c}_{1}}^{J}\bigr\|_{0}^{2}
   \leq C(C_{2}^{2}C_{4}^{2} + C_{0}^{2}C_{5}^{2})
@@ -1816,14 +1819,14 @@ Under the conditions of Lemma~\ref{lem:epsi-l2}, we have
    + \bigl\|u^{j+1} - u_{h}^{j+1}\bigr\|_{0}
    + \bigl\|\nabla(\psi^{j+1} - \psi_{h}^{j+1})\bigr\|_{0}
    \leq C_{2}(\tau + h),
-  \label{eq:final-L2}\\[4pt]
+  \label{eq:4.83}\\[4pt]
   &\bigl\|\nabla(u^{j+1} - u_{h}^{j+1})\bigr\|_{0}
    \leq C_{5}(\tau + h),
-  \label{eq:final-H1-u}\\[4pt]
+  \label{eq:4.84}\\[4pt]
   &\bigl\|\nabla(c_{1}^{j+1} - c_{1h}^{j+1})\bigr\|_{0}
    + \bigl\|\nabla(c_{2}^{j+1} - c_{2h}^{j+1})\bigr\|_{0}
    \leq C_{6}(\tau + h).
-  \label{eq:final-H1-c}
+  \label{eq:4.85}
 \end{align}
 \end{theorem}
 
@@ -1842,7 +1845,7 @@ Then, we have the following improved estimate.
 
 \begin{lemma}\label{lem:improved-l2}
 For all $\psi\in H^{3}(\Omega)$, $\varphi_{h}\in X_{h}^{0}$, there holds
-\begin{equation}\label{eq:improved-estimate}
+\begin{equation}\label{eq:4.86}
   \bigl(\nabla(\psi - R_{h}\psi),\, \nabla\varphi_{h}\bigr)
   \leq Ch^{2}\|\psi\|_{3}\|\nabla\varphi_{h}\|_{0}.
 \end{equation}
@@ -1851,28 +1854,28 @@ For all $\psi\in H^{3}(\Omega)$, $\varphi_{h}\in X_{h}^{0}$, there holds
 \begin{proof}
 Let $I_{h}$ be the interpolation operator on $X_{h}^{0}$, then we obtain from
 \cite{Lin2006} that
-\begin{equation}\label{eq:Ih-estimate}
+\begin{equation}\label{eq:4.87}
   \bigl(\nabla(\psi - I_{h}\psi),\, \nabla\varphi_{h}\bigr)
   \leq Ch^{2}\|\psi\|_{3}\|\nabla\varphi_{h}\|_{0}.
 \end{equation}
 By use of \eqref{eq:Ritz-def}, we have
-\begin{equation}\label{eq:Ritz-Ih}
+\begin{equation}\label{eq:4.88}
   \bigl(\nabla(R_{h}\psi - I_{h}\psi),\, \nabla\varphi_{h}\bigr)
   = \bigl(\nabla(\psi - I_{h}\psi),\, \nabla\varphi_{h}\bigr),
   \quad \forall\,\varphi_{h}\in X_{h}.
 \end{equation}
-Taking $\varphi_{h} = R_{h}\psi - I_{h}\psi$ in \eqref{eq:Ritz-Ih} and using
-\eqref{eq:Ih-estimate}, we infer
-\begin{equation}\label{eq:Ritz-Ih-bound}
+Taking $\varphi_{h} = R_{h}\psi - I_{h}\psi$ in \eqref{eq:4.88} and using
+\eqref{eq:4.87}, we infer
+\begin{equation}\label{eq:4.89}
   \bigl\|\nabla(R_{h}\psi - I_{h}\psi)\bigr\|_{0} \leq Ch^{2}\|\psi\|_{3}.
 \end{equation}
-As a result, from \eqref{eq:Ih-estimate} and \eqref{eq:Ritz-Ih-bound}, we deduce
+As a result, from \eqref{eq:4.87} and \eqref{eq:4.89}, we deduce
 \begin{align}
   \bigl(\nabla(\psi - R_{h}\psi),\, \nabla\varphi_{h}\bigr)
   &= \bigl(\nabla(\psi - I_{h}\psi),\, \nabla\varphi_{h}\bigr)
    + \bigl(\nabla(I_{h}\psi - R_{h}\psi),\, \nabla\varphi_{h}\bigr)
   \leq Ch^{2}\|\psi\|_{3}\|\nabla\varphi_{h}\|_{0}.
-  \label{eq:improved-proof}
+  \label{eq:4.90}
 \end{align}
 The proof is completed.
 \end{proof}
@@ -1890,7 +1893,7 @@ Lemma~\ref{lem:ec-l2}. In fact, $E_{7}$ can be split as
   &\quad + \sum_{K} P_{0}^{K}\tilde{c}_{1}^{j}
     \Bigl(\nabla(\psi^{j+1} - \tilde{R}_{h}\psi^{j+1}),\,
           \nabla e_{\tilde{c}_{1}}^{j+1}\Bigr),
-  \label{eq:E7-split}
+  \label{eq:4.91}
 \end{align}
 where $P_{0}^{K}\tilde{c}_{1}^{j} = \dfrac{1}{|K|}\displaystyle\int_{K}\tilde{c}_{1}^{j}\,\mathrm{d}x$.
 
@@ -1906,13 +1909,13 @@ Then, using Lemma~\ref{lem:improved-l2}, we infer
   &\leq CC_{0}^{4}h^{4}
      + CC_{0}^{2}\bigl\|e_{\tilde{c}_{1}}^{j}\bigr\|_{0}^{2}
      + \frac{1}{7}\bigl\|\nabla e_{\tilde{c}_{1}}^{j+1}\bigr\|_{0}^{2}.
-  \label{eq:E7-improved}
+  \label{eq:4.92}
 \end{align}
 Consequently, we can improve the result of Theorem~\ref{thm:l2} as follows.
 
 \begin{theorem}\label{thm:improved-l2}
 Under the conditions of Lemma~\ref{lem:epsi-l2}, we have
-\begin{equation}\label{eq:improved-l2-result}
+\begin{equation}\label{eq:4.93}
   \bigl\|c_{1}^{j+1} - c_{1h}^{j+1}\bigr\|_{0}
   + \bigl\|c_{2}^{j+1} - c_{2h}^{j+1}\bigr\|_{0}
   + \bigl\|u^{j+1} - u_{h}^{j+1}\bigr\|_{0}
@@ -1953,11 +1956,11 @@ conservation, that is,
   \int_{\Omega} c_{2h}^{j+1}\,\mathrm{d}x
   \;=\;
   m_{0}\,|\Omega|.
-  \label{eq:mass-cons}
+  \label{eq:5.1}
 \end{equation}
 \end{theorem}
 
-The property \eqref{eq:mass-cons} can be derived easily from \eqref{eq:step2}.
+The property \eqref{eq:5.1} can be derived easily from \eqref{eq:step2}.
 
 \begin{theorem}[Energy stability]
 \label{thm:energy}
@@ -1970,14 +1973,14 @@ Define a discrete energy by
     +
     \left\|\nabla\psi_{h}^{j}\right\|_{0}^{2}
   \right).
-  \label{eq:energy-def}
+  \label{eq:5.2}
 \end{equation}
 Then, if $\tau$ and $h$ are small enough, an energy stability
 \begin{equation}
   E\!\left(u_{h}^{j+1},\,\psi_{h}^{j+1}\right)
   \;\leq\;
   E\!\left(u_{h}^{j},\,\psi_{h}^{j}\right)
-  \label{eq:energy-stab}
+  \label{eq:5.3}
 \end{equation}
 holds for $j = 0, 1, \ldots, J-1$.
 \end{theorem}
@@ -1985,7 +1988,7 @@ holds for $j = 0, 1, \ldots, J-1$.
 \begin{proof}
 \textit{Step 1.}
 Choose $\varphi_{h} = \Delta_{h}\psi_{h}^{j+1}$ and
-$\varphi_{h} = c_{1h}^{j+1} - c_{2h}^{j+1}$ in \eqref{eq:scheme} respectively, and we get
+$\varphi_{h} = c_{1h}^{j+1} - c_{2h}^{j+1}$ in \eqref{eq:3.2} respectively, and we get
 \begin{align}
   \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
   &= \left(\nabla\psi_{h}^{j+1},\, \nabla\Delta_{h}\psi_{h}^{j+1}\right)
@@ -1994,7 +1997,7 @@ $\varphi_{h} = c_{1h}^{j+1} - c_{2h}^{j+1}$ in \eqref{eq:scheme} respectively, a
   &\leq
    \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}
    \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0},
-   \label{eq:step1a}\\[4pt]
+   \label{eq:5.4}\\[4pt]
   \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}^{2}
   &= \left(\nabla\psi_{h}^{j+1},\, \nabla(c_{1h}^{j+1} - c_{2h}^{j+1})\right)
    = \left(c_{1h}^{j+1} - c_{2h}^{j+1},\, \Delta_{h}\psi_{h}^{j+1}\right)
@@ -2002,20 +2005,20 @@ $\varphi_{h} = c_{1h}^{j+1} - c_{2h}^{j+1}$ in \eqref{eq:scheme} respectively, a
   &\leq
    \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0}
    \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0},
-   \label{eq:step1b}
+   \label{eq:5.5}
 \end{align}
 which implies
 \begin{align}
   \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}
   &= \left\|c_{1h}^{j+1} - c_{2h}^{j+1}\right\|_{0},
-  \label{eq:Deltapsi-eq}\\
+  \label{eq:5.6}\\
   \left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
   &= \left(\nabla(c_{1h}^{j+1} - c_{2h}^{j+1}),\,\nabla\psi_{h}^{j+1}\right).
-  \label{eq:Deltapsi-sq}
+  \label{eq:5.7}
 \end{align}
 
 \textit{Step 2.}
-Putting $v_{h} = u_{h}^{j+1}$ in \eqref{eq:scheme} yields
+Putting $v_{h} = u_{h}^{j+1}$ in \eqref{eq:3.2} yields
 \begin{equation}
   \frac{1}{2\tau}\!\left(
     \left\|u_{h}^{j+1}\right\|_{0}^{2}
@@ -2024,19 +2027,19 @@ Putting $v_{h} = u_{h}^{j+1}$ in \eqref{eq:scheme} yields
   \right)
   + \left\|\nabla u_{h}^{j+1}\right\|_{0}^{2}
   = -\!\left((c_{1h}^{j} - c_{2h}^{j})\nabla\psi_{h}^{j+1},\, u_{h}^{j+1}\right).
-  \label{eq:step2-u}
+  \label{eq:5.8}
 \end{equation}
 
 \textit{Step 3.}
-From the last equation of \eqref{eq:scheme}, it is easy to find
+From the last equation of \eqref{eq:3.2}, it is easy to find
 \begin{equation}
   \left(\nabla D_{\tau}\psi_{h}^{j+1},\, \nabla\varphi_{h}\right)
   = \left(D_{\tau}(c_{1h}^{j+1} - c_{2h}^{j+1}),\, \varphi_{h}\right),
   \quad \forall\,\varphi_{h} \in X_{h}.
-  \label{eq:step3-psi}
+  \label{eq:5.9}
 \end{equation}
-Take $\eta_{1h} = \eta_{2h} = \psi_{h}^{j+1}$ in \eqref{eq:scheme} and
-$\varphi_{h} = \psi_{h}^{j+1}$ in \eqref{eq:step3-psi}, respectively; then we arrive at
+Take $\eta_{1h} = \eta_{2h} = \psi_{h}^{j+1}$ in \eqref{eq:3.2} and
+$\varphi_{h} = \psi_{h}^{j+1}$ in \eqref{eq:5.9}, respectively; then we arrive at
 \begin{align}
   &\frac{1}{2\tau}\!\left(
     \left\|\nabla\psi_{h}^{j+1}\right\|_{0}^{2}
@@ -2048,11 +2051,11 @@ $\varphi_{h} = \psi_{h}^{j+1}$ in \eqref{eq:step3-psi}, respectively; then we ar
   &\quad
   + \left((c_{1h}^{j} + c_{2h}^{j})\nabla\psi_{h}^{j+1},\, \nabla\psi_{h}^{j+1}\right)
   = -b_{2}\!\left(u_{h}^{j};\, c_{1h}^{j+1} - c_{2h}^{j+1},\, \psi_{h}^{j+1}\right).
-  \label{eq:step3-sum}
+  \label{eq:5.10}
 \end{align}
 
 \textit{Step 4.}
-Adding \eqref{eq:step2-u} and \eqref{eq:step3-sum} and using \eqref{eq:Deltapsi-sq}, we deduce
+Adding \eqref{eq:5.8} and \eqref{eq:5.10} and using \eqref{eq:5.7}, we deduce
 \begin{align}
   &\frac{1}{2\tau}\!\Bigl(
     \left\|u_{h}^{j+1}\right\|_{0}^{2}
@@ -2083,7 +2086,7 @@ Adding \eqref{eq:step2-u} and \eqref{eq:step3-sum} and using \eqref{eq:Deltapsi-
   - b_{2}\!\left(u_{h}^{j+1};\, c_{1h}^{j+1} - c_{2h}^{j+1},\, \psi_{h}^{j+1}\right)
   \nonumber\\
   &=: \sum_{i=1}^{5} R_{i}.
-  \label{eq:step4-Ri}
+  \label{eq:5.11}
 \end{align}
 
 Next, we estimate the above five terms. By use of Theorem~\ref{thm:L2error}, it is easy to check
@@ -2094,7 +2097,7 @@ Next, we estimate the above five terms. By use of Theorem~\ref{thm:L2error}, it 
   + \left\|c_{1h}^{j} - c_{1}^{j}\right\|_{0}
   + \left\|c_{1}^{j+1} - c_{1}^{j}\right\|_{0}
   \leq C_{2}(\tau + h).
-  \label{eq:c1-diff}
+  \label{eq:5.12}
 \end{equation}
 Similarly, we obtain
 \begin{equation}
@@ -2103,9 +2106,9 @@ Similarly, we obtain
   \qquad
   \left\|\nabla\!\left(u_{h}^{j+1} - u_{h}^{j}\right)\right\|_{0}
   \leq C_{5}(\tau + h).
-  \label{eq:u-diff}
+  \label{eq:5.13}
 \end{equation}
-Then, based on \eqref{eq:Deltapsi-eq}, \eqref{eq:c1-diff}, \eqref{eq:u-diff} and
+Then, based on \eqref{eq:5.6}, \eqref{eq:5.12}, \eqref{eq:5.13} and
 Theorem~\ref{thm:L2error}, we infer
 \begin{align}
   |R_{1}| + |R_{2}| + |R_{4}|
@@ -2129,10 +2132,10 @@ Theorem~\ref{thm:L2error}, we infer
   &\leq
   C_{5}(\tau + h)\left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}
   + \frac{1}{2}\left\|\nabla u_{h}^{j+1}\right\|_{0}^{2}.
-  \label{eq:R1R2R4}
+  \label{eq:5.14}
 \end{align}
 Using Green's formula, Lemma~\ref{lem:1} (equation \eqref{eq:Lem1}), Theorem~\ref{thm:L2error}
-and \eqref{eq:Deltapsi-eq}, we get
+and \eqref{eq:5.6}, we get
 \begin{align}
   |R_{3} + R_{5}|
   &= \frac{1}{2}
@@ -2149,9 +2152,9 @@ and \eqref{eq:Deltapsi-eq}, we get
   \left\|\psi_{h}^{j+1}\right\|_{0,\infty}
   \leq
   C_{5}(\tau + h)\left\|\Delta_{h}\psi_{h}^{j+1}\right\|_{0}^{2}.
-  \label{eq:R3R5}
+  \label{eq:5.15}
 \end{align}
-Inserting \eqref{eq:R1R2R4} and \eqref{eq:R3R5} into \eqref{eq:step4-Ri} yields
+Inserting \eqref{eq:5.14} and \eqref{eq:5.15} into \eqref{eq:5.11} yields
 \begin{align}
   &\frac{1}{2}\!\left(
     \left\|u_{h}^{j+1}\right\|_{0}^{2}
@@ -2173,9 +2176,9 @@ Inserting \eqref{eq:R1R2R4} and \eqref{eq:R3R5} into \eqref{eq:step4-Ri} yields
     \left\|u_{h}^{j}\right\|_{0}^{2}
     + \left\|\nabla\psi_{h}^{j}\right\|_{0}^{2}
   \right).
-  \label{eq:energy-ineq}
+  \label{eq:5.16}
 \end{align}
-If $\tau$ and $h$ are small enough, \eqref{eq:energy-stab} holds.
+If $\tau$ and $h$ are small enough, \eqref{eq:5.3} holds.
 \end{proof}
 
 % ----------------------------------------------------------
@@ -2194,20 +2197,20 @@ The first example refers to \cite{Gao2017} with some modifications. Take
 $\Omega = [0,1]\times[0,1]$, and consider the example with following exact solutions
 \begin{align}
   u_{1} &= -e^{-t}\sin^{2}(\pi x_{1})\sin(\pi x_{2})\cos(\pi x_{2}),
-  \label{eq:ex1-u1}\\
+  \label{eq:6.1}\\
   u_{2} &= \phantom{-}e^{-t}\sin(\pi x_{1})\cos(\pi x_{1})\sin^{2}(\pi x_{2}),
-  \label{eq:ex1-u2}\\
+  \label{eq:6.2}\\
   p     &= \sin(\pi x_{1})\cos(\pi x_{2}),
-  \label{eq:ex1-p}\\
+  \label{eq:6.3}\\
   c_{1} &= \frac{1}{2}\,e^{-t}\!\left(\cos(\pi x_{1})\cos(\pi x_{2}) + 1\right),
-  \label{eq:ex1-c1}\\
+  \label{eq:6.4}\\
   c_{2} &= \frac{1}{2}\,e^{-t}\!\left(\cos(2\pi x_{1})\cos(2\pi x_{2}) + 1\right),
-  \label{eq:ex1-c2}\\
+  \label{eq:6.5}\\
   \psi  &= \frac{1}{2\pi^{2}}\,e^{-t}\!\left(
              \cos(\pi x_{1})\cos(\pi x_{2})
              - \frac{1}{4}\cos(2\pi x_{1})\cos(2\pi x_{2})
            \right).
-  \label{eq:ex1-psi}
+  \label{eq:6.6}
 \end{align}
 We use two pairs of elements in the computation. The first pair (Pair~I) employs the linear
 element to approximate $c_{1}$, $c_{2}$, $\psi$, and the MINI element for $u$ and $p$. The
@@ -2402,7 +2405,7 @@ which has the following exact solutions
   c_{2} &= \pi^{2}t^{3}\cos(\pi x_{3}),
   \nonumber\\
   \psi  &= e^{-t}\cos(\pi x_{1})\cos(\pi x_{2})\cos(\pi x_{3}) - t^{3}\cos(\pi x_{3}).
-  \label{eq:ex2-exact}
+  \label{eq:6.7}
 \end{align}
 In the computation, we take $\Omega = [0,1]^{3}$ and use a uniform tetrahedral partition in
 each direction. The errors and convergence orders at $T = 1$ are listed in
@@ -2501,7 +2504,7 @@ $\Omega = [0,1]\times[0,1]$, and the initial values are given as follows
                \cup (0.75,1)\times\bigl(0,\tfrac{11}{20}\bigr)\Bigr\}, \\
     10^{-6}, & \text{otherwise},
   \end{cases}
-  \label{eq:ex3-c10}
+  \label{eq:6.8}
 \end{equation}
 \begin{equation}
   c_{20} =
@@ -2511,7 +2514,7 @@ $\Omega = [0,1]\times[0,1]$, and the initial values are given as follows
                \cup (0.75,1)\times\bigl(\tfrac{9}{20},1\bigr)\Bigr\}, \\
     10^{-6}, & \text{otherwise},
   \end{cases}
-  \label{eq:ex3-c20}
+  \label{eq:6.9}
 \end{equation}
 and $u_{0} = \mathbf{0}$.
 

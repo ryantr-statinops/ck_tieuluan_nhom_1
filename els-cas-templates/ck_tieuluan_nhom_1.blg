@@ -5,10 +5,12 @@ Reallocating 'name_of_file' (item size: 1) to 17 items.
 The style file: cas-model2-names.bst
 Reallocating 'name_of_file' (item size: 1) to 9 items.
 Database file #1: cas-refs.bib
+Warning--I didn't find a database entry for "Li2021"
+Warning--I didn't find a database entry for "Liu2017ch"
 Reallocating 'singl_function' (item size: 4) to 100 items.
 You've used 60 entries,
             2990 wiz_defined-function locations,
-            1124 strings with 16058 characters,
+            1128 strings with 16088 characters,
 and the built_in function-call counts, 39747 in all, are:
 = -- 3077
 > -- 1432
@@ -47,3 +49,4 @@ warning$ -- 0
 while$ -- 277
 width$ -- 0
 write$ -- 847
+(There were 2 warnings)
