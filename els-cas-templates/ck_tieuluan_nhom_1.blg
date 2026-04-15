@@ -8,12 +8,12 @@ Database file #1: cas-refs.bib
 Reallocating 'singl_function' (item size: 4) to 100 items.
 You've used 60 entries,
             2990 wiz_defined-function locations,
-            1124 strings with 16058 characters,
-and the built_in function-call counts, 39747 in all, are:
+            1124 strings with 19306 characters,
+and the built_in function-call counts, 39691 in all, are:
 = -- 3077
 > -- 1432
 < -- 29
-+ -- 582
++ -- 554
 - -- 492
 * -- 4345
 := -- 5752
@@ -37,7 +37,7 @@ purify$ -- 387
 quote$ -- 0
 skip$ -- 803
 stack$ -- 0
-substring$ -- 1997
+substring$ -- 1969
 swap$ -- 2120
 text.length$ -- 0
 text.prefix$ -- 0

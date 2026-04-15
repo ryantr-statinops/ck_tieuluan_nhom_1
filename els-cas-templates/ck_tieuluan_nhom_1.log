@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  15 APR 2026 20:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  15 APR 2026 21:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -873,6 +873,8 @@ Package babel Info: Importing font and identification data for english
 Package babel Info: Importing font and identification data for vietnamese
 (babel)             from babel-vi.ini. Reported on input line 11.
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 16.
+
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count334
@@ -1144,7 +1146,38 @@ LaTeX Font Warning: Font shape `T5/stix/m/it' undefined
 
 {C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./figs/logo_
 tdtu.jpg>]
-Overfull \hbox (29.90009pt too wide) in paragraph at lines 176--193
+<figs/signatures/khang.jpg, id=13, 1284.8pt x 889.3225pt>
+File: figs/signatures/khang.jpg Graphic file (type jpg)
+<use figs/signatures/khang.jpg>
+Package pdftex.def Info: figs/signatures/khang.jpg  used on input line 180.
+(pdftex.def)             Requested size: 36.99358pt x 25.6073pt.
+<figs/signatures/kiet.jpg, id=14, 722.7pt x 486.31688pt>
+File: figs/signatures/kiet.jpg Graphic file (type jpg)
+<use figs/signatures/kiet.jpg>
+Package pdftex.def Info: figs/signatures/kiet.jpg  used on input line 182.
+(pdftex.def)             Requested size: 38.04486pt x 25.6073pt.
+<figs/signatures/nhat.jpg, id=15, 1284.8pt x 811.03pt>
+File: figs/signatures/nhat.jpg Graphic file (type jpg)
+<use figs/signatures/nhat.jpg>
+Package pdftex.def Info: figs/signatures/nhat.jpg  used on input line 184.
+(pdftex.def)             Requested size: 40.56158pt x 25.6073pt.
+<figs/signatures/bao.jpg, id=16, 442.65375pt x 675.27281pt>
+File: figs/signatures/bao.jpg Graphic file (type jpg)
+<use figs/signatures/bao.jpg>
+Package pdftex.def Info: figs/signatures/bao.jpg  used on input line 186.
+(pdftex.def)             Requested size: 16.78453pt x 25.6073pt.
+<figs/signatures/hieu.jpg, id=17, 1255.69125pt x 661.72218pt>
+File: figs/signatures/hieu.jpg Graphic file (type jpg)
+<use figs/signatures/hieu.jpg>
+Package pdftex.def Info: figs/signatures/hieu.jpg  used on input line 188.
+(pdftex.def)             Requested size: 48.59047pt x 25.6073pt.
+<figs/signatures/duy.jpg, id=18, 542.025pt x 963.6pt>
+File: figs/signatures/duy.jpg Graphic file (type jpg)
+<use figs/signatures/duy.jpg>
+Package pdftex.def Info: figs/signatures/duy.jpg  used on input line 190.
+(pdftex.def)             Requested size: 14.39915pt x 25.6073pt.
+
+Overfull \hbox (48.22017pt too wide) in paragraph at lines 176--193
  [] 
  []
 
@@ -1154,7 +1187,9 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.197 \newpage
-               [1]
+               [1 <./figs/signatures/khang.jpg> <./figs/signatures/kiet.jpg> <.
+/figs/signatures/nhat.jpg> <./figs/signatures/bao.jpg> <./figs/signatures/hieu.
+jpg> <./figs/signatures/duy.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\mathsurround' on input line 216.
@@ -1226,19 +1261,19 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 \verbatim@out=\write4
 \openout4 = `ck_tieuluan_nhom_1.abs'.
 
-<figs/elsevier_tree_logo_bw.png, id=16, 246.6816pt x 246.6816pt>
+<figs/elsevier_tree_logo_bw.png, id=22, 246.6816pt x 246.6816pt>
 File: figs/elsevier_tree_logo_bw.png Graphic file (type png)
 <use figs/elsevier_tree_logo_bw.png>
 Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 254
 .
 (pdftex.def)             Requested size: 79.6678pt x 79.66618pt.
-<figs/imacs_globe_logo_blue.png, id=19, 246.6816pt x 246.6816pt>
+<figs/imacs_globe_logo_blue.png, id=25, 246.6816pt x 246.6816pt>
 File: figs/imacs_globe_logo_blue.png Graphic file (type png)
 <use figs/imacs_globe_logo_blue.png>
 Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 254
 .
 (pdftex.def)             Requested size: 71.13188pt x 71.1293pt.
-<figs/crossmark_check_for_updates_logo.png, id=20, 127.97812pt x 130.23656pt>
+<figs/crossmark_check_for_updates_logo.png, id=27, 127.97812pt x 130.23656pt>
 File: figs/crossmark_check_for_updates_logo.png Graphic file (type png)
 <use figs/crossmark_check_for_updates_logo.png>
 Package pdftex.def Info: figs/crossmark_check_for_updates_logo.png  used on inp
@@ -1402,23 +1437,23 @@ LaTeX Font Info:    Trying to load font information for T1+cmss on input line 2
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 [202] [203]
-<figs/fig1.png, id=621, 685.05937pt x 548.0475pt>
+<figs/fig1.png, id=628, 685.05937pt x 548.0475pt>
 File: figs/fig1.png Graphic file (type png)
 <use figs/fig1.png>
 Package pdftex.def Info: figs/fig1.png  used on input line 2481.
 (pdftex.def)             Requested size: 432.48051pt x 345.99092pt.
-<figs/fig2.png, id=624, 685.05937pt x 557.83406pt>
+<figs/fig2.png, id=631, 685.05937pt x 557.83406pt>
 File: figs/fig2.png Graphic file (type png)
 <use figs/fig2.png>
 Package pdftex.def Info: figs/fig2.png  used on input line 2529.
 (pdftex.def)             Requested size: 432.48051pt x 352.16933pt.
-<figs/fig3.png, id=626, 609.02531pt x 237.88875pt>
+<figs/fig3.png, id=644, 609.02531pt x 237.88875pt>
 File: figs/fig3.png Graphic file (type png)
 <use figs/fig3.png>
-Package pdftex.def Info: figs/fig3.png  used on input line 2559.
+Package pdftex.def Info: figs/fig3.png  used on input line 2594.
 (pdftex.def)             Requested size: 432.48051pt x 168.93484pt.
- [204] [205 <./figs/fig1.png>] (ck_tieuluan_nhom_1.bbl [206 <./figs/fig2.png>] 
-[207 <./figs/fig3.png>]) [208] (ck_tieuluan_nhom_1.aux)
+ [204] [205 <./figs/fig1.png>] [206 <./figs/fig2.png> <./figs/fig3.png>] (ck_ti
+euluan_nhom_1.bbl [207]) [208] (ck_tieuluan_nhom_1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1434,10 +1469,10 @@ Package rerunfilecheck Info: File `ck_tieuluan_nhom_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20193 strings out of 474486
- 315896 string characters out of 5743754
+ 20270 strings out of 474486
+ 318190 string characters out of 5743754
  1991542 words of memory out of 5000000
- 41790 multiletter control sequences out of 15000+600000
+ 41867 multiletter control sequences out of 15000+600000
  689482 words of font info for 217 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,14n,93p,1874b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1460,9 +1495,9 @@ ype1/public/stix/stix-mathscr.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX
 MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Admin/AppData/Local/Programs/M
 iKTeX/fonts/type1/vntex/vnr/vnr17.pfb><C:/Users/Admin/AppData/Local/Programs/Mi
 KTeX/fonts/type1/vntex/vnr/vnr8.pfb>
-Output written on ck_tieuluan_nhom_1.pdf (25 pages, 3757155 bytes).
+Output written on ck_tieuluan_nhom_1.pdf (25 pages, 4611776 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
+ 975 PDF objects out of 1000 (max. 8388607)
  330 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

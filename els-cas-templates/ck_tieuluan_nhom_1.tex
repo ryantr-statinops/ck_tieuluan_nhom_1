@@ -13,7 +13,7 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\hypersetup{allcolors=black}
+\hypersetup{colorlinks=true, allcolors=blue}
 \usepackage{calc}
 
 % Mathematics and symbols
@@ -38,7 +38,7 @@
 
 % Define Colors for the Professional Header
 \definecolor{elsorange}{HTML}{E78100}
-\definecolor{sdblue}{HTML}{007398}
+\definecolor{sdblue}{HTML}{00B7EB} % Updated to a bright professional Cyan
 \definecolor{headergray}{HTML}{E6E6E6}
 
 % Custom Header Command (Professional Version with Crossmark)
@@ -77,7 +77,7 @@
     \hfill
     \begin{minipage}[t]{2.5cm}
         \raggedleft
-        \includegraphics[width=0.8cm]{crossmark_check_for_updates_logo}
+        \href{http://crossmark.crossref.org/dialog/?doi=10.1016/j.apnum.2023.11.012&domain=pdf}{\includegraphics[width=0.8cm]{crossmark_check_for_updates_logo}}
     \end{minipage}\par
   \end{minipage}
 }
@@ -177,17 +177,17 @@
         \hline
         \textbf{STT} & \textbf{Tên thành viên} & \textbf{MSSV} & \textbf{Công việc} & \textbf{Mức độ hoàn thành} & \textbf{Ký tên} \\
         \hline
-        1 & Trần Quốc Khang & C2400199 & Chuẩn bị Preamble và Template & 100\% & .. \\
+        1 & Trần Quốc Khang & C2400199 & Chuẩn bị Preamble và Template & 100\% & \includegraphics[height=0.9cm]{figs/signatures/khang} \\
         \hline
-        2 & Nguyễn Văn Kiệt & C2400203 & Soạn Nội dung trang 1,2,3 & 100\% & .. \\
+        2 & Nguyễn Văn Kiệt & C2400203 & Soạn Nội dung trang 1,2,3 & 100\% & \includegraphics[height=0.9cm]{figs/signatures/kiet} \\
         \hline
-        3 & Nguyễn Hoàng Nhật & C2400111 & Soạn Tài liệu phần 1, 2, 3 & 100\% & .. \\
+        3 & Nguyễn Hoàng Nhật & C2400111 & Soạn Tài liệu phần 1, 2, 3 & 100\% & \includegraphics[height=0.9cm]{figs/signatures/nhat} \\
         \hline
-        4 & Đặng Gia Bảo & C2400187 & Soạn Tài liệu phần 4, 5 & 100\% & .. \\
+        4 & Đặng Gia Bảo & C2400187 & Soạn Tài liệu phần 4, 5 & 100\% & \includegraphics[height=0.9cm,angle=90,origin=c]{figs/signatures/bao} \\
         \hline
-        5 & Phạm Trọng Hiếu & C2400195 & Soạn Tài liệu phần 6, 7 & 100\% & .. \\
+        5 & Phạm Trọng Hiếu & C2400195 & Soạn Tài liệu phần 6, 7 & 100\% & \includegraphics[height=0.9cm]{figs/signatures/hieu} \\
         \hline
-        6 & Nguyễn Đức Duy & C2400095 & Soạn Bibliography & 100\% & .. \\
+        6 & Nguyễn Đức Duy & C2400095 & Soạn Bibliography & 100\% & \includegraphics[height=0.9cm,angle=90,origin=c]{figs/signatures/duy} \\
         \hline
     \end{tabular}
 \end{center}
@@ -198,7 +198,7 @@
 \selectlanguage{english}
 \setcounter{page}{186} % Page 4 starts at 187; pages 1--3 remain unnumbered
 \let\WriteBookmarks\relax
-\def\floatpagepagefraction{1}
+\def\floatpagefraction{.8}
 \def\textpagefraction{.001}
 
 % Frontmatter Data
@@ -232,7 +232,7 @@ Error estimates for the finite element method of the Navier-Stokes-Poisson-Nerns
 % Corresponding author and footnotes
 
 % DOI, History and Copyright Metadata
-\nonumnote{\scriptsize
+\nonumnote{\scriptsize\color{black}
 \vspace*{\fill}
 \hypertarget{funding-note}{}*\ This work was supported by Cultivation Programme for Young Backbone Teachers in Henan University of Technology, Natural Science Foundation of Henan Province (222300420143, 232300420117, 232300420118), and the Innovative Funds Plan of Henan University of Technology (2021ZKCJ11).\\[2pt]
 \hypertarget{cor-note}{}*\ Corresponding author.\\[2pt]
@@ -2476,7 +2476,7 @@ $\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $4.61452\times10^{-2
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[pos=htbp]
   \centering
   \includegraphics[width=0.95\textwidth]{fig1}
   \caption{Snapshots of the approximate solutions $(c_{1h},\,c_{2h},\,\psi_{h})$ at
@@ -2524,7 +2524,7 @@ $\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $2.34852\times10^{-3
 \end{table}
 
 
-\begin{figure}[htbp]
+\begin{figure}[pos=htbp]
   \centering
   \includegraphics[width=0.95\textwidth]{fig2}
   \caption{Snapshots of the approximate solutions $(u_{1h},\,u_{2h},\,p_{h})$ at
@@ -2553,13 +2553,6 @@ $\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $1.99553\times10^{-2
 \end{table}
 
 % ---- Example 3 --------------------------------------------
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.95\textwidth]{fig3}
-  \caption{Evolution of the energy (left) and global mass (right).}
-  \label{fig:energy-mass}
-\end{figure}
 
 \begin{example}
 \label{ex:3}
@@ -2596,9 +2589,12 @@ during the evolution, which confirms numerically our findings in
 Theorems~\ref{thm:mass} and~\ref{thm:energy}.
 \end{example}
 
-% ---- Figures (placeholders) ------------------------------
-
-
+\begin{figure}[pos=htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{fig3}
+  \caption{Evolution of the energy (left) and global mass (right).}
+  \label{fig:energy-mass}
+\end{figure}
 
 
 
