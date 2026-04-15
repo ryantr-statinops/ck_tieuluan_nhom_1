@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  15 APR 2026 00:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.30)  15 APR 2026 20:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1073,59 +1073,64 @@ Package hyperref Info: Link coloring ON on input line 121.
 LaTeX Font Warning: Font shape `T5/stix/b/n' undefined
 (Font)              using `T5/stix/m/n' instead on input line 128.
 
+<figs/logo_tdtu.jpg, id=3, 602.25pt x 602.25pt>
+File: figs/logo_tdtu.jpg Graphic file (type jpg)
+<use figs/logo_tdtu.jpg>
+Package pdftex.def Info: figs/logo_tdtu.jpg  used on input line 133.
+(pdftex.def)             Requested size: 142.26378pt x 142.26393pt.
 LaTeX Font Info:    Trying to load font information for LS1+stixscr on input li
-ne 134.
+ne 142.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixex on input lin
-e 134.
+e 142.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 134
+LaTeX Font Info:    Trying to load font information for U+msa on input line 142
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 134
+LaTeX Font Info:    Trying to load font information for U+msb on input line 142
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input l
-ine 134.
+ine 142.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixbb on input lin
-e 134.
+e 142.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixcal on input li
-ne 134.
+ne 142.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixsf on input lin
-e 134.
+e 142.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixtt on input lin
-e 134.
+e 142.
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
@@ -1133,275 +1138,287 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 )
 
 LaTeX Font Warning: Font shape `T5/stix/m/it' undefined
-(Font)              using `T5/stix/m/n' instead on input line 151.
+(Font)              using `T5/stix/m/n' instead on input line 150.
 
 [1
 
-{C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+{C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./figs/logo_
+tdtu.jpg>]
+Overfull \hbox (29.90009pt too wide) in paragraph at lines 176--193
+ [] 
+ []
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.198 \newpage
+l.197 \newpage
                [1]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 217.
+(hyperref)                removing `\mathsurround' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 217.
+(hyperref)                removing `\z@' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 217.
+(hyperref)                removing `superscript' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 217.
+(hyperref)                removing `\<let>-command' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Hy@reserved@a' on input line 217.
+(hyperref)                removing `\Hy@reserved@a' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 217.
+(hyperref)                removing `\@ifnextchar' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 217.
+(hyperref)                removing `\@ifnextchar' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 217.
+(hyperref)                removing `\<let>-command' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Hy@reserved@a' on input line 217.
+(hyperref)                removing `\Hy@reserved@a' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 217.
+(hyperref)                removing `\@ifnextchar' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 219.
+(hyperref)                removing `\mathsurround' on input line 218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 219.
+(hyperref)                removing `\z@' on input line 218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 219.
+(hyperref)                removing `superscript' on input line 218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 219.
+(hyperref)                removing `\@ifnextchar' on input line 218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 219.
+(hyperref)                removing `\<let>-command' on input line 218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Hy@reserved@a' on input line 219.
+(hyperref)                removing `\Hy@reserved@a' on input line 218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 219.
+(hyperref)                removing `\@ifnextchar' on input line 218.
 
 \verbatim@out=\write4
 \openout4 = `ck_tieuluan_nhom_1.abs'.
 
-<figs/elsevier_tree_logo_bw.png, id=15, 246.6816pt x 246.6816pt>
+<figs/elsevier_tree_logo_bw.png, id=16, 246.6816pt x 246.6816pt>
 File: figs/elsevier_tree_logo_bw.png Graphic file (type png)
 <use figs/elsevier_tree_logo_bw.png>
-Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 255
+Package pdftex.def Info: figs/elsevier_tree_logo_bw.png  used on input line 254
 .
 (pdftex.def)             Requested size: 79.6678pt x 79.66618pt.
-<figs/imacs_globe_logo_blue.png, id=18, 246.6816pt x 246.6816pt>
+<figs/imacs_globe_logo_blue.png, id=19, 246.6816pt x 246.6816pt>
 File: figs/imacs_globe_logo_blue.png Graphic file (type png)
 <use figs/imacs_globe_logo_blue.png>
-Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 255
+Package pdftex.def Info: figs/imacs_globe_logo_blue.png  used on input line 254
 .
 (pdftex.def)             Requested size: 71.13188pt x 71.1293pt.
-<figs/crossmark_check_for_updates_logo.png, id=19, 246.6816pt x 246.6816pt>
+<figs/crossmark_check_for_updates_logo.png, id=20, 127.97812pt x 130.23656pt>
 File: figs/crossmark_check_for_updates_logo.png Graphic file (type png)
 <use figs/crossmark_check_for_updates_logo.png>
 Package pdftex.def Info: figs/crossmark_check_for_updates_logo.png  used on inp
-ut line 255.
-(pdftex.def)             Requested size: 51.21504pt x 51.2137pt.
+ut line 254.
+(pdftex.def)             Requested size: 22.76228pt x 23.16335pt.
 
-Overfull \hbox (113.81102pt too wide) detected at line 255
+Overfull \hbox (113.81102pt too wide) detected at line 254
 []
  []
 
 (ck_tieuluan_nhom_1.abs)
 
-Package hyperref Warning: Ignoring empty anchor on input line 255.
+Package hyperref Warning: Ignoring empty anchor on input line 254.
 
 LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
-255.
+254.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/stix\ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 255.
+Package hyperref Warning: Ignoring empty anchor on input line 254.
 
 [186{C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-t1.
 enc}{C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts1
 .enc} <./figs/elsevier_tree_logo_bw.png> <./figs/imacs_globe_logo_blue.png> <./
 figs/crossmark_check_for_updates_logo.png>]
 
-LaTeX Warning: Reference `eq:NSPNP' on page 187 undefined on input line 340.
+LaTeX Warning: Reference `eq:NSPNP' on page 187 undefined on input line 339.
 
 [187]
 
-LaTeX Warning: Reference `eq:NSPNP' on page 188 undefined on input line 361.
+LaTeX Warning: Reference `eq:NSPNP' on page 188 undefined on input line 360.
 
 
-LaTeX Warning: Reference `eq:NSPNP' on page 188 undefined on input line 378.
-
-
-Package natbib Warning: Citation `Li2021' on page 188 undefined on input line 4
-69.
+LaTeX Warning: Reference `eq:NSPNP' on page 188 undefined on input line 377.
 
 [188]
-
-Package natbib Warning: Citation `Liu2017ch' on page 189 undefined on input lin
-e 512.
-
 Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 516.
+line 515.
 
-LaTeX Warning: Reference `eq:NSPNP' on page 189 undefined on input line 607.
+
+LaTeX Warning: Reference `eq:NSPNP' on page 189 undefined on input line 606.
 
 [189]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 713.
+t line 712.
  [190]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 895.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 894.
  [191]
 
 LaTeX Warning: Reference `eq:Ritz-error' on page 192 undefined on input line 98
-3.
+2.
 
 
 LaTeX Warning: Reference `lem:Deltah-bound' on page 192 undefined on input line
- 1009.
+ 1008.
 
 
 LaTeX Warning: Reference `lem:b2-bounds' on page 192 undefined on input line 10
-29.
+28.
 
 [192]
-Overfull \hbox (6.486pt too wide) detected at line 1140
+Overfull \hbox (6.486pt too wide) detected at line 1139
 []
  []
 
 
 LaTeX Warning: Reference `eq:Stokes-t-error' on page 193 undefined on input lin
-e 1141.
+e 1140.
 
 [193]
 
 LaTeX Warning: Reference `lem:b1-bounds' on page 194 undefined on input line 11
-47.
+46.
 
 
-Overfull \hbox (4.61954pt too wide) detected at line 1200
+Overfull \hbox (4.61954pt too wide) detected at line 1199
 []
  []
 
 [194]
 Package hyperref Info: bookmark level for unknown remark defaults to 0 on input
- line 1353.
+ line 1352.
  [195]
 
-LaTeX Warning: Reference `eq:Ritz-def' on page 196 undefined on input line 1390
+LaTeX Warning: Reference `eq:Ritz-def' on page 196 undefined on input line 1389
 .
 
 
 LaTeX Warning: Reference `eq:Deltah-def' on page 196 undefined on input line 13
-96.
+95.
 
 
 LaTeX Warning: Reference `eq:Deltah-def' on page 196 undefined on input line 14
-51.
+50.
 
 
 LaTeX Warning: Reference `eq:b1-b2-estimate3' on page 196 undefined on input li
-ne 1451.
+ne 1450.
 
 
 LaTeX Warning: Reference `eq:Lemma4-bound' on page 196 undefined on input line 
-1452.
+1451.
 
 [196]
-Overfull \hbox (29.9127pt too wide) detected at line 1527
+Overfull \hbox (29.9127pt too wide) detected at line 1526
 []
  []
 
 
 LaTeX Warning: Reference `lem:b1-bounds' on page 197 undefined on input line 15
-36.
+35.
 
 [197]
 
 LaTeX Warning: Reference `eq:Deltah-def' on page 198 undefined on input line 16
-97.
+96.
 
 
-LaTeX Warning: Reference `lem:Lemma4' on page 198 undefined on input line 1727.
+LaTeX Warning: Reference `lem:Lemma4' on page 198 undefined on input line 1726.
 
 
 
 LaTeX Warning: Reference `lem:b2-bounds' on page 198 undefined on input line 17
-36.
+35.
 
 [198] [199]
 
-LaTeX Warning: Reference `eq:Ritz-def' on page 200 undefined on input line 1904
+LaTeX Warning: Reference `eq:Ritz-def' on page 200 undefined on input line 1903
 .
 
 
-LaTeX Warning: Reference `eq:step2' on page 200 undefined on input line 2006.
+LaTeX Warning: Reference `eq:step2' on page 200 undefined on input line 2005.
 
 [200]
 
-LaTeX Warning: Reference `thm:L2error' on page 201 undefined on input line 2135
+LaTeX Warning: Reference `thm:L2error' on page 201 undefined on input line 2134
 .
 
 
-LaTeX Warning: Reference `thm:L2error' on page 201 undefined on input line 2155
+LaTeX Warning: Reference `thm:L2error' on page 201 undefined on input line 2154
 .
 
 [201]
 
-LaTeX Warning: Reference `eq:Lem1' on page 202 undefined on input line 2180.
+LaTeX Warning: Reference `eq:Lem1' on page 202 undefined on input line 2179.
 
 
-LaTeX Warning: Reference `thm:L2error' on page 202 undefined on input line 2180
+LaTeX Warning: Reference `thm:L2error' on page 202 undefined on input line 2179
 .
 
 Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 2238.
+t line 2237.
 
 LaTeX Warning: Reference `sec:improved' on page 202 undefined on input line 226
-1.
+0.
 
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 2
-267.
+266.
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-[202] [203] [204] (ck_tieuluan_nhom_1.bbl [205] [206] [207])
-
-Package natbib Warning: There were undefined citations.
-
-[208] (ck_tieuluan_nhom_1.aux)
+[202] [203]
+<figs/fig1.png, id=621, 685.05937pt x 548.0475pt>
+File: figs/fig1.png Graphic file (type png)
+<use figs/fig1.png>
+Package pdftex.def Info: figs/fig1.png  used on input line 2481.
+(pdftex.def)             Requested size: 432.48051pt x 345.99092pt.
+<figs/fig2.png, id=624, 685.05937pt x 557.83406pt>
+File: figs/fig2.png Graphic file (type png)
+<use figs/fig2.png>
+Package pdftex.def Info: figs/fig2.png  used on input line 2529.
+(pdftex.def)             Requested size: 432.48051pt x 352.16933pt.
+<figs/fig3.png, id=626, 609.02531pt x 237.88875pt>
+File: figs/fig3.png Graphic file (type png)
+<use figs/fig3.png>
+Package pdftex.def Info: figs/fig3.png  used on input line 2559.
+(pdftex.def)             Requested size: 432.48051pt x 168.93484pt.
+ [204] [205 <./figs/fig1.png>] (ck_tieuluan_nhom_1.bbl [206 <./figs/fig2.png>] 
+[207 <./figs/fig3.png>]) [208] (ck_tieuluan_nhom_1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1417,36 +1434,35 @@ Package rerunfilecheck Info: File `ck_tieuluan_nhom_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20145 strings out of 474486
- 314992 string characters out of 5743754
+ 20193 strings out of 474486
+ 315896 string characters out of 5743754
  1991542 words of memory out of 5000000
- 41741 multiletter control sequences out of 15000+600000
- 690306 words of font info for 218 fonts, out of 8000000 for 9000
+ 41790 multiletter control sequences out of 15000+600000
+ 689482 words of font info for 217 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,14n,93p,1874b,714s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi
+ 90i,14n,93p,1874b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss
 0900.pk> <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecss0900.pk> <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecsx0900.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/stix/STIXGeneral-Bold.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/stix/STIXGeneral-Italic.pfb><C:/Users/Admin/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/Admin/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.pfb><C:/Users/
-Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathex.pfb><C:
-/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathfra
-k.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/sti
-x-mathit.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/s
-tix/stix-mathrm-bold.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/stix/stix-mathrm.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/stix/stix-mathscr.pfb><C:/Users/Admin/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/Admin/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/Users/Admin/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Admin/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/vntex/vnr/vnr17.pfb><C:/Users/Admin/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/vntex/vnr/vnr8.pfb>
-Output written on ck_tieuluan_nhom_1.pdf (25 pages, 1924312 bytes).
+0\ecsx0900.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+stix/STIXGeneral-Bold.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/stix/STIXGeneral-Italic.pfb><C:/Users/Admin/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/Admin/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathcal.pfb><C:/Users/Admin/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathex.pfb><C:/Users
+/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathfrak.pfb>
+<C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-math
+it.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/st
+ix-mathrm-bold.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/stix/stix-mathrm.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/stix/stix-mathscr.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/stix/stix-mathsf.pfb><C:/Users/Admin/AppData/Local/Programs
+/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/Users/Admin/AppData/Local/Programs/
+MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Admin/AppData/Local/Programs/M
+iKTeX/fonts/type1/vntex/vnr/vnr17.pfb><C:/Users/Admin/AppData/Local/Programs/Mi
+KTeX/fonts/type1/vntex/vnr/vnr8.pfb>
+Output written on ck_tieuluan_nhom_1.pdf (25 pages, 3757155 bytes).
 PDF statistics:
- 916 PDF objects out of 1000 (max. 8388607)
+ 889 PDF objects out of 1000 (max. 8388607)
  330 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

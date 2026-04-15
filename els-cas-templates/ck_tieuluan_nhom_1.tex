@@ -77,7 +77,7 @@
     \hfill
     \begin{minipage}[t]{2.5cm}
         \raggedleft
-        \includegraphics[width=1.8cm]{crossmark_check_for_updates_logo}
+        \includegraphics[width=0.8cm]{crossmark_check_for_updates_logo}
     \end{minipage}\par
   \end{minipage}
 }
@@ -130,8 +130,7 @@
     
     \vfill
     % Bạn hãy thay 'logo_tdtu' bằng tên file ảnh logo của bạn
-    % \includegraphics[width=5cm]{logo_tdtu} 
-    \fbox{\begin{minipage}{5cm} \centering \vspace{2cm} [Chèn Logo TDTU tại đây] \vspace{2cm} \end{minipage}} \\
+    \includegraphics[width=5cm]{logo_tdtu}
     
     \vfill
     \textbf{\huge TIỂU LUẬN CUỐI KỲ} \\
@@ -141,7 +140,7 @@
     \vspace{3cm}
     \begin{centering}
         \textbf{Môn học:} Soạn thảo tài liệu khoa học bằng \LaTeX \\
-        \textbf{Mã môn học:} C24 \\
+        \textbf{Mã môn học:} C02045 \\
         \textbf{Nhóm thực hiện:} Nhóm 1 \\
         \textbf{Mã đề:} 01 \\
         \textbf{Giảng viên giảng dạy:} Nguyễn Hữu Cần
@@ -178,17 +177,17 @@
         \hline
         \textbf{STT} & \textbf{Tên thành viên} & \textbf{MSSV} & \textbf{Công việc} & \textbf{Mức độ hoàn thành} & \textbf{Ký tên} \\
         \hline
-        1 & Trần Quốc Khang & C2400199 & Thuyết trình & 100\% & .. \\
+        1 & Trần Quốc Khang & C2400199 & Chuẩn bị Preamble và Template & 100\% & .. \\
         \hline
-        2 & Nguyễn Văn Kiệt & C2400203 & Soạn nội dung & 100\% & .. \\
+        2 & Nguyễn Văn Kiệt & C2400203 & Soạn Nội dung trang 1,2,3 & 100\% & .. \\
         \hline
-        3 & Nguyễn Hoàng Nhật & C2400111 & Soạn nội dung & 100\% & .. \\
+        3 & Nguyễn Hoàng Nhật & C2400111 & Soạn Tài liệu phần 1, 2, 3 & 100\% & .. \\
         \hline
-        4 & Đặng Gia Bảo & C2400187 & Soạn nội dung & 100\% & .. \\
+        4 & Đặng Gia Bảo & C2400187 & Soạn Tài liệu phần 4, 5 & 100\% & .. \\
         \hline
-        5 & Phạm Trọng Hiếu & C2400195 & Tổng hợp nội dung & 100\% & .. \\
+        5 & Phạm Trọng Hiếu & C2400195 & Soạn Tài liệu phần 6, 7 & 100\% & .. \\
         \hline
-        6 & Nguyễn Đức Duy & C2400095 & Soạn nội dung mở rộng & 100\% & .. \\
+        6 & Nguyễn Đức Duy & C2400095 & Soạn Bibliography & 100\% & .. \\
         \hline
     \end{tabular}
 \end{center}
@@ -466,7 +465,7 @@ and
   \label{eq:2.19}
 \end{equation}
 
-Then, from the standard finite element theory \cite{John2016,Li2021}, we have
+Then, from the standard finite element theory \cite{John2016,Lin2006}, we have
 \begin{equation}
   \Vert\eta - R_{h}\eta\Vert_{0}
   + h\,\Vert\nabla(\eta-R_{h}\eta)\Vert_{0}
@@ -509,7 +508,7 @@ is defined by
 \end{equation}
 
 Then, we have the following Lemmas~\ref{lem:1}--\ref{lem:4}, which can be
-found in \cite{Liu2017ch,Diegel2017,Heywood1982,Heywood1990}, or proven
+found in \cite{Liu42017,Diegel2017,Heywood1982,Heywood1990}, or proven
 similarly.
 
 \begin{lemma}
@@ -2477,6 +2476,15 @@ $\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $4.61452\times10^{-2
 \end{tabular}
 \end{table}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{fig1}
+  \caption{Snapshots of the approximate solutions $(c_{1h},\,c_{2h},\,\psi_{h})$ at
+           $t = 0.002$ (top row), $t = 0.02$ (middle) and $t = 0.1$ (bottom).}
+  \label{fig:c1c2psi}
+\end{figure}
+
+
 \begin{table}[htbp]
 \centering
 \caption{Errors and convergence orders of Pair~I for $c_{2}$ (Example~\ref{ex:2}).}
@@ -2515,6 +2523,16 @@ $\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $2.34852\times10^{-3
 \end{tabular}
 \end{table}
 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{fig2}
+  \caption{Snapshots of the approximate solutions $(u_{1h},\,u_{2h},\,p_{h})$ at
+           $t = 0.002$ (top row), $t = 0.02$ (middle) and $t = 0.1$ (bottom).}
+  \label{fig:u1u2p}
+\end{figure}
+
+
 \begin{table}[htbp]
 \centering
 \caption{Errors and convergence orders of Pair~I for $u$ (Example~\ref{ex:2}).}
@@ -2535,6 +2553,14 @@ $\tfrac{1}{20} \times \tfrac{1}{20} \times \tfrac{1}{20}$ & $1.99553\times10^{-2
 \end{table}
 
 % ---- Example 3 --------------------------------------------
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{fig3}
+  \caption{Evolution of the energy (left) and global mass (right).}
+  \label{fig:energy-mass}
+\end{figure}
+
 \begin{example}
 \label{ex:3}
 The third example is taken from \cite{Prohl2009,Gao2017,DehghanGharibi2023}. Set
@@ -2572,38 +2598,9 @@ Theorems~\ref{thm:mass} and~\ref{thm:energy}.
 
 % ---- Figures (placeholders) ------------------------------
 
-\begin{figure}[htbp]
-  \centering
-  % [Chèn hình Fig.~1 tại đây: snapshots of c_{1h}, c_{2h}, psi_h at t=0.002, 0.02, 0.1]
-  \fbox{\parbox{0.95\textwidth}{\centering\vspace{2cm}
-    \textit{[Figure 1: Snapshots of the approximate solutions
-    $(c_{1h},\,c_{2h},\,\psi_{h})$ at $t=0.002$ (top row),
-    $t=0.02$ (middle) and $t=0.1$ (bottom).]}\vspace{2cm}}}
-  \caption{Snapshots of the approximate solutions $(c_{1h},\,c_{2h},\,\psi_{h})$ at
-           $t = 0.002$ (top row), $t = 0.02$ (middle) and $t = 0.1$ (bottom).}
-  \label{fig:c1c2psi}
-\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  % [Chèn hình Fig.~2 tại đây: snapshots of u_{1h}, u_{2h}, p_h at t=0.002, 0.02, 0.1]
-  \fbox{\parbox{0.95\textwidth}{\centering\vspace{2cm}
-    \textit{[Figure 2: Snapshots of the approximate solutions
-    $(u_{1h},\,u_{2h},\,p_{h})$ at $t=0.002$ (top row),
-    $t=0.02$ (middle) and $t=0.1$ (bottom).]}\vspace{2cm}}}
-  \caption{Snapshots of the approximate solutions $(u_{1h},\,u_{2h},\,p_{h})$ at
-           $t = 0.002$ (top row), $t = 0.02$ (middle) and $t = 0.1$ (bottom).}
-  \label{fig:u1u2p}
-\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  % [Chèn hình Fig.~3 tại đây: evolution of energy (left) and global mass (right)]
-  \fbox{\parbox{0.95\textwidth}{\centering\vspace{2cm}
-    \textit{[Figure 3: Evolution of the energy (left) and global mass (right).]}\vspace{2cm}}}
-  \caption{Evolution of the energy (left) and global mass (right).}
-  \label{fig:energy-mass}
-\end{figure}
+
 
 % ----------------------------------------------------------
 \section{Conclusion and future work}
